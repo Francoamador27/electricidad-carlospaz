@@ -1,99 +1,45 @@
 # Voltis — Electricistas matriculados en Carlos Paz, Córdoba
 
-Voltis es una empresa de electricistas matriculados con más de 10 años de experiencia, con sede en Villa Carlos Paz, Córdoba, Argentina. Ofrecemos instalaciones eléctricas domiciliarias, comerciales e industriales, mantenimiento, reparaciones y urgencias en Carlos Paz y toda la región de Punilla. Más de 500 clientes atendidos. Trabajo con garantía y precios claros sin costos ocultos.
+> Voltis es una empresa de electricistas matriculados con más de 10 años de experiencia en Villa Carlos Paz, Córdoba, Argentina. Ofrecemos instalaciones eléctricas domiciliarias, comerciales e industriales, mantenimiento, reparaciones y urgencias en Carlos Paz y toda la región de Punilla. Más de 500 clientes atendidos. Trabajo con garantía y precios claros.
+
+## Páginas principales
+
+- [Inicio](https://www.voltis.com.ar): Electricistas matriculados en Carlos Paz y Punilla, Córdoba.
+- [Solicitar presupuesto](https://www.voltis.com.ar/presupuesto): Formulario para pedir presupuesto sin cargo.
+- [Contacto](https://www.voltis.com.ar/contacto): Datos de contacto y horarios de atención.
+- [Sobre nosotros](https://www.voltis.com.ar/about): Historia, equipo y credenciales de Voltis.
+- [Proyectos realizados](https://www.voltis.com.ar/proyectos): Galería de trabajos ejecutados en Carlos Paz y Punilla.
+
+## Servicios
+
+- [Instalaciones eléctricas domiciliarias](https://www.voltis.com.ar/servicios/instalaciones-domiciliarias): Instalaciones completas para viviendas en Carlos Paz y Punilla. Tendido de cables, tomas, interruptores, tableros y certificación habilitante.
+- [Instalaciones eléctricas empresariales](https://www.voltis.com.ar/servicios/instalaciones-empresariales): Instalaciones para locales comerciales, oficinas, restaurantes, hoteles y plantas industriales. Tableros trifásicos y certificaciones reglamentarias.
+- [Tableros eléctricos](https://www.voltis.com.ar/servicios/tableros-electricos): Instalación, actualización y mantenimiento de tableros residenciales, comerciales e industriales. Reemplazo de fusibles por disyuntores modernos con protección diferencial.
+- [Reparaciones eléctricas](https://www.voltis.com.ar/servicios/reparaciones-electricas): Diagnóstico y reparación de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz y Punilla.
+- [Mantenimiento eléctrico preventivo](https://www.voltis.com.ar/servicios/mantenimiento-electricidad): Revisiones periódicas de instalaciones eléctricas con informe técnico. Recomendado cada 2 años para viviendas y anualmente para comercios.
+- [Iluminación y automatización](https://www.voltis.com.ar/servicios/iluminacion-automatizacion): Instalación de iluminación LED interior y exterior, sensores de movimiento, automatización eléctrica, cámaras de seguridad y sistemas de alarma.
+
+## Blog
+
+- [¿Cómo saber si necesito actualizar mi tablero eléctrico?](https://www.voltis.com.ar/blog/como-saber-si-necesito-actualizar-tablero-electrico): Señales que indican que el tablero eléctrico necesita reemplazo o actualización.
+- [5 consejos de seguridad eléctrica para tu hogar en Carlos Paz](https://www.voltis.com.ar/blog/seguridad-electrica-hogar-carlos-paz): Guía de prevención de accidentes eléctricos en el hogar.
+- [Iluminación LED: ahorrá energía en tu hogar o empresa de Punilla](https://www.voltis.com.ar/blog/iluminacion-led-ahorro-energia-punilla): Comparativa y guía para migrar a tecnología LED en Carlos Paz y Punilla.
+- [Guía de instalación eléctrica para obra nueva en Carlos Paz](https://www.voltis.com.ar/blog/instalacion-electrica-obra-nueva-carlos-paz): Pasos esenciales para planificar la instalación eléctrica desde cero.
 
 ## Información de contacto
 
 - WhatsApp / Teléfono: +54 9 351 387-3029
 - Sitio web: https://www.voltis.com.ar
-- Solicitar presupuesto: https://www.voltis.com.ar/presupuesto
-
-## Horarios de atención
-
-- Lunes a viernes: 8:00 a 19:00 hs
-- Sábados: 8:00 a 13:00 hs
-- Urgencias eléctricas: disponibles 24 horas, 7 días de la semana
+- Horario: Lunes a viernes 8:00–19:00 hs · Sábados 8:00–13:00 hs · Urgencias 24/7
 
 ## Zona de cobertura
 
-Villa Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre, Cruz del Eje, Bialet Massé, Santa María de Punilla, Tanti, Icho Cruz y toda la región de Punilla, provincia de Córdoba, Argentina.
+Villa Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre, Cruz del Eje, Bialet Massé, Santa María de Punilla, Tanti, Icho Cruz y toda la región de Punilla, Córdoba, Argentina.
 
-## Servicios
-
-### Instalaciones eléctricas domiciliarias
-Instalaciones eléctricas completas para viviendas: tendido de cables, tomas corrientes, interruptores, puesta a tierra, tableros con protecciones diferenciales y certificación habilitante. Trabajamos en casas, departamentos, dúplex y countries de Carlos Paz y Punilla.
-Más información: https://www.voltis.com.ar/servicios/instalaciones-domiciliarias
-
-### Instalaciones eléctricas para empresas
-Instalaciones eléctricas para locales comerciales, oficinas, restaurantes, hoteles y plantas industriales en Carlos Paz y Punilla. Tableros trifásicos, circuitos de alta potencia, iluminación comercial y certificaciones reglamentarias.
-Más información: https://www.voltis.com.ar/servicios/instalaciones-empresariales
-
-### Tableros eléctricos
-Instalación, actualización y mantenimiento de tableros eléctricos residenciales, comerciales e industriales. Reemplazo de tableros con fusibles por disyuntores modernos con protección diferencial. Cumplimiento de normativa AEA e IRAM.
-Más información: https://www.voltis.com.ar/servicios/tableros-electricos
-
-### Reparaciones eléctricas
-Diagnóstico y reparación de cortocircuitos, enchufes quemados, interruptores defectuosos, baja tensión, sobrecarga de circuitos y cualquier falla eléctrica. Servicio rápido en Carlos Paz y zona de Punilla.
-Más información: https://www.voltis.com.ar/servicios/reparaciones-electricas
-
-### Mantenimiento eléctrico preventivo
-Revisiones periódicas de instalaciones eléctricas para detectar riesgos antes de que se conviertan en fallas. Informe técnico detallado del estado de la instalación. Recomendado cada 2 años para viviendas y anualmente para comercios.
-Más información: https://www.voltis.com.ar/servicios/mantenimiento-electricidad
-
-### Iluminación y automatización
-Diseño e instalación de sistemas de iluminación LED interior y exterior. Automatización eléctrica, sensores de movimiento, temporizado y eficiencia energética. Instalación de cámaras de seguridad y sistemas de alarma.
-Más información: https://www.voltis.com.ar/servicios/iluminacion-automatizacion
-
-### Urgencias eléctricas 24/7
-Atendemos urgencias eléctricas las 24 horas en Carlos Paz y zona de Punilla. Corte de luz, cortocircuito, incendio eléctrico o cualquier emergencia: llamar al +54 9 351 387-3029.
-
-## Credenciales y garantías
+## Credenciales
 
 - Electricistas matriculados habilitados por la provincia de Córdoba
 - Trabajos realizados bajo normas AEA 90364 e IRAM
 - Todos los trabajos incluyen garantía
 - Emitimos certificados de instalación eléctrica para habilitaciones municipales
 - Más de 10 años de trayectoria en la región de Punilla
-
-## Preguntas frecuentes
-
-**¿Cuánto cuesta un electricista en Carlos Paz?**
-Los precios varían según el trabajo. Para instalaciones nuevas el costo depende de la cantidad de circuitos y materiales. Para reparaciones y revisiones se cobra por visita técnica más materiales. Ofrecemos presupuesto sin cargo en https://www.voltis.com.ar/presupuesto
-
-**¿Necesito un electricista matriculado para instalar un tablero eléctrico?**
-Sí. En Argentina, la instalación y modificación de tableros eléctricos debe realizarla un electricista matriculado. El certificado de instalación eléctrica emitido por un matriculado es requerido para habilitaciones municipales y por las compañías distribuidoras.
-
-**¿Atienden urgencias eléctricas los fines de semana?**
-Sí. Voltis atiende urgencias eléctricas las 24 horas, los 7 días de la semana, incluyendo feriados. Llamar al +54 9 351 387-3029.
-
-**¿En qué zonas trabajan?**
-Cubrimos Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre, Tanti, Icho Cruz, Bialet Massé y toda la región de Punilla, Córdoba.
-
-**¿Cuánto tarda una instalación eléctrica completa en una vivienda?**
-Una instalación eléctrica completa para una vivienda de 3 dormitorios demora entre 3 y 5 días de trabajo. El plazo exacto depende del tamaño de la propiedad y la complejidad del proyecto.
-
-**¿Emiten certificado de instalación eléctrica?**
-Sí. Emitimos el certificado de instalación eléctrica necesario para habilitaciones municipales, compra-venta de inmuebles y contratos con empresas distribuidoras de energía.
-
-## Artículos del blog
-
-- ¿Cómo saber si necesito actualizar mi tablero eléctrico? — https://www.voltis.com.ar/blog/como-saber-si-necesito-actualizar-tablero-electrico
-- 5 consejos de seguridad eléctrica para tu hogar en Carlos Paz — https://www.voltis.com.ar/blog/seguridad-electrica-hogar-carlos-paz
-- Iluminación LED: ahorrá energía en tu hogar o empresa de Punilla — https://www.voltis.com.ar/blog/iluminacion-led-ahorro-energia-punilla
-- Guía de instalación eléctrica para obra nueva en Carlos Paz — https://www.voltis.com.ar/blog/instalacion-electrica-obra-nueva-carlos-paz
-
-## Páginas del sitio
-
-- Inicio: https://www.voltis.com.ar
-- Servicios: https://www.voltis.com.ar/servicios
-- Instalaciones domiciliarias: https://www.voltis.com.ar/servicios/instalaciones-domiciliarias
-- Instalaciones empresariales: https://www.voltis.com.ar/servicios/instalaciones-empresariales
-- Tableros eléctricos: https://www.voltis.com.ar/servicios/tableros-electricos
-- Reparaciones eléctricas: https://www.voltis.com.ar/servicios/reparaciones-electricas
-- Mantenimiento eléctrico: https://www.voltis.com.ar/servicios/mantenimiento-electricidad
-- Iluminación y automatización: https://www.voltis.com.ar/servicios/iluminacion-automatizacion
-- Proyectos realizados: https://www.voltis.com.ar/proyectos
-- Sobre nosotros: https://www.voltis.com.ar/about
-- Solicitar presupuesto: https://www.voltis.com.ar/presupuesto
-- Contacto: https://www.voltis.com.ar/contacto
-- Blog: https://www.voltis.com.ar/blog
