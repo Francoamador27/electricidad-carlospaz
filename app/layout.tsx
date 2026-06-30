@@ -129,7 +129,6 @@ const organizationSchema = {
   },
   image: `${BASE_URL}/logo-voltis.png`,
   telephone: "+5493513873029",
-  email: "francohugoamador25@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Villa Carlos Paz",
