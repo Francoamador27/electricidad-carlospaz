@@ -13,12 +13,13 @@ interface ButtonProps {
 }
 
 const variants: Record<Variant, string> = {
-  primary: "bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold",
-  secondary: "bg-slate-900 hover:bg-slate-800 text-white font-bold",
-  outline: "border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 font-bold",
+  primary: "bg-copper hover:bg-copper-light text-white font-semibold",
+  secondary: "bg-ink hover:bg-[#1A1A1A] text-white font-semibold",
+  outline: "border border-copper text-copper hover:bg-copper hover:text-white font-semibold",
 };
 
-const base = "inline-flex items-center justify-center px-6 py-3 rounded-lg transition-colors text-sm gap-2";
+const base =
+  "font-display inline-flex items-center justify-center px-6 py-3 rounded-sm transition-colors text-sm tracking-wide gap-2";
 
 export default function Button({
   href,

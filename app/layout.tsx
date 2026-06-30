@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 const BASE_URL = "https://www.voltis.com.ar";
 
@@ -188,7 +203,7 @@ const websiteSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="h-full">
+    <html lang="es" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         {/* Geo tags — SEO local */}
         <meta name="geo.region" content="AR-X" />

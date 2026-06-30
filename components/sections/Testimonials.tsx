@@ -1,3 +1,6 @@
+import AnimateIn from "@/components/ui/AnimateIn";
+import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
+
 const testimonials = [
   {
     name: "Marcela R.",
@@ -45,62 +48,56 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-wide">
-            Lo que dicen nuestros clientes
+    <section className="py-20 md:py-28 bg-parchment">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <AnimateIn className="mb-12">
+          <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
+            Clientes
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
-            Más de 500 clientes satisfechos en Punilla
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
+            Más de 500 clientes satisfechos<br className="hidden sm:block" />en Punilla.
           </h2>
-          <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
-            La confianza de nuestros clientes en Carlos Paz y toda la región de Punilla es el
-            resultado de 10 años de trabajo honesto, seguro y con garantía.
-          </p>
-        </div>
+        </AnimateIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col"
-            >
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-amber-400 text-lg">★</span>
-                ))}
-              </div>
+            <StaggerItem key={t.name} className="flex flex-col">
+              <div className="group flex flex-col flex-1 bg-white border border-warm-border rounded p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)]">
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: t.stars }).map((_, i) => (
+                    <span key={i} className="text-copper text-base">★</span>
+                  ))}
+                </div>
 
-              <p className="text-slate-700 text-sm leading-relaxed flex-1 italic">
-                "{t.text}"
-              </p>
+                <p className="text-[#5A5450] text-sm leading-relaxed flex-1 italic">
+                  "{t.text}"
+                </p>
 
-              <div className="mt-5 pt-4 border-t border-slate-100">
-                <p className="font-bold text-slate-900 text-sm">{t.name}</p>
-                <p className="text-slate-500 text-xs">{t.location}</p>
-                <span className="inline-block mt-1 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">
-                  {t.service}
-                </span>
+                <div className="mt-5 pt-4 border-t border-warm-border">
+                  <p className="font-display font-semibold text-ink text-sm">{t.name}</p>
+                  <p className="text-warm-gray text-xs mt-0.5">{t.location}</p>
+                  <span className="inline-block mt-2 text-xs border border-warm-border text-warm-gray px-2 py-0.5 rounded-sm font-medium">
+                    {t.service}
+                  </span>
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
 
-        <div className="mt-10 text-center">
-          <p className="text-slate-500 text-sm">
+        <AnimateIn delay={0.1} className="mt-10">
+          <p className="text-warm-gray text-sm">
             ¿Trabajaste con nosotros?{" "}
             <a
               href="https://wa.me/5493513873029?text=Hola%2C+quiero+dejar+mi+opini%C3%B3n+sobre+el+servicio"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-600 font-semibold hover:underline"
+              className="text-copper font-semibold hover:underline"
             >
               Dejanos tu reseña por WhatsApp →
             </a>
           </p>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

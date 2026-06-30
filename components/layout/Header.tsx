@@ -27,20 +27,20 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white sticky top-0 z-50 shadow-md">
+    <header className="bg-parchment sticky top-0 z-50 border-b border-warm-border">
       {/* Top bar */}
-      <div className="bg-amber-500 text-slate-900 text-sm py-1">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span className="font-medium">Carlos Paz y Punilla, Córdoba</span>
-          <div className="flex items-center gap-4">
-            <a href="tel:+5493513873029" className="font-bold hover:underline">
-              ☎ (351) 387-3029
+      <div className="bg-ink text-[#5A5450] text-xs py-1.5">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center">
+          <span className="tracking-wide">Carlos Paz y Punilla, Córdoba</span>
+          <div className="flex items-center gap-5">
+            <a href="tel:+5493513873029" className="font-medium text-muted hover:text-copper transition-colors">
+              (351) 387-3029
             </a>
             <a
               href="https://wa.me/5493513873029"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold hover:underline"
+              className="font-medium text-muted hover:text-copper transition-colors"
             >
               WhatsApp
             </a>
@@ -49,7 +49,7 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <nav className="max-w-7xl mx-auto px-4  flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo-voltis.png"
@@ -63,7 +63,7 @@ export default function Header() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6 text-sm font-semibold">
-          <Link href="/" className="text-slate-900 hover:text-amber-500 transition-colors">
+          <Link href="/" className="font-display text-ink hover:text-copper transition-colors">
             Inicio
           </Link>
 
@@ -75,13 +75,13 @@ export default function Header() {
           >
             <Link
               href="/servicios"
-              className="text-slate-900 hover:text-amber-500 transition-colors flex items-center gap-1"
+              className="font-display text-ink hover:text-copper transition-colors flex items-center gap-1"
             >
               Servicios <span className="text-xs">▾</span>
             </Link>
             {servicesOpen && (
               <div
-                className="absolute top-full left-0 mt-1 bg-white text-slate-800 rounded-lg shadow-xl w-64 py-2 z-50 border border-slate-100"
+                className="absolute top-full left-0 mt-1 bg-white text-ink rounded border border-warm-border shadow-[0_8px_24px_rgba(0,0,0,0.08)] w-64 py-1.5 z-50"
                 onMouseEnter={handleServicesEnter}
                 onMouseLeave={handleServicesLeave}
               >
@@ -89,7 +89,7 @@ export default function Header() {
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="block px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-sm transition-colors"
+                    className="font-display block px-4 py-2.5 hover:bg-parchment hover:text-copper text-sm transition-colors"
                   >
                     {s.label}
                   </Link>
@@ -98,24 +98,24 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/proyectos" className="text-slate-900 hover:text-amber-500 transition-colors">
+          <Link href="/proyectos" className="font-display text-ink hover:text-copper transition-colors">
             Proyectos
           </Link>
-          <Link href="/about" className="text-slate-900 hover:text-amber-500 transition-colors">
+          <Link href="/about" className="font-display text-ink hover:text-copper transition-colors">
             Sobre nosotros
           </Link>
-          <Link href="/blog" className="text-slate-900 hover:text-amber-500 transition-colors">
+          <Link href="/blog" className="font-display text-ink hover:text-copper transition-colors">
             Blog
           </Link>
-          <Link href="/contacto" className="text-slate-900 hover:text-amber-500 transition-colors">
+          <Link href="/contacto" className="font-display text-ink hover:text-copper transition-colors">
             Contacto
           </Link>
 
           <Link
             href="/presupuesto"
-            className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-4 py-2 rounded-lg transition-colors"
+            className="font-display bg-copper hover:bg-copper-light text-white font-semibold px-5 py-2 rounded-sm transition-colors tracking-wide text-xs uppercase"
           >
-            Solicitar presupuesto
+            Presupuesto
           </Link>
         </div>
 
@@ -131,18 +131,18 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-4 pb-4">
+        <div className="md:hidden bg-parchment border-t border-warm-border px-6 pb-4">
           <Link
             href="/"
-            className="block py-3 text-slate-900 font-medium border-b border-slate-100"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
             Inicio
           </Link>
-          <div className="py-2 border-b border-slate-100">
+          <div className="py-2 border-b border-warm-border">
             <Link
               href="/servicios"
-              className="block py-1 text-slate-900 font-semibold"
+              className="font-display block py-1 text-ink font-semibold"
               onClick={() => setMenuOpen(false)}
             >
               Servicios
@@ -151,7 +151,7 @@ export default function Header() {
               <Link
                 key={s.href}
                 href={s.href}
-                className="block py-1 pl-4 text-slate-700 hover:text-amber-500 text-sm"
+                className="font-display block py-1 pl-4 text-warm-gray hover:text-copper text-sm"
                 onClick={() => setMenuOpen(false)}
               >
                 {s.label}
@@ -160,35 +160,35 @@ export default function Header() {
           </div>
           <Link
             href="/proyectos"
-            className="block py-3 text-slate-900 font-medium border-b border-slate-100"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
             Proyectos
           </Link>
           <Link
             href="/about"
-            className="block py-3 text-slate-900 font-medium border-b border-slate-100"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
             Sobre nosotros
           </Link>
           <Link
             href="/blog"
-            className="block py-3 text-slate-900 font-medium border-b border-slate-100"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
             Blog
           </Link>
           <Link
             href="/contacto"
-            className="block py-3 text-slate-900 font-medium border-b border-slate-100"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
             Contacto
           </Link>
           <Link
             href="/presupuesto"
-            className="block mt-3 bg-amber-500 text-slate-900 font-bold px-4 py-3 rounded-lg text-center"
+            className="font-display block mt-3 bg-copper text-white font-semibold px-4 py-3 rounded-sm text-center tracking-wide text-sm hover:bg-copper-light transition-colors"
             onClick={() => setMenuOpen(false)}
           >
             Solicitar presupuesto

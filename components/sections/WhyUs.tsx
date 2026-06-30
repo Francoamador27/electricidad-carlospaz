@@ -1,70 +1,64 @@
+import AnimateIn from "@/components/ui/AnimateIn";
+import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
+
 const reasons = [
   {
-    icon: "🎓",
     title: "Electricistas matriculados",
     description:
       "Todo nuestro equipo cuenta con matrícula habilitante. Trabajamos de forma legal y segura en Carlos Paz y Punilla.",
   },
   {
-    icon: "⏱",
     title: "Respuesta rápida",
     description:
-      "Atendemos urgencias eléctricas en Carlos Paz con respuesta rápida. Llegamos a tu domicilio cuando más lo necesitás.",
+      "Atendemos urgencias eléctricas en Carlos Paz con respuesta inmediata. Llegamos a tu domicilio cuando más lo necesitás.",
   },
   {
-    icon: "✅",
     title: "Trabajo con garantía",
     description:
-      "Todos nuestros trabajos eléctricos incluyen garantía. Tu seguridad y satisfacción son nuestra prioridad.",
+      "Todos nuestros trabajos eléctricos incluyen garantía por escrito. Tu seguridad y satisfacción son nuestra prioridad.",
   },
   {
-    icon: "💰",
-    title: "Precios claros y justos",
+    title: "Precios claros",
     description:
-      "Precios transparentes sin sorpresas ni costos ocultos. Sabés cuánto vas a pagar antes de que empecemos a trabajar.",
+      "Presupuesto sin cargo, sin sorpresas ni costos ocultos. Sabés cuánto vas a pagar antes de que empecemos.",
   },
   {
-    icon: "🛡",
     title: "Seguridad eléctrica",
     description:
-      "Trabajamos respetando las normas de seguridad eléctrica vigentes en Argentina. Instalaciones que protegen tu familia.",
+      "Respetamos las normas de seguridad eléctrica vigentes en Argentina. Instalaciones que protegen a tu familia.",
   },
   {
-    icon: "📍",
     title: "Cobertura local",
     description:
-      "Atendemos Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre y toda la región de Punilla, Córdoba.",
+      "Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre y toda la región de Punilla, Córdoba.",
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-wide">
+    <section className="py-20 md:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <AnimateIn className="mb-12">
+          <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
             Por qué elegirnos
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
-            Electricistas de confianza en Carlos Paz
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
+            Electricistas de confianza<br className="hidden sm:block" />en Carlos Paz.
           </h2>
-          <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
-            Más de 10 años brindando servicios eléctricos de calidad en Carlos Paz y la región de
-            Punilla. Conocemos la zona, conocemos a nuestros clientes.
-          </p>
-        </div>
+        </AnimateIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Technical grid — gap-px on colored bg creates hairline dividers */}
+        <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-warm-border">
           {reasons.map((reason) => (
-            <div key={reason.title} className="flex gap-4 p-6 bg-white rounded-xl border border-slate-100 shadow-sm">
-              <div className="text-3xl flex-shrink-0">{reason.icon}</div>
-              <div>
-                <h3 className="font-bold text-slate-900 mb-1">{reason.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{reason.description}</p>
+            <StaggerItem key={reason.title} className="bg-white">
+              <div className="group p-8 h-full hover:bg-[#FAFAF8] transition-colors duration-200">
+                <div className="w-8 h-[2px] bg-copper mb-5 transition-all duration-300 group-hover:w-14" />
+                <h3 className="font-display font-semibold text-ink text-base mb-2">{reason.title}</h3>
+                <p className="text-warm-gray text-sm leading-relaxed">{reason.description}</p>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   );
