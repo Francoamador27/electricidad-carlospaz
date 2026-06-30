@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://www.voltis.com.ar";
 
 const blogPosts: Array<{ slug: string; lastModified: Date }> = [
