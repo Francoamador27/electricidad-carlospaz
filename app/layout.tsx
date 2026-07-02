@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { SITE_URL } from "@/lib/site";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const BASE_URL = "https://www.voltis.com.ar";
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://www.voltis.com.ar";
+const BASE_URL = SITE_URL;
 
 const blogPosts: Array<{ slug: string; lastModified: Date }> = [
   { slug: "como-saber-si-necesito-actualizar-tablero-electrico", lastModified: new Date("2025-06-01") },

@@ -10,22 +10,22 @@ Credenciales: electricistas matriculados habilitados por la provincia de Córdob
 
 ## Servicios
 
-- [Instalaciones eléctricas domiciliarias](https://www.voltis.com.ar/servicios/instalaciones-domiciliarias): Instalaciones completas para viviendas. Tendido de cables, tomas, interruptores, tableros con protecciones diferenciales y certificación habilitante.
-- [Instalaciones eléctricas para empresas](https://www.voltis.com.ar/servicios/instalaciones-empresariales): Instalaciones para locales comerciales, oficinas, restaurantes, hoteles y plantas industriales. Tableros trifásicos, circuitos de alta potencia y certificaciones reglamentarias.
-- [Tableros eléctricos](https://www.voltis.com.ar/servicios/tableros-electricos): Instalación, actualización y mantenimiento de tableros residenciales, comerciales e industriales. Reemplazo de fusibles por disyuntores modernos con protección diferencial. Normativa AEA e IRAM.
-- [Reparaciones eléctricas](https://www.voltis.com.ar/servicios/reparaciones-electricas): Diagnóstico y reparación de cortocircuitos, enchufes quemados, interruptores defectuosos, baja tensión y fallas eléctricas. Servicio rápido en Carlos Paz y Punilla.
-- [Mantenimiento eléctrico preventivo](https://www.voltis.com.ar/servicios/mantenimiento-electricidad): Revisiones periódicas con informe técnico del estado de la instalación. Recomendado cada 2 años para viviendas y anualmente para comercios.
-- [Iluminación y automatización](https://www.voltis.com.ar/servicios/iluminacion-automatizacion): Iluminación LED interior y exterior, sensores de movimiento, automatización eléctrica, cámaras de seguridad y sistemas de alarma.
+- [Instalaciones eléctricas domiciliarias](https://electricidadcarlospaz.proyectoswebsite.com/servicios/instalaciones-domiciliarias): Instalaciones completas para viviendas. Tendido de cables, tomas, interruptores, tableros con protecciones diferenciales y certificación habilitante.
+- [Instalaciones eléctricas para empresas](https://electricidadcarlospaz.proyectoswebsite.com/servicios/instalaciones-empresariales): Instalaciones para locales comerciales, oficinas, restaurantes, hoteles y plantas industriales. Tableros trifásicos, circuitos de alta potencia y certificaciones reglamentarias.
+- [Tableros eléctricos](https://electricidadcarlospaz.proyectoswebsite.com/servicios/tableros-electricos): Instalación, actualización y mantenimiento de tableros residenciales, comerciales e industriales. Reemplazo de fusibles por disyuntores modernos con protección diferencial. Normativa AEA e IRAM.
+- [Reparaciones eléctricas](https://electricidadcarlospaz.proyectoswebsite.com/servicios/reparaciones-electricas): Diagnóstico y reparación de cortocircuitos, enchufes quemados, interruptores defectuosos, baja tensión y fallas eléctricas. Servicio rápido en Carlos Paz y Punilla.
+- [Mantenimiento eléctrico preventivo](https://electricidadcarlospaz.proyectoswebsite.com/servicios/mantenimiento-electricidad): Revisiones periódicas con informe técnico del estado de la instalación. Recomendado cada 2 años para viviendas y anualmente para comercios.
+- [Iluminación y automatización](https://electricidadcarlospaz.proyectoswebsite.com/servicios/iluminacion-automatizacion): Iluminación LED interior y exterior, sensores de movimiento, automatización eléctrica, cámaras de seguridad y sistemas de alarma.
 
 ## Blog
 
-- [¿Cómo saber si necesito actualizar mi tablero eléctrico?](https://www.voltis.com.ar/blog/como-saber-si-necesito-actualizar-tablero-electrico): Señales que indican que el tablero eléctrico necesita reemplazo o actualización en Carlos Paz.
-- [5 consejos de seguridad eléctrica para tu hogar en Carlos Paz](https://www.voltis.com.ar/blog/seguridad-electrica-hogar-carlos-paz): Guía de prevención de accidentes eléctricos domiciliarios en Punilla.
-- [Iluminación LED: ahorrá energía en tu hogar o empresa de Punilla](https://www.voltis.com.ar/blog/iluminacion-led-ahorro-energia-punilla): Comparativa y guía práctica para migrar a tecnología LED en Carlos Paz y Punilla.
-- [Guía de instalación eléctrica para obra nueva en Carlos Paz](https://www.voltis.com.ar/blog/instalacion-electrica-obra-nueva-carlos-paz): Pasos esenciales para planificar la instalación eléctrica desde cero en Punilla.
+- [¿Cómo saber si necesito actualizar mi tablero eléctrico?](https://electricidadcarlospaz.proyectoswebsite.com/blog/como-saber-si-necesito-actualizar-tablero-electrico): Señales que indican que el tablero eléctrico necesita reemplazo o actualización en Carlos Paz.
+- [5 consejos de seguridad eléctrica para tu hogar en Carlos Paz](https://electricidadcarlospaz.proyectoswebsite.com/blog/seguridad-electrica-hogar-carlos-paz): Guía de prevención de accidentes eléctricos domiciliarios en Punilla.
+- [Iluminación LED: ahorrá energía en tu hogar o empresa de Punilla](https://electricidadcarlospaz.proyectoswebsite.com/blog/iluminacion-led-ahorro-energia-punilla): Comparativa y guía práctica para migrar a tecnología LED en Carlos Paz y Punilla.
+- [Guía de instalación eléctrica para obra nueva en Carlos Paz](https://electricidadcarlospaz.proyectoswebsite.com/blog/instalacion-electrica-obra-nueva-carlos-paz): Pasos esenciales para planificar la instalación eléctrica desde cero en Punilla.
 
 ## Optional
 
-- [Sobre nosotros](https://www.voltis.com.ar/about): Historia, equipo y credenciales de Voltis Instalaciones Eléctricas.
-- [Proyectos realizados](https://www.voltis.com.ar/proyectos): Galería de trabajos ejecutados en Carlos Paz y la región de Punilla.
-- [Solicitar presupuesto](https://www.voltis.com.ar/presupuesto): Formulario de contacto para presupuesto sin cargo.
+- [Sobre nosotros](https://electricidadcarlospaz.proyectoswebsite.com/about): Historia, equipo y credenciales de Voltis Instalaciones Eléctricas.
+- [Proyectos realizados](https://electricidadcarlospaz.proyectoswebsite.com/proyectos): Galería de trabajos ejecutados en Carlos Paz y la región de Punilla.
+- [Solicitar presupuesto](https://electricidadcarlospaz.proyectoswebsite.com/presupuesto): Formulario de contacto para presupuesto sin cargo.
