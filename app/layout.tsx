@@ -205,6 +205,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
+        <meta name="google-site-verification" content="DZiGXfIytFBlEfi2j4GVmuvyfneJwq41qh4VdLR-wnk" />
+
         {/* Geo tags — SEO local */}
         <meta name="geo.region" content="AR-X" />
         <meta name="geo.placename" content="Villa Carlos Paz, Córdoba, Argentina" />
