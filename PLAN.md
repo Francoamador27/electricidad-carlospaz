@@ -206,12 +206,12 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 **Aceptación:** `pnpm dev` levanta web y API; el sitio se ve igual que hoy.
 
 ### Fase 2 — Sitio conectado
-- [ ] Páginas nuevas: zonas, detalle de proyecto, certificado (si corresponde), privacidad.
-- [ ] Blog, proyectos y sitemap leen de la base en el build.
-- [ ] Formulario `/presupuesto` y `/contacto` → API → WhatsApp.
-- [ ] Reseñas ocultas; GTM + eventos; ajustes SEO de la sección 6.
-- [ ] `/contacto` y `/presupuesto` son `"use client"` y no tienen title ni description propios: separar el formulario en un componente cliente.
-- [ ] Corregir los 4 errores de lint que ya estaban en el repo (comillas sin escapar).
+- [x] Páginas nuevas: zonas, detalle de proyecto, privacidad. Certificado: pendiente de confirmación.
+- [x] Blog, proyectos, zonas, reseñas y sitemap leen de la base en el build (en `next dev` se ven también los borradores).
+- [x] Formulario `/presupuesto` y `/contacto` → API → WhatsApp (honeypot + Turnstile).
+- [x] Reseñas ocultas; GTM + eventos (clics también en tabla `eventos`); JSON-LD Service/BlogPosting/BreadcrumbList; `lang="es-AR"`.
+- [x] `/contacto` y `/presupuesto` con title y description propios.
+- [x] Lint sin errores.
 
 **Aceptación:** build estático sin errores, Rich Results Test sin errores, PageSpeed móvil ≥ 90, eventos visibles en la vista previa de GTM.
 
@@ -236,3 +236,6 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - [ ] Revisar los borradores de las 14 zonas (`apps/api/seed/zonas.ts`) antes de publicarlos.
 - [ ] Los 6 proyectos actuales, ¿son trabajos reales? Usan fotos de stock y no se cargaron en la base hasta confirmarlo.
 - [ ] Verificar dos afirmaciones del blog: la "Resolución SE 1/2020" (post de seguridad) y que el certificado se tramita "ante el municipio" (post de obra nueva). En Córdoba corresponde la Ley 10.281 / ERSeP.
+- [ ] "Más de 500 clientes" (título de reseñas, lo saqué) y otras cifras del sitio: ¿son reales?
+- [ ] Cabalango figuraba en la sección de cobertura y no está entre las 14 localidades: ¿la sumamos?
+- [ ] Razón social / CUIT y email de contacto para la política de privacidad.

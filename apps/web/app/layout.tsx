@@ -5,7 +5,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { SITE_URL } from "@/lib/site";
-import { NEGOCIO } from "@voltis/shared";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { LOCALIDADES, NEGOCIO } from "@voltis/shared";
+import TrackingListener from "@/components/tracking/TrackingListener";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -160,28 +162,15 @@ const organizationSchema = {
   },
   hasMap: "https://maps.google.com/maps?q=Villa+Carlos+Paz,+Córdoba,+Argentina",
   areaServed: [
-    { "@type": "City", name: "Villa Carlos Paz" },
-    { "@type": "City", name: "Valle Hermoso" },
-    { "@type": "City", name: "Cosquín" },
-    { "@type": "City", name: "La Falda" },
-    { "@type": "City", name: "La Cumbre" },
+    ...LOCALIDADES.map((l) => ({ "@type": "City", name: l.nombre })),
     { "@type": "AdministrativeArea", name: "Punilla" },
-    { "@type": "State", name: "Córdoba" },
   ],
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Saturday",
-      opens: "08:00",
-      closes: "13:00",
-    },
-  ],
+  openingHoursSpecification: NEGOCIO.horario.map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: h.dias,
+    opens: h.abre,
+    closes: h.cierra,
+  })),
   priceRange: "$$",
   currenciesAccepted: "ARS",
   paymentAccepted: "Efectivo, transferencia bancaria, Mercado Pago",
@@ -205,7 +194,7 @@ const websiteSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
+    <html lang="es-AR" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <meta name="google-site-verification" content="DZiGXfIytFBlEfi2j4GVmuvyfneJwq41qh4VdLR-wnk" />
 
@@ -228,7 +217,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
+      {process.env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
       <body className="min-h-full flex flex-col">
+        <TrackingListener />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

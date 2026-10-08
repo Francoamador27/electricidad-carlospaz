@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
-import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 
 export const metadata: Metadata = {

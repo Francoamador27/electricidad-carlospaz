@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
 import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = {
   title: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
@@ -73,6 +74,7 @@ const faq = [
 export default function ReparacionesPage() {
   return (
     <>
+      <ServicioJsonLd slug="reparaciones-electricas" />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">
@@ -183,7 +185,7 @@ export default function ReparacionesPage() {
                 key={item.situacion}
                 className="bg-white rounded-xl border border-slate-200 p-6"
               >
-                <p className="font-bold text-slate-900 mb-2">"{item.situacion}"</p>
+                <p className="font-bold text-slate-900 mb-2">&ldquo;{item.situacion}&rdquo;</p>
                 <p className="text-sm text-slate-500 mb-1">
                   <span className="font-semibold text-slate-700">Causa probable:</span>{" "}
                   {item.causa}

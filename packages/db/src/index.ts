@@ -7,3 +7,4 @@ export function getDb(databaseUrl: string) {
 }
 
 export { schema };
+export { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";

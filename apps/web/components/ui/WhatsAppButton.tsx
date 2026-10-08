@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { linkWhatsapp } from "@voltis/shared";
+import { registrarClic } from "@/lib/tracking";
 
 export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export default function WhatsAppButton() {
     e.preventDefault();
     const text = `Hola! Mi nombre es ${form.name}, mi número de teléfono es ${form.phone}. ${form.message}`;
     const url = linkWhatsapp(text);
+    registrarClic("click_whatsapp");
     window.open(url, "_blank", "noopener,noreferrer");
     setOpen(false);
     setForm({ name: "", phone: "", message: "" });

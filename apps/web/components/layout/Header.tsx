@@ -11,6 +11,7 @@ const services = [
   { label: "Mantenimiento eléctrico", href: "/servicios/mantenimiento-electricidad" },
   { label: "Reparaciones eléctricas", href: "/servicios/reparaciones-electricas" },
   { label: "Tableros eléctricos", href: "/servicios/tableros-electricos" },
+  { label: "Iluminación y automatización", href: "/servicios/iluminacion-automatizacion" },
 ];
 
 export default function Header() {
@@ -102,6 +103,9 @@ export default function Header() {
           <Link href="/proyectos" className="font-display text-ink hover:text-copper transition-colors">
             Proyectos
           </Link>
+          <Link href="/zonas" className="font-display text-ink hover:text-copper transition-colors">
+            Zonas
+          </Link>
           <Link href="/about" className="font-display text-ink hover:text-copper transition-colors">
             Sobre nosotros
           </Link>
@@ -165,6 +169,13 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           >
             Proyectos
+          </Link>
+          <Link
+            href="/zonas"
+            className="font-display block py-3 text-ink font-medium border-b border-warm-border"
+            onClick={() => setMenuOpen(false)}
+          >
+            Zonas
           </Link>
           <Link
             href="/about"

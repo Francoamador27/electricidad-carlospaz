@@ -88,6 +88,16 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/zonas" className="hover:text-copper transition-colors">
+                Zonas de cobertura
+              </Link>
+            </li>
+            <li>
+              <Link href="/politica-de-privacidad" className="hover:text-copper transition-colors">
+                Política de privacidad
+              </Link>
+            </li>
+            <li>
               <Link href="/blog" className="hover:text-copper transition-colors">
                 Blog
               </Link>

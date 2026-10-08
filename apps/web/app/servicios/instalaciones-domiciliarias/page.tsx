@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = {
   title: "Instalaciones domiciliarias en Carlos Paz y Punilla",
@@ -50,6 +51,7 @@ const faq = [
 export default function InstalacionesDomiciliariasPage() {
   return (
     <>
+      <ServicioJsonLd slug="instalaciones-domiciliarias" />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">

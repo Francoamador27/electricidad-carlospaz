@@ -1,21 +1,11 @@
-import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import Link from "next/link";
+import { LINK_TELEFONO, LOCALIDADES, NEGOCIO } from "@voltis/shared";
+import { getZonas } from "@/lib/contenido";
 
-const zones = [
-  { name: "Villa Carlos Paz", tag: "Principal" },
-  { name: "Valle Hermoso", tag: "" },
-  { name: "Cosquín", tag: "" },
-  { name: "La Falda", tag: "" },
-  { name: "La Cumbre", tag: "" },
-  { name: "Icho Cruz", tag: "" },
-  { name: "Tanti", tag: "" },
-  { name: "San Antonio de Arredondo", tag: "" },
-  { name: "Cabalango", tag: "" },
-  { name: "Cuesta Blanca", tag: "" },
-  { name: "Santa María de Punilla", tag: "" },
-  { name: "Bialet Massé", tag: "" },
-];
 
-export default function CoverageArea() {
+export default async function CoverageArea() {
+  const conPagina = new Set((await getZonas()).map((z) => z.slug));
+
   return (
     <section className="py-16 md:py-24 bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -53,13 +43,19 @@ export default function CoverageArea() {
               Localidades donde trabajamos
             </h3>
             <div className="grid grid-cols-2 gap-3">
-              {zones.map((z) => (
-                <div key={z.name} className="flex items-center gap-2">
+              {LOCALIDADES.map((z, i) => (
+                <div key={z.slug} className="flex items-center gap-2">
                   <span className="text-amber-500 font-bold text-sm">✓</span>
-                  <span className="text-slate-200 text-sm">{z.name}</span>
-                  {z.tag && (
+                  {conPagina.has(z.slug) ? (
+                    <Link href={`/zonas/${z.slug}`} className="text-slate-200 text-sm hover:text-amber-400 underline-offset-2 hover:underline">
+                      {z.nombre}
+                    </Link>
+                  ) : (
+                    <span className="text-slate-200 text-sm">{z.nombre}</span>
+                  )}
+                  {i === 0 && (
                     <span className="text-xs bg-amber-500 text-slate-900 font-bold px-1.5 py-0.5 rounded">
-                      {z.tag}
+                      Principal
                     </span>
                   )}
                 </div>

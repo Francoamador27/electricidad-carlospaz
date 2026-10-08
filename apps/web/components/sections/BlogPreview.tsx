@@ -1,35 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import FotoImg from "@/components/ui/FotoImg";
+import { formatoFecha, getPosts } from "@/lib/contenido";
 
-const posts = [
-  {
-    slug: "como-saber-si-necesito-actualizar-tablero-electrico",
-    title: "¿Cómo saber si necesito actualizar mi tablero eléctrico?",
-    excerpt:
-      "El tablero es el corazón de tu instalación. Te contamos las 7 señales que indican que es hora de actualizarlo antes de que sea un problema serio.",
-    category: "Mantenimiento",
-    date: "2025-06-01",
-    image: "/images/como-saber-si-actualizar-tablero.jpg",
-  },
-  {
-    slug: "seguridad-electrica-hogar-carlos-paz",
-    title: "5 consejos de seguridad eléctrica para tu hogar en Carlos Paz",
-    excerpt:
-      "Los accidentes eléctricos son prevenibles. Seguí estos consejos clave para mantener tu hogar seguro y saber cuándo llamar a un electricista.",
-    category: "Seguridad",
-    date: "2025-05-15",
-    image: "/images/camara-seguridad.jpg",
-  },
-  {
-    slug: "instalacion-electrica-obra-nueva-carlos-paz",
-    title: "Guía de instalación eléctrica para obra nueva en Carlos Paz",
-    excerpt:
-      "Si estás construyendo, esta guía es para vos. Los 7 pasos de la instalación eléctrica desde cero: proyecto, cañerías, tablero y certificado.",
-    category: "Instalaciones",
-    date: "2025-03-10",
-    image: "/images/electricidad-interior.jpg",
-  },
-];
 
 const categoryColors: Record<string, string> = {
   Mantenimiento: "bg-blue-100 text-blue-700",
@@ -38,7 +10,10 @@ const categoryColors: Record<string, string> = {
   "Eficiencia energética": "bg-green-100 text-green-700",
 };
 
-export default function BlogPreview() {
+export default async function BlogPreview() {
+  const posts = (await getPosts()).slice(0, 3);
+  if (!posts.length) return null;
+
   return (
     <section className="py-16 md:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -62,31 +37,32 @@ export default function BlogPreview() {
               className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow group"
             >
               <Link href={`/blog/${post.slug}`} className="block relative aspect-video overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:opacity-90 transition-opacity"
-                />
+                {post.portada && (
+                  <FotoImg
+                    foto={post.portada}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                  />
+                )}
               </Link>
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <span
-                    className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[post.category] ?? "bg-slate-100 text-slate-700"}`}
+                    className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[post.categoria ?? ""] ?? "bg-slate-100 text-slate-700"}`}
                   >
-                    {post.category}
+                    {post.categoria}
                   </span>
-                  <time className="text-xs text-slate-400">{post.date}</time>
+                  <time className="text-xs text-slate-400">{formatoFecha(post.publicadoAt)}</time>
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2 leading-snug">
                   <Link
                     href={`/blog/${post.slug}`}
                     className="hover:text-amber-600 transition-colors"
                   >
-                    {post.title}
+                    {post.titulo}
                   </Link>
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">{post.extracto}</p>
                 <Link
                   href={`/blog/${post.slug}`}
                   className="text-amber-600 text-sm font-semibold hover:underline"
