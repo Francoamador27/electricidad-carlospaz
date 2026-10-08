@@ -32,8 +32,10 @@ Sin tarjeta. Las fotos se guardan en Vercel pero el sitio las pide a `/img/*` de
 Worker las trae una vez y las deja en la caché de Cloudflare, así casi no se usa la transferencia
 de Vercel.
 
-1. vercel.com → **Storage** → **Create** → **Blob** → nombre `voltis-fotos`, acceso **Public**.
-2. En el store → pestaña **.env.local** → copiá `BLOB_READ_WRITE_TOKEN`.
+1. vercel.com → **Storage** → **Create** → **Blob** (ya creado: `imagenes`, acceso **Private**).
+   No hace falta conectarlo a ningún proyecto de Vercel.
+2. En el store → **.env.local** → copiá `BLOB_READ_WRITE_TOKEN`. (Si podés, generá uno nuevo: el
+   actual quedó expuesto durante el desarrollo.)
 3. Cargalo como secreto del Worker (paso 6) y en `apps/api/.dev.vars` para probar en local.
 
 Límites del plan gratis: 1 GB de almacenamiento y 10 GB de transferencia por mes. Si se superan,
@@ -97,6 +99,7 @@ configurados para este dominio. No hay que tocarlo.
 | `ACCESS_AUD` | AUD tag de Access |
 | `PAGES_DEPLOY_HOOK_URL` | URL del deploy hook de Pages |
 | `BLOB_READ_WRITE_TOKEN` | token de Vercel Blob (paso 3b) |
+| `BLOB_ACCESS` | `private` (o `public` si el store es público) — opcional, por defecto `private` |
 
 **Nunca** cargues `ADMIN_SIN_AUTH` en producción.
 

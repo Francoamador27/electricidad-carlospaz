@@ -8,3 +8,5 @@ ALLOWED_ORIGINS=http://localhost:3000
 AVISO_DESTINO=tu@email.com
 # Vercel Blob (fotos del panel): Storage → Blob → tu store → .env.local
 BLOB_READ_WRITE_TOKEN=vercel_blob_rw_...
+# private (por defecto) o public, según cómo se creó el store.
+BLOB_ACCESS=private

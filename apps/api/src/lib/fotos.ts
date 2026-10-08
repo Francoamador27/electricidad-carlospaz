@@ -1,24 +1,22 @@
 // Almacenamiento de fotos en Vercel Blob. El sitio nunca usa las URLs de Vercel: pide
-// /img/<key> a este Worker, que las trae una vez y las deja en la caché de Cloudflare.
-// Para cambiar de proveedor alcanza con cambiar este archivo.
-import { put } from "@vercel/blob";
+// /img/<key> a este Worker, que las lee con el token una vez y las deja en la caché de
+// Cloudflare. Por eso el store puede ser privado (recomendado: nadie gasta tu transferencia
+// bajando las fotos directo de Vercel). Para cambiar de proveedor alcanza con este archivo.
+import { get, put } from "@vercel/blob";
 import type { Env } from "../env";
 
 export function blobConfigurado(env: Env): boolean {
   return Boolean(env.BLOB_READ_WRITE_TOKEN);
 }
 
-// Token "vercel_blob_rw_<storeId>_<secreto>" → https://<storeid>.public.blob.vercel-storage.com
-function baseBlob(env: Env): string {
-  if (env.BLOB_BASE_URL) return env.BLOB_BASE_URL.replace(/\/$/, "");
-  const storeId = env.BLOB_READ_WRITE_TOKEN?.split("_")[3];
-  if (!storeId) throw new Error("BLOB_READ_WRITE_TOKEN inválido");
-  return `https://${storeId.toLowerCase()}.public.blob.vercel-storage.com`;
+// Tiene que coincidir con cómo se creó el store en Vercel.
+function acceso(env: Env): "public" | "private" {
+  return env.BLOB_ACCESS === "public" ? "public" : "private";
 }
 
 export async function guardarFoto(env: Env, pathname: string, archivo: File): Promise<void> {
   await put(pathname, archivo, {
-    access: "public",
+    access: acceso(env),
     token: env.BLOB_READ_WRITE_TOKEN,
     contentType: archivo.type,
     addRandomSuffix: false,
@@ -39,15 +37,12 @@ export async function servirFoto(
   const enCache = await cache.match(pedido);
   if (enCache) return enCache;
 
-  if (!blobConfigurado(env) && !env.BLOB_BASE_URL) return new Response("Fotos sin configurar", { status: 404 });
-  const origen = await fetch(`${baseBlob(env)}/${key}`);
-  if (!origen.ok) return new Response("No encontrada", { status: 404 });
+  if (!blobConfigurado(env)) return new Response("Fotos sin configurar", { status: 404 });
+  const blob = await get(key, { access: acceso(env), token: env.BLOB_READ_WRITE_TOKEN }).catch(() => null);
+  if (!blob || blob.statusCode !== 200) return new Response("No encontrada", { status: 404 });
 
-  const respuesta = new Response(origen.body, {
-    headers: {
-      "Content-Type": origen.headers.get("Content-Type") ?? "application/octet-stream",
-      "Cache-Control": UN_ANIO,
-    },
+  const respuesta = new Response(blob.stream, {
+    headers: { "Content-Type": blob.blob.contentType, "Cache-Control": UN_ANIO },
   });
   ctx.waitUntil(cache.put(pedido, respuesta.clone()));
   return respuesta;

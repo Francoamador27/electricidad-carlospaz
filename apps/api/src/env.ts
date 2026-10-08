@@ -5,9 +5,9 @@ export type Env = {
   AVISO_REMITENTE: string;
   AVISO_DESTINO: string;
   AVISOS?: SendEmail;
-  // Vercel Blob: token del store (fotos). BLOB_BASE_URL es opcional (se deduce del token).
+  // Vercel Blob (fotos): token del store y tipo de acceso ("private" por defecto).
   BLOB_READ_WRITE_TOKEN?: string;
-  BLOB_BASE_URL?: string;
+  BLOB_ACCESS?: "public" | "private";
   // Cloudflare Access: dominio del equipo (xxx.cloudflareaccess.com) y AUD de la aplicación.
   ACCESS_TEAM_DOMAIN?: string;
   ACCESS_AUD?: string;
