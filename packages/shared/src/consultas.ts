@@ -25,7 +25,7 @@ export const consultaSchema = z.object({
   paginaOrigen: z.string().max(500).optional(),
   atribucion: atribucionSchema.optional(),
   // Honeypot: un humano lo deja vacío.
-  empresa: z.string().max(0).optional(),
+  empresa: z.string().max(500).optional(),
   turnstileToken: z.string().max(4096).optional(),
 });
 

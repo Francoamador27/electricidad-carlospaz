@@ -1,0 +1,16 @@
+name = "voltis-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Orígenes permitidos para CORS (solo hace falta en desarrollo: en producción
+# la API vive en el mismo dominio vía Worker routes).
+ALLOWED_ORIGINS = "http://localhost:3000"
+AVISO_REMITENTE = "avisos@voltis.example"
+AVISO_DESTINO = ""
+
+# Email Routing: se activa en la Fase 4, cuando el dominio esté en Cloudflare.
+# [[send_email]]
+# name = "AVISOS"
+# destination_address = "<email de Franco>"
