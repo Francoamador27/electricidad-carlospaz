@@ -192,11 +192,15 @@ admin.post("/uploads", async (c) => {
   const carpeta = String(form.get("carpeta") ?? "general").replace(/[^a-z0-9-]/g, "") || "general";
   const key = `${carpeta}/${new Date().getFullYear()}/${crypto.randomUUID()}`;
 
+  const versiones = [...form.entries()]
+    .map(([campo, archivo]) => ({ w: Number(/^w(\d{2,4})$/.exec(campo)?.[1]), archivo }))
+    .filter((v): v is { w: number; archivo: File } => v.w > 0 && v.archivo instanceof File)
+    .sort((a, b) => a.w - b.w);
+  if (versiones.length > ANCHOS_FOTO.length) return c.json({ ok: false, error: "demasiados_archivos" }, 400);
+
   const anchos: number[] = [];
   let formato: "webp" | "jpeg" | undefined;
-  for (const w of ANCHOS_FOTO) {
-    const archivo = form.get(`w${w}`);
-    if (!(archivo instanceof File)) continue;
+  for (const { w, archivo } of versiones) {
     if (archivo.size > MAX_BYTES) return c.json({ ok: false, error: "archivo_grande" }, 413);
     const tipo = archivo.type === "image/webp" ? "webp" : archivo.type === "image/jpeg" ? "jpeg" : null;
     if (!tipo || (formato && formato !== tipo)) return c.json({ ok: false, error: "formato_invalido" }, 400);

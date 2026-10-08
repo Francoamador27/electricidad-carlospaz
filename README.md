@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Voltis — sitio y panel
 
-## Getting Started
+Monorepo pnpm. Plan, decisiones y pendientes en [PLAN.md](PLAN.md).
 
-First, run the development server:
+| Carpeta | Qué es |
+| --- | --- |
+| `apps/web` | Sitio (Next, export estático → Cloudflare Pages) y panel en `/admin` |
+| `apps/api` | API Hono en Cloudflare Workers: formularios, clics, panel, fotos (R2) |
+| `packages/db` | Schema Drizzle, migraciones y seed (Neon Postgres) |
+| `packages/shared` | Datos del negocio (teléfono, localidades, servicios) y schemas zod |
+
+## Correr en local
+
+Requisitos: Node 22+, pnpm 10.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # web en http://localhost:3000, API en http://localhost:8787
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Variables locales (no se suben al repo):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `apps/api/.dev.vars` — ver `apps/api/.dev.vars.example`
+- `apps/web/.env.local` — ver `apps/web/.env.example`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+En `pnpm dev` el sitio muestra también los borradores (con un cartel rojo). El build de
+producción solo incluye lo publicado.
 
-## Learn More
+## Panel
 
-To learn more about Next.js, take a look at the following resources:
+http://localhost:3000/admin — en local entra sin login (`ADMIN_SIN_AUTH=1`). En producción
+lo protege Cloudflare Access.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Conversiones:** formularios y clics en WhatsApp/teléfono por día, página, origen y zona.
+- **Consultas:** leads del formulario, con botón para responder por WhatsApp.
+- **Proyectos / Blog / Zonas / Reseñas:** alta, edición, fotos y estado borrador/publicado.
+- **Publicar cambios:** regenera el sitio (en local no hace nada).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Base de datos
 
-## Deploy on Vercel
+```bash
+pnpm db:migrate   # aplica migraciones
+pnpm db:seed      # carga inicial (no pisa lo editado)
+pnpm db:studio    # explorar tablas en el navegador
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para cambiar el schema: editar `packages/db/src/schema.ts`, después
+`pnpm --filter @voltis/db db:generate` y `pnpm db:migrate`.
