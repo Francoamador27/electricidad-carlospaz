@@ -1,3 +1,5 @@
+import { LINK_TELEFONO, linkWhatsapp } from "@voltis/shared";
+
 ﻿import Button from "@/components/ui/Button";
 
 export default function ContactBanner() {
@@ -16,7 +18,7 @@ export default function ContactBanner() {
             Solicitar presupuesto
           </Button>
           <a
-            href="https://wa.me/5493513873029"
+            href={linkWhatsapp()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-4 rounded-lg hover:bg-slate-100 transition-colors text-base"
@@ -24,7 +26,7 @@ export default function ContactBanner() {
             💬 Escribir por WhatsApp
           </a>
           <a
-            href="tel:+5493513873029"
+            href={LINK_TELEFONO}
             className="inline-flex items-center gap-2 border-2 border-slate-900 text-slate-900 font-bold px-8 py-4 rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-base"
           >
             ☎ Llamar ahora

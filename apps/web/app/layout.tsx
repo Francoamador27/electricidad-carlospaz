@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { SITE_URL } from "@/lib/site";
+import { NEGOCIO } from "@voltis/shared";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -144,7 +145,7 @@ const organizationSchema = {
     height: 1080,
   },
   image: `${BASE_URL}/logo-voltis.png`,
-  telephone: "+5493513873029",
+  telephone: NEGOCIO.telefono,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Villa Carlos Paz",

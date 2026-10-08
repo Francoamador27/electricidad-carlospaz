@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Tableros eléctricos en Carlos Paz y Punilla",
@@ -81,7 +82,7 @@ export default function TablerosPage() {
                 Solicitar presupuesto
               </Button>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 ☎ Llamar ahora
@@ -102,8 +103,8 @@ export default function TablerosPage() {
             <p className="text-slate-700 text-sm mt-1">
               Nunca intervengas en él sin ser electricista habilitado. Un tablero mal intervenido
               puede dejar sin protección toda la instalación.{" "}
-              <a href="tel:+5493513873029" className="text-amber-600 font-semibold hover:underline">
-                Llamanos al (351) 387-3029
+              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+                Llamanos al {NEGOCIO.telefonoVisible}
               </a>{" "}
               y lo resolvemos de forma segura.
             </p>
@@ -159,10 +160,10 @@ export default function TablerosPage() {
               Si reconocés alguna de estas señales, no lo dejes para después.
             </p>
             <a
-              href="tel:+5493513873029"
+              href={LINK_TELEFONO}
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-8 py-4 rounded-lg transition-colors text-base"
             >
-              ☎ Llamar ahora — (351) 387-3029
+              ☎ Llamar ahora — {NEGOCIO.telefonoVisible}
             </a>
           </div>
         </div>

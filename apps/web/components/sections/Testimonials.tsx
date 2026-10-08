@@ -1,5 +1,6 @@
 import AnimateIn from "@/components/ui/AnimateIn";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
+import { linkWhatsapp } from "@voltis/shared";
 
 const testimonials = [
   {
@@ -89,7 +90,7 @@ export default function Testimonials() {
           <p className="text-warm-gray text-sm">
             ¿Trabajaste con nosotros?{" "}
             <a
-              href="https://wa.me/5493513873029?text=Hola%2C+quiero+dejar+mi+opini%C3%B3n+sobre+el+servicio"
+              href={linkWhatsapp("Hola, quiero dejar mi opinión sobre el servicio")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-copper font-semibold hover:underline"

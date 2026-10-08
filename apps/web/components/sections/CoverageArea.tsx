@@ -1,3 +1,5 @@
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+
 const zones = [
   { name: "Villa Carlos Paz", tag: "Principal" },
   { name: "Valle Hermoso", tag: "" },
@@ -72,10 +74,10 @@ export default function CoverageArea() {
                 según disponibilidad.
               </p>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 mt-4 text-amber-400 font-bold text-sm hover:underline"
               >
-                ☎ Consultar cobertura — (351) 387-3029
+                ☎ Consultar cobertura — {NEGOCIO.telefonoVisible}
               </a>
             </div>
           </div>

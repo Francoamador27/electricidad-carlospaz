@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { QuoteFormData } from "@/types";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 
 const serviceOptions = [
   "Instalaciones domiciliarias",
@@ -97,7 +98,7 @@ export default function PresupuestoPage() {
                 una respuesta más rápida.
               </p>
               <a
-                href="https://wa.me/5493513873029"
+                href={linkWhatsapp()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-6 bg-amber-500 text-slate-900 font-bold px-6 py-3 rounded-lg hover:bg-amber-400 transition-colors"
@@ -264,8 +265,8 @@ export default function PresupuestoPage() {
 
                 <p className="text-xs text-slate-500 text-center">
                   Respondemos en menos de 24 horas. Para urgencias:{" "}
-                  <a href="tel:+5493513873029" className="text-amber-600 hover:underline font-medium">
-                    (351) 387-3029
+                  <a href={LINK_TELEFONO} className="text-amber-600 hover:underline font-medium">
+                    {NEGOCIO.telefonoVisible}
                   </a>
                 </p>
               </form>

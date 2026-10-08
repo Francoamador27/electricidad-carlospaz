@@ -4,6 +4,7 @@ export const NEGOCIO = {
   nombre: "Voltis",
   telefono: "+5493513873029",
   telefonoVisible: "(351) 387-3029",
+  telefonoInternacional: "+54 9 351 387-3029",
   whatsapp: "5493513873029",
   localidadBase: "Villa Carlos Paz",
   horario: [

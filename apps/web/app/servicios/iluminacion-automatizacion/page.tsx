@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Iluminación y automatización en Carlos Paz y Punilla",
@@ -89,7 +90,7 @@ export default function IluminacionAutomatizacionPage() {
                 Solicitar presupuesto
               </Button>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 ☎ Llamar ahora

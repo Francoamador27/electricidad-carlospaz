@@ -1,3 +1,5 @@
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+
 export default function EmergencyCTA() {
   return (
     <section className="bg-red-950 text-white py-14">
@@ -18,13 +20,13 @@ export default function EmergencyCTA() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="tel:+5493513873029"
+            href={LINK_TELEFONO}
             className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg shadow-lg"
           >
-            ☎ Llamar ahora — (351) 387-3029
+            ☎ Llamar ahora — {NEGOCIO.telefonoVisible}
           </a>
           <a
-            href="https://wa.me/5493513873029?text=Hola%2C+tengo+una+urgencia+el%C3%A9ctrica+y+necesito+ayuda"
+            href={linkWhatsapp("Hola, tengo una urgencia eléctrica y necesito ayuda")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg shadow-lg"

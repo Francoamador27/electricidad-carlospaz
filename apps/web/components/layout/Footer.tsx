@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 
 export default function Footer() {
   return (
@@ -109,18 +110,18 @@ export default function Footer() {
           <h3 className="font-display text-parchment font-semibold mb-3">Contacto</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="tel:+5493513873029" className="hover:text-copper transition-colors">
-                ☎ (351) 387-3029
+              <a href={LINK_TELEFONO} className="hover:text-copper transition-colors">
+                ☎ {NEGOCIO.telefonoVisible}
               </a>
             </li>
             <li>
               <a
-                href="https://wa.me/5493513873029"
+                href={linkWhatsapp()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-copper transition-colors"
               >
-                WhatsApp: +54 9 351 387-3029
+                WhatsApp: {NEGOCIO.telefonoInternacional}
               </a>
             </li>
             <li>

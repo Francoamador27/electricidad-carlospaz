@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const WHATSAPP_NUMBER = "5493513873029";
+import { linkWhatsapp } from "@voltis/shared";
 
 export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -15,7 +14,7 @@ export default function WhatsAppButton() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const text = `Hola! Mi nombre es ${form.name}, mi número de teléfono es ${form.phone}. ${form.message}`;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    const url = linkWhatsapp(text);
     window.open(url, "_blank", "noopener,noreferrer");
     setOpen(false);
     setForm({ name: "", phone: "", message: "" });

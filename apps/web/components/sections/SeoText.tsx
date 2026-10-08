@@ -1,3 +1,5 @@
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+
 export default function SeoText() {
   return (
     <section className="py-16 bg-white">
@@ -83,12 +85,12 @@ export default function SeoText() {
           <p>
             Todos nuestros <strong>trabajos eléctricos incluyen garantía</strong>. Para urgencias eléctricas en Carlos Paz y Punilla,
             atendemos las 24 horas los 7 días de la semana. Llamanos al{" "}
-            <a href="tel:+5493513873029" className="text-amber-600 font-semibold hover:underline">
-              (351) 387-3029
+            <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+              {NEGOCIO.telefonoVisible}
             </a>{" "}
             o escribinos por{" "}
             <a
-              href="https://wa.me/5493513873029"
+              href={linkWhatsapp()}
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-600 font-semibold hover:underline"

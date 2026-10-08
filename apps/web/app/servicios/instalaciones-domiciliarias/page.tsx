@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Instalaciones domiciliarias en Carlos Paz y Punilla",
@@ -71,7 +72,7 @@ export default function InstalacionesDomiciliariasPage() {
                 Solicitar presupuesto
               </Button>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 ☎ Llamar ahora
@@ -140,7 +141,7 @@ export default function InstalacionesDomiciliariasPage() {
             <div className="mt-6 p-4 bg-amber-100 rounded-xl border border-amber-200">
               <p className="text-amber-900 font-semibold text-sm">
                 ☎ ¿Urgencia eléctrica? Llamanos al{" "}
-                <a href="tel:+5493513873029" className="underline">(351) 387-3029</a>
+                <a href={LINK_TELEFONO} className="underline">{NEGOCIO.telefonoVisible}</a>
                 {" "}— atendemos las 24 horas.
               </p>
             </div>
@@ -231,7 +232,7 @@ export default function InstalacionesDomiciliariasPage() {
             <p>
               Recuerda que cualquier trabajo eléctrico —por más pequeño que parezca— debe ser
               realizado por un electricista habilitado. No pongas en riesgo tu hogar ni a tu familia.
-              <strong> Llamanos al (351) 387-3029</strong> y coordinamos una visita sin cargo.
+              <strong> Llamanos al {NEGOCIO.telefonoVisible}</strong> y coordinamos una visita sin cargo.
             </p>
           </div>
         </div>

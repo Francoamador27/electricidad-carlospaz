@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Mantenimiento eléctrico en Carlos Paz y Punilla",
@@ -74,7 +75,7 @@ export default function MantenimientoPage() {
                 Solicitar revisión preventiva
               </Button>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 ☎ Llamar ahora
@@ -135,8 +136,8 @@ export default function MantenimientoPage() {
               <div className="mt-4 p-4 bg-white rounded-xl border border-amber-300">
                 <p className="font-semibold text-amber-800 text-sm">
                   ☎ Agendá tu revisión preventiva:{" "}
-                  <a href="tel:+5493513873029" className="underline">
-                    (351) 387-3029
+                  <a href={LINK_TELEFONO} className="underline">
+                    {NEGOCIO.telefonoVisible}
                   </a>
                 </p>
               </div>
@@ -223,8 +224,8 @@ export default function MantenimientoPage() {
             </p>
             <p>
               Para coordinar una revisión preventiva en Carlos Paz o Punilla, llamanos al{" "}
-              <a href="tel:+5493513873029" className="text-amber-600 font-semibold hover:underline">
-                (351) 387-3029
+              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+                {NEGOCIO.telefonoVisible}
               </a>{" "}
               o completá el formulario de presupuesto.
             </p>

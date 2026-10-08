@@ -1,5 +1,6 @@
 import AnimateIn from "@/components/ui/AnimateIn";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 
 const steps = [
   {
@@ -60,10 +61,10 @@ export default function Process() {
 
         <AnimateIn delay={0.2} className="mt-12 pt-8 border-t border-warm-border">
           <a
-            href="tel:+5493513873029"
+            href={LINK_TELEFONO}
             className="font-display inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide hover:bg-copper-light transition-all duration-200 hover:shadow-[0_4px_16px_rgba(196,118,42,0.3)] active:scale-[0.97]"
           >
-            Empezar — (351) 387-3029
+            Empezar — {NEGOCIO.telefonoVisible}
           </a>
         </AnimateIn>
       </div>

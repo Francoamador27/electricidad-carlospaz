@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { useState } from "react";
 import type { ContactFormData } from "@/types";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 
 // Note: Metadata export only works in Server Components.
 // Move this to a separate layout.tsx or use generateMetadata if needed.
@@ -76,14 +77,14 @@ export default function ContactPage() {
                 {
                   icon: "📞",
                   title: "Teléfono",
-                  content: <a href="tel:+5493513873029" className="text-amber-600 hover:underline font-medium">(351) 387-3029</a>,
+                  content: <a href={LINK_TELEFONO} className="text-amber-600 hover:underline font-medium">{NEGOCIO.telefonoVisible}</a>,
                 },
                 {
                   icon: "💬",
                   title: "WhatsApp",
                   content: (
-                    <a href="https://wa.me/5493513873029" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-medium">
-                      +54 9 351 387-3029
+                    <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-medium">
+                      {NEGOCIO.telefonoInternacional}
                     </a>
                   ),
                 },
@@ -261,7 +262,7 @@ export default function ContactPage() {
 
                 <p className="text-xs text-slate-500 text-center">
                   También podés escribirnos directamente por{" "}
-                  <a href="https://wa.me/5493513873029" className="text-amber-600 hover:underline font-medium" target="_blank" rel="noopener noreferrer">
+                  <a href={linkWhatsapp()} className="text-amber-600 hover:underline font-medium" target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </a>
                 </p>

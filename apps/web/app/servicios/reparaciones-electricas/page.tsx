@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
@@ -53,7 +54,7 @@ const faq = [
   },
   {
     q: "¿Cuánto tiempo tarda una reparación eléctrica urgente en Carlos Paz?",
-    a: "Para urgencias eléctricas en Carlos Paz y Punilla, intentamos llegar en menos de 2 horas. Llamanos al (351) 387-3029 y te informamos el tiempo estimado de llegada según la zona.",
+    a: `Para urgencias eléctricas en Carlos Paz y Punilla, intentamos llegar en menos de 2 horas. Llamanos al ${NEGOCIO.telefonoVisible} y te informamos el tiempo estimado de llegada según la zona.`,
   },
   {
     q: "¿Puedo cambiar yo mismo un enchufe quemado o un interruptor?",
@@ -91,13 +92,13 @@ export default function ReparacionesPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors text-base"
               >
                 ☎ Llamar ahora — 24/7
               </a>
               <a
-                href="https://wa.me/5493513873029?text=Hola%2C+tengo+una+urgencia+el%C3%A9ctrica"
+                href={linkWhatsapp("Hola, tengo una urgencia eléctrica")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors"
@@ -120,8 +121,8 @@ export default function ReparacionesPage() {
             <p className="text-red-200 text-sm mt-1">
               Trabajar con electricidad sin capacitación puede causar electrocución o incendio. Siempre llamá a un
               electricista matriculado. Estamos disponibles las 24 horas en Carlos Paz y Punilla —{" "}
-              <a href="tel:+5493513873029" className="underline font-semibold text-white">
-                (351) 387-3029
+              <a href={LINK_TELEFONO} className="underline font-semibold text-white">
+                {NEGOCIO.telefonoVisible}
               </a>
               .
             </p>
@@ -216,8 +217,8 @@ export default function ReparacionesPage() {
             </p>
             <p>
               Para urgencias eléctricas en Carlos Paz y Punilla, llamanos directamente al{" "}
-              <a href="tel:+5493513873029" className="text-amber-600 font-semibold hover:underline">
-                (351) 387-3029
+              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+                {NEGOCIO.telefonoVisible}
               </a>
               . Atendemos las 24 horas los 7 días de la semana.
             </p>

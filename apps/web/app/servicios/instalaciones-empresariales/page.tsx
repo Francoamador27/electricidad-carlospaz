@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 
 export const metadata: Metadata = {
   title: "Instalaciones eléctricas para empresas en Carlos Paz",
@@ -86,7 +87,7 @@ export default function InstalacionesEmpresarialesPage() {
                 Solicitar presupuesto
               </Button>
               <a
-                href="tel:+5493513873029"
+                href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 ☎ Llamar ahora
@@ -209,8 +210,8 @@ export default function InstalacionesEmpresarialesPage() {
             <p>
               Atendemos empresas en Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre y todo
               el Valle de Punilla. Para presupuesto de instalación eléctrica comercial, llamanos al{" "}
-              <a href="tel:+5493513873029" className="text-amber-600 font-semibold hover:underline">
-                (351) 387-3029
+              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+                {NEGOCIO.telefonoVisible}
               </a>{" "}
               o solicitalo online de forma gratuita.
             </p>

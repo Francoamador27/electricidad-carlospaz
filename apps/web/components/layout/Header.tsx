@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef } from "react";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 
 const services = [
   { label: "Instalaciones domiciliarias", href: "/servicios/instalaciones-domiciliarias" },
@@ -33,11 +34,11 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center">
           <span className="tracking-wide">Carlos Paz y Punilla, Córdoba</span>
           <div className="flex items-center gap-5">
-            <a href="tel:+5493513873029" className="font-medium text-muted hover:text-copper transition-colors">
-              (351) 387-3029
+            <a href={LINK_TELEFONO} className="font-medium text-muted hover:text-copper transition-colors">
+              {NEGOCIO.telefonoVisible}
             </a>
             <a
-              href="https://wa.me/5493513873029"
+              href={linkWhatsapp()}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-muted hover:text-copper transition-colors"
