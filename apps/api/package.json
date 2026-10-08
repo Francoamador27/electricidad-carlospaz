@@ -5,25 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --port 8787",
-    "lint": "tsc --noEmit",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:seed": "tsx scripts/seed.ts",
-    "db:studio": "drizzle-kit studio"
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.2.0",
+    "@voltis/db": "workspace:*",
     "@voltis/shared": "workspace:*",
-    "drizzle-orm": "^0.45.4",
     "hono": "^4.13.13",
     "zod": "^4.6.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261008.1",
-    "dotenv": "^18.0.6",
-    "drizzle-kit": "^0.31.11",
-    "image-size": "^2.0.4",
-    "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "wrangler": "^4.148.0"
   }

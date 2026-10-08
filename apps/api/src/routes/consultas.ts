@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { consultaSchema } from "@voltis/shared";
-import { getDb, schema } from "../db";
+import { getDb, schema } from "@voltis/db";
 import type { Env } from "../env";
 import { verificarTurnstile } from "../lib/turnstile";
 import { enviarAviso } from "../lib/aviso";

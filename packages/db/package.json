@@ -1,0 +1,29 @@
+{
+  "name": "@voltis/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx scripts/seed.ts",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "@voltis/shared": "workspace:*",
+    "drizzle-orm": "^0.45.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "dotenv": "^18.0.6",
+    "drizzle-kit": "^0.31.11",
+    "image-size": "^2.0.4",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

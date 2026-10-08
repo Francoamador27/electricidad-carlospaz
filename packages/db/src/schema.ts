@@ -9,6 +9,7 @@ import {
   text,
   timestamp,
   check,
+  index,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
@@ -111,3 +112,18 @@ export const consultas = pgTable("consultas", {
   atribucion: jsonb("atribucion").$type<Record<string, string>>(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+// Clics en CTA (WhatsApp, teléfono). Los formularios quedan en `consultas`.
+export const eventos = pgTable(
+  "eventos",
+  {
+    id: serial("id").primaryKey(),
+    tipo: text("tipo").notNull(),
+    pagina: text("pagina"),
+    servicio: text("servicio"),
+    zona: text("zona"),
+    atribucion: jsonb("atribucion").$type<Record<string, string>>(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("eventos_created_at_idx").on(t.createdAt)],
+);

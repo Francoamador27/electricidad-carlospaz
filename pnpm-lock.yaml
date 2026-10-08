@@ -10,15 +10,12 @@ importers:
 
   apps/api:
     dependencies:
-      '@neondatabase/serverless':
-        specifier: ^1.2.0
-        version: 1.2.0
+      '@voltis/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@voltis/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      drizzle-orm:
-        specifier: ^0.45.4
-        version: 0.45.4(@cloudflare/workers-types@5.20261008.1)(@neondatabase/serverless@1.2.0)
       hono:
         specifier: ^4.13.13
         version: 4.13.13
@@ -29,18 +26,6 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^5.20261008.1
         version: 5.20261008.1
-      dotenv:
-        specifier: ^18.0.6
-        version: 18.0.6
-      drizzle-kit:
-        specifier: ^0.31.11
-        version: 0.31.11
-      image-size:
-        specifier: ^2.0.4
-        version: 2.0.4
-      tsx:
-        specifier: ^4.23.15
-        version: 4.23.15
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -89,6 +74,37 @@ importers:
         version: 4.3.3
       typescript:
         specifier: ^5
+        version: 5.9.3
+
+  packages/db:
+    dependencies:
+      '@neondatabase/serverless':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@voltis/shared':
+        specifier: workspace:*
+        version: link:../shared
+      drizzle-orm:
+        specifier: ^0.45.4
+        version: 0.45.4(@cloudflare/workers-types@5.20261008.1)(@neondatabase/serverless@1.2.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.19.43
+        version: 20.19.43
+      dotenv:
+        specifier: ^18.0.6
+        version: 18.0.6
+      drizzle-kit:
+        specifier: ^0.31.11
+        version: 0.31.11
+      image-size:
+        specifier: ^2.0.4
+        version: 2.0.4
+      tsx:
+        specifier: ^4.23.15
+        version: 4.23.15
+      typescript:
+        specifier: ^5.9.3
         version: 5.9.3
 
   packages/shared:

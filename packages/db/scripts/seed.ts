@@ -5,13 +5,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { imageSizeFromFile } from "image-size/fromFile";
 import { LOCALIDADES, SERVICIOS } from "@voltis/shared";
-import { getDb, schema } from "../src/db";
+import { getDb, schema } from "../src";
 import { ZONAS } from "../seed/zonas";
 
-config({ path: ".dev.vars" });
+config({ path: "../../apps/api/.dev.vars" });
 const db = getDb(process.env.DATABASE_URL!);
 
-const PUBLIC_WEB = path.resolve(import.meta.dirname, "../../web/public");
+const PUBLIC_WEB = path.resolve(import.meta.dirname, "../../../apps/web/public");
 const POSTS_DIR = path.resolve(import.meta.dirname, "../seed/posts");
 
 function frontmatter(raw: string): { datos: Record<string, string>; cuerpo: string } {
