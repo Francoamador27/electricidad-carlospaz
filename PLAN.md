@@ -198,10 +198,10 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 ## 8. Fases
 
 ### Fase 1 — Monorepo (local)
-- [ ] Mover el Next a `apps/web`, de npm a pnpm, y verificar que `pnpm build` genere el mismo `out/`.
-- [ ] `packages/shared` con los datos del negocio; reemplazar los ~30 teléfonos hardcodeados.
-- [ ] `apps/api` con Hono + Drizzle, schema y migraciones; `wrangler dev` en `:8787`.
-- [ ] Seed: servicios, 14 zonas (borradores) y los 4 posts actuales pasados a Markdown.
+- [x] Mover el Next a `apps/web`, de npm a pnpm, y verificar que `pnpm build` genere el mismo `out/`.
+- [x] `packages/shared` con los datos del negocio; reemplazar los ~30 teléfonos hardcodeados.
+- [x] `apps/api` con Hono + Drizzle, schema y migraciones; `wrangler dev` en `:8787`.
+- [x] Seed: servicios, 14 zonas (borradores) y los 4 posts actuales pasados a Markdown.
 
 **Aceptación:** `pnpm dev` levanta web y API; el sitio se ve igual que hoy.
 
@@ -233,3 +233,6 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - [ ] Horario real: el JSON-LD dice L–V 8–18 y `llms.txt` dice 8–19. ¿Urgencias 24/7 es real? Choca con ese horario.
 - [ ] Reseñas reales y fotos de trabajos reales (los proyectos actuales usan imágenes de stock).
 - [ ] Instagram/Facebook para `sameAs`.
+- [ ] Revisar los borradores de las 14 zonas (`apps/api/seed/zonas.ts`) antes de publicarlos.
+- [ ] Los 6 proyectos actuales, ¿son trabajos reales? Usan fotos de stock y no se cargaron en la base hasta confirmarlo.
+- [ ] Verificar dos afirmaciones del blog: la "Resolución SE 1/2020" (post de seguridad) y que el certificado se tramita "ante el municipio" (post de obra nueva). En Córdoba corresponde la Ley 10.281 / ERSeP.
