@@ -229,7 +229,7 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 
 ## 9. Pendientes de Franco
 
-- [ ] Dominio definitivo (hoy: `electricidadcarlospaz.proyectoswebsite.com`).
+- [x] Dominio: `electricidadcarlospaz.proyectoswebsite.com` (zona `proyectoswebsite.com` en Cloudflare).
 - [ ] ¿Dirección física o solo área de servicio? Hoy el JSON-LD publica código postal y coordenadas.
 - [ ] Reseñas reales y fotos de trabajos reales (los proyectos actuales usan imágenes de stock).
 - [ ] Razón social / CUIT y email de contacto para la política de privacidad.

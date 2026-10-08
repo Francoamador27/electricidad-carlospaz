@@ -3,3 +3,6 @@ DATABASE_URL=postgresql://...  # rama dev de Neon
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
 # Solo en local: el panel funciona sin Cloudflare Access. NUNCA en producción.
 ADMIN_SIN_AUTH=1
+# Local: el sitio corre en otro puerto.
+ALLOWED_ORIGINS=http://localhost:3000
+AVISO_DESTINO=tu@email.com

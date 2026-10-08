@@ -1,21 +1,29 @@
+# Configuración del Worker de la API (Cloudflare). Los secretos NO van acá:
+# se cargan en el dashboard (producción) o en .dev.vars (local). Ver DEPLOY.md.
 name = "voltis-api"
 main = "src/index.ts"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
 
+# La API vive en el mismo dominio que el sitio: sin CORS en producción.
+routes = [
+  { pattern = "electricidadcarlospaz.proyectoswebsite.com/api/*", zone_name = "proyectoswebsite.com" },
+  { pattern = "electricidadcarlospaz.proyectoswebsite.com/admin/api/*", zone_name = "proyectoswebsite.com" },
+  { pattern = "electricidadcarlospaz.proyectoswebsite.com/img/*", zone_name = "proyectoswebsite.com" },
+]
+
 [vars]
-# Orígenes permitidos para CORS (solo hace falta en desarrollo: en producción
-# la API vive en el mismo dominio vía Worker routes).
-ALLOWED_ORIGINS = "http://localhost:3000"
-AVISO_REMITENTE = "avisos@voltis.example"
-# AVISO_DESTINO se define en .dev.vars (local) o en el dashboard (producción), no acá:
-# este archivo se sube al repo.
+# En local se pisa con .dev.vars (http://localhost:3000).
+ALLOWED_ORIGINS = "https://electricidadcarlospaz.proyectoswebsite.com"
+AVISO_REMITENTE = "avisos@proyectoswebsite.com"
 
-# Email Routing: se activa en la Fase 4, cuando el dominio esté en Cloudflare.
-# [[send_email]]
-# name = "AVISOS"
-# destination_address = "<email de Franco>"
-
+# Fotos subidas desde el panel; se sirven por /img/* del mismo dominio.
 [[r2_buckets]]
 binding = "IMAGENES"
 bucket_name = "voltis-imagenes"
+
+# Aviso por email de cada consulta. Requiere Email Routing activo en proyectoswebsite.com
+# con la dirección de destino verificada.
+[[send_email]]
+name = "AVISOS"
+destination_address = "francohugoamador25@gmail.com"
