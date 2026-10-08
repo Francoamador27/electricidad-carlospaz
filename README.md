@@ -46,3 +46,24 @@ pnpm db:studio    # explorar tablas en el navegador
 
 Para cambiar el schema: editar `packages/db/src/schema.ts`, después
 `pnpm --filter @voltis/db db:generate` y `pnpm db:migrate`.
+
+## Tests
+
+```bash
+pnpm test                                   # build + todos los tests
+pnpm --filter @voltis/web test:e2e          # solo tests (sobre el último build)
+pnpm --filter @voltis/web exec playwright show-report   # reporte con capturas de los fallos
+```
+
+Playwright con Chromium, en escritorio y celular. Cubren:
+
+- **SEO:** title, description, canonical, h1 y JSON-LD válido en cada página; sitemap, robots, `llms.txt`.
+- **Contenido:** sin urgencias 24/7, sin citas legales dudosas, sin borradores publicados.
+- **Navegación:** recorre el sitio buscando links rotos; menú y footer.
+- **Formularios:** guardan la consulta con UTM/gclid, abren WhatsApp y miden `generate_lead`; si la API falla, WhatsApp se abre igual.
+- **Tracking:** clics en WhatsApp/teléfono y `ver_proyecto`.
+- **Celular:** sin scroll horizontal.
+- **Panel:** conversiones, consultas, alta de proyecto con foto, publicar y configuración.
+- **API:** validaciones, honeypot, Turnstile, CORS y que el panel quede cerrado sin Cloudflare Access.
+
+Los tests del sitio y del panel simulan la API: no escriben en la base.

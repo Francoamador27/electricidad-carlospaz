@@ -59,7 +59,7 @@ export default function PresupuestoForm() {
       `*Localidad:* ${form.location}`,
       `*Servicio:* ${form.serviceType}`,
       `*Propiedad:* ${propertyLabel[form.propertyType]}`,
-      `*Urgencia:* ${urgencyLabel[form.urgency]}`,
+      `*Para cuándo:* ${urgencyLabel[form.urgency]}`,
       "",
       `*Descripción:*`,
       form.message,

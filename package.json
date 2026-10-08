@@ -8,6 +8,7 @@
     "lint": "pnpm -r lint",
     "db:migrate": "pnpm --filter @voltis/db db:migrate",
     "db:seed": "pnpm --filter @voltis/db db:seed",
-    "db:studio": "pnpm --filter @voltis/db db:studio"
+    "db:studio": "pnpm --filter @voltis/db db:studio",
+    "test": "pnpm --filter @voltis/web build && pnpm --filter @voltis/web test:e2e"
   }
 }

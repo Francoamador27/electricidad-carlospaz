@@ -1,5 +1,7 @@
 // Lectura de contenido desde Neon. Corre solo en el servidor: durante `next build`
 // (export estático) y en `next dev`.
+// Ojo: Next guarda las respuestas de fetch (el driver de Neon usa fetch) entre builds.
+// El script "prebuild" borra esa caché para que cada publicación lea datos frescos.
 import { cache } from "react";
 import { and, asc, desc, eq, getDb, inArray, schema } from "@voltis/db";
 import type { ConfigSitio } from "@voltis/shared";

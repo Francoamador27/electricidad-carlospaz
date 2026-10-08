@@ -218,7 +218,8 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 ### Fase 3 — Panel
 - [x] `/admin` con CRUD de proyectos, posts, zonas y reseñas, editor Markdown con vista previa, subida de fotos a R2 (WebP en el navegador) y botón "Publicar cambios".
 - [x] Panel de conversiones (formularios + clics WhatsApp/teléfono por día, página, origen y zona) y listado de consultas.
-- [ ] Probar el panel en el navegador (subida de fotos desde celular incluida).
+- [x] Tests automáticos (Playwright): 65 tests de SEO, contenido, navegación, formularios, tracking, celular, panel y API.
+- [ ] Probar el panel en el navegador desde el celular (subida de fotos).
 
 ### Fase 4 — Puesta en producción (solo cuando Franco lo pida)
 - [ ] Neon, R2, Access, Email Routing, Pages y Workers conectados a GitHub; dominio en Cloudflare.

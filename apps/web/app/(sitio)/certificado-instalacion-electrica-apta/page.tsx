@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 const URL_PAGINA = "/certificado-instalacion-electrica-apta";
 
 export const metadata: Metadata = {
-  title: "Certificado de Instalación Eléctrica Apta en Carlos Paz (Ley 10.281)",
+  title: "Certificado de Instalación Eléctrica Apta (Ley 10.281)",
   description:
     "Emitimos el Certificado de Instalación Eléctrica Apta de la Ley 10.281 de Córdoba para pedir la luz, cambiar la potencia o el tipo de medidor. Carlos Paz y Punilla.",
   alternates: { canonical: URL_PAGINA },
