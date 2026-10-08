@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { SITE_URL } from "@/lib/site";
-import { GoogleTagManager } from "@next/third-parties/google";
-import { LOCALIDADES, NEGOCIO } from "@voltis/shared";
-import TrackingListener from "@/components/tracking/TrackingListener";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -130,68 +124,6 @@ export const metadata: Metadata = {
   // },
 };
 
-// Schema ElectricalContractor — aparece en resultados ricos de Google
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "ElectricalContractor",
-  "@id": `${BASE_URL}/#organization`,
-  name: "Voltis",
-  legalName: "Voltis Instalaciones Eléctricas",
-  description:
-    "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento y reparaciones eléctricas con garantía. Urgencias 24/7.",
-  url: BASE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: `${BASE_URL}/logo-voltis.png`,
-    width: 1080,
-    height: 1080,
-  },
-  image: `${BASE_URL}/logo-voltis.png`,
-  telephone: NEGOCIO.telefono,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Villa Carlos Paz",
-    addressRegion: "Córdoba",
-    postalCode: "5152",
-    addressCountry: "AR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: -31.4237,
-    longitude: -64.4977,
-  },
-  hasMap: "https://maps.google.com/maps?q=Villa+Carlos+Paz,+Córdoba,+Argentina",
-  areaServed: [
-    ...LOCALIDADES.map((l) => ({ "@type": "City", name: l.nombre })),
-    { "@type": "AdministrativeArea", name: "Punilla" },
-  ],
-  openingHoursSpecification: NEGOCIO.horario.map((h) => ({
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: h.dias,
-    opens: h.abre,
-    closes: h.cierra,
-  })),
-  priceRange: "$$",
-  currenciesAccepted: "ARS",
-  paymentAccepted: "Efectivo, transferencia bancaria, Mercado Pago",
-  // sameAs: [
-  //   "https://www.facebook.com/voltis.electricidad",
-  //   "https://www.instagram.com/voltis.electricidad",
-  // ],
-};
-
-// Schema WebSite — habilita el cuadro de búsqueda en Google (Sitelinks Search Box)
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${BASE_URL}/#website`,
-  name: "Voltis",
-  url: BASE_URL,
-  description: "Electricistas matriculados en Carlos Paz y Punilla, Córdoba.",
-  publisher: { "@id": `${BASE_URL}/#organization` },
-  inLanguage: "es-AR",
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-AR" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
@@ -207,23 +139,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Theme color (barra del navegador en mobile) */}
         <meta name="theme-color" content="#f59e0b" />
 
-        {/* JSON-LD estructurado */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
       </head>
-      {process.env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
       <body className="min-h-full flex flex-col">
-        <TrackingListener />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        {children}
       </body>
     </html>
   );

@@ -22,6 +22,8 @@ export type Foto = {
   alto: number;
   alt: string;
   tipo: "antes" | "despues" | "general";
+  // Safari puede no generar WebP desde canvas: en ese caso se sube JPEG.
+  formato?: "webp" | "jpeg";
 };
 
 const actualizado = () =>

@@ -14,3 +14,7 @@ AVISO_DESTINO = ""
 # [[send_email]]
 # name = "AVISOS"
 # destination_address = "<email de Franco>"
+
+[[r2_buckets]]
+binding = "IMAGENES"
+bucket_name = "voltis-imagenes"

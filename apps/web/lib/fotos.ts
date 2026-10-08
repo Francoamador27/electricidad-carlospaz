@@ -7,7 +7,7 @@ const IMG_BASE = process.env.NEXT_PUBLIC_IMG_URL ?? "";
 export function srcFoto(foto: Foto, ancho?: number): string {
   if (!foto.anchos.length) return foto.key;
   const w = ancho ?? foto.anchos[foto.anchos.length - 1];
-  return `${IMG_BASE}/${foto.key}-${w}.webp`;
+  return `${IMG_BASE}/${foto.key}-${w}.${foto.formato === "jpeg" ? "jpg" : "webp"}`;
 }
 
 export function srcSetFoto(foto: Foto): string | undefined {
