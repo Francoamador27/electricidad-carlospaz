@@ -8,7 +8,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Instalaciones domiciliarias en Carlos Paz y Punilla",
   description:
-    "Instalaciones eléctricas domiciliarias en Carlos Paz y Punilla, Córdoba. Tendido de cables, bocas de luz, tomas, interruptores y más. Electricistas matriculados con garantía.",
+    "Instalaciones eléctricas domiciliarias en Carlos Paz y Punilla, Córdoba. Tendido de cables, bocas de luz, tomas, interruptores y más. Electricistas con garantía.",
   alternates: { canonical: "/servicios/instalaciones-domiciliarias" },
 };
 
@@ -67,7 +67,7 @@ export default function InstalacionesDomiciliariasPage() {
             <p className="text-slate-300 text-lg leading-relaxed">
               Realizamos instalaciones eléctricas domiciliarias completas en Carlos Paz, Punilla y
               toda la región de Córdoba. Trabajamos en obra nueva, ampliaciones y remodelaciones con
-              electricistas matriculados y materiales de primera calidad.
+              electricistas y materiales de primera calidad.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/presupuesto" variant="primary" className="text-base px-6 py-3">
@@ -91,13 +91,13 @@ export default function InstalacionesDomiciliariasPage() {
             <div className="text-5xl shrink-0">⚡</div>
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-2">
-                Los trabajos eléctricos deben hacerlos electricistas matriculados
+                Los trabajos eléctricos deben hacerlos electricistas
               </h2>
               <p className="text-slate-700 leading-relaxed">
                 Las instalaciones eléctricas mal realizadas son una de las principales causas de
                 incendios en hogares argentinos. No arriesgues tu familia ni tu propiedad:
                 <strong> siempre llamá a un profesional habilitado</strong>. En Voltis
-                somos electricistas matriculados con más de 10 años de experiencia en Carlos Paz y
+                somos electricistas con más de 10 años de experiencia en Carlos Paz y
                 Punilla.
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function InstalacionesDomiciliariasPage() {
             <h3 className="text-xl font-bold text-slate-900 mb-4">¿Por qué elegirnos?</h3>
             <div className="space-y-4 text-slate-700">
               <p>
-                Somos electricistas matriculados con más de 10 años de experiencia en instalaciones
+                Somos electricistas con más de 10 años de experiencia en instalaciones
                 domiciliarias en Carlos Paz y la región de Punilla. Conocemos las normativas
                 eléctricas vigentes en Córdoba y trabajamos con materiales certificados.
               </p>
@@ -159,7 +159,7 @@ export default function InstalacionesDomiciliariasPage() {
           </h2>
           <p className="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
             Si reconocés alguna de estas situaciones en tu hogar de Carlos Paz o Punilla, es hora
-            de llamar a un electricista matriculado.
+            de llamar a un electricista.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -223,7 +223,7 @@ export default function InstalacionesDomiciliariasPage() {
             <p>
               Si estás construyendo o renovando tu vivienda en Carlos Paz, Villa Carlos Paz, Cosquín,
               La Falda, Valle Hermoso o cualquier localidad de Punilla, nuestro equipo de
-              electricistas matriculados está listo para ejecutar la instalación eléctrica completa.
+              electricistas está listo para ejecutar la instalación eléctrica completa.
             </p>
             <p>
               Las instalaciones eléctricas domiciliarias deben cumplir con la normativa eléctrica

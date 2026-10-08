@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 test("ningún link interno del sitio está roto", async ({ page }) => {
+  test.setTimeout(180_000); // recorre ~100 páginas
   const visitadas = new Set<string>();
   const pendientes = ["/"];
   const rotos: string[] = [];
 
-  while (pendientes.length && visitadas.size < 80) {
+  while (pendientes.length && visitadas.size < 150) {
     const ruta = pendientes.shift()!;
     if (visitadas.has(ruta)) continue;
     visitadas.add(ruta);

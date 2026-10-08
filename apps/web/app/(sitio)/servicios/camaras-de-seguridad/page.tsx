@@ -120,7 +120,7 @@ export default function CamarasSeguridadPage() {
               recibir alertas si hay movimiento.
             </p>
             <p>
-              Como electricistas matriculados, cuidamos la parte que más falla en estos sistemas: la
+              Como electricistas, cuidamos la parte que más falla en estos sistemas: la
               alimentación y el cableado. También podemos combinar las cámaras con{" "}
               <a href="/servicios/iluminacion-automatizacion" className="text-amber-600 font-semibold hover:underline">
                 iluminación exterior con sensores y automatización

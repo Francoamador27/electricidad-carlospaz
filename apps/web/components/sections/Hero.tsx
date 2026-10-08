@@ -61,10 +61,10 @@ export default function Hero() {
               Electricistas
             </motion.span>
             <motion.span {...line(0.22)} className="block text-copper">
-              matriculados
+              en Carlos Paz
             </motion.span>
             <motion.span {...line(0.34)} className="block">
-              en tu zona.
+              y Punilla.
             </motion.span>
           </h1>
 
@@ -109,7 +109,7 @@ export default function Hero() {
             {[
               { value: "+10", label: "años de experiencia" },
               { value: "+500", label: "clientes atendidos" },
-              { value: "100%", label: "matriculados" },
+              { value: "100%", label: "trabajos con garantía" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="font-display text-copper font-bold text-2xl">{stat.value}</div>

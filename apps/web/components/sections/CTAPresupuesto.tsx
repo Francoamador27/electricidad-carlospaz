@@ -6,10 +6,10 @@ export default function CTAPresupuesto() {
     <section className="bg-slate-900 text-white py-14">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-3">
-          ¿Necesitás un electricista matriculado?
+          ¿Necesitás un electricista?
         </h2>
         <p className="text-slate-300 text-base md:text-lg mb-2 max-w-2xl mx-auto leading-relaxed">
-          Los trabajos eléctricos deben hacerlos electricistas matriculados. No intentes resolver
+          No intentes resolver
           una falla por tu cuenta: un error puede causar un incendio o una descarga eléctrica.
         </p>
         <p className="text-slate-400 text-sm mb-8">

@@ -13,7 +13,7 @@ Los accidentes eléctricos en el hogar son más comunes de lo que se cree. En Ar
 
 ## 1. Nunca realices trabajos eléctricos por tu cuenta
 
-> **⚠️ Este es el consejo más importante.** Las instalaciones y reparaciones eléctricas tienen que hacerlas electricistas matriculados. Intentar reparar un enchufe quemado, cambiar un cable o intervenir en el tablero sin conocimiento puede costar la vida. Ante cualquier problema eléctrico, llamá a un profesional.
+> **⚠️ Este es el consejo más importante.** Las instalaciones y reparaciones eléctricas tienen que hacerlas electricistas. Intentar reparar un enchufe quemado, cambiar un cable o intervenir en el tablero sin conocimiento puede costar la vida. Ante cualquier problema eléctrico, llamá a un profesional.
 
 ## 2. Instalá un disyuntor diferencial en tu tablero
 
@@ -29,7 +29,7 @@ Los cables pelados, enchufes flojos, artefactos con cable deshilachado y tomas c
 
 ## 5. Mantené actualizado el tablero eléctrico
 
-Si tu tablero tiene fusibles tipo cuchilla o tiene más de 20 años sin revisión, es prioritario que un electricista matriculado lo inspeccione. Un tablero obsoleto no protege correctamente tu instalación. En caso de sobrecarga o cortocircuito, puede no actuar a tiempo y provocar un incendio.
+Si tu tablero tiene fusibles tipo cuchilla o tiene más de 20 años sin revisión, es prioritario que un electricista lo inspeccione. Un tablero obsoleto no protege correctamente tu instalación. En caso de sobrecarga o cortocircuito, puede no actuar a tiempo y provocar un incendio.
 
 > ### ¿Cuándo fue la última revisión eléctrica de tu hogar?
 >

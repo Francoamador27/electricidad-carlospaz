@@ -3,7 +3,7 @@ import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 
 const reasons = [
   {
-    title: "Electricistas matriculados",
+    title: "Electricistas",
     description:
       "Todo nuestro equipo cuenta con matrícula habilitante. Trabajamos de forma legal y segura en Carlos Paz y Punilla.",
   },

@@ -18,7 +18,7 @@ const organizationSchema = {
   name: "Voltis",
   legalName: "Voltis Instalaciones Eléctricas",
   description:
-    "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento y reparaciones eléctricas con garantía.",
+    "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento y reparaciones eléctricas con garantía.",
   url: BASE_URL,
   logo: {
     "@type": "ImageObject",
@@ -73,7 +73,7 @@ const websiteSchema = {
   "@id": `${BASE_URL}/#website`,
   name: "Voltis",
   url: BASE_URL,
-  description: "Electricistas matriculados en Carlos Paz y Punilla, Córdoba.",
+  description: "Electricistas en Carlos Paz y Punilla, Córdoba.",
   publisher: { "@id": `${BASE_URL}/#organization` },
   inLanguage: "es-AR",
 };

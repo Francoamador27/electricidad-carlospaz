@@ -8,7 +8,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Instalaciones eléctricas para empresas en Carlos Paz",
   description:
-    "Instalaciones eléctricas comerciales e industriales en Carlos Paz y Punilla. Electricistas matriculados para locales, oficinas, hoteles y empresas. Con garantía y certificaciones.",
+    "Instalaciones eléctricas comerciales e industriales en Carlos Paz y Punilla. Electricistas para locales, oficinas, hoteles y empresas. Con garantía y certificaciones.",
   alternates: { canonical: "/servicios/instalaciones-empresariales" },
 };
 
@@ -108,7 +108,7 @@ export default function InstalacionesEmpresarialesPage() {
               Las instalaciones eléctricas comerciales requieren certificación obligatoria.
             </p>
             <p className="text-slate-700 text-sm mt-1">
-              Sin un certificado eléctrico emitido por un electricista matriculado, tu local puede
+              Sin un certificado eléctrico emitido por un electricista, tu local puede
               ser inhabilitado y quedás sin cobertura ante un accidente. Voltis realiza
               el trabajo y emite la documentación necesaria para tus habilitaciones municipales en
               Carlos Paz.
@@ -200,7 +200,7 @@ export default function InstalacionesEmpresarialesPage() {
           <div className="text-slate-700 space-y-4 leading-relaxed">
             <p>
               En Voltis ofrecemos instalaciones eléctricas para empresas en Carlos Paz y
-              toda la región de Punilla. Trabajamos con electricistas matriculados y brindamos
+              toda la región de Punilla. Trabajamos con electricistas y brindamos
               certificaciones técnicas para la habilitación de comercios e industrias en Córdoba.
             </p>
             <p>

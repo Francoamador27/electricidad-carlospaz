@@ -18,7 +18,7 @@ El tablero eléctrico es el cerebro de toda tu instalación. Distribuye la energ
 3. **Sentís calor o olor a quemado cerca del tablero.** El calor excesivo en el tablero es una señal de conexiones flojas o sobrecarga. El olor a quemado puede indicar que ya hay daño en el aislamiento. Llamá a un electricista de inmediato.
 4. **No tiene llave diferencial (disyuntor diferencial).** El diferencial es el dispositivo que te protege de electrocución al detectar corrientes de fuga. Si tu tablero no tiene diferencial de 30 mA, tu instalación no cumple con la normativa eléctrica argentina vigente.
 5. **Se producen chispas al enchufar equipos grandes.** Las chispas al conectar un aire acondicionado, lavarropas u horno indican problemas en los circuitos o en el propio tablero.
-6. **La instalación tiene más de 20 años sin revisión.** Los aislamientos eléctricos se deterioran con el tiempo. Una instalación antigua sin mantenimiento puede tener fallas invisibles que solo detecta un electricista matriculado.
+6. **La instalación tiene más de 20 años sin revisión.** Los aislamientos eléctricos se deterioran con el tiempo. Una instalación antigua sin mantenimiento puede tener fallas invisibles que solo detecta un electricista.
 7. **El tablero no da abasto para la demanda actual.** Si tu hogar tiene más electrodomésticos que cuando fue instalado (aire acondicionado, calefactor eléctrico, lavarropas, secarropas) y los circuitos saltan seguido, el tablero necesita ampliarse o reemplazarse.
 
 ## ¿Qué debe tener un tablero eléctrico moderno?
@@ -35,4 +35,4 @@ El tablero eléctrico es el cerebro de toda tu instalación. Distribuye la energ
 >
 > El costo varía según la cantidad de circuitos, el tipo de tablero y el estado de la instalación existente. Normalmente, la actualización de un tablero domiciliario en Carlos Paz puede realizarse en un solo día de trabajo. Consultanos para más información.
 
-> **⚠️ Importante:** el reemplazo o la intervención en tableros eléctricos **debe ser realizado por un electricista matriculado**. Es ilegal y extremadamente peligroso intentarlo sin habilitación. Un error puede causar electrocución o incendio.
+> **⚠️ Importante:** el reemplazo o la intervención en tableros eléctricos **debe ser realizado por un electricista**. Es ilegal y extremadamente peligroso intentarlo sin habilitación. Un error puede causar electrocución o incendio.

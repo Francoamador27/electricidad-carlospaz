@@ -29,7 +29,7 @@ const metadataBase: Metadata = {
   },
 
   description:
-    "Electricistas matriculados en Carlos Paz y la región de Punilla, Córdoba. Instalaciones domiciliarias, comerciales e industriales, mantenimiento y reparaciones eléctricas con garantía.",
+    "Electricistas en Carlos Paz y la región de Punilla, Córdoba. Instalaciones domiciliarias, comerciales e industriales, mantenimiento y reparaciones eléctricas con garantía.",
 
   keywords: [
     "electricista en Carlos Paz",
@@ -79,7 +79,7 @@ const metadataBase: Metadata = {
     siteName: "Voltis",
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
-      "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía.",
+      "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía.",
     images: [
       {
         url: "/logo-voltis.png",
@@ -95,7 +95,7 @@ const metadataBase: Metadata = {
     card: "summary_large_image",
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
-      "Electricistas matriculados en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y cámaras de seguridad.",
+      "Electricistas en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y cámaras de seguridad.",
     images: ["/logo-voltis.png"],
   },
 

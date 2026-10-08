@@ -7,7 +7,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
   description:
-    "Reparaciones eléctricas en Carlos Paz y Punilla, Córdoba. Cortocircuitos, enchufes quemados, interruptores defectuosos y búsqueda de fallas. Electricistas matriculados.",
+    "Reparaciones eléctricas en Carlos Paz y Punilla, Córdoba. Cortocircuitos, enchufes quemados, interruptores defectuosos y búsqueda de fallas. Electricistas.",
   alternates: { canonical: "/servicios/reparaciones-electricas" },
 };
 
@@ -25,7 +25,7 @@ const repairs = [
   {
     icon: "💡",
     title: "Llaves e interruptores defectuosos",
-    desc: "Reparamos y reemplazamos llaves de paso, interruptores y placas eléctricas en Carlos Paz. Solo personal matriculado puede intervenir en la instalación.",
+    desc: "Reparamos y reemplazamos llaves de paso, interruptores y placas eléctricas en Carlos Paz. Un trabajo mal hecho en la instalación puede causar un incendio.",
   },
   {
     icon: "🛑",
@@ -59,7 +59,7 @@ const faq = [
   },
   {
     q: "¿Puedo cambiar yo mismo un enchufe quemado o un interruptor?",
-    a: "No. Aunque parezca sencillo, intervenir en la instalación eléctrica —incluso cambiar un enchufe— requiere conocimientos de electricidad y herramientas adecuadas. Un error puede ser fatal. En Argentina, solo los electricistas matriculados pueden realizar este tipo de trabajo legalmente.",
+    a: "No. Aunque parezca sencillo, intervenir en la instalación eléctrica —incluso cambiar un enchufe— requiere conocimientos de electricidad y herramientas adecuadas. Un error puede ser fatal. Dejalo en manos de un electricista.",
   },
   {
     q: "¿Por qué salta el diferencial cuando llueve o hay humedad?",
@@ -90,7 +90,7 @@ export default function ReparacionesPage() {
             <p className="text-slate-300 text-lg leading-relaxed">
               Servicio de reparaciones eléctricas rápido y seguro en Carlos Paz y Punilla.
               Resolvemos cortocircuitos, enchufes quemados, interruptores y
-              cualquier falla eléctrica en hogares y empresas. Solo electricistas matriculados.
+              cualquier falla eléctrica en hogares y empresas.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -122,7 +122,7 @@ export default function ReparacionesPage() {
             </p>
             <p className="text-red-200 text-sm mt-1">
               Trabajar con electricidad sin capacitación puede causar electrocución o incendio. Siempre llamá a un
-              electricista matriculado. Atendemos {NEGOCIO.horarioTexto} —{" "}
+              electricista. Atendemos {NEGOCIO.horarioTexto} —{" "}
               <a href={LINK_TELEFONO} className="underline font-semibold text-white">
                 {NEGOCIO.telefonoVisible}
               </a>
@@ -208,7 +208,7 @@ export default function ReparacionesPage() {
           </h2>
           <div className="text-slate-700 space-y-4 leading-relaxed">
             <p>
-              En Voltis somos electricistas matriculados especializados en reparaciones
+              En Voltis somos electricistas especializados en reparaciones
               eléctricas en Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre y todo el
               Valle de Punilla, Córdoba.
             </p>

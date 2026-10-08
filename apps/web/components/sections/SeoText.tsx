@@ -10,14 +10,14 @@ export default function SeoText() {
 
         <div className="space-y-4 text-slate-700 leading-relaxed">
           <p>
-            <strong>Voltis</strong> es una empresa de electricidad matriculada con más de 10 años de
+            <strong>Voltis</strong> es una empresa de electricidad con más de 10 años de
             trayectoria en Carlos Paz y la región de Punilla, Córdoba, Argentina. Brindamos
             servicios eléctricos profesionales para hogares, comercios, industrias y hoteles en
             toda la zona serrana.
           </p>
 
           <p>
-            Nuestro equipo de <strong>electricistas matriculados</strong> está habilitado para
+            Nuestro equipo de <strong>electricistas</strong> está habilitado para
             realizar todo tipo de trabajos eléctricos: desde una instalación eléctrica domiciliaria
             completa para una obra nueva en Carlos Paz, hasta la actualización de tableros eléctricos
             con disyuntores termomagnéticos y diferenciales en Cosquín, La Falda, Valle Hermoso o
@@ -76,8 +76,7 @@ export default function SeoText() {
           </div>
 
           <p>
-            Si estás buscando un <strong>electricista en Carlos Paz</strong> de confianza, con
-            matrícula, garantía y precio justo, Voltis es tu opción. Atendemos Carlos Paz, Valle
+            Si estás buscando un <strong>electricista en Carlos Paz</strong> de confianza, con garantía y precio justo, Voltis es tu opción. Atendemos Carlos Paz, Valle
             Hermoso, Cosquín, La Falda, La Cumbre, Icho Cruz, Cabalango, Tanti, Bialet Massé, Santa María de
             Punilla y todas las localidades del Valle de Punilla, Córdoba.
           </p>

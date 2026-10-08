@@ -38,7 +38,7 @@ const services = [
     icon: "⚡",
     title: "Reparaciones eléctricas",
     description:
-      "Reparación de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz. Diagnóstico y solución por electricistas matriculados.",
+      "Reparación de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz. Diagnóstico y solución por electricistas.",
     href: "/servicios/reparaciones-electricas",
     keywords: ["reparaciones eléctricas Carlos Paz", "electricista Punilla"],
   },
@@ -89,7 +89,7 @@ export default function ServicesPage() {
             Servicios eléctricos en Carlos Paz y Punilla
           </h1>
           <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-            Electricistas matriculados que ofrecemos soluciones eléctricas integrales en Carlos Paz,
+            Electricistas que ofrecemos soluciones eléctricas integrales en Carlos Paz,
             Punilla y toda la región de Córdoba. Desde instalaciones domiciliarias hasta proyectos
             industriales.
           </p>

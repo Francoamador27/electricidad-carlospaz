@@ -232,7 +232,6 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - [ ] Dominio definitivo (hoy: `electricidadcarlospaz.proyectoswebsite.com`).
 - [ ] ¿Dirección física o solo área de servicio? Hoy el JSON-LD publica código postal y coordenadas.
 - [ ] Reseñas reales y fotos de trabajos reales (los proyectos actuales usan imágenes de stock).
-- [ ] Revisar los borradores de las 14 zonas (`apps/api/seed/zonas.ts`) antes de publicarlos.
 - [ ] Razón social / CUIT y email de contacto para la política de privacidad.
 - [ ] Reemplazar los 7 proyectos de referencia por trabajos reales (se borran desde el panel).
 
@@ -246,3 +245,5 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - Sin Instagram ni Facebook por ahora.
 - GTM y códigos de verificación se cargan desde /admin/configuracion.
 - `llms.txt` y `llms-full.txt` se generan desde la base; robots permite rastreadores de IA.
+- Las 15 zonas quedan publicadas (Franco, 2026-10-08). Se pueden editar desde el panel.
+- Se evita repetir "matriculado": el sitio dice "electricista". Única mención de la matrícula: "Por qué elegirnos".

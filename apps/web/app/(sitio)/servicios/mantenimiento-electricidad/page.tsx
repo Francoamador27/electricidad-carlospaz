@@ -8,7 +8,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Mantenimiento eléctrico en Carlos Paz y Punilla",
   description:
-    "Mantenimiento eléctrico preventivo y correctivo en Carlos Paz y Punilla, Córdoba. Revisiones, diagnóstico y certificaciones eléctricas. Electricistas matriculados.",
+    "Mantenimiento eléctrico preventivo y correctivo en Carlos Paz y Punilla, Córdoba. Revisiones, diagnóstico y certificaciones eléctricas. Electricistas.",
   alternates: { canonical: "/servicios/mantenimiento-electricidad" },
 };
 
@@ -38,7 +38,7 @@ const faq = [
   },
   {
     q: "¿Puedo hacer yo mismo la revisión eléctrica de mi hogar?",
-    a: "No. La revisión eléctrica requiere instrumentos de medición específicos (megóhmetro, pinza amperimétrica, detector de tensión) y conocimientos técnicos. Un electricista matriculado puede detectar fallas que a simple vista son invisibles. No arriesgues tu seguridad intentando hacerlo vos mismo.",
+    a: "No. La revisión eléctrica requiere instrumentos de medición específicos (megóhmetro, pinza amperimétrica, detector de tensión) y conocimientos técnicos. Un electricista puede detectar fallas que a simple vista son invisibles. No arriesgues tu seguridad intentando hacerlo vos mismo.",
   },
   {
     q: "¿Cuánto tiempo lleva una revisión eléctrica preventiva?",
@@ -69,8 +69,7 @@ export default function MantenimientoPage() {
             <p className="text-slate-300 text-lg leading-relaxed">
               El mantenimiento eléctrico preventivo en Carlos Paz es fundamental para evitar
               accidentes y cortes inesperados. Revisamos, diagnosticamos y certificamos
-              instalaciones eléctricas en hogares y empresas de Punilla. Solo electricistas
-              matriculados realizan estos trabajos.
+              instalaciones eléctricas en hogares y empresas de Punilla.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/presupuesto" variant="primary" className="text-base px-6 py-3">
@@ -96,7 +95,7 @@ export default function MantenimientoPage() {
               Las fallas eléctricas peligrosas son invisibles sin los instrumentos adecuados.
             </p>
             <p className="text-slate-700 text-sm mt-1">
-              Solo un electricista matriculado con equipos de medición puede detectar aislamientos
+              Solo un electricista con equipos de medición puede detectar aislamientos
               deteriorados, conexiones flojas o corrientes de fuga antes de que causen un accidente.
               No esperes a que pase algo: agendá una revisión preventiva.
             </p>
@@ -221,7 +220,7 @@ export default function MantenimientoPage() {
             </p>
             <p>
               El mantenimiento eléctrico no es un gasto: es una inversión en seguridad. Una
-              instalación revisada periódicamente por electricistas matriculados reduce el riesgo
+              instalación revisada periódicamente por electricistas reduce el riesgo
               de incendios, cortocircuitos y fallas costosas.
             </p>
             <p>

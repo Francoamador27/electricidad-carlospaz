@@ -17,7 +17,7 @@ export default async function CoverageArea() {
             Atendemos todo el Valle de Punilla
           </h2>
           <p className="text-slate-300 mt-3 max-w-2xl mx-auto">
-            Nuestros electricistas matriculados se desplazan a toda la región de Punilla,
+            Nuestros electricistas se desplazan a toda la región de Punilla,
             Córdoba. Si estás en la zona, llegamos a tu domicilio o empresa.
           </p>
         </div>

@@ -13,7 +13,7 @@ export const ZONAS: ZonaSeed[] = [
     slug: "villa-carlos-paz",
     seoTitulo: "Electricista en Villa Carlos Paz",
     seoDescripcion:
-      "Electricistas matriculados en Villa Carlos Paz: instalaciones, tableros, reparaciones y mantenimiento para casas, departamentos y comercios.",
+      "Electricistas en Villa Carlos Paz: instalaciones, tableros, reparaciones y mantenimiento para casas, departamentos y comercios.",
     texto: `Villa Carlos Paz es nuestra base. Trabajamos en casas, departamentos, locales y complejos de toda la ciudad, desde el centro hasta los barrios de las laderas.
 
 ## Instalaciones que piden más en temporada
@@ -34,7 +34,7 @@ Por eso recomendamos revisar el tablero y los circuitos **antes** de la temporad
     slug: "san-antonio-de-arredondo",
     seoTitulo: "Electricista en San Antonio de Arredondo",
     seoDescripcion:
-      "Electricista matriculado en San Antonio de Arredondo: instalaciones en casas y cabañas, bombas de agua, iluminación exterior y reparaciones.",
+      "Electricista en San Antonio de Arredondo: instalaciones en casas y cabañas, bombas de agua, iluminación exterior y reparaciones.",
     texto: `San Antonio de Arredondo, a orillas del río San Antonio, combina viviendas permanentes con casas de fin de semana y cabañas en terrenos amplios. Ese tipo de propiedad tiene necesidades eléctricas propias.
 
 ## Terrenos grandes, tendidos largos
@@ -70,7 +70,7 @@ Hacemos revisiones preventivas y dejamos un informe de lo que encontramos.`,
     slug: "icho-cruz",
     seoTitulo: "Electricista en Icho Cruz",
     seoDescripcion:
-      "Electricista matriculado en Icho Cruz: instalaciones en casas y complejos turísticos, tableros, iluminación exterior y reparaciones.",
+      "Electricista en Icho Cruz: instalaciones en casas y complejos turísticos, tableros, iluminación exterior y reparaciones.",
     texto: `Icho Cruz recibe mucho movimiento en verano gracias a sus balnearios sobre el río San Antonio. Complejos de cabañas, casas de alquiler y comercios de temporada necesitan instalaciones que aguanten la demanda cuando más se usan.
 
 ## Complejos y alquileres
@@ -106,7 +106,7 @@ Una buena puesta a tierra y protecciones adecuadas en el tablero reducen el ries
     slug: "tala-huasi",
     seoTitulo: "Electricista en Tala Huasi",
     seoDescripcion:
-      "Electricista en Tala Huasi: instalaciones eléctricas en casas y cabañas, ampliaciones, tableros y reparaciones con electricistas matriculados.",
+      "Electricista en Tala Huasi: instalaciones eléctricas en casas y cabañas, ampliaciones, tableros y reparaciones con electricistas.",
     texto: `Tala Huasi es una localidad chica del valle del río San Antonio, con casas permanentes y de descanso rodeadas de monte. Muchas viviendas se fueron ampliando con los años, y la instalación eléctrica no siempre acompañó esas ampliaciones.
 
 ## Ampliaciones sin sobrecargar
@@ -124,7 +124,7 @@ Cuando se suma una habitación, un quincho o una cocina nueva colgándose de un 
     slug: "cabalango",
     seoTitulo: "Electricista en Cabalango",
     seoDescripcion:
-      "Electricista matriculado en Cabalango: instalaciones en casas y cabañas serranas, puesta a tierra, bombas de agua y reparaciones.",
+      "Electricista en Cabalango: instalaciones en casas y cabañas serranas, puesta a tierra, bombas de agua y reparaciones.",
     texto: `Cabalango es una localidad serrana chica, muy cerca de Villa Carlos Paz, rodeada de monte y arroyos. Muchas de sus casas son de descanso o cabañas, con terrenos amplios y accesos de tierra.
 
 ## Casas serranas, instalaciones expuestas
@@ -142,7 +142,7 @@ En la sierra, las instalaciones sufren más: humedad, tormentas en verano y tend
     slug: "malagueno",
     seoTitulo: "Electricista en Malagueño",
     seoDescripcion:
-      "Electricista matriculado en Malagueño: instalaciones en obra nueva, barrios cerrados, tableros, iluminación y automatización.",
+      "Electricista en Malagueño: instalaciones en obra nueva, barrios cerrados, tableros, iluminación y automatización.",
     texto: `Malagueño, entre Córdoba capital y Carlos Paz, creció mucho en los últimos años con barrios nuevos y barrios cerrados. Gran parte del trabajo en la zona es en obras nuevas, donde la instalación eléctrica se puede planificar bien desde el principio.
 
 ## Obra nueva bien planificada
@@ -178,7 +178,7 @@ Para un complejo de cabañas, un problema eléctrico en plena temporada es un hu
     slug: "bialet-masse",
     seoTitulo: "Electricista en Bialet Massé",
     seoDescripcion:
-      "Electricista matriculado en Bialet Massé: instalaciones domiciliarias, tableros, reparaciones y mantenimiento eléctrico.",
+      "Electricista en Bialet Massé: instalaciones domiciliarias, tableros, reparaciones y mantenimiento eléctrico.",
     texto: `Bialet Massé, sobre la ruta 38 al norte de Carlos Paz y cerca del lago San Roque, tiene una mezcla de casas de muchos años y construcciones nuevas. En las casas más antiguas todavía es común encontrar tableros con fusibles y circuitos sin diferencial.
 
 ## Instalaciones antiguas
@@ -214,7 +214,7 @@ En una obra nueva acompañamos desde el proyecto eléctrico hasta la instalació
     slug: "cosquin",
     seoTitulo: "Electricista en Cosquín",
     seoDescripcion:
-      "Electricistas matriculados en Cosquín: instalaciones para comercios y viviendas, tableros, iluminación y reparaciones eléctricas.",
+      "Electricistas en Cosquín: instalaciones para comercios y viviendas, tableros, iluminación y reparaciones eléctricas.",
     texto: `Cosquín es una de las ciudades más grandes del valle de Punilla, con un centro comercial activo y mucho movimiento en enero por el Festival Nacional de Folklore. Trabajamos en comercios, oficinas y viviendas de toda la ciudad.
 
 ## Comercios preparados para la temporada alta
@@ -250,7 +250,7 @@ Una cocina comercial necesita circuitos dedicados para hornos, freidoras, helade
     slug: "la-falda",
     seoTitulo: "Electricista en La Falda",
     seoDescripcion:
-      "Electricista matriculado en La Falda: instalaciones en viviendas, hoteles y comercios, actualización de tableros y reparaciones.",
+      "Electricista en La Falda: instalaciones en viviendas, hoteles y comercios, actualización de tableros y reparaciones.",
     texto: `La Falda es una ciudad turística con tradición hotelera, muchos comercios y viviendas de distintas épocas. Parte de su encanto son las construcciones antiguas, que muchas veces conservan instalaciones eléctricas que ya no son seguras.
 
 ## Actualizar sin perder la casa

@@ -14,7 +14,7 @@ import ContactBanner from "@/components/sections/ContactBanner";
 export const metadata: Metadata = {
   title: "Electricista en Carlos Paz y Punilla | Voltis",
   description:
-    "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento eléctrico, reparaciones, tableros y cámaras de seguridad. Presupuesto sin cargo.",
+    "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento eléctrico, reparaciones, tableros y cámaras de seguridad. Presupuesto sin cargo.",
   alternates: {
     canonical: "/",
   },

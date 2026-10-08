@@ -8,7 +8,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Iluminación y automatización en Carlos Paz y Punilla",
   description:
-    "Instalación de iluminación LED, sensores de movimiento, automatización eléctrica y cámaras de seguridad en Carlos Paz y Punilla, Córdoba. Electricistas matriculados con garantía.",
+    "Instalación de iluminación LED, sensores de movimiento, automatización eléctrica y cámaras de seguridad en Carlos Paz y Punilla, Córdoba. Electricistas con garantía.",
   alternates: { canonical: "/servicios/iluminacion-automatizacion" },
 };
 
@@ -205,8 +205,8 @@ export default function IluminacionAutomatizacionPage() {
             </p>
             <p>
               En Voltis instalamos estos sistemas en Carlos Paz, Cosquín, Valle Hermoso, La Falda,
-              La Cumbre, Tanti, Icho Cruz y toda la región de Punilla, Córdoba. Electricistas
-              matriculados, materiales certificados y garantía en todos los trabajos.
+              La Cumbre, Tanti, Icho Cruz y toda la región de Punilla, Córdoba. Materiales
+              certificados y garantía en todos los trabajos.
             </p>
           </div>
         </div>

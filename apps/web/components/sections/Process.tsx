@@ -13,7 +13,7 @@ const steps = [
     number: "02",
     title: "Visita y diagnóstico",
     description:
-      "Un electricista matriculado va a tu domicilio o empresa en Carlos Paz y Punilla, evalúa el trabajo y te entrega un presupuesto detallado antes de comenzar.",
+      "Un electricista va a tu domicilio o empresa en Carlos Paz y Punilla, evalúa el trabajo y te entrega un presupuesto detallado antes de comenzar.",
   },
   {
     number: "03",

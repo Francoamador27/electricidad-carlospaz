@@ -8,7 +8,7 @@ import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 export const metadata: Metadata = {
   title: "Tableros eléctricos en Carlos Paz y Punilla",
   description:
-    "Instalación, actualización y mantenimiento de tableros eléctricos en Carlos Paz y Punilla, Córdoba. Tableros modernos con disyuntores y protecciones. Electricistas matriculados.",
+    "Instalación, actualización y mantenimiento de tableros eléctricos en Carlos Paz y Punilla, Córdoba. Tableros modernos con disyuntores y protecciones. Electricistas.",
   alternates: { canonical: "/servicios/tableros-electricos" },
 };
 
@@ -50,7 +50,7 @@ const faq = [
   },
   {
     q: "¿Puedo cambiar un fusible quemado yo mismo?",
-    a: "No. Cualquier intervención en el tablero eléctrico —incluyendo el cambio de un fusible— debe ser realizada por un electricista matriculado. Es peligroso y puede generar responsabilidades legales. Además, un fusible quemado es síntoma de un problema más profundo que hay que diagnosticar.",
+    a: "No. Cualquier intervención en el tablero eléctrico —incluyendo el cambio de un fusible— debe ser realizada por un electricista. Es peligroso y puede generar responsabilidades legales. Además, un fusible quemado es síntoma de un problema más profundo que hay que diagnosticar.",
   },
   {
     q: "¿Cuánto tarda la instalación o actualización de un tablero en Carlos Paz?",
@@ -209,7 +209,7 @@ export default function TablerosPage() {
             <p>
               En Voltis instalamos, actualizamos y mantenemos tableros eléctricos en
               Carlos Paz, Cosquín, La Falda, Valle Hermoso, La Cumbre y toda la región de Punilla,
-              Córdoba. Trabajamos con electricistas matriculados y materiales de primera calidad.
+              Córdoba. Trabajamos con electricistas y materiales de primera calidad.
             </p>
           </div>
         </div>

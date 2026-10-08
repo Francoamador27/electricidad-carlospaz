@@ -11,7 +11,7 @@ servicio: instalaciones-domiciliarias
 
 La instalación eléctrica es una de las etapas más importantes de cualquier obra nueva. Un mal diseño o una ejecución deficiente pueden generar problemas de seguridad que duran décadas y son costosos de corregir. Acá te explicamos los pasos clave para planificar correctamente la instalación eléctrica de tu vivienda o local en Carlos Paz y Punilla.
 
-> **⚠️ Importante:** la instalación eléctrica en obra nueva debe ser realizada por un electricista matriculado.
+> **⚠️ Importante:** la instalación eléctrica en obra nueva debe ser realizada por un electricista.
 
 ## Pasos de la instalación eléctrica en obra nueva
 

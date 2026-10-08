@@ -8,9 +8,9 @@ const u = (path: string) => `${SITE_URL}${path}`;
 const publicados = <T extends { estado: string }>(filas: T[]) => filas.filter((f) => f.estado === "publicado");
 
 function encabezado(): string {
-  return `# ${NEGOCIO.nombre} — Electricistas matriculados en Villa Carlos Paz, Córdoba
+  return `# ${NEGOCIO.nombre} — Electricistas en Villa Carlos Paz, Córdoba
 
-> ${NEGOCIO.nombre} es una empresa de electricistas matriculados con base en Villa Carlos Paz, Córdoba, Argentina, con más de 10 años de experiencia y más de 500 clientes atendidos. Hace instalaciones eléctricas domiciliarias, comerciales e industriales, tableros, reparaciones, mantenimiento, iluminación LED, domótica, cámaras de seguridad y emite el Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba) en Carlos Paz y todo el Valle de Punilla.
+> ${NEGOCIO.nombre} es una empresa de electricistas con base en Villa Carlos Paz, Córdoba, Argentina, con más de 10 años de experiencia y más de 500 clientes atendidos. Hace instalaciones eléctricas domiciliarias, comerciales e industriales, tableros, reparaciones, mantenimiento, iluminación LED, domótica, cámaras de seguridad y emite el Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba) en Carlos Paz y todo el Valle de Punilla.
 
 - Teléfono y WhatsApp: ${NEGOCIO.telefonoInternacional} (https://wa.me/${NEGOCIO.whatsapp})
 - Horario: ${NEGOCIO.horarioTexto}.

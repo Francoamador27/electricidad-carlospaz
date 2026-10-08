@@ -21,7 +21,7 @@ export default function Footer() {
             <span className="font-display text-parchment font-bold text-lg">Voltis</span>
           </Link>
           <p className="text-sm leading-relaxed">
-            Electricistas matriculados en Carlos Paz y la región de Punilla, Córdoba. Instalaciones,
+            Electricistas en Carlos Paz y la región de Punilla, Córdoba. Instalaciones,
             mantenimiento y reparaciones eléctricas con garantía.
           </p>
         </div>

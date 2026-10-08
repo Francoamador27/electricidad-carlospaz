@@ -1,7 +1,7 @@
 ---
 titulo: "Iluminación LED: ahorrá energía en tu hogar o empresa de Punilla"
 extracto: La iluminación LED puede reducir tu consumo eléctrico hasta un 80%. Descubrí cómo migrar a LED en Carlos Paz y Punilla con nuestra ayuda.
-seoDescripcion: La iluminación LED puede reducir tu consumo eléctrico hasta un 80%. Descubrí cómo migrar a LED en Carlos Paz y Punilla con ayuda de un electricista matriculado.
+seoDescripcion: La iluminación LED puede reducir tu consumo eléctrico hasta un 80%. Descubrí cómo migrar a LED en Carlos Paz y Punilla con ayuda de un electricista.
 categoria: Eficiencia energética
 fecha: 2025-04-20
 portada: /images/iluminacion-led-exterior.jpg
@@ -32,7 +32,7 @@ Las lámparas incandescentes tradicionales convierten solo el 5% de la energía 
 
 ## ¿Cuándo conviene que instale el LED un electricista?
 
-Cambiar una lámpara por otra del mismo tipo (por ejemplo, LED en lugar de incandescente con el mismo casquillo E27) no requiere electricista. Pero hay situaciones donde **sí es necesario un electricista matriculado**:
+Cambiar una lámpara por otra del mismo tipo (por ejemplo, LED en lugar de incandescente con el mismo casquillo E27) no requiere electricista. Pero hay situaciones donde **sí es necesario un electricista**:
 
 - Instalación de artefactos LED embutidos (dicroicos, downlights) que requieren apertura en el cielorraso
 - Instalación de tiras LED con fuentes de alimentación (drivers) 220 V

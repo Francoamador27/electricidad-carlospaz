@@ -74,6 +74,14 @@ test.describe("contenido", () => {
     }
   });
 
+  test("no se repite la palabra matriculado", async ({ page }) => {
+    for (const ruta of PAGINAS) {
+      await page.goto(ruta);
+      const texto = (await page.locator("body").innerText()).toLowerCase();
+      expect(texto, ruta).not.toContain("matriculad");
+    }
+  });
+
   test("el blog no cita normas dudosas", async ({ page }) => {
     for (const ruta of ["/blog/seguridad-electrica-hogar-carlos-paz", "/blog/instalacion-electrica-obra-nueva-carlos-paz"]) {
       await page.goto(ruta);

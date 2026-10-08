@@ -6,16 +6,16 @@ import ContactBanner from "@/components/sections/ContactBanner";
 export const metadata: Metadata = {
   title: "Sobre nosotros — Electricistas en Carlos Paz",
   description:
-    "Conocé nuestro equipo de electricistas matriculados en Carlos Paz y Punilla, Córdoba. Más de 10 años de experiencia en instalaciones, mantenimiento y reparaciones eléctricas.",
+    "Conocé nuestro equipo de electricistas en Carlos Paz y Punilla, Córdoba. Más de 10 años de experiencia en instalaciones, mantenimiento y reparaciones eléctricas.",
   alternates: { canonical: "/about" },
 };
 
 const team = [
   {
     name: "Nombre del titular",
-    role: "Electricista matriculado · Director técnico",
+    role: "Electricista · Director técnico",
     filename: "equipo-titular.jpg",
-    bio: "Electricista matriculado con más de 10 años de experiencia en instalaciones domiciliarias, comerciales e industriales en Carlos Paz y Punilla.",
+    bio: "Electricista con más de 10 años de experiencia en instalaciones domiciliarias, comerciales e industriales en Carlos Paz y Punilla.",
   },
   {
     name: "Nombre del técnico 2",
@@ -48,7 +48,7 @@ export default function AboutPage() {
             Voltis — Electricistas en Carlos Paz desde hace más de 10 años
           </h1>
           <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-            Somos un equipo de electricistas matriculados con sede en Carlos Paz, Córdoba.
+            Somos un equipo de electricistas con sede en Carlos Paz, Córdoba.
             Brindamos servicios eléctricos de calidad en toda la región de Punilla con compromiso,
             seguridad y garantía en cada trabajo.
           </p>
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 cubrir toda la región.
               </p>
               <p>
-                Hoy somos un equipo de electricistas matriculados que atiende instalaciones
+                Hoy somos un equipo de electricistas que atiende instalaciones
                 domiciliarias, comerciales e industriales en Carlos Paz, Valle Hermoso, Cosquín,
                 La Falda, La Cumbre y todas las localidades de Punilla.
               </p>
