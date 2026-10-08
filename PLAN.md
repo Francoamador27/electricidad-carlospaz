@@ -210,6 +210,8 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - [ ] Blog, proyectos y sitemap leen de la base en el build.
 - [ ] Formulario `/presupuesto` y `/contacto` → API → WhatsApp.
 - [ ] Reseñas ocultas; GTM + eventos; ajustes SEO de la sección 6.
+- [ ] `/contacto` y `/presupuesto` son `"use client"` y no tienen title ni description propios: separar el formulario en un componente cliente.
+- [ ] Corregir los 4 errores de lint que ya estaban en el repo (comillas sin escapar).
 
 **Aceptación:** build estático sin errores, Rich Results Test sin errores, PageSpeed móvil ≥ 90, eventos visibles en la vista previa de GTM.
 
@@ -228,6 +230,6 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - [ ] Dominio definitivo (hoy: `electricidadcarlospaz.proyectoswebsite.com`).
 - [ ] Email que recibe los avisos de consultas.
 - [ ] ¿Dirección física o solo área de servicio? Hoy el JSON-LD publica código postal y coordenadas.
-- [ ] ¿Urgencias 24/7 es real? Aparece en la descripción y choca con el horario L–V 8–18.
+- [ ] Horario real: el JSON-LD dice L–V 8–18 y `llms.txt` dice 8–19. ¿Urgencias 24/7 es real? Choca con ese horario.
 - [ ] Reseñas reales y fotos de trabajos reales (los proyectos actuales usan imágenes de stock).
 - [ ] Instagram/Facebook para `sameAs`.
