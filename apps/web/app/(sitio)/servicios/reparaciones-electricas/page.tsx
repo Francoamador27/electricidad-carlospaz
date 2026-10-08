@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import ContactBanner from "@/components/sections/ContactBanner";
-import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = {
   title: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
   description:
-    "Reparaciones eléctricas en Carlos Paz y Punilla, Córdoba. Cortocircuitos, enchufes quemados, interruptores defectuosos. Servicio rápido 24/7. Electricistas matriculados.",
+    "Reparaciones eléctricas en Carlos Paz y Punilla, Córdoba. Cortocircuitos, enchufes quemados, interruptores defectuosos y búsqueda de fallas. Electricistas matriculados.",
   alternates: { canonical: "/servicios/reparaciones-electricas" },
 };
 
@@ -54,8 +54,8 @@ const faq = [
     a: "Los enchufes quemados son síntoma de exceso de carga en el circuito, conexiones flojas o un enchufe de baja calidad que no soportó la corriente. Es una situación de riesgo real: un enchufe quemado puede originar un incendio eléctrico. Llamanos para reemplazarlo correctamente.",
   },
   {
-    q: "¿Cuánto tiempo tarda una reparación eléctrica urgente en Carlos Paz?",
-    a: `Para urgencias eléctricas en Carlos Paz y Punilla, intentamos llegar en menos de 2 horas. Llamanos al ${NEGOCIO.telefonoVisible} y te informamos el tiempo estimado de llegada según la zona.`,
+    q: "¿Cuánto tarda una reparación eléctrica en Carlos Paz?",
+    a: `Depende de la falla: muchas se resuelven en la primera visita. Escribinos o llamanos al ${NEGOCIO.telefonoVisible} y coordinamos el día según la zona.`,
   },
   {
     q: "¿Puedo cambiar yo mismo un enchufe quemado o un interruptor?",
@@ -66,15 +66,15 @@ const faq = [
     a: "El diferencial está detectando una corriente de fuga, probablemente causada por humedad que ingresó en algún punto de la instalación (caja, enchufe exterior, luminaria). Hay que diagnosticar el circuito afectado y resolverlo antes de volver a dar tensión. Llamanos.",
   },
   {
-    q: "¿Atienden urgencias eléctricas los fines de semana en Punilla?",
-    a: "Sí. Atendemos urgencias eléctricas los 7 días de la semana, las 24 horas, en Carlos Paz y toda la región de Punilla: Valle Hermoso, Cosquín, La Falda, La Cumbre y alrededores.",
+    q: "¿Qué días y horarios atienden en Punilla?",
+    a: `Atendemos ${NEGOCIO.horarioTexto}, en Carlos Paz y todo el Valle de Punilla: Cabalango, Valle Hermoso, Cosquín, La Falda, La Cumbre y alrededores.`,
   },
 ];
 
 export default function ReparacionesPage() {
   return (
     <>
-      <ServicioJsonLd slug="reparaciones-electricas" />
+      <ServicioJsonLd slug="reparaciones-electricas" faq={faq} />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">
@@ -82,14 +82,14 @@ export default function ReparacionesPage() {
           </div>
           <div className="max-w-3xl">
             <span className="text-amber-400 font-semibold text-sm uppercase tracking-wide">
-              Reparaciones eléctricas urgentes
+              Reparaciones eléctricas
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
               Reparaciones eléctricas en Carlos Paz y Punilla
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed">
               Servicio de reparaciones eléctricas rápido y seguro en Carlos Paz y Punilla.
-              Atendemos urgencias 24/7: cortocircuitos, enchufes quemados, interruptores y
+              Resolvemos cortocircuitos, enchufes quemados, interruptores y
               cualquier falla eléctrica en hogares y empresas. Solo electricistas matriculados.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -97,15 +97,15 @@ export default function ReparacionesPage() {
                 href={LINK_TELEFONO}
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors text-base"
               >
-                ☎ Llamar ahora — 24/7
+                ☎ Llamar — {NEGOCIO.telefonoVisible}
               </a>
               <a
-                href={linkWhatsapp("Hola, tengo una urgencia eléctrica")}
+                href={linkWhatsapp("Hola, tengo una falla eléctrica")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors"
               >
-                💬 WhatsApp urgente
+                💬 Escribir por WhatsApp
               </a>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function ReparacionesPage() {
             </p>
             <p className="text-red-200 text-sm mt-1">
               Trabajar con electricidad sin capacitación puede causar electrocución o incendio. Siempre llamá a un
-              electricista matriculado. Estamos disponibles las 24 horas en Carlos Paz y Punilla —{" "}
+              electricista matriculado. Atendemos {NEGOCIO.horarioTexto} —{" "}
               <a href={LINK_TELEFONO} className="underline font-semibold text-white">
                 {NEGOCIO.telefonoVisible}
               </a>
@@ -178,7 +178,7 @@ export default function ReparacionesPage() {
               {
                 situacion: "Siento olor a quemado cerca del tablero eléctrico",
                 causa: "Conexión floja que genera calor, disyuntor sobrecalentado o cable con el aislamiento dañado.",
-                solucion: "Es una emergencia. Cortamos el suministro, inspeccionamos el tablero y la instalación, y reparamos el origen del problema antes de reponer tensión.",
+                solucion: "Es una situación de riesgo: cortá la llave general y llamanos. Cortamos el suministro, inspeccionamos el tablero y la instalación, y reparamos el origen del problema antes de reponer tensión.",
               },
             ].map((item) => (
               <div
@@ -204,7 +204,7 @@ export default function ReparacionesPage() {
       <section className="py-12 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Reparaciones eléctricas en Carlos Paz — Urgencias 24/7
+            Reparaciones eléctricas en Carlos Paz y Punilla
           </h2>
           <div className="text-slate-700 space-y-4 leading-relaxed">
             <p>
@@ -218,11 +218,11 @@ export default function ReparacionesPage() {
               un incendio o una electrocución. No pongas en riesgo tu hogar ni tu familia.
             </p>
             <p>
-              Para urgencias eléctricas en Carlos Paz y Punilla, llamanos directamente al{" "}
+              Para coordinar una reparación en Carlos Paz y Punilla, llamanos al{" "}
               <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
                 {NEGOCIO.telefonoVisible}
               </a>
-              . Atendemos las 24 horas los 7 días de la semana.
+              . Atendemos {NEGOCIO.horarioTexto}.
             </p>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function ReparacionesPage() {
         </div>
       </section>
 
-      <EmergencyCTA />
+      <CTAPresupuesto />
       <ContactBanner />
     </>
   );

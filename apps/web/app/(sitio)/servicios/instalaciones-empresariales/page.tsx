@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
-import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
@@ -38,7 +38,7 @@ const services = [
 const faq = [
   {
     q: "¿Qué certificaciones necesito para habilitar mi local en Carlos Paz?",
-    a: "Para habilitar un comercio en Carlos Paz necesitás un certificado de instalación eléctrica emitido por un electricista matriculado. Voltis realiza la instalación y emite el certificado técnico necesario para el trámite ante el municipio de Carlos Paz.",
+    a: "En Córdoba, los locales comerciales necesitan el Certificado de Instalación Eléctrica Apta (Ley 10.281) para pedir el suministro a la distribuidora. Voltis hace la instalación y emite el certificado. Para la habilitación del comercio, consultá en tu municipio qué documentación técnica te piden.",
   },
   {
     q: "¿Cuánto tiempo tarda la instalación eléctrica de un local comercial?",
@@ -65,7 +65,7 @@ const faq = [
 export default function InstalacionesEmpresarialesPage() {
   return (
     <>
-      <ServicioJsonLd slug="instalaciones-empresariales" />
+      <ServicioJsonLd slug="instalaciones-empresariales" faq={faq} />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">
@@ -155,7 +155,7 @@ export default function InstalacionesEmpresarialesPage() {
               {
                 icon: "⚡",
                 title: "Respuesta rápida ante fallas",
-                desc: "Un corte eléctrico en tu negocio es dinero que perdés. Atendemos urgencias comerciales con prioridad y rapidez en toda la región de Punilla.",
+                desc: "Un corte eléctrico en tu negocio es dinero que perdés. Coordinamos las reparaciones de comercios con prioridad en toda la región de Punilla.",
               },
               {
                 icon: "🔒",
@@ -246,7 +246,7 @@ export default function InstalacionesEmpresarialesPage() {
         </div>
       </section>
 
-      <EmergencyCTA />
+      <CTAPresupuesto />
       <ContactBanner />
     </>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
-import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
@@ -34,7 +34,7 @@ const faq = [
   },
   {
     q: "¿El mantenimiento eléctrico es obligatorio para comercios en Carlos Paz?",
-    a: "Sí. Los comercios e industrias en Córdoba deben presentar certificados de instalación eléctrica vigentes para mantener sus habilitaciones municipales. Voltis emite los certificados técnicos necesarios para tramitar ante el municipio de Carlos Paz.",
+    a: "La Ley 10.281 de Córdoba obliga a que los locales de acceso público tengan su instalación adecuada a la normativa del ERSeP. Un mantenimiento periódico es la forma de mantenerla en regla y evitar fallas. Si necesitás el Certificado de Instalación Eléctrica Apta, también lo emitimos.",
   },
   {
     q: "¿Puedo hacer yo mismo la revisión eléctrica de mi hogar?",
@@ -53,7 +53,7 @@ const faq = [
 export default function MantenimientoPage() {
   return (
     <>
-      <ServicioJsonLd slug="mantenimiento-electricidad" />
+      <ServicioJsonLd slug="mantenimiento-electricidad" faq={faq} />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">
@@ -260,7 +260,7 @@ export default function MantenimientoPage() {
         </div>
       </section>
 
-      <EmergencyCTA />
+      <CTAPresupuesto />
       <ContactBanner />
     </>
   );

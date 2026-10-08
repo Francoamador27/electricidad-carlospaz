@@ -38,9 +38,9 @@ const services = [
     icon: "⚡",
     title: "Reparaciones eléctricas",
     description:
-      "Reparación urgente de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz. Atención rápida para emergencias eléctricas.",
+      "Reparación de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz. Diagnóstico y solución por electricistas matriculados.",
     href: "/servicios/reparaciones-electricas",
-    keywords: ["reparaciones eléctricas Carlos Paz", "urgencia eléctrica Punilla"],
+    keywords: ["reparaciones eléctricas Carlos Paz", "electricista Punilla"],
   },
   {
     icon: "🔌",
@@ -55,8 +55,24 @@ const services = [
     title: "Iluminación y automatización",
     description:
       "Diseño e instalación de sistemas de iluminación LED eficiente y automatización eléctrica en Carlos Paz. Ahorrá energía y modernizá tu hogar o empresa.",
-    href: "/servicios",
-    keywords: ["iluminación LED Carlos Paz", "automatización eléctrica Punilla"],
+    href: "/servicios/iluminacion-automatizacion",
+    keywords: ["iluminación LED Carlos Paz", "domótica Punilla"],
+  },
+  {
+    icon: "📹",
+    title: "Cámaras de seguridad",
+    description:
+      "Instalación de cámaras de seguridad para casas y comercios en Carlos Paz y Punilla, con cableado prolijo, alimentación segura y acceso desde el celular.",
+    href: "/servicios/camaras-de-seguridad",
+    keywords: ["cámaras de seguridad Carlos Paz", "instalación de cámaras Punilla"],
+  },
+  {
+    icon: "📄",
+    title: "Certificado de instalación eléctrica apta",
+    description:
+      "Emitimos el Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba) para pedir la luz, cambiar la potencia o el tipo de medidor.",
+    href: "/certificado-instalacion-electrica-apta",
+    keywords: ["certificado instalación eléctrica apta Carlos Paz", "Ley 10.281"],
   },
 ];
 

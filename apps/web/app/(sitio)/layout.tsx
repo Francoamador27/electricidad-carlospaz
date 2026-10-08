@@ -1,11 +1,12 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { LOCALIDADES, NEGOCIO } from "@voltis/shared";
+import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import TrackingListener from "@/components/tracking/TrackingListener";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/site";
+import { getConfig } from "@/lib/contenido";
 
 const BASE_URL = SITE_URL;
 
@@ -17,7 +18,7 @@ const organizationSchema = {
   name: "Voltis",
   legalName: "Voltis Instalaciones Eléctricas",
   description:
-    "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento y reparaciones eléctricas con garantía. Urgencias 24/7.",
+    "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento y reparaciones eléctricas con garantía.",
   url: BASE_URL,
   logo: {
     "@type": "ImageObject",
@@ -50,7 +51,13 @@ const organizationSchema = {
     opens: h.abre,
     closes: h.cierra,
   })),
-  priceRange: "$$",
+  knowsAbout: [
+    ...SERVICIOS.map((s) => s.nombre),
+    "Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba)",
+    "Puesta a tierra",
+    "Domótica",
+  ],
+  priceRange: "$",
   currenciesAccepted: "ARS",
   paymentAccepted: "Efectivo, transferencia bancaria, Mercado Pago",
   // sameAs: [
@@ -71,10 +78,11 @@ const websiteSchema = {
   inLanguage: "es-AR",
 };
 
-export default function SitioLayout({ children }: { children: React.ReactNode }) {
+export default async function SitioLayout({ children }: { children: React.ReactNode }) {
+  const { gtm_id } = await getConfig();
   return (
     <>
-      {process.env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
+      {gtm_id && <GoogleTagManager gtmId={gtm_id} />}
       <JsonLd data={organizationSchema} />
       <JsonLd data={websiteSchema} />
       <TrackingListener />

@@ -10,7 +10,7 @@ const reasons = [
   {
     title: "Respuesta rápida",
     description:
-      "Atendemos urgencias eléctricas en Carlos Paz con respuesta inmediata. Llegamos a tu domicilio cuando más lo necesitás.",
+      "Respondemos tu consulta en el día por WhatsApp y coordinamos la visita en Carlos Paz y todo Punilla.",
   },
   {
     title: "Trabajo con garantía",

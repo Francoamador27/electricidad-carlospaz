@@ -121,6 +121,24 @@ Cuando se suma una habitación, un quincho o una cocina nueva colgándose de un 
 - Reparaciones y búsqueda de fallas`,
   },
   {
+    slug: "cabalango",
+    seoTitulo: "Electricista en Cabalango",
+    seoDescripcion:
+      "Electricista matriculado en Cabalango: instalaciones en casas y cabañas serranas, puesta a tierra, bombas de agua y reparaciones.",
+    texto: `Cabalango es una localidad serrana chica, muy cerca de Villa Carlos Paz, rodeada de monte y arroyos. Muchas de sus casas son de descanso o cabañas, con terrenos amplios y accesos de tierra.
+
+## Casas serranas, instalaciones expuestas
+
+En la sierra, las instalaciones sufren más: humedad, tormentas en verano y tendidos exteriores largos hasta el portón, la bomba o el quincho. Una instalación pensada para eso dura más y es más segura.
+
+## Trabajos frecuentes en Cabalango
+
+- Puesta a tierra y protección del tablero
+- Alimentación de bombas de agua
+- Iluminación exterior con artefactos aptos para intemperie
+- Revisión de casas que pasan tiempo cerradas`,
+  },
+  {
     slug: "malagueno",
     seoTitulo: "Electricista en Malagueño",
     seoDescripcion:

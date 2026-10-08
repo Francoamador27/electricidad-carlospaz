@@ -206,7 +206,7 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 **Aceptación:** `pnpm dev` levanta web y API; el sitio se ve igual que hoy.
 
 ### Fase 2 — Sitio conectado
-- [x] Páginas nuevas: zonas, detalle de proyecto, privacidad. Certificado: pendiente de confirmación.
+- [x] Páginas nuevas: zonas, detalle de proyecto, privacidad, certificado (Ley 10.281) y cámaras de seguridad.
 - [x] Blog, proyectos, zonas, reseñas y sitemap leen de la base en el build (en `next dev` se ven también los borradores).
 - [x] Formulario `/presupuesto` y `/contacto` → API → WhatsApp (honeypot + Turnstile).
 - [x] Reseñas ocultas; GTM + eventos (clics también en tabla `eventos`); JSON-LD Service/BlogPosting/BreadcrumbList; `lang="es-AR"`.
@@ -228,16 +228,20 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 
 ## 9. Pendientes de Franco
 
-- [ ] ¿Voltis emite el Certificado de Instalación Eléctrica Apta (Ley 10.281)? Si no, la página se convierte en una guía del trámite o no se hace.
 - [ ] Dominio definitivo (hoy: `electricidadcarlospaz.proyectoswebsite.com`).
-- [ ] Email que recibe los avisos de consultas.
 - [ ] ¿Dirección física o solo área de servicio? Hoy el JSON-LD publica código postal y coordenadas.
-- [ ] Horario real: el JSON-LD dice L–V 8–18 y `llms.txt` dice 8–19. ¿Urgencias 24/7 es real? Choca con ese horario.
 - [ ] Reseñas reales y fotos de trabajos reales (los proyectos actuales usan imágenes de stock).
-- [ ] Instagram/Facebook para `sameAs`.
 - [ ] Revisar los borradores de las 14 zonas (`apps/api/seed/zonas.ts`) antes de publicarlos.
-- [ ] Los 6 proyectos actuales, ¿son trabajos reales? Usan fotos de stock y no se cargaron en la base hasta confirmarlo.
-- [ ] Verificar dos afirmaciones del blog: la "Resolución SE 1/2020" (post de seguridad) y que el certificado se tramita "ante el municipio" (post de obra nueva). En Córdoba corresponde la Ley 10.281 / ERSeP.
-- [ ] "Más de 500 clientes" (título de reseñas, lo saqué) y otras cifras del sitio: ¿son reales?
-- [ ] Cabalango figuraba en la sección de cobertura y no está entre las 14 localidades: ¿la sumamos?
 - [ ] Razón social / CUIT y email de contacto para la política de privacidad.
+- [ ] Reemplazar los 7 proyectos de referencia por trabajos reales (se borran desde el panel).
+
+## 10. Decisiones de contenido (2026-10-08)
+
+- Horario: L–V 8 a 19 h, sábados 8 a 13 h. Sin urgencias 24/7.
+- Se mantiene "más de 500 clientes".
+- Se suma Cabalango (15 localidades) y el servicio de cámaras de seguridad.
+- Voltis emite el Certificado de Instalación Eléctrica Apta.
+- Avisos de consultas a francohugoamador25@gmail.com (variable AVISO_DESTINO, fuera del repo).
+- Sin Instagram ni Facebook por ahora.
+- GTM y códigos de verificación se cargan desde /admin/configuracion.
+- `llms.txt` y `llms-full.txt` se generan desde la base; robots permite rastreadores de IA.

@@ -66,8 +66,7 @@ export default async function CoverageArea() {
               <p className="text-slate-300 text-sm leading-relaxed">
                 ¿No ves tu localidad en la lista?{" "}
                 <strong className="text-white">Consultanos igual.</strong> Atendemos consultas en
-                toda la región de Córdoba. Para urgencias fuera de la zona principal, coordinamos
-                según disponibilidad.
+                toda la región de Córdoba y coordinamos la visita según la zona.
               </p>
               <a
                 href={LINK_TELEFONO}

@@ -42,8 +42,7 @@ export default function PresupuestoForm() {
 
     const urgencyLabel: Record<string, string> = {
       normal: "Normal",
-      urgent: "Urgente",
-      emergency: "Emergencia 🚨",
+      urgent: "Lo antes posible",
     };
     const propertyLabel: Record<string, string> = {
       residential: "Vivienda / Casa",
@@ -227,14 +226,13 @@ export default function PresupuestoForm() {
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Urgencia
+                    ¿Para cuándo?
                   </label>
                   <div className="flex gap-3">
                     {[
                       { value: "normal", label: "Normal" },
-                      { value: "urgent", label: "Urgente" },
-                      { value: "emergency", label: "Emergencia" },
-                    ].map((opt) => (
+                      { value: "urgent", label: "Lo antes posible" },
+                                    ].map((opt) => (
                       <label
                         key={opt.value}
                         className={`flex-1 text-center py-2 rounded-lg border text-sm font-medium cursor-pointer transition-colors ${
@@ -283,7 +281,7 @@ export default function PresupuestoForm() {
                 </button>
 
                 <p className="text-xs text-slate-500 text-center">
-                  Respondemos en menos de 24 horas. Para urgencias:{" "}
+                  Respondemos en el día. También podés llamarnos al{" "}
                   <a href={LINK_TELEFONO} className="text-amber-600 hover:underline font-medium">
                     {NEGOCIO.telefonoVisible}
                   </a>

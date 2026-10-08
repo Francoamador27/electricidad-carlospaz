@@ -109,7 +109,7 @@ export default function Hero() {
             {[
               { value: "+10", label: "años de experiencia" },
               { value: "+500", label: "clientes atendidos" },
-              { value: "24/7", label: "urgencias" },
+              { value: "100%", label: "matriculados" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="font-display text-copper font-bold text-2xl">{stat.value}</div>

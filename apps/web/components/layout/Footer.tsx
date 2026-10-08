@@ -70,6 +70,38 @@ export default function Footer() {
                 Tableros eléctricos
               </Link>
             </li>
+            <li>
+              <Link
+                href="/servicios/iluminacion-automatizacion"
+                className="hover:text-copper transition-colors"
+              >
+                Iluminación
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/servicios/iluminacion-automatizacion"
+                className="hover:text-copper transition-colors"
+              >
+                Domótica
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/servicios/camaras-de-seguridad"
+                className="hover:text-copper transition-colors"
+              >
+                Instalación de cámaras de seguridad
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/certificado-instalacion-electrica-apta"
+                className="hover:text-copper transition-colors"
+              >
+                Certificado de instalación apta
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -145,11 +177,9 @@ export default function Footer() {
             <li className="pt-1">
               <span className="text-slate-400">Horario de atención:</span>
               <br />
-              Lun–Vie: 8:00–18:00
+              Lun–Vie: 8:00–19:00
               <br />
               Sáb: 8:00–13:00
-              <br />
-              <span className="text-copper font-medium">Urgencias: 24/7</span>
             </li>
           </ul>
         </div>

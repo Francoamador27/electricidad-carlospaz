@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
-import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import Markdown from "@/components/ui/Markdown";
 import FotoImg from "@/components/ui/FotoImg";
 import { Breadcrumbs, JsonLd } from "@/components/seo/JsonLd";
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <EmergencyCTA />
+      <CTAPresupuesto />
 
       <section className="py-10 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">

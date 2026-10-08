@@ -13,7 +13,7 @@ Los accidentes eléctricos en el hogar son más comunes de lo que se cree. En Ar
 
 ## 1. Nunca realices trabajos eléctricos por tu cuenta
 
-> **⚠️ Este es el consejo más importante.** La normativa eléctrica argentina (Resolución SE 1/2020 y norma AEA 90364) establece que las instalaciones y reparaciones eléctricas deben ser realizadas únicamente por electricistas matriculados. Más allá de la ley, intentar reparar un enchufe quemado, cambiar un cable o intervenir en el tablero sin conocimiento puede costar la vida. Ante cualquier problema eléctrico, llamá a un profesional.
+> **⚠️ Este es el consejo más importante.** Las instalaciones y reparaciones eléctricas tienen que hacerlas electricistas matriculados. Intentar reparar un enchufe quemado, cambiar un cable o intervenir en el tablero sin conocimiento puede costar la vida. Ante cualquier problema eléctrico, llamá a un profesional.
 
 ## 2. Instalá un disyuntor diferencial en tu tablero
 

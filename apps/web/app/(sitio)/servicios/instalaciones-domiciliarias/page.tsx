@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
-import EmergencyCTA from "@/components/sections/EmergencyCTA";
+import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
@@ -24,7 +24,7 @@ const benefits = [
 const faq = [
   {
     q: "¿Puedo hacer la instalación eléctrica yo mismo?",
-    a: "No. La normativa eléctrica argentina (AEA 90364 y Resolución SE 1/2020) establece que las instalaciones y reparaciones eléctricas deben ser realizadas únicamente por electricistas matriculados. Más allá de la ley, intentarlo sin conocimiento puede causar incendios, descargas eléctricas o daños graves en tu vivienda. Siempre llamá a un experto.",
+    a: "No. En Córdoba, la Ley provincial 10.281 de Seguridad Eléctrica exige que las instalaciones las ejecute un instalador electricista habilitado ante el ERSeP. Más allá de la ley, intentarlo sin conocimiento puede causar incendios, descargas eléctricas o daños graves en tu vivienda. Siempre llamá a un experto.",
   },
   {
     q: "¿Cuánto tiempo tarda una instalación eléctrica domiciliaria completa?",
@@ -35,8 +35,8 @@ const faq = [
     a: "La puesta a tierra es un sistema de seguridad que conduce las corrientes de falla directamente al suelo, protegiendo a las personas de descargas eléctricas. Es obligatoria por normativa eléctrica argentina desde hace décadas. Sin puesta a tierra, el disyuntor diferencial no puede funcionar correctamente.",
   },
   {
-    q: "¿Necesito certificado para tramitar la habilitación municipal en Carlos Paz?",
-    a: "Sí. Para habilitar un comercio, tramitar la habilitación de una obra o conectar el servicio ante EPEC en Carlos Paz necesitás un certificado de instalación eléctrica firmado y sellado por un electricista matriculado. Voltis emite este certificado al finalizar cada trabajo.",
+    q: "¿Necesito un certificado para pedir la luz en una casa nueva?",
+    a: "Sí. Para un suministro nuevo la distribuidora te pide el Certificado de Instalación Eléctrica Apta (Ley 10.281), firmado por un instalador electricista habilitado. Voltis lo emite al terminar la instalación.",
   },
   {
     q: "¿Ofrecen garantía sobre los trabajos eléctricos?",
@@ -51,7 +51,7 @@ const faq = [
 export default function InstalacionesDomiciliariasPage() {
   return (
     <>
-      <ServicioJsonLd slug="instalaciones-domiciliarias" />
+      <ServicioJsonLd slug="instalaciones-domiciliarias" faq={faq} />
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-sm text-slate-400 mb-3">
@@ -142,9 +142,9 @@ export default function InstalacionesDomiciliariasPage() {
             </div>
             <div className="mt-6 p-4 bg-amber-100 rounded-xl border border-amber-200">
               <p className="text-amber-900 font-semibold text-sm">
-                ☎ ¿Urgencia eléctrica? Llamanos al{" "}
+                ☎ ¿Tenés una falla eléctrica? Llamanos al{" "}
                 <a href={LINK_TELEFONO} className="underline">{NEGOCIO.telefonoVisible}</a>
-                {" "}— atendemos las 24 horas.
+                {" "}— atendemos {NEGOCIO.horarioTexto}.
               </p>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function InstalacionesDomiciliariasPage() {
         </div>
       </section>
 
-      <EmergencyCTA />
+      <CTAPresupuesto />
       <ContactBanner />
     </>
   );

@@ -11,7 +11,7 @@ servicio: instalaciones-domiciliarias
 
 La instalación eléctrica es una de las etapas más importantes de cualquier obra nueva. Un mal diseño o una ejecución deficiente pueden generar problemas de seguridad que duran décadas y son costosos de corregir. Acá te explicamos los pasos clave para planificar correctamente la instalación eléctrica de tu vivienda o local en Carlos Paz y Punilla.
 
-> **⚠️ Importante:** la instalación eléctrica en obra nueva debe ser realizada por un electricista matriculado. Es requisito legal para tramitar la habilitación de la obra y el certificado eléctrico ante el municipio de Carlos Paz.
+> **⚠️ Importante:** la instalación eléctrica en obra nueva debe ser realizada por un electricista matriculado.
 
 ## Pasos de la instalación eléctrica en obra nueva
 
@@ -41,7 +41,7 @@ Con las paredes terminadas, se instalan tomacorrientes, interruptores, bocas de 
 
 ### 7. Certificado técnico
 
-Al finalizar la obra, el electricista emite el certificado de instalación eléctrica firmado y sellado. Este documento es necesario para la habilitación municipal en Carlos Paz y para cualquier trámite ante EPEC (Empresa Provincial de Energía de Córdoba).
+Al finalizar la obra, el electricista emite el certificado de la instalación firmado. Lo vas a necesitar para pedir el suministro de luz. Te lo explicamos en detalle en [Certificado de Instalación Eléctrica Apta](/certificado-instalacion-electrica-apta).
 
 ## ¿Cuántos circuitos necesita una vivienda en Carlos Paz?
 

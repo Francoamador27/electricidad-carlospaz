@@ -8,9 +8,11 @@ export const NEGOCIO = {
   whatsapp: "5493513873029",
   localidadBase: "Villa Carlos Paz",
   horario: [
-    { dias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], abre: "08:00", cierra: "18:00" },
+    { dias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], abre: "08:00", cierra: "19:00" },
     { dias: ["Saturday"], abre: "08:00", cierra: "13:00" },
   ],
+  horarioTexto: "de lunes a viernes de 8 a 19 h y sábados de 8 a 13 h",
+  horarioLineas: ["Lunes a viernes: 8:00 – 19:00", "Sábados: 8:00 – 13:00"],
 } as const;
 
 export function linkWhatsapp(texto?: string): string {
@@ -20,14 +22,44 @@ export function linkWhatsapp(texto?: string): string {
 
 export const LINK_TELEFONO = `tel:${NEGOCIO.telefono}`;
 
-// El contenido de cada servicio vive en apps/web/app/servicios/<slug>.
+// El contenido de cada servicio vive en apps/web/app/(sitio)/servicios/<slug>.
+// `resumen` se usa en llms.txt y en listados.
 export const SERVICIOS = [
-  { slug: "instalaciones-domiciliarias", nombre: "Instalaciones domiciliarias" },
-  { slug: "instalaciones-empresariales", nombre: "Instalaciones para empresas" },
-  { slug: "tableros-electricos", nombre: "Tableros eléctricos" },
-  { slug: "reparaciones-electricas", nombre: "Reparaciones eléctricas" },
-  { slug: "mantenimiento-electricidad", nombre: "Mantenimiento eléctrico" },
-  { slug: "iluminacion-automatizacion", nombre: "Iluminación y automatización" },
+  {
+    slug: "instalaciones-domiciliarias",
+    nombre: "Instalaciones domiciliarias",
+    resumen: "Instalaciones eléctricas completas para viviendas y obra nueva: cañerías, cableado, tomas, tablero con disyuntor diferencial y puesta a tierra.",
+  },
+  {
+    slug: "instalaciones-empresariales",
+    nombre: "Instalaciones para empresas",
+    resumen: "Instalaciones para locales, oficinas, gastronomía, hoteles e industrias: tableros trifásicos y circuitos de alta potencia.",
+  },
+  {
+    slug: "tableros-electricos",
+    nombre: "Tableros eléctricos",
+    resumen: "Instalación y actualización de tableros: reemplazo de fusibles por termomagnéticas y disyuntor diferencial de 30 mA.",
+  },
+  {
+    slug: "reparaciones-electricas",
+    nombre: "Reparaciones eléctricas",
+    resumen: "Diagnóstico y reparación de cortocircuitos, enchufes quemados, diferenciales que saltan y fallas eléctricas.",
+  },
+  {
+    slug: "mantenimiento-electricidad",
+    nombre: "Mantenimiento eléctrico",
+    resumen: "Revisiones preventivas de la instalación con informe del estado, para casas, comercios y complejos turísticos.",
+  },
+  {
+    slug: "iluminacion-automatizacion",
+    nombre: "Iluminación y automatización",
+    resumen: "Iluminación LED interior y exterior, sensores de movimiento y domótica para manejar luces y equipos desde el celular.",
+  },
+  {
+    slug: "camaras-de-seguridad",
+    nombre: "Instalación de cámaras de seguridad",
+    resumen: "Cámaras de seguridad para casas y comercios con cableado protegido, alimentación segura y acceso desde el celular.",
+  },
 ] as const;
 
 // Lista inicial para el seed. Después se administran desde el panel.
@@ -38,6 +70,7 @@ export const LOCALIDADES = [
   { slug: "icho-cruz", nombre: "Icho Cruz" },
   { slug: "cuesta-blanca", nombre: "Cuesta Blanca" },
   { slug: "tala-huasi", nombre: "Tala Huasi" },
+  { slug: "cabalango", nombre: "Cabalango" },
   { slug: "malagueno", nombre: "Malagueño" },
   { slug: "tanti", nombre: "Tanti" },
   { slug: "bialet-masse", nombre: "Bialet Massé" },

@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...publicados(posts).map((p) =>
       url(`/blog/${p.slug}`, { lastModified: p.updatedAt, changeFrequency: "yearly", priority: 0.6 }),
     ),
+    url("/certificado-instalacion-electrica-apta", { changeFrequency: "yearly", priority: 0.85 }),
     url("/politica-de-privacidad", { changeFrequency: "yearly", priority: 0.2 }),
   ];
 }

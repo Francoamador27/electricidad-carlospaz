@@ -1,12 +1,14 @@
 // Carga inicial: servicios, zonas (borrador) y los 4 posts que ya estaban en el sitio.
 // Idempotente: no pisa filas existentes, así no se pierde lo editado desde el panel.
+// Con --actualizar-posts reescribe el contenido de los posts del seed.
 import { config } from "dotenv";
 import fs from "node:fs";
 import path from "node:path";
 import { imageSizeFromFile } from "image-size/fromFile";
 import { LOCALIDADES, SERVICIOS } from "@voltis/shared";
-import { getDb, schema } from "../src";
+import { eq, getDb, schema } from "../src";
 import { ZONAS } from "../seed/zonas";
+import { PROYECTOS } from "../seed/proyectos";
 
 config({ path: "../../apps/api/.dev.vars" });
 const db = getDb(process.env.DATABASE_URL!);
@@ -76,6 +78,33 @@ async function main() {
   }
   const nuevos = await db.insert(schema.posts).values(posts).onConflictDoNothing().returning();
   console.log(`posts: ${nuevos.length} nuevos`);
+
+  if (process.argv.includes("--actualizar-posts")) {
+    for (const p of posts) {
+      await db
+        .update(schema.posts)
+        .set({ contenido: p.contenido, extracto: p.extracto, seoDescripcion: p.seoDescripcion })
+        .where(eq(schema.posts.slug, p.slug));
+    }
+    console.log(`posts: ${posts.length} actualizados`);
+  }
+
+  const proyectos = [];
+  for (const p of PROYECTOS) {
+    const dim = await imageSizeFromFile(path.join(PUBLIC_WEB, p.foto));
+    proyectos.push({
+      slug: p.slug,
+      titulo: p.titulo,
+      descripcion: p.descripcion,
+      servicioId: idServicio.get(p.servicio),
+      fotos: [{ key: p.foto, anchos: [], ancho: dim.width, alto: dim.height, alt: p.alt, tipo: "general" as const }],
+      destacado: p.destacado ?? false,
+      estado: "publicado" as const,
+      publicadoAt: new Date(),
+    });
+  }
+  const nuevosProyectos = await db.insert(schema.proyectos).values(proyectos).onConflictDoNothing().returning();
+  console.log(`proyectos: ${nuevosProyectos.length} nuevos`);
 }
 
 main().then(

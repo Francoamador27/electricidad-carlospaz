@@ -12,6 +12,7 @@ const SECCIONES = [
   { href: "/admin/posts", label: "Blog" },
   { href: "/admin/zonas", label: "Zonas" },
   { href: "/admin/resenas", label: "Reseñas" },
+  { href: "/admin/configuracion", label: "Configuración" },
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {

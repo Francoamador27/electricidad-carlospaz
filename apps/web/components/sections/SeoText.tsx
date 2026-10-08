@@ -43,7 +43,7 @@ export default function SeoText() {
                   "Tableros eléctricos modernos",
                   "Puesta a tierra certificada",
                   "Bocas de luz y tomacorrientes",
-                  "Reparaciones y urgencias 24/7",
+                  "Reparaciones y búsqueda de fallas",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 items-start">
                     <span className="text-amber-500 font-bold shrink-0">✓</span>
@@ -64,7 +64,7 @@ export default function SeoText() {
                   "Certificados para habilitaciones municipales",
                   "Mantenimiento preventivo programado",
                   "Iluminación LED eficiente",
-                  "Urgencias eléctricas comerciales",
+                  "Instalación de cámaras de seguridad",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 items-start">
                     <span className="text-amber-500 font-bold shrink-0">✓</span>
@@ -78,13 +78,12 @@ export default function SeoText() {
           <p>
             Si estás buscando un <strong>electricista en Carlos Paz</strong> de confianza, con
             matrícula, garantía y precio justo, Voltis es tu opción. Atendemos Carlos Paz, Valle
-            Hermoso, Cosquín, La Falda, La Cumbre, Icho Cruz, Tanti, Bialet Massé, Santa María de
+            Hermoso, Cosquín, La Falda, La Cumbre, Icho Cruz, Cabalango, Tanti, Bialet Massé, Santa María de
             Punilla y todas las localidades del Valle de Punilla, Córdoba.
           </p>
 
           <p>
-            Todos nuestros <strong>trabajos eléctricos incluyen garantía</strong>. Para urgencias eléctricas en Carlos Paz y Punilla,
-            atendemos las 24 horas los 7 días de la semana. Llamanos al{" "}
+            Todos nuestros <strong>trabajos eléctricos incluyen garantía</strong>. Atendemos {NEGOCIO.horarioTexto}. Llamanos al{" "}
             <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
               {NEGOCIO.telefonoVisible}
             </a>{" "}

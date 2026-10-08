@@ -8,7 +8,8 @@ compatibility_flags = ["nodejs_compat"]
 # la API vive en el mismo dominio vía Worker routes).
 ALLOWED_ORIGINS = "http://localhost:3000"
 AVISO_REMITENTE = "avisos@voltis.example"
-AVISO_DESTINO = ""
+# AVISO_DESTINO se define en .dev.vars (local) o en el dashboard (producción), no acá:
+# este archivo se sube al repo.
 
 # Email Routing: se activa en la Fase 4, cuando el dominio esté en Cloudflare.
 # [[send_email]]

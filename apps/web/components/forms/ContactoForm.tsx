@@ -105,16 +105,14 @@ export default function ContactoForm() {
                 {
                   icon: "📍",
                   title: "Zona de cobertura",
-                  content: <span className="text-slate-700">Carlos Paz, Valle Hermoso, Cosquín, La Falda, La Cumbre y toda la región de Punilla, Córdoba.</span>,
+                  content: <span className="text-slate-700">Carlos Paz, Cabalango, Valle Hermoso, Cosquín, La Falda, La Cumbre y todo el Valle de Punilla, Córdoba.</span>,
                 },
                 {
                   icon: "🕐",
                   title: "Horarios de atención",
                   content: (
                     <div className="text-slate-700 text-sm space-y-0.5">
-                      <div>Lunes a Viernes: 8:00 – 18:00</div>
-                      <div>Sábados: 8:00 – 13:00</div>
-                      <div className="text-amber-600 font-medium">Urgencias: 24/7</div>
+                      {NEGOCIO.horarioLineas.map((l) => <div key={l}>{l}</div>)}
                     </div>
                   ),
                 },

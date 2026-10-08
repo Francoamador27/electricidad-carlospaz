@@ -2,6 +2,7 @@
 // (export estático) y en `next dev`.
 import { cache } from "react";
 import { and, asc, desc, eq, getDb, inArray, schema } from "@voltis/db";
+import type { ConfigSitio } from "@voltis/shared";
 
 const db = getDb(process.env.DATABASE_URL!);
 
@@ -114,3 +115,13 @@ export type ProyectoConRelaciones = Awaited<ReturnType<typeof getProyectosConRel
 export function fotoPrincipal(p: Proyecto) {
   return p.fotos.find((f) => f.tipo === "despues") ?? p.fotos[0];
 }
+
+// Configuración del panel (GTM, verificaciones). Las variables de entorno sirven de respaldo.
+export const getConfig = cache(async (): Promise<ConfigSitio> => {
+  const filas = await db.select().from(schema.config);
+  const valores = Object.fromEntries(filas.map((f) => [f.clave, f.valor])) as ConfigSitio;
+  return {
+    ...valores,
+    gtm_id: valores.gtm_id ?? (process.env.NEXT_PUBLIC_GTM_ID || undefined),
+  };
+});

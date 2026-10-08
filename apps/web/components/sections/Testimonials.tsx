@@ -16,7 +16,7 @@ export default async function Testimonials() {
             Clientes
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
-            Lo que dicen nuestros clientes<br className="hidden sm:block" /> en Punilla.
+            Más de 500 clientes satisfechos<br className="hidden sm:block" />en Punilla.
           </h2>
         </AnimateIn>
 

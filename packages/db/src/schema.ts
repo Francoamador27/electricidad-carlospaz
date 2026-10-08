@@ -129,3 +129,10 @@ export const eventos = pgTable(
   },
   (t) => [index("eventos_created_at_idx").on(t.createdAt)],
 );
+
+// Configuración editable desde el panel (IDs de GTM, códigos de verificación).
+export const config = pgTable("config", {
+  clave: text("clave").primaryKey(),
+  valor: text("valor").notNull(),
+  updatedAt: actualizado(),
+});

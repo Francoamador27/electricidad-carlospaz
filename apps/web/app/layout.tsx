@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { getConfig } from "@/lib/contenido";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const dmSans = DM_Sans({
 
 const BASE_URL = SITE_URL;
 
-export const metadata: Metadata = {
+const metadataBase: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
@@ -49,7 +50,8 @@ export const metadata: Metadata = {
     "electricista Cosquín",
     "electricista La Falda",
     "electricista La Cumbre",
-    "urgencias eléctricas Carlos Paz",
+    "cámaras de seguridad Carlos Paz",
+    "certificado de instalación eléctrica apta Carlos Paz",
     "Voltis instalaciones eléctricas",
   ],
 
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     siteName: "Voltis",
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
-      "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía. Urgencias 24/7.",
+      "Electricistas matriculados en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía.",
     images: [
       {
         url: "/logo-voltis.png",
@@ -93,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
-      "Electricistas matriculados en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y urgencias 24/7.",
+      "Electricistas matriculados en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y cámaras de seguridad.",
     images: ["/logo-voltis.png"],
   },
 
@@ -117,19 +119,29 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
 
-  // Descomentar y completar cuando tengas Search Console verificado:
-  // verification: {
-  //   google: "TU_CODIGO_DE_VERIFICACION_GOOGLE",
-  //   yandex: "TU_CODIGO_YANDEX",
-  // },
 };
+
+// Códigos de verificación (Search Console, Meta, Bing) cargados desde el panel.
+export async function generateMetadata(): Promise<Metadata> {
+  const config = await getConfig();
+  return {
+    ...metadataBase,
+    verification: {
+      google: config.google_site_verification,
+      other: {
+        ...(config.bing_site_verification && { "msvalidate.01": config.bing_site_verification }),
+        ...(config.meta_domain_verification && {
+          "facebook-domain-verification": config.meta_domain_verification,
+        }),
+      },
+    },
+  };
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-AR" className={`h-full ${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
-        <meta name="google-site-verification" content="DZiGXfIytFBlEfi2j4GVmuvyfneJwq41qh4VdLR-wnk" />
-
         {/* Geo tags — SEO local */}
         <meta name="geo.region" content="AR-X" />
         <meta name="geo.placename" content="Villa Carlos Paz, Córdoba, Argentina" />

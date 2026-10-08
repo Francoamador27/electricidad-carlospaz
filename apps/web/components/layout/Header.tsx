@@ -11,7 +11,9 @@ const services = [
   { label: "Mantenimiento eléctrico", href: "/servicios/mantenimiento-electricidad" },
   { label: "Reparaciones eléctricas", href: "/servicios/reparaciones-electricas" },
   { label: "Tableros eléctricos", href: "/servicios/tableros-electricos" },
-  { label: "Iluminación y automatización", href: "/servicios/iluminacion-automatizacion" },
+  { label: "Iluminación y domótica", href: "/servicios/iluminacion-automatizacion" },
+  { label: "Cámaras de seguridad", href: "/servicios/camaras-de-seguridad" },
+  { label: "Certificado de instalación apta", href: "/certificado-instalacion-electrica-apta" },
 ];
 
 export default function Header() {
