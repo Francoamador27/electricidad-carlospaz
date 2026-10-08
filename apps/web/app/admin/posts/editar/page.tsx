@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import type { PostInput } from "@voltis/shared";
 import FotosEditor from "@/components/admin/FotosEditor";
-import MarkdownEditor from "@/components/admin/MarkdownEditor";
+import EditorTexto from "@/components/admin/EditorTexto";
 import { Boton, Campo, Cargando, MensajeError, Tarjeta, claseInput, errorDe } from "@/components/admin/ui";
 import { useEditor, useLista, useServicios } from "@/components/admin/useEditor";
 import { slugify } from "@/lib/admin-api";
@@ -128,7 +128,7 @@ function Editor() {
 
       <Tarjeta>
         <h2 className="font-semibold mb-3">Contenido</h2>
-        <MarkdownEditor valor={d.contenido} onChange={(v) => e.set("contenido", v)} />
+        <EditorTexto etiqueta="Contenido del artículo" valor={d.contenido} onChange={(v) => e.set("contenido", v)} alto={420} />
         {errorDe(e.errorApi, "contenido") && <p className="text-xs text-red-600 mt-1">{errorDe(e.errorApi, "contenido")}</p>}
       </Tarjeta>
 

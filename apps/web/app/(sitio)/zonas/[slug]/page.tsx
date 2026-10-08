@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
 import ProyectoCard from "@/components/sections/ProyectoCard";
-import Markdown from "@/components/ui/Markdown";
+import Contenido from "@/components/ui/Contenido";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 import {
   getProyectosConRelaciones,
@@ -86,7 +86,7 @@ export default async function ZonaPage({ params }: { params: Promise<{ slug: str
 
       <section className="py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <Markdown>{zona.texto}</Markdown>
+          <Contenido texto={zona.texto} />
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">
             Servicios en {zona.nombre}

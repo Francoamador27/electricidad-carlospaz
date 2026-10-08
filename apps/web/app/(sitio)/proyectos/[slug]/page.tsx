@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
 import FotoImg from "@/components/ui/FotoImg";
-import Markdown from "@/components/ui/Markdown";
+import Contenido from "@/components/ui/Contenido";
+import { textoPlano } from "@/lib/contenido-html";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 import VerProyecto from "@/components/tracking/VerProyecto";
 import {
@@ -35,7 +36,7 @@ export async function generateMetadata({
   const foto = fotoPrincipal(p);
   return {
     title: titulo,
-    description: p.descripcion.replace(/[#*>_`]/g, "").slice(0, 155),
+    description: textoPlano(p.descripcion),
     alternates: { canonical: `/proyectos/${p.slug}` },
     openGraph: foto ? { images: [{ url: srcFoto(foto), alt: foto.alt }] } : undefined,
     robots: p.estado === "borrador" ? { index: false } : undefined,
@@ -103,7 +104,7 @@ export default async function ProyectoPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <Markdown>{p.descripcion}</Markdown>
+          <Contenido texto={p.descripcion} />
 
           <div className="mt-10 flex flex-wrap gap-4 text-sm">
             {p.servicio && (

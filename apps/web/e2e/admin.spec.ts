@@ -104,7 +104,9 @@ test("proyectos: crear uno con foto lo procesa, lo sube y lo guarda", async ({ p
   await page.locator('input[type="file"]').setInputFiles(foto);
   await expect(page.getByLabel("Texto alternativo")).toHaveValue("Tableros eléctricos en Cosquín");
 
-  await page.locator("textarea").first().fill("Reemplazamos el tablero de fusibles por uno con diferencial.");
+  const editor = page.getByRole("textbox", { name: "Descripción del trabajo" });
+  await editor.click();
+  await page.keyboard.type("Reemplazamos el tablero de fusibles.");
   await page.getByRole("button", { name: "Guardar" }).click();
   await expect(page.getByText(/Guardado/)).toBeVisible();
 
@@ -120,6 +122,7 @@ test("proyectos: crear uno con foto lo procesa, lo sube y lo guarda", async ({ p
     zonaId: 11,
     estado: "borrador",
   });
+  expect(guardado.descripcion).toBe("<p>Reemplazamos el tablero de fusibles.</p>");
   expect((guardado.fotos as unknown[]).length).toBe(1);
 });
 
@@ -147,4 +150,58 @@ test("el panel no carga GTM ni el header del sitio", async ({ page }) => {
   await page.goto("/admin");
   expect(await page.locator('script[src*="googletagmanager"]').count()).toBe(0);
   await expect(page.getByRole("button", { name: "Contactar por WhatsApp" })).toHaveCount(0);
+});
+
+test("editor de texto: negrita, color, tamaño y lista se guardan como HTML", async ({ page }) => {
+  const llamadas = await simularAdmin(page);
+  await page.goto("/admin/proyectos/editar");
+  await page.getByLabel("Título").fill("Prueba del editor de texto");
+  const editor = page.getByRole("textbox", { name: "Descripción del trabajo" });
+  await editor.click();
+
+  await page.getByRole("button", { name: "Negrita" }).click();
+  await page.keyboard.type("Importante");
+  await page.getByRole("button", { name: "Negrita" }).click();
+  await page.keyboard.type(" y normal.");
+  await page.keyboard.press("Enter");
+
+  await page.getByLabel("Tamaño de letra").selectOption({ label: "Grande" });
+  await page.getByLabel("Color de texto").click();
+  await page.getByRole("button", { name: "Color Rojo" }).click();
+  await page.keyboard.type("Texto rojo grande");
+  await page.keyboard.press("Enter");
+
+  await page.getByRole("button", { name: "Lista con viñetas" }).click();
+  await page.keyboard.type("Primer punto");
+
+  await page.getByRole("button", { name: "Guardar" }).click();
+  await expect(page.getByText(/Guardado/)).toBeVisible();
+
+  const html = (llamadas.find((l) => l.ruta === "/proyectos" && l.metodo === "POST")!.cuerpo as { descripcion: string })
+    .descripcion;
+  expect(html).toContain("<strong>Importante</strong> y normal.");
+  const spanRojo = html.match(/<span style="([^"]*)">Texto rojo grande<\/span>/);
+  expect(spanRojo, html).not.toBeNull();
+  expect(spanRojo![1]).toContain("font-size: 20px");
+  expect(spanRojo![1]).toMatch(/color: (#dc2626|rgb\(220, 38, 38\))/);
+  expect(html).toContain("<ul><li><p>Primer punto</p></li></ul>");
+});
+
+test("editor de texto: el contenido viejo en Markdown se abre con formato", async ({ page }) => {
+  await simularAdmin(page);
+  await page.route(`${API}/admin/api/proyectos/7`, (route) =>
+    route.fulfill({
+      status: 200,
+      headers: cors(),
+      contentType: "application/json",
+      body: JSON.stringify({
+        id: 7, slug: "viejo", titulo: "Proyecto viejo", estado: "publicado", destacado: false, fotos: [],
+        descripcion: ["## Cómo lo hacemos", "", "- **Paso uno**", "- Paso dos"].join("\n"),
+      }),
+    }),
+  );
+  await page.goto("/admin/proyectos/editar?id=7");
+  const editor = page.getByRole("textbox", { name: "Descripción del trabajo" });
+  await expect(editor.locator("h2")).toHaveText("Cómo lo hacemos");
+  await expect(editor.locator("li strong")).toHaveText("Paso uno");
 });

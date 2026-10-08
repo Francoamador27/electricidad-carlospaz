@@ -3,6 +3,7 @@
 import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared";
 import { getPosts, getProyectosConRelaciones, getZonas } from "@/lib/contenido";
 import { SITE_URL } from "@/lib/site";
+import { aMarkdown } from "@/lib/contenido-html";
 
 const u = (path: string) => `${SITE_URL}${path}`;
 const publicados = <T extends { estado: string }>(filas: T[]) => filas.filter((f) => f.estado === "publicado");
@@ -78,13 +79,13 @@ export async function generarLlmsFull(): Promise<string> {
   ];
 
   for (const z of publicados(zonas)) {
-    partes.push(`## Electricista en ${z.nombre}\n\nURL: ${u(`/zonas/${z.slug}`)}\n\n${z.texto}`);
+    partes.push(`## Electricista en ${z.nombre}\n\nURL: ${u(`/zonas/${z.slug}`)}\n\n${aMarkdown(z.texto)}`);
   }
   for (const p of publicados(posts)) {
-    partes.push(`## ${p.titulo}\n\nURL: ${u(`/blog/${p.slug}`)}\n\n${p.contenido}`);
+    partes.push(`## ${p.titulo}\n\nURL: ${u(`/blog/${p.slug}`)}\n\n${aMarkdown(p.contenido)}`);
   }
   for (const p of publicados(proyectos)) {
-    partes.push(`## Proyecto: ${p.titulo}\n\nURL: ${u(`/proyectos/${p.slug}`)}\n\n${p.descripcion}`);
+    partes.push(`## Proyecto: ${p.titulo}\n\nURL: ${u(`/proyectos/${p.slug}`)}\n\n${aMarkdown(p.descripcion)}`);
   }
   return partes.join("\n\n---\n\n") + "\n";
 }

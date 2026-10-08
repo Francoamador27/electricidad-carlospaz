@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import type { ZonaInput } from "@voltis/shared";
-import MarkdownEditor from "@/components/admin/MarkdownEditor";
+import EditorTexto from "@/components/admin/EditorTexto";
 import { Boton, Campo, Cargando, MensajeError, Tarjeta, claseInput, errorDe } from "@/components/admin/ui";
 import { useEditor } from "@/components/admin/useEditor";
 import { slugify } from "@/lib/admin-api";
@@ -76,7 +76,7 @@ function Editor() {
           Tiene que ser propio de esta localidad: tipo de casas, problemas típicos, trabajos que hacés ahí. No copies el
           texto de otra zona cambiando el nombre.
         </p>
-        <MarkdownEditor valor={d.texto} onChange={(v) => e.set("texto", v)} />
+        <EditorTexto etiqueta="Texto de la página" valor={d.texto} onChange={(v) => e.set("texto", v)} />
       </Tarjeta>
 
       <Tarjeta className="space-y-4">

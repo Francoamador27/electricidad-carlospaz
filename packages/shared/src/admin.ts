@@ -33,7 +33,7 @@ export const postInput = z.object({
   slug,
   titulo: z.string().trim().min(5).max(200),
   extracto: z.string().trim().min(10).max(400),
-  contenido: z.string().min(20).max(60000),
+  contenido: z.string().min(20).max(200_000),
   categoria: textoOpcional(60),
   portada: fotoSchema.nullable().optional(),
   servicioId: z.number().int().positive().nullable().optional(),
@@ -46,7 +46,7 @@ export const postInput = z.object({
 export const proyectoInput = z.object({
   slug,
   titulo: z.string().trim().min(5).max(200),
-  descripcion: z.string().min(10).max(20000),
+  descripcion: z.string().min(10).max(100_000),
   servicioId: z.number().int().positive().nullable().optional(),
   zonaId: z.number().int().positive().nullable().optional(),
   fechaTrabajo: z.iso.date().nullable().optional(),
@@ -58,7 +58,7 @@ export const proyectoInput = z.object({
 export const zonaInput = z.object({
   slug,
   nombre: z.string().trim().min(2).max(120),
-  texto: z.string().min(20).max(20000),
+  texto: z.string().min(20).max(100_000),
   seoTitulo: textoOpcional(70),
   seoDescripcion: textoOpcional(170),
   estado: estadoSchema,

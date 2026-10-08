@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import Markdown from "@/components/ui/Markdown";
+import Contenido from "@/components/ui/Contenido";
 import FotoImg from "@/components/ui/FotoImg";
 import { Breadcrumbs, JsonLd } from "@/components/seo/JsonLd";
 import { formatoFecha, getPost, getPosts, getServicios, paramsOVacio } from "@/lib/contenido";
@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             />
           )}
           <article>
-            <Markdown>{post.contenido}</Markdown>
+            <Contenido texto={post.contenido} />
           </article>
           {servicio && (
             <p className="mt-10 text-slate-700">
