@@ -4,6 +4,7 @@ import { CLAVES_CONFIG, configInput, postInput, proyectoInput, resenaInput, zona
 import { asc, desc, eq, getDb, schema, sql } from "@voltis/db";
 import type { Env } from "../env";
 import { requiereAccess } from "../lib/access";
+import { blobConfigurado, guardarFoto } from "../lib/fotos";
 
 type App = { Bindings: Env; Variables: { usuario: string } };
 
@@ -210,12 +211,13 @@ admin.get("/estadisticas", async (c) => {
   });
 });
 
-// ---------- Fotos (R2) ----------
+// ---------- Fotos (Vercel Blob) ----------
 
 const MAX_BYTES = 5 * 1024 * 1024;
 
 // Recibe las versiones ya redimensionadas en el navegador (campos w480, w960, ...).
 admin.post("/uploads", async (c) => {
+  if (!blobConfigurado(c.env)) return c.json({ ok: false, error: "fotos_sin_configurar" }, 503);
   const form = await c.req.formData();
   const carpeta = String(form.get("carpeta") ?? "general").replace(/[^a-z0-9-]/g, "") || "general";
   const key = `${carpeta}/${new Date().getFullYear()}/${crypto.randomUUID()}`;
@@ -233,9 +235,12 @@ admin.post("/uploads", async (c) => {
     const tipo = archivo.type === "image/webp" ? "webp" : archivo.type === "image/jpeg" ? "jpeg" : null;
     if (!tipo || (formato && formato !== tipo)) return c.json({ ok: false, error: "formato_invalido" }, 400);
     formato = tipo;
-    await c.env.IMAGENES.put(`${key}-${w}.${tipo === "jpeg" ? "jpg" : "webp"}`, archivo.stream(), {
-      httpMetadata: { contentType: archivo.type, cacheControl: "public, max-age=31536000, immutable" },
-    });
+    try {
+      await guardarFoto(c.env, `${key}-${w}.${tipo === "jpeg" ? "jpg" : "webp"}`, archivo);
+    } catch (e) {
+      console.error("[fotos]", e);
+      return c.json({ ok: false, error: "error_almacenamiento" }, 502);
+    }
     anchos.push(w);
   }
   if (!anchos.length) return c.json({ ok: false, error: "sin_archivos" }, 400);

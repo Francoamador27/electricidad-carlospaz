@@ -6,3 +6,5 @@ ADMIN_SIN_AUTH=1
 # Local: el sitio corre en otro puerto.
 ALLOWED_ORIGINS=http://localhost:3000
 AVISO_DESTINO=tu@email.com
+# Vercel Blob (fotos del panel): Storage → Blob → tu store → .env.local
+BLOB_READ_WRITE_TOKEN=vercel_blob_rw_...

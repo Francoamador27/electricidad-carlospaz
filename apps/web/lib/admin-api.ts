@@ -31,6 +31,8 @@ const MENSAJES: Record<string, string> = {
   no_autorizado: "Tu sesión venció. Recargá la página.",
   archivo_grande: "La foto es demasiado grande.",
   formato_invalido: "Formato de imagen no soportado.",
+  error_almacenamiento: "No se pudo guardar la foto en Vercel Blob. Revisá el token o el límite del plan.",
+  fotos_sin_configurar: "Falta configurar el almacenamiento de fotos (Vercel Blob).",
 };
 
 export function mensajeError(e: unknown): string {

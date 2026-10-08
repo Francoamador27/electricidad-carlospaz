@@ -8,7 +8,7 @@ type Props = {
   prioridad?: boolean;
 };
 
-// <img> con srcset desde R2 (export estático: sin optimización de next/image).
+// <img> con srcset desde /img/ del Worker (export estático: sin optimización de next/image).
 export default function FotoImg({ foto, sizes = "100vw", className, prioridad }: Props) {
   return (
     // eslint-disable-next-line @next/next/no-img-element

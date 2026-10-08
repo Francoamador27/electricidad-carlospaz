@@ -247,3 +247,4 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - `llms.txt` y `llms-full.txt` se generan desde la base; robots permite rastreadores de IA.
 - Las 15 zonas quedan publicadas (Franco, 2026-10-08). Se pueden editar desde el panel.
 - Se evita repetir "matriculado": el sitio dice "electricista". Única mención de la matrícula: "Por qué elegirnos".
+- Fotos del panel: Vercel Blob (R2 pide tarjeta). Se sirven por /img/* del Worker con caché de Cloudflare; cambiar de proveedor = cambiar apps/api/src/lib/fotos.ts.

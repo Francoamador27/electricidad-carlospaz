@@ -5,7 +5,7 @@ Monorepo pnpm. Plan, decisiones y pendientes en [PLAN.md](PLAN.md).
 | Carpeta | Qué es |
 | --- | --- |
 | `apps/web` | Sitio (Next, export estático → Cloudflare Pages) y panel en `/admin` |
-| `apps/api` | API Hono en Cloudflare Workers: formularios, clics, panel, fotos (R2) |
+| `apps/api` | API Hono en Cloudflare Workers: formularios, clics, panel, fotos (Vercel Blob) |
 | `packages/db` | Schema Drizzle, migraciones y seed (Neon Postgres) |
 | `packages/shared` | Datos del negocio (teléfono, localidades, servicios) y schemas zod |
 

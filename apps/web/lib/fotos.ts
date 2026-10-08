@@ -2,7 +2,7 @@ import type { Foto } from "@voltis/db/schema";
 
 const IMG_BASE = process.env.NEXT_PUBLIC_IMG_URL ?? "";
 
-// Fotos con `anchos` vacío son archivos de /public. El resto vive en R2 como
+// Fotos con `anchos` vacío son archivos de /public. El resto se pide a /img/ del Worker como
 // `<key>-<ancho>.webp`.
 export function srcFoto(foto: Foto, ancho?: number): string {
   if (!foto.anchos.length) return foto.key;

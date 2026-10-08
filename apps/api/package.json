@@ -8,6 +8,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.1",
     "@voltis/db": "workspace:*",
     "@voltis/shared": "workspace:*",
     "hono": "^4.13.13",

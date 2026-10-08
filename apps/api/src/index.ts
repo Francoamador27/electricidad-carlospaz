@@ -4,6 +4,7 @@ import type { Env } from "./env";
 import { consultas } from "./routes/consultas";
 import { eventos } from "./routes/eventos";
 import { admin } from "./routes/admin";
+import { servirFoto } from "./lib/fotos";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -21,15 +22,8 @@ app.route("/api/consultas", consultas);
 app.route("/api/eventos", eventos);
 app.route("/admin/api", admin);
 
-// Fotos subidas desde el panel. En producción se sirven por el dominio propio de R2.
-app.get("/img/:key{.+}", async (c) => {
-  const objeto = await c.env.IMAGENES.get(c.req.param("key"));
-  if (!objeto) return c.notFound();
-  const headers = new Headers();
-  objeto.writeHttpMetadata(headers);
-  headers.set("etag", objeto.httpEtag);
-  return new Response(objeto.body, { headers });
-});
+// Fotos subidas desde el panel (Vercel Blob, con caché de Cloudflare).
+app.get("/img/:key{.+}", (c) => servirFoto(c.env, c.executionCtx, c.req.url, c.req.param("key")));
 
 app.onError((err, c) => {
   console.error(err);

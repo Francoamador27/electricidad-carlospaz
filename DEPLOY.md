@@ -23,9 +23,21 @@ panel y las fotos se sirven como rutas de `electricidadcarlospaz.proyectoswebsit
 
 | Servicio | Dónde | Qué hacer | Qué anotar |
 | --- | --- | --- | --- |
-| **R2** (fotos) | R2 → Create bucket | Nombre `voltis-imagenes`. No hace falta dominio propio: las fotos se sirven por `/img/*` del Worker | — |
 | **Turnstile** (antispam) | Turnstile → Add widget | Hostname `electricidadcarlospaz.proyectoswebsite.com`, modo Managed | Site key y Secret key |
 | **Email Routing** (avisos) | `proyectoswebsite.com` → Email → Email Routing | Activar. Destination addresses → agregar y verificar `francohugoamador25@gmail.com` | — |
+
+## 3b. Vercel Blob (fotos del panel)
+
+Sin tarjeta. Las fotos se guardan en Vercel pero el sitio las pide a `/img/*` de tu dominio: el
+Worker las trae una vez y las deja en la caché de Cloudflare, así casi no se usa la transferencia
+de Vercel.
+
+1. vercel.com → **Storage** → **Create** → **Blob** → nombre `voltis-fotos`, acceso **Public**.
+2. En el store → pestaña **.env.local** → copiá `BLOB_READ_WRITE_TOKEN`.
+3. Cargalo como secreto del Worker (paso 6) y en `apps/api/.dev.vars` para probar en local.
+
+Límites del plan gratis: 1 GB de almacenamiento y 10 GB de transferencia por mes. Si se superan,
+Vercel bloquea el store 30 días (no cobra). El plan Hobby de Vercel es para uso no comercial.
 
 ## 4. Cloudflare Access (login del panel)
 
@@ -55,7 +67,7 @@ Workers & Pages → tu proyecto de Pages → **Settings**:
 | `NEXT_PUBLIC_SITE_URL` | `https://electricidadcarlospaz.proyectoswebsite.com` |
 | `NEXT_PUBLIC_API_URL` | *(no la definas: la API vive en el mismo dominio)* |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | site key de Turnstile |
-| `NEXT_PUBLIC_IMG_URL` | `https://electricidadcarlospaz.proyectoswebsite.com/img` |
+| `NEXT_PUBLIC_IMG_URL` | `https://electricidadcarlospaz.proyectoswebsite.com/img` (lo sirve el Worker) |
 | `NODE_VERSION` | `22` |
 
 **Custom domains** → agregá `electricidadcarlospaz.proyectoswebsite.com` (si ya está, dejalo).
@@ -71,8 +83,8 @@ Workers & Pages → **Create** → Import a repository → este repo.
 | Root directory | `apps/api` |
 | Deploy command | `npx wrangler deploy` |
 
-`apps/api/wrangler.toml` ya tiene las rutas (`/api/*`, `/admin/api/*`, `/img/*`), el bucket R2 y el
-envío de emails configurados para este dominio. No hay que tocarlo.
+`apps/api/wrangler.toml` ya tiene las rutas (`/api/*`, `/admin/api/*`, `/img/*`) y el envío de emails
+configurados para este dominio. No hay que tocarlo.
 
 **Settings → Variables and Secrets** (tipo *Secret*):
 
@@ -84,6 +96,7 @@ envío de emails configurados para este dominio. No hay que tocarlo.
 | `ACCESS_TEAM_DOMAIN` | `algo.cloudflareaccess.com` |
 | `ACCESS_AUD` | AUD tag de Access |
 | `PAGES_DEPLOY_HOOK_URL` | URL del deploy hook de Pages |
+| `BLOB_READ_WRITE_TOKEN` | token de Vercel Blob (paso 3b) |
 
 **Nunca** cargues `ADMIN_SIN_AUTH` en producción.
 

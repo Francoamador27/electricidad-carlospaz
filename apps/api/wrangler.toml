@@ -17,10 +17,8 @@ routes = [
 ALLOWED_ORIGINS = "https://electricidadcarlospaz.proyectoswebsite.com"
 AVISO_REMITENTE = "avisos@proyectoswebsite.com"
 
-# Fotos subidas desde el panel; se sirven por /img/* del mismo dominio.
-[[r2_buckets]]
-binding = "IMAGENES"
-bucket_name = "voltis-imagenes"
+# Fotos: se guardan en Vercel Blob (secreto BLOB_READ_WRITE_TOKEN) y se sirven por /img/*
+# de este dominio con la caché de Cloudflare.
 
 # Aviso por email de cada consulta. Requiere Email Routing activo en proyectoswebsite.com
 # con la dirección de destino verificada.

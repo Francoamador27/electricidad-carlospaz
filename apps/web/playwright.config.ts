@@ -8,6 +8,8 @@ const PUERTO_API = 8788;
 
 export default defineConfig({
   testDir: "./e2e",
+  // Varios tests recorren todas las páginas: 30 s no alcanza con la suite en paralelo.
+  timeout: 90_000,
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
