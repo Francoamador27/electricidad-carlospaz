@@ -15,13 +15,10 @@ routes = [
 [vars]
 # En local se pisa con .dev.vars (http://localhost:3000).
 ALLOWED_ORIGINS = "https://electricidadcarlospaz.proyectoswebsite.com"
-AVISO_REMITENTE = "avisos@proyectoswebsite.com"
+# Aviso de consultas por SMTP de Hostinger. Usuario, contraseña y destino van como secretos:
+# SMTP_USER, SMTP_PASS y AVISO_DESTINO.
+SMTP_HOST = "smtp.hostinger.com"
+SMTP_PORT = "465"
 
 # Fotos: se guardan en Vercel Blob (secreto BLOB_READ_WRITE_TOKEN) y se sirven por /img/*
 # de este dominio con la caché de Cloudflare.
-
-# Aviso por email de cada consulta. Requiere Email Routing activo en proyectoswebsite.com
-# con la dirección de destino verificada.
-[[send_email]]
-name = "AVISOS"
-destination_address = "francohugoamador25@gmail.com"

@@ -2,9 +2,12 @@ export type Env = {
   DATABASE_URL: string;
   TURNSTILE_SECRET?: string;
   ALLOWED_ORIGINS: string;
-  AVISO_REMITENTE: string;
-  AVISO_DESTINO: string;
-  AVISOS?: SendEmail;
+  AVISO_DESTINO?: string;
+  // Aviso por email de cada consulta (SMTP de Hostinger).
+  SMTP_HOST?: string;
+  SMTP_PORT?: string;
+  SMTP_USER?: string;
+  SMTP_PASS?: string;
   // Vercel Blob (fotos): token del store y tipo de acceso ("private" por defecto).
   BLOB_READ_WRITE_TOKEN?: string;
   BLOB_ACCESS?: "public" | "private";

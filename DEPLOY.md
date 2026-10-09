@@ -24,7 +24,6 @@ panel y las fotos se sirven como rutas de `electricidadcarlospaz.proyectoswebsit
 | Servicio | Dónde | Qué hacer | Qué anotar |
 | --- | --- | --- | --- |
 | **Turnstile** (antispam) | Turnstile → Add widget | Hostname `electricidadcarlospaz.proyectoswebsite.com`, modo Managed | Site key y Secret key |
-| **Email Routing** (avisos) | `proyectoswebsite.com` → Email → Email Routing | Activar. Destination addresses → agregar y verificar `francohugoamador25@gmail.com` | — |
 
 ## 3b. Vercel Blob (fotos del panel)
 
@@ -85,8 +84,11 @@ Workers & Pages → **Create** → Import a repository → este repo.
 | Root directory | `apps/api` |
 | Deploy command | `npx wrangler deploy` |
 
-`apps/api/wrangler.toml` ya tiene las rutas (`/api/*`, `/admin/api/*`, `/img/*`) y el envío de emails
-configurados para este dominio. No hay que tocarlo.
+`apps/api/wrangler.toml` ya tiene las rutas (`/api/*`, `/admin/api/*`, `/img/*`) y el servidor SMTP de
+Hostinger (`smtp.hostinger.com:465`). No hay que tocarlo.
+
+Los avisos de consultas salen por SMTP de Hostinger: **no hace falta activar Email Routing** (y no
+conviene: reemplaza los registros MX del dominio).
 
 **Settings → Variables and Secrets** (tipo *Secret*):
 
@@ -95,11 +97,16 @@ configurados para este dominio. No hay que tocarlo.
 | `DATABASE_URL` | connection string de Neon |
 | `TURNSTILE_SECRET` | secret key de Turnstile |
 | `AVISO_DESTINO` | `francohugoamador25@gmail.com` |
+| `SMTP_USER` | casilla de Hostinger que envía los avisos (ej. `avisos@proyectoswebsite.com`) |
+| `SMTP_PASS` | contraseña de esa casilla |
 | `ACCESS_TEAM_DOMAIN` | `algo.cloudflareaccess.com` |
 | `ACCESS_AUD` | AUD tag de Access |
 | `PAGES_DEPLOY_HOOK_URL` | URL del deploy hook de Pages |
 | `BLOB_READ_WRITE_TOKEN` | token de Vercel Blob (paso 3b) |
 | `BLOB_ACCESS` | `private` (o `public` si el store es público) — opcional, por defecto `private` |
+
+Cargá todos como tipo **Secret**: las variables de texto agregadas en el dashboard se borran en
+cada deploy.
 
 **Nunca** cargues `ADMIN_SIN_AUTH` en producción.
 

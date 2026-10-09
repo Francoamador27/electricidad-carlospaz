@@ -13,6 +13,7 @@
     "@voltis/shared": "workspace:*",
     "hono": "^4.13.13",
     "jose": "^6.2.12",
+    "worker-mailer": "^1.2.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {

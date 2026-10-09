@@ -10,3 +10,6 @@ AVISO_DESTINO=tu@email.com
 BLOB_READ_WRITE_TOKEN=vercel_blob_rw_...
 # private (por defecto) o public, según cómo se creó el store.
 BLOB_ACCESS=private
+# SMTP de Hostinger (opcional en local: sin esto el aviso solo se loguea).
+# SMTP_USER=avisos@tudominio.com
+# SMTP_PASS=...
