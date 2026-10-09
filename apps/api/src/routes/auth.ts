@@ -26,7 +26,7 @@ const loginSchema = z.object({
 
 auth.post("/login", async (c) => {
   const estado = authConfigurada(c.env);
-  if (estado !== "ok") return c.json({ ok: false, error: estado === "debil" ? "password_debil" : "auth_no_configurado" }, 503);
+  if (estado !== "ok") return c.json({ ok: false, error: estado === "falta" ? "auth_no_configurado" : estado }, 503);
 
   const parsed = loginSchema.safeParse(await c.req.json().catch(() => null));
   if (!parsed.success) return c.json({ ok: false, error: "datos_invalidos" }, 400);

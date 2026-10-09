@@ -10,8 +10,9 @@ const MENSAJES: Record<string, string> = {
   credenciales: "Usuario o contraseña incorrectos.",
   bloqueado: "Demasiados intentos fallidos. Esperá 15 minutos y volvé a probar.",
   turnstile: "No pudimos verificar que seas una persona. Probá de nuevo.",
-  auth_no_configurado: "El login no está configurado en el servidor (faltan los secretos del Worker).",
-  password_debil: "La contraseña configurada en el servidor es muy corta (mínimo 12 caracteres).",
+  auth_no_configurado: "Faltan secretos del Worker: ADMIN_USUARIO, ADMIN_PASSWORD o ADMIN_SESSION_SECRET.",
+  password_debil: "ADMIN_PASSWORD es muy corta: tiene que tener 12 caracteres o más.",
+  secreto_debil: "ADMIN_SESSION_SECRET es muy corto: tiene que tener 32 caracteres o más.",
 };
 
 export default function Login({ alEntrar }: { alEntrar: (usuario: string) => void }) {

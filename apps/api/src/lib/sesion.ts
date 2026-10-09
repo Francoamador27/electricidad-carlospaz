@@ -11,9 +11,10 @@ const MIN_LARGO_PASSWORD = 12;
 
 type App = { Bindings: Env; Variables: { usuario: string } };
 
-export function authConfigurada(env: Env): "ok" | "falta" | "debil" {
+export function authConfigurada(env: Env): "ok" | "falta" | "password_debil" | "secreto_debil" {
   if (!env.ADMIN_USUARIO || !env.ADMIN_PASSWORD || !env.ADMIN_SESSION_SECRET) return "falta";
-  if (env.ADMIN_PASSWORD.length < MIN_LARGO_PASSWORD || env.ADMIN_SESSION_SECRET.length < 32) return "debil";
+  if (env.ADMIN_PASSWORD.length < MIN_LARGO_PASSWORD) return "password_debil";
+  if (env.ADMIN_SESSION_SECRET.length < 32) return "secreto_debil";
   return "ok";
 }
 
