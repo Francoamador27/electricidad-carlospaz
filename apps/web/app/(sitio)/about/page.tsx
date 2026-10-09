@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Image from "next/image";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import ContactBanner from "@/components/sections/ContactBanner";
 
-export const metadata: Metadata = {
-  title: "Sobre nosotros — Electricistas en Carlos Paz",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Sobre nosotros — Electricistas en Carlos Paz",
+  descripcion:
     "Conocé nuestro equipo de electricistas en Carlos Paz y Punilla, Córdoba. Más de 10 años de experiencia en instalaciones, mantenimiento y reparaciones eléctricas.",
-  alternates: { canonical: "/about" },
-};
+  ruta: "/about",
+});
 
 const team = [
   {

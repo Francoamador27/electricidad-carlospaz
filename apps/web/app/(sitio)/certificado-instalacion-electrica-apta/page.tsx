@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
@@ -9,12 +10,12 @@ import { SITE_URL } from "@/lib/site";
 
 const URL_PAGINA = "/certificado-instalacion-electrica-apta";
 
-export const metadata: Metadata = {
-  title: "Certificado de Instalación Eléctrica Apta (Ley 10.281)",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Certificado de Instalación Eléctrica Apta (Ley 10.281)",
+  descripcion:
     "Emitimos el Certificado de Instalación Eléctrica Apta de la Ley 10.281 de Córdoba para pedir la luz, cambiar la potencia o el tipo de medidor. Carlos Paz y Punilla.",
-  alternates: { canonical: URL_PAGINA },
-};
+  ruta: URL_PAGINA,
+});
 
 const CUANDO = [
   {

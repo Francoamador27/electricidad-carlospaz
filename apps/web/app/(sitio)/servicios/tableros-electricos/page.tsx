@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Tableros eléctricos en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Tableros eléctricos en Carlos Paz y Punilla",
+  descripcion:
     "Instalación, actualización y mantenimiento de tableros eléctricos en Carlos Paz y Punilla, Córdoba. Tableros modernos con disyuntores y protecciones. Electricistas.",
-  alternates: { canonical: "/servicios/tableros-electricos" },
-};
+  ruta: "/servicios/tableros-electricos",
+});
 
 const services = [
   {

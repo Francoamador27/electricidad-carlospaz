@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import FotoImg from "@/components/ui/FotoImg";
 import { formatoFecha, getPosts } from "@/lib/contenido";
 
-export const metadata: Metadata = {
-  title: "Blog de electricidad — Consejos y tips en Carlos Paz",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Blog de electricidad — Consejos y tips en Carlos Paz",
+  descripcion:
     "Blog sobre electricidad domiciliaria y comercial en Carlos Paz y Punilla, Córdoba. Consejos de seguridad eléctrica, mantenimiento y novedades del sector.",
-  alternates: { canonical: "/blog" },
-};
+  ruta: "/blog",
+});
 
 
 export default async function BlogPage() {

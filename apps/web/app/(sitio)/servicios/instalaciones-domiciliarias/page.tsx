@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Instalaciones domiciliarias en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Instalaciones domiciliarias en Carlos Paz y Punilla",
+  descripcion:
     "Instalaciones eléctricas domiciliarias en Carlos Paz y Punilla, Córdoba. Tendido de cables, bocas de luz, tomas, interruptores y más. Electricistas con garantía.",
-  alternates: { canonical: "/servicios/instalaciones-domiciliarias" },
-};
+  ruta: "/servicios/instalaciones-domiciliarias",
+});
 
 const benefits = [
   "Instalación eléctrica completa para obra nueva y remodelaciones",

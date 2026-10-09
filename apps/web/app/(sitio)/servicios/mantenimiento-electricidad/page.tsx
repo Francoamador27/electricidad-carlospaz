@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Mantenimiento eléctrico en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Mantenimiento eléctrico en Carlos Paz y Punilla",
+  descripcion:
     "Mantenimiento eléctrico preventivo y correctivo en Carlos Paz y Punilla, Córdoba. Revisiones, diagnóstico y certificaciones eléctricas. Electricistas.",
-  alternates: { canonical: "/servicios/mantenimiento-electricidad" },
-};
+  ruta: "/servicios/mantenimiento-electricidad",
+});
 
 const checks = [
   "Revisión del tablero eléctrico y todos sus disyuntores",

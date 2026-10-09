@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import { NEGOCIO, linkWhatsapp } from "@voltis/shared";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Política de privacidad",
-  description: "Cómo usa Voltis los datos que dejás en el formulario y las cookies del sitio.",
-  alternates: { canonical: "/politica-de-privacidad" },
-};
+export const metadata: Metadata = metaPagina({
+  titulo: "Política de privacidad",
+  descripcion:
+    "Cómo usa Voltis los datos que dejás en el formulario y las cookies del sitio.",
+  ruta: "/politica-de-privacidad",
+});
 
 // TODO(Franco): completar razón social / CUIT y email de contacto antes de publicar.
 const ACTUALIZADA = "8 de octubre de 2026";

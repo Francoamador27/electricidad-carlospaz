@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 
-export const metadata: Metadata = {
-  title: "Servicios eléctricos en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Servicios eléctricos en Carlos Paz y Punilla",
+  descripcion:
     "Servicios eléctricos profesionales en Carlos Paz y Punilla, Córdoba: instalaciones domiciliarias, comerciales, mantenimiento, reparaciones y tableros eléctricos.",
-  alternates: { canonical: "/servicios" },
-};
+  ruta: "/servicios",
+});
 
 const services = [
   {

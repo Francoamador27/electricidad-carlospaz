@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Hero from "@/components/sections/Hero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import Process from "@/components/sections/Process";
@@ -11,14 +12,13 @@ import SeoText from "@/components/sections/SeoText";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import ContactBanner from "@/components/sections/ContactBanner";
 
-export const metadata: Metadata = {
-  title: "Electricista en Carlos Paz y Punilla | Voltis",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Electricista en Carlos Paz y Punilla",
+  descripcion:
     "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento eléctrico, reparaciones, tableros y cámaras de seguridad. Presupuesto sin cargo.",
-  alternates: {
-    canonical: "/",
-  },
-};
+  ruta: "/",
+  tituloAbsoluto: true,
+});
 
 export default function HomePage() {
   return (

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Reparaciones eléctricas urgentes en Carlos Paz y Punilla",
+  descripcion:
     "Reparaciones eléctricas en Carlos Paz y Punilla, Córdoba. Cortocircuitos, enchufes quemados, interruptores defectuosos y búsqueda de fallas. Electricistas.",
-  alternates: { canonical: "/servicios/reparaciones-electricas" },
-};
+  ruta: "/servicios/reparaciones-electricas",
+});
 
 const repairs = [
   {

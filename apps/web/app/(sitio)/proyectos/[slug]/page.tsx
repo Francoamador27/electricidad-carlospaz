@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
@@ -34,13 +35,13 @@ export async function generateMetadata({
   if (!p) return {};
   const titulo = p.zona ? `${p.titulo} en ${p.zona.nombre}` : p.titulo;
   const foto = fotoPrincipal(p);
-  return {
-    title: titulo,
-    description: textoPlano(p.descripcion),
-    alternates: { canonical: `/proyectos/${p.slug}` },
-    openGraph: foto ? { images: [{ url: srcFoto(foto), alt: foto.alt }] } : undefined,
-    robots: p.estado === "borrador" ? { index: false } : undefined,
-  };
+  return metaPagina({
+    titulo,
+    descripcion: textoPlano(p.descripcion),
+    ruta: `/proyectos/${p.slug}`,
+    imagen: foto ? { url: srcFoto(foto), alt: foto.alt } : undefined,
+    noIndexar: p.estado === "borrador",
+  });
 }
 
 const ETIQUETA = { antes: "Antes", despues: "Después", general: "" } as const;

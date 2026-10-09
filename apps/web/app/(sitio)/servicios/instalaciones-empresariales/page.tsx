@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Instalaciones eléctricas para empresas en Carlos Paz",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Instalaciones eléctricas para empresas en Carlos Paz",
+  descripcion:
     "Instalaciones eléctricas comerciales e industriales en Carlos Paz y Punilla. Electricistas para locales, oficinas, hoteles y empresas. Con garantía y certificaciones.",
-  alternates: { canonical: "/servicios/instalaciones-empresariales" },
-};
+  ruta: "/servicios/instalaciones-empresariales",
+});
 
 const services = [
   {

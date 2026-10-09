@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { IMAGEN_OG } from "@/lib/seo";
 import { getConfig } from "@/lib/contenido";
 
 const spaceGrotesk = Space_Grotesk({
@@ -80,15 +81,7 @@ const metadataBase: Metadata = {
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
       "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía.",
-    images: [
-      {
-        url: "/logo-voltis.png",
-        width: 1080,
-        height: 1080,
-        alt: "Voltis — Instalaciones Eléctricas en Carlos Paz y Punilla",
-        type: "image/png",
-      },
-    ],
+    images: [IMAGEN_OG],
   },
 
   twitter: {
@@ -96,7 +89,7 @@ const metadataBase: Metadata = {
     title: "Electricista en Carlos Paz y Punilla | Voltis",
     description:
       "Electricistas en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y cámaras de seguridad.",
-    images: ["/logo-voltis.png"],
+    images: [IMAGEN_OG.url],
   },
 
   robots: {

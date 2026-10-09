@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import ContactBanner from "@/components/sections/ContactBanner";
 import ProyectoCard from "@/components/sections/ProyectoCard";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 import { getProyectosConRelaciones } from "@/lib/contenido";
 
-export const metadata: Metadata = {
-  title: "Proyectos eléctricos realizados en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Proyectos eléctricos realizados en Carlos Paz y Punilla",
+  descripcion:
     "Proyectos de instalaciones eléctricas realizados en Carlos Paz y Punilla, Córdoba. Trabajos en viviendas, locales comerciales, oficinas e industrias.",
-  alternates: { canonical: "/proyectos" },
-};
+  ruta: "/proyectos",
+});
 
 export default async function ProjectsPage() {
   const proyectos = await getProyectosConRelaciones();

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
@@ -27,12 +28,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const zona = await getZona((await params).slug);
   if (!zona) return {};
-  return {
-    title: zona.seoTitulo ?? `Electricista en ${zona.nombre}`,
-    description: zona.seoDescripcion ?? undefined,
-    alternates: { canonical: `/zonas/${zona.slug}` },
-    robots: zona.estado === "borrador" ? { index: false } : undefined,
-  };
+  return metaPagina({
+    titulo: zona.seoTitulo ?? `Electricista en ${zona.nombre}`,
+    descripcion:
+      zona.seoDescripcion ??
+      `Electricistas en ${zona.nombre}, Córdoba. Instalaciones, mantenimiento, reparaciones y tableros eléctricos. Presupuesto sin cargo.`,
+    ruta: `/zonas/${zona.slug}`,
+    noIndexar: zona.estado === "borrador",
+  });
 }
 
 export default async function ZonaPage({ params }: { params: Promise<{ slug: string }> }) {

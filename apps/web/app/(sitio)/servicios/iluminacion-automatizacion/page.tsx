@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { LINK_TELEFONO } from "@voltis/shared";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
-export const metadata: Metadata = {
-  title: "Iluminación y automatización en Carlos Paz y Punilla",
-  description:
+export const metadata: Metadata = metaPagina({
+  titulo: "Iluminación y automatización en Carlos Paz y Punilla",
+  descripcion:
     "Instalación de iluminación LED, sensores de movimiento, automatización eléctrica y cámaras de seguridad en Carlos Paz y Punilla, Córdoba. Electricistas con garantía.",
-  alternates: { canonical: "/servicios/iluminacion-automatizacion" },
-};
+  ruta: "/servicios/iluminacion-automatizacion",
+});
 
 const services = [
   {

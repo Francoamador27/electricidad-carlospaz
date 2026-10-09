@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaPagina } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContactBanner from "@/components/sections/ContactBanner";
@@ -24,19 +25,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return {};
-  return {
-    title: post.seoTitulo ?? post.titulo,
-    description: post.seoDescripcion ?? post.extracto,
-    alternates: { canonical: `/blog/${slug}` },
-    openGraph: {
-      type: "article",
-      title: post.titulo,
-      description: post.extracto,
-      publishedTime: post.publicadoAt?.toISOString(),
-      images: post.portada ? [{ url: srcFoto(post.portada), alt: post.portada.alt }] : undefined,
-    },
-    robots: post.estado === "borrador" ? { index: false } : undefined,
-  };
+  return metaPagina({
+    titulo: post.seoTitulo ?? post.titulo,
+    descripcion: post.seoDescripcion ?? post.extracto,
+    ruta: `/blog/${slug}`,
+    imagen: post.portada ? { url: srcFoto(post.portada), alt: post.portada.alt } : undefined,
+    articulo: { publicado: post.publicadoAt, modificado: post.updatedAt },
+    noIndexar: post.estado === "borrador",
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
