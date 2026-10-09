@@ -40,13 +40,20 @@ de Vercel.
 Límites del plan gratis: 1 GB de almacenamiento y 10 GB de transferencia por mes. Si se superan,
 Vercel bloquea el store 30 días (no cobra). El plan Hobby de Vercel es para uso no comercial.
 
-## 4. Cloudflare Access (login del panel)
+## 4. Login del panel
 
-1. **Zero Trust** → Settings → anotá el *team domain* (`algo.cloudflareaccess.com`).
-2. Access → Applications → **Add an application** → Self-hosted.
-   - Dominio: `electricidadcarlospaz.proyectoswebsite.com`, ruta `admin*`.
-   - Policy: Allow → Emails → tu email (y el de quien deba entrar).
-3. En la aplicación creada, copiá el **Application Audience (AUD) Tag**.
+El panel usa **usuario y contraseña + Turnstile** (sin Cloudflare Access, que pide tarjeta). Se
+configura con tres secretos del Worker (paso 6):
+
+- `ADMIN_USUARIO`: el usuario con el que vas a entrar (por ejemplo `franco`).
+- `ADMIN_PASSWORD`: una contraseña de **12 caracteres o más**. Si la cambiás, se cierran todas las
+  sesiones abiertas.
+- `ADMIN_SESSION_SECRET`: una cadena aleatoria de **32 caracteres o más** (nadie la tiene que
+  recordar). Para generarla, en PowerShell:
+  `-join ((48..57)+(65..90)+(97..122) | Get-Random -Count 48 | % {[char]$_})`
+
+Protecciones: Turnstile en el login, bloqueo de 15 minutos tras 5 intentos fallidos por conexión,
+sesión de 30 días en cookie HttpOnly/Secure/SameSite=Strict y rechazo de pedidos desde otros sitios.
 
 ## 5. Pages (sitio web)
 
@@ -99,8 +106,9 @@ conviene: reemplaza los registros MX del dominio).
 | `AVISO_DESTINO` | `francohugoamador25@gmail.com` |
 | `SMTP_USER` | casilla de Hostinger que envía los avisos (ej. `avisos@proyectoswebsite.com`) |
 | `SMTP_PASS` | contraseña de esa casilla |
-| `ACCESS_TEAM_DOMAIN` | `algo.cloudflareaccess.com` |
-| `ACCESS_AUD` | AUD tag de Access |
+| `ADMIN_USUARIO` | usuario del panel (paso 4) |
+| `ADMIN_PASSWORD` | contraseña del panel, 12+ caracteres (paso 4) |
+| `ADMIN_SESSION_SECRET` | cadena aleatoria de 32+ caracteres (paso 4) |
 | `PAGES_DEPLOY_HOOK_URL` | URL del deploy hook de Pages |
 | `BLOB_READ_WRITE_TOKEN` | token de Vercel Blob (paso 3b) |
 | `BLOB_ACCESS` | `private` (o `public` si el store es público) — opcional, por defecto `private` |
@@ -119,7 +127,7 @@ y la API automáticamente.
 
 - [ ] `https://electricidadcarlospaz.proyectoswebsite.com` carga; `/sitemap.xml`, `/robots.txt` y `/llms.txt` responden.
 - [ ] Formulario de presupuesto → llega el email y aparece en Panel → Consultas.
-- [ ] `/admin` pide el código por email y deja entrar solo a los emails permitidos.
+- [ ] `/admin` pide usuario y contraseña; con datos incorrectos no entra y tras 5 intentos se bloquea.
 - [ ] Subir una foto a un proyecto → **Publicar cambios** → en 1–2 minutos se ve en el sitio.
 - [ ] `https://<proyecto>.pages.dev` redirige al dominio (Pages → Custom domains).
 - [ ] [PageSpeed Insights](https://pagespeed.web.dev) móvil ≥ 90 y [prueba de resultados enriquecidos](https://search.google.com/test/rich-results) sin errores.

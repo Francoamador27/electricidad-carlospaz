@@ -4,6 +4,7 @@ import type { Env } from "./env";
 import { consultas } from "./routes/consultas";
 import { eventos } from "./routes/eventos";
 import { admin } from "./routes/admin";
+import { auth } from "./routes/auth";
 import { servirFoto } from "./lib/fotos";
 
 const app = new Hono<{ Bindings: Env }>();
@@ -20,6 +21,7 @@ app.use("*", async (c, next) => {
 app.get("/api/health", (c) => c.json({ ok: true }));
 app.route("/api/consultas", consultas);
 app.route("/api/eventos", eventos);
+app.route("/admin/api/auth", auth);
 app.route("/admin/api", admin);
 
 // Fotos subidas desde el panel (Vercel Blob, con caché de Cloudflare).

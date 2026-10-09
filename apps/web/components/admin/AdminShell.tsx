@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { adminApi, mensajeError } from "@/lib/admin-api";
+import { useEffect, useState } from "react";
+import Login from "@/components/admin/Login";
+import { adminApi, ErrorApi, mensajeError } from "@/lib/admin-api";
 
 const SECCIONES = [
   { href: "/admin", label: "Conversiones" },
@@ -20,6 +21,24 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   const [publicando, setPublicando] = useState(false);
   const [aviso, setAviso] = useState<{ tipo: "ok" | "error"; texto: string } | null>(null);
   const [menu, setMenu] = useState(false);
+  // undefined = verificando, null = sin sesión.
+  const [usuario, setUsuario] = useState<string | null | undefined>(undefined);
+  const [errorConexion, setErrorConexion] = useState<string | null>(null);
+
+  useEffect(() => {
+    adminApi<{ usuario: string }>("/yo")
+      .then((r) => setUsuario(r.usuario))
+      .catch((e) => {
+        if (e instanceof ErrorApi && e.estado === 401) setUsuario(null);
+        else if (e instanceof ErrorApi && e.estado === 503) setUsuario(null);
+        else setErrorConexion(mensajeError(e));
+      });
+  }, []);
+
+  async function salir() {
+    await adminApi("/auth/salir", { method: "POST" }).catch(() => undefined);
+    setUsuario(null);
+  }
 
   async function publicar() {
     if (!confirm("¿Publicar los cambios? El sitio se regenera en 1–2 minutos.")) return;
@@ -38,6 +57,16 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     } finally {
       setPublicando(false);
     }
+  }
+
+  if (errorConexion) {
+    return <p className="p-8 text-red-700">{errorConexion}</p>;
+  }
+  if (usuario === undefined) {
+    return <p className="p-8 text-slate-500">Cargando...</p>;
+  }
+  if (usuario === null) {
+    return <Login alEntrar={setUsuario} />;
   }
 
   const activa = (href: string) => (href === "/admin" ? ruta === "/admin" : ruta.startsWith(href));
@@ -77,6 +106,11 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             <a href="/" target="_blank" className="block text-center text-xs text-slate-400 hover:text-white">
               Ver sitio ↗
             </a>
+            {usuario !== "local" && (
+              <button onClick={salir} className="block w-full text-center text-xs text-slate-400 hover:text-white">
+                Salir ({usuario})
+              </button>
+            )}
           </div>
         </nav>
       </aside>

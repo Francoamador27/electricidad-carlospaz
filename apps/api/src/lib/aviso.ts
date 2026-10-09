@@ -1,6 +1,6 @@
 // Aviso por email de cada consulta, por SMTP (casilla de Hostinger). Sin SMTP configurado
 // (desarrollo) solo se loguea en la consola.
-import { WorkerMailer } from "worker-mailer";
+import { enviarCorreo, smtpListo } from "./correo";
 import type { Consulta } from "@voltis/shared";
 import type { Env } from "../env";
 
@@ -72,35 +72,19 @@ ${mensaje}
 </div>`;
 }
 
-export function smtpConfigurado(env: Env): boolean {
-  return Boolean(env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASS && env.AVISO_DESTINO);
-}
 
 export async function enviarAviso(env: Env, c: Consulta): Promise<void> {
   const asunto = `Nueva consulta: ${c.nombre}${c.localidad ? ` (${c.localidad})` : ""}`;
-  if (!smtpConfigurado(env)) {
+  if (!smtpListo(env) || !env.AVISO_DESTINO) {
     console.log(`[aviso] ${asunto}\n${cuerpoTexto(c)}`);
     return;
   }
-  const puerto = Number(env.SMTP_PORT ?? 465);
-  await WorkerMailer.send(
-    {
-      host: env.SMTP_HOST!,
-      port: puerto,
-      // 465 = SSL directo (Hostinger). 587 = STARTTLS.
-      secure: puerto === 465,
-      startTls: puerto !== 465,
-      credentials: { username: env.SMTP_USER!, password: env.SMTP_PASS! },
-      authType: ["plain", "login"],
-    },
-    {
-      from: { name: "Voltis — sitio web", email: env.SMTP_USER! },
-      to: env.AVISO_DESTINO!.split(",").map((e) => e.trim()),
-      // "Responder" en el mail le contesta directo al cliente, si dejó su email.
-      reply: c.email ? { name: c.nombre, email: c.email } : undefined,
-      subject: asunto,
-      text: cuerpoTexto(c),
-      html: cuerpoHtml(c),
-    },
-  );
+  await enviarCorreo(env, {
+    para: env.AVISO_DESTINO.split(",").map((e) => e.trim()),
+    // "Responder" en el mail le contesta directo al cliente, si dejó su email.
+    responderA: c.email ? { nombre: c.nombre, email: c.email } : undefined,
+    asunto,
+    texto: cuerpoTexto(c),
+    html: cuerpoHtml(c),
+  });
 }

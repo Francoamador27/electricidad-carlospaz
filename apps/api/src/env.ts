@@ -11,9 +11,10 @@ export type Env = {
   // Vercel Blob (fotos): token del store y tipo de acceso ("private" por defecto).
   BLOB_READ_WRITE_TOKEN?: string;
   BLOB_ACCESS?: "public" | "private";
-  // Cloudflare Access: dominio del equipo (xxx.cloudflareaccess.com) y AUD de la aplicación.
-  ACCESS_TEAM_DOMAIN?: string;
-  ACCESS_AUD?: string;
+  // Login del panel (secretos). La contraseña necesita 12+ caracteres y el secreto de sesión 32+.
+  ADMIN_USUARIO?: string;
+  ADMIN_PASSWORD?: string;
+  ADMIN_SESSION_SECRET?: string;
   // Solo en .dev.vars: desactiva la autenticación del panel en local.
   ADMIN_SIN_AUTH?: string;
   PAGES_DEPLOY_HOOK_URL?: string;

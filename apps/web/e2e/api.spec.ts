@@ -46,18 +46,40 @@ test("eventos: rechaza tipos desconocidos y JSON roto", async ({ request }) => {
   expect((await request.post("/api/eventos", { data: "no es json" })).status()).toBe(400);
 });
 
-test("panel: sin Cloudflare Access configurado queda cerrado (falla cerrado)", async ({ request }) => {
-  for (const ruta of ["/admin/api/consultas", "/admin/api/estadisticas", "/admin/api/config"]) {
-    const res = await request.get(ruta);
-    expect([401, 503], ruta).toContain(res.status());
+test("panel: sin sesión no se puede leer ni modificar nada", async ({ request }) => {
+  for (const ruta of ["/admin/api/consultas", "/admin/api/estadisticas", "/admin/api/config", "/admin/api/yo"]) {
+    expect((await request.get(ruta)).status(), ruta).toBe(401);
   }
-  const borrar = await request.delete("/admin/api/proyectos/1");
-  expect([401, 503]).toContain(borrar.status());
+  expect((await request.delete("/admin/api/proyectos/1")).status()).toBe(401);
 });
 
-test("panel: un JWT falso no entra", async ({ request }) => {
+test("panel: una cookie de sesión falsa no entra", async ({ request }) => {
   const res = await request.get("/admin/api/consultas", {
-    headers: { "Cf-Access-Jwt-Assertion": "eyJhbGciOiJSUzI1NiJ9.e30.firma-falsa" },
+    headers: { Cookie: "voltis_sesion=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmcmFuY28ifQ.firma-falsa" },
   });
-  expect([401, 503]).toContain(res.status());
+  expect(res.status()).toBe(401);
+});
+
+test("panel: pedidos que modifican desde otro sitio se rechazan (CSRF)", async ({ request }) => {
+  const res = await request.post("/admin/api/publicar", { headers: { Origin: "https://sitio-malicioso.com" } });
+  expect(res.status()).toBe(403);
+  expect((await res.json()).error).toBe("origen_no_permitido");
+});
+
+test("login: sin Turnstile válido se rechaza antes de probar la contraseña", async ({ request }) => {
+  const res = await request.post("/admin/api/auth/login", {
+    data: { usuario: "franco", password: "clave-de-prueba-larga", turnstileToken: "token-invalido" },
+  });
+  expect(res.status()).toBe(403);
+  expect(res.headers()["set-cookie"]).toBeUndefined();
+});
+
+test("login: datos incompletos se rechazan", async ({ request }) => {
+  expect((await request.post("/admin/api/auth/login", { data: { usuario: "" } })).status()).toBe(400);
+});
+
+test("salir borra la cookie de sesión", async ({ request }) => {
+  const res = await request.post("/admin/api/auth/salir");
+  expect(res.status()).toBe(200);
+  expect(res.headers()["set-cookie"]).toContain("voltis_sesion=;");
 });

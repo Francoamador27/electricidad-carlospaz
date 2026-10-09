@@ -3,13 +3,13 @@ import type { z } from "zod";
 import { CLAVES_CONFIG, configInput, postInput, proyectoInput, resenaInput, zonaInput, ANCHOS_FOTO } from "@voltis/shared";
 import { asc, desc, eq, getDb, schema, sql } from "@voltis/db";
 import type { Env } from "../env";
-import { requiereAccess } from "../lib/access";
+import { requiereSesion } from "../lib/sesion";
 import { blobConfigurado, guardarFoto } from "../lib/fotos";
 
 type App = { Bindings: Env; Variables: { usuario: string } };
 
 export const admin = new Hono<App>();
-admin.use("*", requiereAccess);
+admin.use("*", requiereSesion);
 
 // ---------- CRUD genérico ----------
 

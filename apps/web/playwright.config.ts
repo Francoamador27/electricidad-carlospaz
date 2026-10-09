@@ -30,8 +30,9 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
     },
     {
-      // Sin ADMIN_SIN_AUTH: el panel tiene que quedar cerrado.
-      command: `pnpm --filter @voltis/api exec wrangler dev --port ${PUERTO_API} --var ADMIN_SIN_AUTH:0`,
+      // Sin ADMIN_SIN_AUTH: el panel pide login. Turnstile de prueba que siempre rechaza: los tests
+      // de login cortan antes de escribir en la base.
+      command: `pnpm --filter @voltis/api exec wrangler dev --port ${PUERTO_API} --var ADMIN_SIN_AUTH:0 --var ADMIN_USUARIO:franco --var ADMIN_PASSWORD:clave-de-prueba-larga --var ADMIN_SESSION_SECRET:secreto-de-sesion-de-prueba-32-caracteres --var TURNSTILE_SECRET:2x0000000000000000000000000000000AA`,
       port: PUERTO_API,
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,

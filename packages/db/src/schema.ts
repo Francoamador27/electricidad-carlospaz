@@ -136,3 +136,16 @@ export const config = pgTable("config", {
   valor: text("valor").notNull(),
   updatedAt: actualizado(),
 });
+
+// Intentos de login al panel: sirve para bloquear después de varios errores.
+export const adminIntentos = pgTable(
+  "admin_intentos",
+  {
+    id: serial("id").primaryKey(),
+    ip: text("ip").notNull(),
+    usuario: text("usuario"),
+    exito: boolean("exito").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("admin_intentos_ip_idx").on(t.ip, t.createdAt)],
+);

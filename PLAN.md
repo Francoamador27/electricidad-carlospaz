@@ -249,3 +249,4 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 - Se evita repetir "matriculado": el sitio dice "electricista". Única mención de la matrícula: "Por qué elegirnos".
 - Fotos del panel: Vercel Blob (R2 pide tarjeta). Se sirven por /img/* del Worker con caché de Cloudflare; cambiar de proveedor = cambiar apps/api/src/lib/fotos.ts.
 - Avisos de consultas por SMTP de Hostinger (smtp.hostinger.com:465) en lugar de Email Routing, para no tocar los MX de proyectoswebsite.com.
+- Login del panel: usuario + contraseña (secretos del Worker) + Turnstile, bloqueo por intentos y sesión firmada de 30 días. Sin Cloudflare Access (pide tarjeta).

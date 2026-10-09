@@ -31,6 +31,7 @@ async function simularAdmin(page: Page) {
     const json = (body: unknown, status = 200) =>
       route.fulfill({ status, headers: cors(), contentType: "application/json", body: JSON.stringify(body) });
 
+    if (ruta === "/yo") return json({ usuario: "franco" });
     if (ruta === "/estadisticas")
       return json({
         dias: 30,
@@ -204,4 +205,45 @@ test("editor de texto: el contenido viejo en Markdown se abre con formato", asyn
   const editor = page.getByRole("textbox", { name: "Descripción del trabajo" });
   await expect(editor.locator("h2")).toHaveText("Cómo lo hacemos");
   await expect(editor.locator("li strong")).toHaveText("Paso uno");
+});
+
+test("login: sin sesión muestra el formulario y al entrar muestra el panel", async ({ page }) => {
+  const llamadas = await simularAdmin(page);
+  let logueado = false;
+  // /yo responde 401 hasta que se hace login.
+  await page.route(`${API}/admin/api/yo`, (route) =>
+    logueado
+      ? route.fulfill({ status: 200, headers: cors(), contentType: "application/json", body: JSON.stringify({ usuario: "franco" }) })
+      : route.fulfill({ status: 401, headers: cors(), contentType: "application/json", body: JSON.stringify({ ok: false, error: "no_autorizado" }) }),
+  );
+  await page.route(`${API}/admin/api/auth/login`, async (route) => {
+    const cuerpo = route.request().postDataJSON();
+    if (cuerpo.password !== "correcta-123456") {
+      return route.fulfill({ status: 401, headers: cors(), contentType: "application/json", body: JSON.stringify({ ok: false, error: "credenciales" }) });
+    }
+    logueado = true;
+    return route.fulfill({ status: 200, headers: cors(), contentType: "application/json", body: JSON.stringify({ ok: true, usuario: "franco" }) });
+  });
+  // Turnstile falso que entrega un token al instante.
+  await page.route("https://challenges.cloudflare.com/**", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/javascript",
+      body: "window.turnstile={render:function(el,o){setTimeout(function(){o.callback('token-ok')},10);return 'w1'},remove:function(){},reset:function(){}};",
+    }),
+  );
+
+  await page.goto("/admin");
+  await expect(page.getByRole("button", { name: "Entrar" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Conversiones" })).toHaveCount(0);
+
+  await page.getByLabel("Usuario").fill("franco");
+  await page.getByLabel("Contraseña").fill("incorrecta");
+  await page.getByRole("button", { name: "Entrar" }).click();
+  await expect(page.getByText("Usuario o contraseña incorrectos.")).toBeVisible();
+
+  await page.getByLabel("Contraseña").fill("correcta-123456");
+  await page.getByRole("button", { name: "Entrar" }).click();
+  await expect(page.getByRole("heading", { name: "Conversiones" })).toBeVisible();
+  void llamadas;
 });
