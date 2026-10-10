@@ -39,7 +39,7 @@ export default function WhyUs() {
     <section className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-12">
-          <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
+          <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
             Por qué elegirnos
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">

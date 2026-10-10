@@ -18,7 +18,7 @@ export default async function BlogPreview() {
     <section className="py-16 md:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-wide">
+          <span className="text-amber-700 font-semibold text-sm uppercase tracking-wide">
             Blog eléctrico
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
@@ -52,12 +52,12 @@ export default async function BlogPreview() {
                   >
                     {post.categoria}
                   </span>
-                  <time className="text-xs text-slate-400">{formatoFecha(post.publicadoAt)}</time>
+                  <time className="text-xs text-slate-500">{formatoFecha(post.publicadoAt)}</time>
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2 leading-snug">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="hover:text-amber-600 transition-colors"
+                    className="hover:text-amber-700 transition-colors"
                   >
                     {post.titulo}
                   </Link>
@@ -65,7 +65,7 @@ export default async function BlogPreview() {
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{post.extracto}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-amber-600 text-sm font-semibold hover:underline"
+                  className="text-amber-700 text-sm font-semibold hover:underline"
                 >
                   Leer artículo →
                 </Link>

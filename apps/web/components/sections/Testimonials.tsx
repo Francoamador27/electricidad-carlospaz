@@ -1,6 +1,6 @@
 import AnimateIn from "@/components/ui/AnimateIn";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
-import { linkWhatsapp } from "@voltis/shared";
+import { linkWhatsapp } from "@voltis/shared/negocio";
 import { getResenas } from "@/lib/contenido";
 
 // Solo reseñas reales cargadas desde el panel. Sin reseñas publicadas, la sección no se muestra.
@@ -12,7 +12,7 @@ export default async function Testimonials() {
     <section className="py-20 md:py-28 bg-parchment">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-12">
-          <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
+          <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
             Clientes
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
@@ -26,7 +26,7 @@ export default async function Testimonials() {
               <div className="group flex flex-col flex-1 bg-white border border-warm-border rounded p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)]">
                 <div className="flex gap-0.5 mb-4" aria-label={`${t.estrellas} de 5 estrellas`}>
                   {Array.from({ length: t.estrellas }).map((_, i) => (
-                    <span key={i} className="text-copper text-base">★</span>
+                    <span key={i} className="text-copper-dark text-base">★</span>
                   ))}
                 </div>
 
@@ -58,7 +58,7 @@ export default async function Testimonials() {
               href={linkWhatsapp("Hola, quiero dejar mi opinión sobre el servicio")}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-copper font-semibold hover:underline"
+              className="text-copper-dark font-semibold hover:underline"
             >
               Dejanos tu reseña por WhatsApp →
             </a>

@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               ¿Necesitás ayuda con esto?{" "}
               <Link
                 href={`/servicios/${servicio.slug}`}
-                className="text-amber-600 font-semibold hover:underline"
+                className="text-amber-700 font-semibold hover:underline"
               >
                 Conocé nuestro servicio de {servicio.nombre.toLowerCase()} →
               </Link>
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </h2>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-amber-600 hover:underline font-medium"
+            className="inline-flex items-center gap-2 text-amber-700 hover:underline font-medium"
           >
             ← Ver todos los artículos del blog
           </Link>

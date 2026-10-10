@@ -13,7 +13,7 @@ import {
   getZonas,
   paramsOVacio,
 } from "@/lib/contenido";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 
 export const dynamicParams = false;
 

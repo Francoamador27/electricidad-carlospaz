@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-2.5 mb-4">
             <div className="bg-white rounded-lg p-0.5">
               <Image
-                src="/logo-voltis.png"
+                src="/logo-voltis-200.webp"
                 alt="Voltis Instalaciones Eléctricas"
                 width={40}
                 height={40}
@@ -186,7 +186,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-dark-border py-4">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-[#4A4540]">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-muted">
           <p>© {new Date().getFullYear()} Voltis — Todos los derechos reservados.</p>
           <p>Electricistas en Carlos Paz, Punilla y Córdoba, Argentina</p>
         </div>

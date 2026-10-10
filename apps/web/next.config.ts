@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   distDir: process.env.npm_lifecycle_event === "dev" ? ".next-dev" : ".next",
   output: "export",
   transpilePackages: ["@voltis/shared", "@voltis/db"],
+  // CSS dentro del HTML: el primer pintado no espera a descargar un .css aparte.
+  experimental: { inlineCss: true },
   images: {
     unoptimized: true,
   },

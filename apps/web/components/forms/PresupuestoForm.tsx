@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { QuoteFormData } from "@/types";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 import AntiSpam from "@/components/forms/AntiSpam";
 import { enviarConsulta } from "@/lib/consultas";
 
@@ -282,7 +282,7 @@ export default function PresupuestoForm() {
 
                 <p className="text-xs text-slate-500 text-center">
                   Respondemos en el día. También podés llamarnos al{" "}
-                  <a href={LINK_TELEFONO} className="text-amber-600 hover:underline font-medium">
+                  <a href={LINK_TELEFONO} className="text-amber-700 hover:underline font-medium">
                     {NEGOCIO.telefonoVisible}
                   </a>
                 </p>

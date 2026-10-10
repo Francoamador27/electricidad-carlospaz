@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SERVICIOS } from "@voltis/shared";
+import { SERVICIOS } from "@voltis/shared/negocio";
 import { SITE_URL } from "@/lib/site";
 import { getPosts, getProyectos, getZonas } from "@/lib/contenido";
 

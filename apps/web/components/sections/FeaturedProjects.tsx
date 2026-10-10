@@ -12,7 +12,7 @@ export default async function FeaturedProjects() {
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-wide">
+          <span className="text-amber-700 font-semibold text-sm uppercase tracking-wide">
             Trabajos realizados
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">

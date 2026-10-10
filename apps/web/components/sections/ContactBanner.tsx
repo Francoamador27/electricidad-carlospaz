@@ -1,4 +1,4 @@
-import { LINK_TELEFONO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, linkWhatsapp } from "@voltis/shared/negocio";
 
 ﻿import Button from "@/components/ui/Button";
 

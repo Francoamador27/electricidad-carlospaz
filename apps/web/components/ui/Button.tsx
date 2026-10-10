@@ -13,9 +13,9 @@ interface ButtonProps {
 }
 
 const variants: Record<Variant, string> = {
-  primary: "bg-copper hover:bg-copper-light text-white font-semibold",
+  primary: "bg-copper-dark hover:bg-copper-darker text-white font-semibold",
   secondary: "bg-ink hover:bg-[#1A1A1A] text-white font-semibold",
-  outline: "border border-copper text-copper hover:bg-copper hover:text-white font-semibold",
+  outline: "border border-copper-dark text-copper-dark hover:bg-copper-dark hover:text-white font-semibold",
 };
 
 const base =

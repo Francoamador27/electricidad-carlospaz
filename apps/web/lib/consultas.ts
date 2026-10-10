@@ -1,4 +1,5 @@
-import { linkWhatsapp, type Consulta } from "@voltis/shared";
+import type { Consulta } from "@voltis/shared";
+import { linkWhatsapp } from "@voltis/shared/negocio";
 import { API_URL, contextoPagina, leerAtribucion, registrarClic, track } from "@/lib/tracking";
 
 type DatosConsulta = Omit<Consulta, "paginaOrigen" | "atribucion" | "turnstileToken" | "empresa">;

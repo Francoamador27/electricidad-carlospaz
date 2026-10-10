@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ContactFormData } from "@/types";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 import AntiSpam from "@/components/forms/AntiSpam";
 import { enviarConsulta } from "@/lib/consultas";
 
@@ -86,13 +86,13 @@ export default function ContactoForm() {
                 {
                   icon: "📞",
                   title: "Teléfono",
-                  content: <a href={LINK_TELEFONO} className="text-amber-600 hover:underline font-medium">{NEGOCIO.telefonoVisible}</a>,
+                  content: <a href={LINK_TELEFONO} className="text-amber-700 hover:underline font-medium">{NEGOCIO.telefonoVisible}</a>,
                 },
                 {
                   icon: "💬",
                   title: "WhatsApp",
                   content: (
-                    <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-medium">
+                    <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="text-amber-700 hover:underline font-medium">
                       {NEGOCIO.telefonoInternacional}
                     </a>
                   ),
@@ -100,7 +100,7 @@ export default function ContactoForm() {
                 {
                   icon: "✉️",
                   title: "Email",
-                  content: <a href="mailto:francohugoamador25@gmail.com" className="text-amber-600 hover:underline font-medium">francohugoamador25@gmail.com</a>,
+                  content: <a href="mailto:francohugoamador25@gmail.com" className="text-amber-700 hover:underline font-medium">francohugoamador25@gmail.com</a>,
                 },
                 {
                   icon: "📍",
@@ -271,7 +271,7 @@ export default function ContactoForm() {
 
                 <p className="text-xs text-slate-500 text-center">
                   También podés escribirnos directamente por{" "}
-                  <a href={linkWhatsapp()} className="text-amber-600 hover:underline font-medium" target="_blank" rel="noopener noreferrer">
+                  <a href={linkWhatsapp()} className="text-amber-700 hover:underline font-medium" target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </a>
                 </p>

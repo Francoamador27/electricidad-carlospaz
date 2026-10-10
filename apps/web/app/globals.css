@@ -5,9 +5,12 @@
   --color-ink-deep: #18140F;
   --color-copper: #C4762A;
   --color-copper-light: #D4882E;
+  /* Cobre para fondos con texto blanco y para texto sobre fondo claro (contraste AA). */
+  --color-copper-dark: #9A581B;
+  --color-copper-darker: #84491A;
   --color-parchment: #F5F2EE;
   --color-muted: #9A9080;
-  --color-warm-gray: #7A7060;
+  --color-warm-gray: #6E6455;
   --color-warm-border: #E0DDD8;
   --color-dark-border: #2A2520;
 }
@@ -33,9 +36,53 @@
   to { width: 4rem; }
 }
 
+/* Entrada del hero en CSS puro: arranca con el primer pintado, sin esperar al JS.
+   El título y el párrafo (candidatos a LCP) solo se desplazan: nunca están invisibles. */
+@keyframes volt-rise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes volt-slide {
+  from { transform: translateY(20px); }
+}
+
+.volt-rise,
+.volt-slide {
+  animation: volt-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--volt-delay, 0s);
+}
+
+.volt-slide {
+  animation-name: volt-slide;
+}
+
+/* Aparición al hacer scroll (AnimateIn / StaggerGrid): el JS solo agrega `data-visible`. */
+.volt-reveal,
+.volt-stagger-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--volt-delay, 0s),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--volt-delay, 0s);
+}
+
+.volt-reveal[data-direccion="left"] { transform: translateX(-20px); }
+.volt-reveal[data-direccion="none"] { transform: none; }
+.volt-stagger-item { transform: translateY(22px); }
+
+.volt-reveal[data-visible],
+.volt-stagger[data-visible] > .volt-stagger-item {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   @keyframes volt-drift { 0%, 100% { transform: none; } }
   @keyframes volt-line-grow { from { width: 4rem; } }
+  .volt-rise,
+  .volt-slide { animation: none; }
+  .volt-reveal,
+  .volt-stagger-item { opacity: 1; transform: none; transition: none; }
 }
 
 html {
@@ -69,7 +116,7 @@ h6 {
 .contenido-rico h3 { font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-top: 1.75rem; }
 .contenido-rico h4 { font-weight: 700; color: #0f172a; }
 .contenido-rico strong, .contenido-rico b { color: #0f172a; font-weight: 700; }
-.contenido-rico a { color: #d97706; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+.contenido-rico a { color: #bb4d00; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 .contenido-rico mark { background: #fef08a; padding: 0 .15em; border-radius: 2px; }
 .contenido-rico ul, .contenido-rico ol { padding-left: 0; }
 .contenido-rico ul > li { list-style: none; display: flex; gap: .75rem; }

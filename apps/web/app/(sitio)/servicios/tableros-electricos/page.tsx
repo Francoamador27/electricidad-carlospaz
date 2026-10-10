@@ -3,7 +3,7 @@ import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -106,7 +106,7 @@ export default function TablerosPage() {
             <p className="text-slate-700 text-sm mt-1">
               Nunca intervengas en él sin ser electricista habilitado. Un tablero mal intervenido
               puede dejar sin protección toda la instalación.{" "}
-              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+              <a href={LINK_TELEFONO} className="text-amber-700 font-semibold hover:underline">
                 Llamanos al {NEGOCIO.telefonoVisible}
               </a>{" "}
               y lo resolvemos de forma segura.
@@ -230,7 +230,7 @@ export default function TablerosPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

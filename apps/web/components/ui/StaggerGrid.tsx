@@ -1,43 +1,26 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { useRevelar } from "@/components/ui/useRevelar";
 
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.09,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  },
-};
+// Escalonado: cada hijo entra 90 ms después del anterior.
+function escalonar(el: HTMLElement) {
+  Array.from(el.children).forEach((hijo, i) =>
+    (hijo as HTMLElement).style.setProperty("--volt-delay", `${0.05 + i * 0.09}s`),
+  );
+}
 
 export function StaggerGrid({
   children,
-  className,
+  className = "",
 }: {
   children: React.ReactNode;
   className?: string;
 }) {
+  const ref = useRevelar<HTMLDivElement>(escalonar);
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-72px" }}
-      className={className}
-    >
+    <div ref={ref} className={`volt-stagger ${className}`}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -48,9 +31,5 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <motion.div variants={item} className={className}>
-      {children}
-    </motion.div>
-  );
+  return <div className={`volt-stagger-item ${className}`}>{children}</div>;
 }

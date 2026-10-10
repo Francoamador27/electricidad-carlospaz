@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 
 const services = [
   { label: "Instalaciones domiciliarias", href: "/servicios/instalaciones-domiciliarias" },
@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <header className="bg-parchment sticky top-0 z-50 border-b border-warm-border">
       {/* Top bar */}
-      <div className="bg-ink text-[#5A5450] text-xs py-1.5">
+      <div className="bg-ink text-muted text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center">
           <span className="tracking-wide">Carlos Paz y Punilla, Córdoba</span>
           <div className="flex items-center gap-5">
@@ -56,7 +56,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo-voltis.png"
+            src="/logo-voltis-200.webp"
             alt="Voltis Instalaciones Eléctricas"
             width={100}
             height={100}
@@ -120,7 +120,7 @@ export default function Header() {
 
           <Link
             href="/presupuesto"
-            className="font-display bg-copper hover:bg-copper-light text-white font-semibold px-5 py-2 rounded-sm transition-colors tracking-wide text-xs uppercase"
+            className="font-display bg-copper-dark hover:bg-copper-darker text-white font-semibold px-5 py-2 rounded-sm transition-colors tracking-wide text-xs uppercase"
           >
             Presupuesto
           </Link>
@@ -202,7 +202,7 @@ export default function Header() {
           </Link>
           <Link
             href="/presupuesto"
-            className="font-display block mt-3 bg-copper text-white font-semibold px-4 py-3 rounded-sm text-center tracking-wide text-sm hover:bg-copper-light transition-colors"
+            className="font-display block mt-3 bg-copper-dark text-white font-semibold px-4 py-3 rounded-sm text-center tracking-wide text-sm hover:bg-copper-darker transition-colors"
             onClick={() => setMenuOpen(false)}
           >
             Solicitar presupuesto

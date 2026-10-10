@@ -4,7 +4,7 @@ import Link from "next/link";
 import ContactBanner from "@/components/sections/ContactBanner";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 import { getZonas } from "@/lib/contenido";
-import { LOCALIDADES } from "@voltis/shared";
+import { LOCALIDADES } from "@voltis/shared/negocio";
 
 export const metadata: Metadata = metaPagina({
   titulo: "Zonas de cobertura — Electricista en Carlos Paz y Punilla",
@@ -55,7 +55,7 @@ export default async function ZonasPage() {
                           </span>
                         )}
                       </span>
-                      <span className="text-amber-600">→</span>
+                      <span className="text-amber-700">→</span>
                     </Link>
                   ) : (
                     <span className="flex items-center border border-slate-200 rounded-xl px-5 py-4 text-slate-700">
@@ -68,7 +68,7 @@ export default async function ZonasPage() {
           </ul>
           <p className="text-slate-600 text-sm mt-8 text-center">
             ¿Tu localidad no está en la lista?{" "}
-            <Link href="/contacto" className="text-amber-600 font-semibold hover:underline">
+            <Link href="/contacto" className="text-amber-700 font-semibold hover:underline">
               Consultanos
             </Link>{" "}
             y te decimos si llegamos.

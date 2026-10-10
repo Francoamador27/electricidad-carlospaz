@@ -3,7 +3,7 @@ import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO } from "@voltis/shared";
+import { LINK_TELEFONO } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -113,7 +113,7 @@ export default function IluminacionAutomatizacionPage() {
             </p>
             <p className="text-slate-700 text-sm mt-1">
               Cambiar a tecnología LED con automatización reduce ese consumo drásticamente.{" "}
-              <a href="/presupuesto" className="text-amber-600 font-semibold hover:underline">
+              <a href="/presupuesto" className="text-amber-700 font-semibold hover:underline">
                 Pedí un presupuesto sin cargo
               </a>{" "}
               y te calculamos el ahorro estimado para tu propiedad.
@@ -227,7 +227,7 @@ export default function IluminacionAutomatizacionPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

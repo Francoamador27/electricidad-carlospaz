@@ -92,7 +92,7 @@ export default function ServicesGrid() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
+            <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
               Servicios
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ink leading-tight">
@@ -111,14 +111,14 @@ export default function ServicesGrid() {
                 href={service.href}
                 className="group flex flex-col flex-1 bg-white border border-warm-border rounded p-6 transition-all duration-300 hover:border-copper hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(196,118,42,0.1)]"
               >
-                <div className="text-copper mb-4 transition-transform duration-300 group-hover:scale-110 origin-left">
+                <div className="text-copper-dark mb-4 transition-transform duration-300 group-hover:scale-110 origin-left">
                   <service.Icon />
                 </div>
                 <h3 className="font-display font-semibold text-ink text-base mb-2 transition-colors group-hover:text-copper">
                   {service.title}
                 </h3>
                 <p className="text-warm-gray text-sm leading-relaxed flex-1">{service.description}</p>
-                <div className="mt-4 text-copper text-xs font-semibold tracking-wide uppercase flex items-center gap-1 transition-gap">
+                <div className="mt-4 text-copper-dark text-xs font-semibold tracking-wide uppercase flex items-center gap-1 transition-gap">
                   <span>Ver más</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </div>

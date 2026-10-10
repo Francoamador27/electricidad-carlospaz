@@ -22,13 +22,13 @@ export default function ProyectoCard({ p, sizes }: { p: ProyectoConRelaciones; s
               {p.servicio.nombre}
             </span>
           )}
-          {p.zona && <span className="text-xs text-slate-400">📍 {p.zona.nombre}</span>}
+          {p.zona && <span className="text-xs text-slate-500">📍 {p.zona.nombre}</span>}
           {p.estado === "borrador" && (
             <span className="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">BORRADOR</span>
           )}
         </div>
         <h3 className="font-bold text-slate-900 mb-2 leading-snug">
-          <Link href={`/proyectos/${p.slug}`} className="hover:text-amber-600 transition-colors">
+          <Link href={`/proyectos/${p.slug}`} className="hover:text-amber-700 transition-colors">
             {p.titulo}
           </Link>
         </h3>

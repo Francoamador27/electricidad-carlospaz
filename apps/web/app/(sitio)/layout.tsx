@@ -1,5 +1,5 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared";
+import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared/negocio";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";

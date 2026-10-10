@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LINK_TELEFONO, LOCALIDADES, NEGOCIO } from "@voltis/shared";
+import { LINK_TELEFONO, LOCALIDADES, NEGOCIO } from "@voltis/shared/negocio";
 import { getZonas } from "@/lib/contenido";
 
 

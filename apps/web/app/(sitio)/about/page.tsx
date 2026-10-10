@@ -85,7 +85,7 @@ export default function AboutPage() {
 
           <div className="relative aspect-video rounded-xl overflow-hidden">
             <Image
-              src="/images/reparando-espalda.jpg"
+              src="/images/opt/reparando-espalda-768.webp"
               alt="Equipo Voltis trabajando en Carlos Paz"
               fill
               className="object-cover"
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 <Image src={`/images/${member.filename}`} alt={member.name} width={200} height={200} className="rounded-full mx-auto mb-4 object-cover" />
                 */}
                 <h3 className="font-bold text-slate-900">{member.name}</h3>
-                <p className="text-amber-600 text-sm mb-2">{member.role}</p>
+                <p className="text-amber-700 text-sm mb-2">{member.role}</p>
                 <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}

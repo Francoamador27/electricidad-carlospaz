@@ -111,13 +111,13 @@ export default async function ProyectoPage({ params }: { params: Promise<{ slug:
             {p.servicio && (
               <Link
                 href={`/servicios/${p.servicio.slug}`}
-                className="text-amber-600 font-semibold hover:underline"
+                className="text-amber-700 font-semibold hover:underline"
               >
                 Servicio: {p.servicio.nombre} →
               </Link>
             )}
             {p.zona && (
-              <Link href={`/zonas/${p.zona.slug}`} className="text-amber-600 font-semibold hover:underline">
+              <Link href={`/zonas/${p.zona.slug}`} className="text-amber-700 font-semibold hover:underline">
                 Electricista en {p.zona.nombre} →
               </Link>
             )}

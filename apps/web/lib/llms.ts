@@ -1,6 +1,6 @@
 // Contenido de /llms.txt y /llms-full.txt (https://llmstxt.org), generado en el build
 // desde la base para que nunca quede desactualizado.
-import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared";
+import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared/negocio";
 import { getPosts, getProyectosConRelaciones, getZonas } from "@/lib/contenido";
 import { SITE_URL } from "@/lib/site";
 import { aMarkdown } from "@/lib/contenido-html";

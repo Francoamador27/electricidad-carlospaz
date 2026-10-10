@@ -1,6 +1,6 @@
 import AnimateIn from "@/components/ui/AnimateIn";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
-import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
 
 const steps = [
   {
@@ -28,7 +28,7 @@ export default function Process() {
     <section className="py-20 md:py-28 bg-parchment">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-14">
-          <span className="font-display text-copper text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
+          <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
             Cómo trabajamos
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
@@ -48,7 +48,7 @@ export default function Process() {
                   {step.number}
                 </div>
                 <div className="relative">
-                  <div className="font-display text-copper font-bold text-sm tracking-[0.15em] uppercase mb-4">
+                  <div className="font-display text-copper-dark font-bold text-sm tracking-[0.15em] uppercase mb-4">
                     {step.number}
                   </div>
                   <h3 className="font-display font-bold text-ink text-xl mb-3">{step.title}</h3>
@@ -62,7 +62,7 @@ export default function Process() {
         <AnimateIn delay={0.2} className="mt-12 pt-8 border-t border-warm-border">
           <a
             href={LINK_TELEFONO}
-            className="font-display inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide hover:bg-copper-light transition-all duration-200 hover:shadow-[0_4px_16px_rgba(196,118,42,0.3)] active:scale-[0.97]"
+            className="font-display inline-flex items-center gap-2 bg-copper-dark text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide hover:bg-copper-darker transition-all duration-200 hover:shadow-[0_4px_16px_rgba(196,118,42,0.3)] active:scale-[0.97]"
           >
             Empezar — {NEGOCIO.telefonoVisible}
           </a>

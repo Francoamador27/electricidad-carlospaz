@@ -3,7 +3,7 @@ import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -113,7 +113,7 @@ export default function MantenimientoPage() {
             <ul className="space-y-3">
               {checks.map((c) => (
                 <li key={c} className="flex items-start gap-3">
-                  <span className="text-amber-500 font-bold text-lg mt-0.5">✓</span>
+                  <span className="text-amber-700 font-bold text-lg mt-0.5">✓</span>
                   <span className="text-slate-700">{c}</span>
                 </li>
               ))}
@@ -226,7 +226,7 @@ export default function MantenimientoPage() {
             </p>
             <p>
               Para coordinar una revisión preventiva en Carlos Paz o Punilla, llamanos al{" "}
-              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+              <a href={LINK_TELEFONO} className="text-amber-700 font-semibold hover:underline">
                 {NEGOCIO.telefonoVisible}
               </a>{" "}
               o completá el formulario de presupuesto.
@@ -249,7 +249,7 @@ export default function MantenimientoPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

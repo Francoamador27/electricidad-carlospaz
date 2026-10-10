@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 
 export default function CTAPresupuesto() {
   return (
@@ -20,7 +20,7 @@ export default function CTAPresupuesto() {
             href={linkWhatsapp("Hola, necesito un electricista")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg shadow-lg"
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg shadow-lg"
           >
             💬 Escribir por WhatsApp
           </a>

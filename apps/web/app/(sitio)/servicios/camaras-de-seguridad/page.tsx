@@ -3,7 +3,7 @@ import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO } from "@voltis/shared";
+import { LINK_TELEFONO } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -123,7 +123,7 @@ export default function CamarasSeguridadPage() {
             <p>
               Como electricistas, cuidamos la parte que más falla en estos sistemas: la
               alimentación y el cableado. También podemos combinar las cámaras con{" "}
-              <a href="/servicios/iluminacion-automatizacion" className="text-amber-600 font-semibold hover:underline">
+              <a href="/servicios/iluminacion-automatizacion" className="text-amber-700 font-semibold hover:underline">
                 iluminación exterior con sensores y automatización
               </a>
               .
@@ -145,7 +145,7 @@ export default function CamarasSeguridadPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

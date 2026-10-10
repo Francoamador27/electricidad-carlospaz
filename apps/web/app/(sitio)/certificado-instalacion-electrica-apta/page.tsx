@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import { Breadcrumbs, JsonLd } from "@/components/seo/JsonLd";
-import { LINK_TELEFONO, LOCALIDADES, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, LOCALIDADES, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 import { SITE_URL } from "@/lib/site";
 
 const URL_PAGINA = "/certificado-instalacion-electrica-apta";
@@ -115,7 +115,7 @@ export default function CertificadoPage() {
                 href={linkWhatsapp("Hola, necesito el certificado de instalación eléctrica apta")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 💬 Consultar por WhatsApp
               </a>
@@ -185,7 +185,7 @@ export default function CertificadoPage() {
           <p>
             Si tu tablero todavía tiene fusibles o no tiene diferencial, es muy probable que haya que
             adecuarlo antes. Lo hacemos en la misma visita o en una siguiente:{" "}
-            <Link href="/servicios/tableros-electricos" className="text-amber-600 font-semibold hover:underline">
+            <Link href="/servicios/tableros-electricos" className="text-amber-700 font-semibold hover:underline">
               actualización de tableros eléctricos
             </Link>
             .
@@ -206,7 +206,7 @@ export default function CertificadoPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

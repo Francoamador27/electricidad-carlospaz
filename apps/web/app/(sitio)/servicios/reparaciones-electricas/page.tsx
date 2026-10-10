@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { metaPagina } from "@/lib/seo";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -104,7 +104,7 @@ export default function ReparacionesPage() {
                 href={linkWhatsapp("Hola, tengo una falla eléctrica")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold px-6 py-3 rounded-lg transition-colors"
               >
                 💬 Escribir por WhatsApp
               </a>
@@ -220,7 +220,7 @@ export default function ReparacionesPage() {
             </p>
             <p>
               Para coordinar una reparación en Carlos Paz y Punilla, llamanos al{" "}
-              <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+              <a href={LINK_TELEFONO} className="text-amber-700 font-semibold hover:underline">
                 {NEGOCIO.telefonoVisible}
               </a>
               . Atendemos {NEGOCIO.horarioTexto}.
@@ -243,7 +243,7 @@ export default function ReparacionesPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
+import { useRevelar } from "@/components/ui/useRevelar";
 
 interface Props {
   children: React.ReactNode;
@@ -12,26 +13,18 @@ interface Props {
 export default function AnimateIn({
   children,
   delay = 0,
-  className,
+  className = "",
   direction = "up",
 }: Props) {
+  const ref = useRevelar<HTMLDivElement>();
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: direction === "up" ? 28 : 0,
-        x: direction === "left" ? -20 : 0,
-      }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
-      transition={{
-        duration: 0.6,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      viewport={{ once: true, margin: "-72px" }}
-      className={className}
+    <div
+      ref={ref}
+      data-direccion={direction}
+      className={`volt-reveal ${className}`}
+      style={{ "--volt-delay": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,0 +1,11 @@
+# Cabeceras de Cloudflare Pages (https://developers.cloudflare.com/pages/configuration/headers/).
+# Los archivos de /_next/static llevan hash en el nombre: nunca cambian, se cachean un año.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Imágenes de /public: pueden reemplazarse con el mismo nombre, así que caché de 30 días.
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/logo-voltis-200.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400

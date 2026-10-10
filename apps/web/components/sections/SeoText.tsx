@@ -1,4 +1,4 @@
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 
 export default function SeoText() {
   return (
@@ -46,7 +46,7 @@ export default function SeoText() {
                   "Reparaciones y búsqueda de fallas",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 items-start">
-                    <span className="text-amber-500 font-bold shrink-0">✓</span>
+                    <span className="text-amber-700 font-bold shrink-0">✓</span>
                     <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
@@ -67,7 +67,7 @@ export default function SeoText() {
                   "Instalación de cámaras de seguridad",
                 ].map((item) => (
                   <li key={item} className="flex gap-2 items-start">
-                    <span className="text-amber-500 font-bold shrink-0">✓</span>
+                    <span className="text-amber-700 font-bold shrink-0">✓</span>
                     <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
@@ -83,7 +83,7 @@ export default function SeoText() {
 
           <p>
             Todos nuestros <strong>trabajos eléctricos incluyen garantía</strong>. Atendemos {NEGOCIO.horarioTexto}. Llamanos al{" "}
-            <a href={LINK_TELEFONO} className="text-amber-600 font-semibold hover:underline">
+            <a href={LINK_TELEFONO} className="text-amber-700 font-semibold hover:underline">
               {NEGOCIO.telefonoVisible}
             </a>{" "}
             o escribinos por{" "}
@@ -91,7 +91,7 @@ export default function SeoText() {
               href={linkWhatsapp()}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-600 font-semibold hover:underline"
+              className="text-amber-700 font-semibold hover:underline"
             >
               WhatsApp
             </a>

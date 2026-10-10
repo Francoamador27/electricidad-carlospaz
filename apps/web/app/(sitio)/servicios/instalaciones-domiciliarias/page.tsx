@@ -3,7 +3,7 @@ import { metaPagina } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
-import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
 import ServicioJsonLd from "@/components/seo/ServicioJsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -116,7 +116,7 @@ export default function InstalacionesDomiciliariasPage() {
             <ul className="space-y-3">
               {benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3">
-                  <span className="text-amber-500 font-bold text-lg mt-0.5">✓</span>
+                  <span className="text-amber-700 font-bold text-lg mt-0.5">✓</span>
                   <span className="text-slate-700">{b}</span>
                 </li>
               ))}
@@ -255,7 +255,7 @@ export default function InstalacionesDomiciliariasPage() {
               >
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex justify-between items-center gap-4">
                   {item.q}
-                  <span className="text-amber-500 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
+                  <span className="text-amber-700 shrink-0 text-xl font-bold group-open:rotate-45 transition-transform">
                     +
                   </span>
                 </summary>

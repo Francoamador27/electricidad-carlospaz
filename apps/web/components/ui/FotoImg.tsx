@@ -1,5 +1,5 @@
 import type { Foto } from "@voltis/db/schema";
-import { srcFoto, srcSetFoto } from "@/lib/fotos";
+import { srcMostrar, srcSetFoto } from "@/lib/fotos";
 
 type Props = {
   foto: Foto;
@@ -13,7 +13,7 @@ export default function FotoImg({ foto, sizes = "100vw", className, prioridad }:
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={srcFoto(foto)}
+      src={srcMostrar(foto)}
       srcSet={srcSetFoto(foto)}
       sizes={srcSetFoto(foto) ? sizes : undefined}
       width={foto.ancho}

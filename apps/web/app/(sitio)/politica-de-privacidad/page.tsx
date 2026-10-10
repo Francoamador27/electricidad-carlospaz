@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { metaPagina } from "@/lib/seo";
-import { NEGOCIO, linkWhatsapp } from "@voltis/shared";
+import { NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = metaPagina({
@@ -70,7 +70,7 @@ export default function PrivacidadPage() {
           <p>
             Según la Ley 25.326 de Protección de Datos Personales, podés pedirnos acceso,
             rectificación, actualización o supresión de tus datos. Escribinos por{" "}
-            <a href={linkWhatsapp()} className="text-amber-600 hover:underline">WhatsApp</a> al{" "}
+            <a href={linkWhatsapp()} className="text-amber-700 hover:underline">WhatsApp</a> al{" "}
             {NEGOCIO.telefonoInternacional}.
           </p>
           <p>

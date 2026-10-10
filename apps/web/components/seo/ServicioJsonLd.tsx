@@ -1,4 +1,4 @@
-import { LOCALIDADES, SERVICIOS } from "@voltis/shared";
+import { LOCALIDADES, SERVICIOS } from "@voltis/shared/negocio";
 import { SITE_URL } from "@/lib/site";
 import { Breadcrumbs, JsonLd } from "@/components/seo/JsonLd";
 

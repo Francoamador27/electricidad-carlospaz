@@ -57,17 +57,17 @@ export default async function BlogPage() {
                     <span className="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
                       {post.categoria}
                     </span>
-                    <time className="text-xs text-slate-400">{formatoFecha(post.publicadoAt)}</time>
+                    <time className="text-xs text-slate-500">{formatoFecha(post.publicadoAt)}</time>
                   </div>
                   <h2 className="font-bold text-slate-900 text-lg mb-2 leading-snug">
-                    <Link href={`/blog/${post.slug}`} className="hover:text-amber-600 transition-colors">
+                    <Link href={`/blog/${post.slug}`} className="hover:text-amber-700 transition-colors">
                       {post.titulo}
                     </Link>
                   </h2>
                   <p className="text-slate-600 text-sm leading-relaxed mb-4">{post.extracto}</p>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="text-amber-600 text-sm font-semibold hover:underline"
+                    className="text-amber-700 text-sm font-semibold hover:underline"
                   >
                     Leer artículo →
                   </Link>
