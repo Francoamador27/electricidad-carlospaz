@@ -238,11 +238,22 @@ test("login: sin sesión muestra el formulario y al entrar muestra el panel", as
   await expect(page.getByRole("heading", { name: "Conversiones" })).toHaveCount(0);
 
   await page.getByLabel("Usuario").fill("franco");
-  await page.getByLabel("Contraseña").fill("incorrecta");
+  await page.getByLabel("Contraseña", { exact: true }).fill("incorrecta");
+
+  // El ojo muestra y oculta lo que se escribió.
+  const campo = page.getByLabel("Contraseña", { exact: true });
+  await expect(campo).toHaveAttribute("type", "password");
+  await page.getByRole("button", { name: "Mostrar contraseña" }).click();
+  await expect(campo).toHaveAttribute("type", "text");
+  await expect(campo).toHaveValue("incorrecta");
+  await page.getByRole("button", { name: "Ocultar contraseña" }).click();
+  await expect(campo).toHaveAttribute("type", "password");
+  await page.getByRole("button", { name: "Mostrar contraseña" }).click();
   await page.getByRole("button", { name: "Entrar" }).click();
   await expect(page.getByText("Usuario o contraseña incorrectos.")).toBeVisible();
+  await expect(campo).toHaveAttribute("type", "password");
 
-  await page.getByLabel("Contraseña").fill("correcta-123456");
+  await page.getByLabel("Contraseña", { exact: true }).fill("correcta-123456");
   await page.getByRole("button", { name: "Entrar" }).click();
   await expect(page.getByRole("heading", { name: "Conversiones" })).toBeVisible();
   void llamadas;

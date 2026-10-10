@@ -1,6 +1,7 @@
 import type { Foto } from "@voltis/db/schema";
 
-const IMG_BASE = process.env.NEXT_PUBLIC_IMG_URL ?? "";
+// Por defecto, el Worker del mismo dominio (/img). En local, .env.local apunta a :8787/img.
+const IMG_BASE = (process.env.NEXT_PUBLIC_IMG_URL || "/img").replace(/\/$/, "");
 
 // Fotos con `anchos` vacío son archivos de /public. El resto se pide a /img/ del Worker como
 // `<key>-<ancho>.webp`.

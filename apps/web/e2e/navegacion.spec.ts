@@ -65,7 +65,8 @@ test("los proyectos de referencia se ven y enlazan a su servicio", async ({ page
   await page.goto("/proyectos");
   const tarjetas = page.locator("article");
   expect(await tarjetas.count()).toBeGreaterThanOrEqual(7);
-  await tarjetas.first().getByRole("link").last().click();
+  // Uno de referencia concreto: el panel puede sumar proyectos nuevos al principio de la lista.
+  await page.locator('a[href="/proyectos/actualizacion-tablero-electrico-domiciliario"]').last().click();
   await expect(page.getByText("Trabajo de referencia")).toBeVisible();
   await expect(page.getByRole("link", { name: /^Servicio:/ })).toBeVisible();
 });
