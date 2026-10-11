@@ -67,6 +67,18 @@ async function simularAdmin(page: Page) {
           createdAt: new Date().toISOString(),
         },
       ]);
+    if (ruta === "/eventos")
+      return json([
+        {
+          id: 3,
+          tipo: "click_whatsapp",
+          pagina: "/zonas/cosquin",
+          servicio: null,
+          zona: "Cosquín",
+          atribucion: { utm_source: "facebook" },
+          createdAt: new Date(Date.now() + 60_000).toISOString(),
+        },
+      ]);
     return json({ ok: false, error: "no_simulado" }, 404);
   });
   return llamadas;
@@ -90,6 +102,24 @@ test("consultas: lista el lead con botón para responder por WhatsApp", async ({
   const responder = page.getByRole("link", { name: "Responder por WhatsApp" });
   await expect(responder).toHaveAttribute("href", /wa\.me\/5493515551234/);
   await expect(page.getByText("Google Ads")).toBeVisible();
+});
+
+test("consultas: también muestra los clics en WhatsApp y se pueden filtrar", async ({ page }) => {
+  await simularAdmin(page);
+  await page.goto("/admin/consultas");
+  const clic = page.getByRole("article").filter({ hasText: "Tocó WhatsApp" });
+  await expect(clic).toContainText("desde /zonas/cosquin");
+  await expect(clic).toContainText("facebook");
+  // El clic es más nuevo: va primero.
+  await expect(page.getByRole("article").first()).toContainText("Tocó WhatsApp");
+
+  await page.getByRole("radio", { name: "Formularios" }).click({ force: true });
+  await expect(clic).toHaveCount(0);
+  await expect(page.getByText("Juan Pérez")).toBeVisible();
+
+  await page.getByRole("radio", { name: "WhatsApp" }).click({ force: true });
+  await expect(clic).toBeVisible();
+  await expect(page.getByText("Juan Pérez")).toHaveCount(0);
 });
 
 test("proyectos: crear uno con foto lo procesa, lo sube y lo guarda", async ({ page }) => {

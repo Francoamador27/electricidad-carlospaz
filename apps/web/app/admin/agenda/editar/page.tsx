@@ -60,7 +60,15 @@ const AVISOS = [
   { valor: "1440", nombre: "1 día antes" },
 ];
 
-function vacio(fecha: string): Form {
+// Hora de fin por defecto: dos horas después del inicio (sin pasar de las 23:59).
+function dosHorasDespues(hora: string): string {
+  const [h, m] = hora.split(":").map(Number);
+  const fin = Math.min(h * 60 + m + 120, 23 * 60 + 59);
+  return `${String(Math.floor(fin / 60)).padStart(2, "0")}:${String(fin % 60).padStart(2, "0")}`;
+}
+
+function vacio(fecha: string, hora: string | null = null): Form {
+  const desde = hora && /^\d{2}:\d{2}$/.test(hora) ? hora : "09:00";
   return {
     titulo: "",
     servicioId: null,
@@ -75,9 +83,9 @@ function vacio(fecha: string): Form {
     lng: null,
     todoElDia: false,
     fechaDesde: fecha,
-    horaDesde: "09:00",
+    horaDesde: desde,
     fechaHasta: fecha,
-    horaHasta: "11:00",
+    horaHasta: dosHorasDespues(desde),
     recordatorioMin: 60,
     precio: "",
     quienVa: "",
@@ -146,7 +154,7 @@ function Editor() {
   const consulta = p.get("consulta");
   const servicios = useServicios();
   const zonas = useLista<{ id: number; nombre: string }>("zonas").filas ?? [];
-  const [f, setF] = useState<Form | null>(id || consulta ? null : vacio(p.get("fecha") ?? hoyLocal()));
+  const [f, setF] = useState<Form | null>(id || consulta ? null : vacio(p.get("fecha") ?? hoyLocal(), p.get("hora")));
   const [error, setError] = useState<string | null>(null);
   const [errorApi, setErrorApi] = useState<ErrorApi | null>(null);
   const [guardando, setGuardando] = useState(false);
@@ -174,7 +182,7 @@ function Editor() {
         const zona = zonas.find((z) => c.localidad && norm(z.nombre) === norm(c.localidad));
         const servicio = servicios.find((s) => c.servicio && norm(s.nombre).startsWith(norm(c.servicio).slice(0, 8)));
         setF({
-          ...vacio(p.get("fecha") ?? hoyLocal()),
+          ...vacio(p.get("fecha") ?? hoyLocal(), p.get("hora")),
           titulo: servicio?.nombre ?? c.servicio ?? "",
           servicioId: servicio?.id ?? null,
           clienteNombre: c.nombre,

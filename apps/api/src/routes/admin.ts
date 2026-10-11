@@ -159,6 +159,18 @@ admin.get("/consultas", async (c) => {
   return c.json(filas);
 });
 
+// Clics en WhatsApp y teléfono del sitio, para mostrarlos junto a las consultas.
+admin.get("/eventos", async (c) => {
+  const db = getDb(c.env.DATABASE_URL);
+  const limite = Math.min(Number(c.req.query("limite") ?? 200), 1000);
+  const filas = await db
+    .select()
+    .from(schema.eventos)
+    .orderBy(desc(schema.eventos.createdAt))
+    .limit(limite);
+  return c.json(filas);
+});
+
 admin.get("/consultas/:id{[0-9]+}", async (c) => {
   const db = getDb(c.env.DATABASE_URL);
   const [fila] = await db.select().from(schema.consultas).where(eq(schema.consultas.id, Number(c.req.param("id"))));

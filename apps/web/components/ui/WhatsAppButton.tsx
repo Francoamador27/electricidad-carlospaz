@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { linkWhatsapp } from "@voltis/shared/negocio";
-import { registrarClic } from "@/lib/tracking";
+import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
+import AntiSpam from "@/components/forms/AntiSpam";
+import { enviarConsulta } from "@/lib/consultas";
 
 export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -12,19 +13,30 @@ export default function WhatsAppButton() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  // Se guarda como consulta (aparece en el panel) y se abre WhatsApp con el mensaje.
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const text = `Hola! Mi nombre es ${form.name}, mi número de teléfono es ${form.phone}. ${form.message}`;
-    const url = linkWhatsapp(text);
-    registrarClic("click_whatsapp");
-    window.open(url, "_blank", "noopener,noreferrer");
+    const mensaje = form.message.trim();
+    const text = `Hola! Mi nombre es ${form.name}, mi número de teléfono es ${form.phone}.${mensaje ? ` ${mensaje}` : ""}`;
+    void enviarConsulta(e.currentTarget, { nombre: form.name, telefono: form.phone, mensaje: mensaje || undefined }, text);
     setOpen(false);
     setForm({ name: "", phone: "", message: "" });
   }
 
   return (
     <>
-      {/* Floating button */}
+      {/* Botón flotante para llamar (arriba del de WhatsApp) */}
+      <a
+        href={LINK_TELEFONO}
+        aria-label={`Llamar al ${NEGOCIO.telefonoVisible}`}
+        className="fixed bottom-24 right-6 z-50 bg-copper-dark hover:bg-copper-darker text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+        </svg>
+      </a>
+
+      {/* Botón flotante de WhatsApp */}
       <button
         onClick={() => setOpen(true)}
         aria-label="Contactar por WhatsApp"
@@ -71,12 +83,15 @@ export default function WhatsAppButton() {
               </p>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="wa-nombre" className="block text-sm font-medium text-slate-700 mb-1">
                   Tu nombre <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="wa-nombre"
                   type="text"
                   name="name"
+                  autoComplete="name"
+                  minLength={2}
                   required
                   value={form.name}
                   onChange={handleChange}
@@ -86,12 +101,15 @@ export default function WhatsAppButton() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="wa-telefono" className="block text-sm font-medium text-slate-700 mb-1">
                   Tu número de teléfono <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="wa-telefono"
                   type="tel"
                   name="phone"
+                  autoComplete="tel"
+                  minLength={6}
                   required
                   value={form.phone}
                   onChange={handleChange}
@@ -101,12 +119,12 @@ export default function WhatsAppButton() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  ¿En qué te podemos ayudar? <span className="text-red-500">*</span>
+                <label htmlFor="wa-mensaje" className="block text-sm font-medium text-slate-700 mb-1">
+                  ¿En qué te podemos ayudar? <span className="font-normal text-slate-500">(opcional)</span>
                 </label>
                 <textarea
+                  id="wa-mensaje"
                   name="message"
-                  required
                   value={form.message}
                   onChange={handleChange}
                   rows={3}
@@ -114,6 +132,8 @@ export default function WhatsAppButton() {
                   className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-400 resize-none"
                 />
               </div>
+
+              <AntiSpam />
 
               <button
                 type="submit"

@@ -38,6 +38,8 @@ const tituloMes = (fecha: string) => {
   return t.charAt(0).toUpperCase() + t.slice(1);
 };
 const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const linkNuevo = (fecha: string, hora?: string) =>
+  `/admin/agenda/editar?fecha=${fecha}${hora ? `&hora=${hora}` : ""}`;
 
 function rango(vista: Vista, fecha: string): { desde: string; hasta: string } {
   if (vista === "dia") return { desde: fecha, hasta: fecha };
@@ -104,10 +106,21 @@ function FilaTrabajo({ t, dia, onAbrir }: { t: Trabajo; dia: string; onAbrir: (i
   );
 }
 
-function ListaDia({ dia, trabajos, onAbrir, vacio }: { dia: string; trabajos: Trabajo[]; onAbrir: (id: number) => void; vacio?: string }) {
+function ListaDia({ dia, trabajos, onAbrir, vacio, agregar }: { dia: string; trabajos: Trabajo[]; onAbrir: (id: number) => void; vacio?: string; agregar?: boolean }) {
   return (
     <section aria-label={nombreDia(dia)} className="mb-5">
-      <h2 className="ios-encabezado-lista">{capital(nombreDia(dia))}</h2>
+      <div className="flex items-end justify-between">
+        <h2 className="ios-encabezado-lista">{capital(nombreDia(dia))}</h2>
+        {agregar && (
+          <Link
+            href={linkNuevo(dia)}
+            aria-label={`Agregar trabajo: ${nombreDia(dia)}`}
+            className="ios-boton-texto text-[15px] px-4 pb-1.5"
+          >
+            + Agregar trabajo
+          </Link>
+        )}
+      </div>
       {trabajos.length ? (
         <div className="ios-lista">
           {trabajos.map((t) => (
@@ -115,7 +128,14 @@ function ListaDia({ dia, trabajos, onAbrir, vacio }: { dia: string; trabajos: Tr
           ))}
         </div>
       ) : (
-        vacio && <p className="ios-card px-4 py-3 ios-secundario text-[15px]">{vacio}</p>
+        vacio &&
+        (agregar ? (
+          <Link href={linkNuevo(dia)} tabIndex={-1} className="ios-card block px-4 py-3 ios-secundario text-[15px] active:opacity-70">
+            {vacio}
+          </Link>
+        ) : (
+          <p className="ios-card px-4 py-3 ios-secundario text-[15px]">{vacio}</p>
+        ))
       )}
     </section>
   );
@@ -139,7 +159,13 @@ function Navegador({ texto, onAnterior, onSiguiente, onHoy }: { texto: string; o
 }
 
 function VistaMes({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha: (f: string) => void; dias: Map<string, Trabajo[]>; onAbrir: (id: number) => void }) {
+  const router = useRouter();
   const hoy = hoyLocal();
+  // Día libre → formulario para agendar. Día con trabajos → se muestran abajo, con "+ Agregar trabajo".
+  const tocarDia = (d: string, cantidad: number) => {
+    if (!cantidad) router.push(linkNuevo(d));
+    else setFecha(d);
+  };
   const semanas = grillaMes(Number(fecha.slice(0, 4)), Number(fecha.slice(5, 7)));
   const cambiarMes = (delta: number) => {
     const d = new Date(`${fecha.slice(0, 7)}-01T12:00:00Z`);
@@ -168,7 +194,7 @@ function VistaMes({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha:
                     role="gridcell"
                     aria-selected={d === fecha}
                     aria-label={`${nombreDia(d)}${del.length ? `, ${del.length} ${del.length === 1 ? "trabajo" : "trabajos"}` : ""}`}
-                    onClick={() => setFecha(d)}
+                    onClick={() => tocarDia(d, del.length)}
                     className={`ios-dia ${d === hoy ? "ios-dia-hoy" : ""} ${fuera ? "opacity-40" : ""}`}
                   >
                     <span className="ios-dia-numero">{Number(d.slice(8))}</span>
@@ -184,7 +210,7 @@ function VistaMes({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha:
           ))}
         </div>
       </div>
-      <ListaDia dia={fecha} trabajos={dias.get(fecha) ?? []} onAbrir={onAbrir} vacio="Sin trabajos este día." />
+      <ListaDia dia={fecha} trabajos={dias.get(fecha) ?? []} onAbrir={onAbrir} vacio="Sin trabajos. Tocá para agendar uno." agregar />
     </>
   );
 }
@@ -198,7 +224,7 @@ function VistaSemana({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFec
     <>
       <Navegador texto={texto} onAnterior={() => setFecha(sumarDias(fecha, -7))} onSiguiente={() => setFecha(sumarDias(fecha, 7))} onHoy={() => setFecha(hoyLocal())} />
       {Array.from({ length: 7 }, (_, i) => sumarDias(lunes, i)).map((d) => (
-        <ListaDia key={d} dia={d} trabajos={dias.get(d) ?? []} onAbrir={onAbrir} vacio="—" />
+        <ListaDia key={d} dia={d} trabajos={dias.get(d) ?? []} onAbrir={onAbrir} vacio="Libre" agregar />
       ))}
     </>
   );
@@ -220,7 +246,7 @@ function VistaDia({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha:
   return (
     <>
       <Navegador texto={capital(nombreDia(fecha))} onAnterior={() => setFecha(sumarDias(fecha, -1))} onSiguiente={() => setFecha(sumarDias(fecha, 1))} onHoy={() => setFecha(hoyLocal())} />
-      {completos.length > 0 && <ListaDia dia={fecha} trabajos={completos} onAbrir={onAbrir} />}
+      {completos.length > 0 && <ListaDia dia={fecha} trabajos={completos} onAbrir={onAbrir} agregar />}
       <div className="ios-card relative" style={{ height: (horas.length - 1) * ALTO_HORA + 24 }}>
         {horas.map((h, i) => (
           <div key={h} className="absolute left-0 right-0 flex items-start gap-2 px-3" style={{ top: 12 + i * ALTO_HORA - 8 }}>
@@ -228,6 +254,18 @@ function VistaDia({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha:
             <span className="flex-1 mt-2 border-t border-[var(--ios-separador)]" />
           </div>
         ))}
+        {/* Tocar una franja libre abre el formulario con esa hora. */}
+        {horas.slice(0, -1).flatMap((h, i) =>
+          ["00", "30"].map((min, j) => (
+            <Link
+              key={`${h}:${min}`}
+              href={linkNuevo(fecha, `${String(h).padStart(2, "0")}:${min}`)}
+              aria-label={`Agregar trabajo a las ${String(h).padStart(2, "0")}:${min}`}
+              className="absolute left-14 right-3 rounded-md active:bg-[var(--ios-relleno)]"
+              style={{ top: 12 + i * ALTO_HORA + (j * ALTO_HORA) / 2, height: ALTO_HORA / 2 }}
+            />
+          )),
+        )}
         {conHora.map((t) => {
           const top = 12 + ((minutos(t.inicio) - desdeHora * 60) / 60) * ALTO_HORA;
           const alto = Math.max(((minutos(t.fin) - minutos(t.inicio)) / 60) * ALTO_HORA, 26);
@@ -246,7 +284,11 @@ function VistaDia({ fecha, setFecha, dias, onAbrir }: { fecha: string; setFecha:
             </button>
           );
         })}
-        {!del.length && <p className="absolute inset-x-0 top-1/3 text-center ios-secundario">Sin trabajos este día.</p>}
+        {!del.length && (
+          <p className="absolute inset-x-0 top-1/3 text-center ios-secundario pointer-events-none">
+            Sin trabajos. Tocá una hora para agendar.
+          </p>
+        )}
       </div>
     </>
   );
@@ -261,7 +303,7 @@ function VistaLista({ dias, onAbrir }: { dias: Map<string, Trabajo[]>; onAbrir: 
   return (
     <>
       {fechas.map((d) => (
-        <ListaDia key={d} dia={d} trabajos={dias.get(d)!} onAbrir={onAbrir} />
+        <ListaDia key={d} dia={d} trabajos={dias.get(d)!} onAbrir={onAbrir} agregar />
       ))}
     </>
   );

@@ -85,7 +85,7 @@ test("salir borra la cookie de sesión", async ({ request }) => {
 });
 
 test("agenda, finanzas y avisos: sin sesión no se accede", async ({ request }) => {
-  for (const ruta of ["/admin/api/trabajos?desde=2026-10-01&hasta=2026-10-31", "/admin/api/trabajos/1", "/admin/api/finanzas?desde=2026-10-01&hasta=2026-10-31", "/admin/api/finanzas/csv?desde=2026-10-01&hasta=2026-10-31", "/admin/api/push/dispositivos", "/admin/api/calendario"]) {
+  for (const ruta of ["/admin/api/trabajos?desde=2026-10-01&hasta=2026-10-31", "/admin/api/trabajos/1", "/admin/api/finanzas?desde=2026-10-01&hasta=2026-10-31", "/admin/api/finanzas/csv?desde=2026-10-01&hasta=2026-10-31", "/admin/api/push/dispositivos", "/admin/api/calendario", "/admin/api/eventos"]) {
     expect((await request.get(ruta)).status(), ruta).toBe(401);
   }
   expect((await request.post("/admin/api/trabajos", { data: {} })).status()).toBe(401);

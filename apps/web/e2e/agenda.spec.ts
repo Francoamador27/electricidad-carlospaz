@@ -232,3 +232,31 @@ test("consultas: cada consulta tiene el botón Agendar", async ({ page }) => {
   // El 15 después del código de área se saca para WhatsApp.
   await expect(page.getByRole("link", { name: "Responder por WhatsApp" })).toHaveAttribute("href", /wa\.me\/5493514440000/);
 });
+
+test("agenda: tocar un día libre o una hora abre el formulario con esa fecha y hora", async ({ page }) => {
+  await simular(page);
+  await page.goto("/admin/agenda");
+  await page.getByRole("radio", { name: "Mes" }).click();
+  // Un día sin trabajos abre el formulario directo.
+  const libre = page.locator("[role=gridcell]:not([aria-label*='trabajo'])").first();
+  const numero = await libre.locator(".ios-dia-numero").textContent();
+  await libre.click();
+  await expect(page).toHaveURL(/\/admin\/agenda\/editar\?fecha=\d{4}-\d{2}-\d{2}$/);
+  expect(Number(new URL(page.url()).searchParams.get("fecha")!.slice(8))).toBe(Number(numero));
+
+  // Un día con trabajos muestra la lista y el botón para agregar otro.
+  await page.goto("/admin/agenda");
+  await page.getByRole("radio", { name: "Mes" }).click();
+  await page.getByRole("gridcell", { name: /^Hoy, 1 trabajo$/ }).click();
+  await expect(page).toHaveURL(/\/admin\/agenda$/);
+  await page.getByRole("link", { name: "Agregar trabajo: Hoy" }).click();
+  await expect(page).toHaveURL(/\/admin\/agenda\/editar\?fecha=/);
+
+  // En la vista Día, cada media hora es tocable.
+  await page.goto("/admin/agenda");
+  await page.getByRole("radio", { name: "Día" }).click();
+  await page.getByRole("link", { name: "Agregar trabajo a las 15:30" }).click();
+  await expect(page).toHaveURL(/hora=15:30/);
+  await expect(page.getByLabel("Hora").first()).toHaveValue("15:30");
+  await expect(page.getByLabel("Hora").nth(1)).toHaveValue("17:30");
+});

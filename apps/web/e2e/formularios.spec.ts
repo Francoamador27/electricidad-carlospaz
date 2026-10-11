@@ -82,3 +82,21 @@ test("el formulario de contacto guarda la consulta", async ({ page, context }) =
   expect(capturas.consultas).toHaveLength(1);
   expect(capturas.consultas[0]).toMatchObject({ nombre: "Lucía", paginaOrigen: "/contacto" });
 });
+
+test("botón flotante de WhatsApp: el mensaje es opcional y queda guardado como consulta", async ({ page, context }) => {
+  const capturas = await simularApi(page);
+  await page.goto("/");
+  await page.getByRole("button", { name: "Contactar por WhatsApp" }).click();
+  await page.getByLabel("Tu nombre").fill("Lucía");
+  await page.getByLabel("Tu número de teléfono").fill("351 555 9876");
+  await expect(page.getByLabel(/En qué te podemos ayudar/)).not.toHaveAttribute("required", "");
+
+  const popup = context.waitForEvent("page");
+  await page.getByRole("button", { name: "Enviar por WhatsApp" }).click();
+  const wa = await popup;
+  await wa.waitForURL(/wa\.me|whatsapp\.com/, { timeout: 15_000 }).catch(() => undefined);
+
+  await expect.poll(() => capturas.consultas.length).toBe(1);
+  expect(capturas.consultas[0]).toMatchObject({ nombre: "Lucía", telefono: "351 555 9876", paginaOrigen: "/" });
+  expect(decodeURIComponent(wa.url()).replace(/\+/g, " ")).toContain("Lucía");
+});
