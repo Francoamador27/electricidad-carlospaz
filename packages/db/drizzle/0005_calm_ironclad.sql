@@ -1,0 +1,1 @@
+ALTER TABLE "consultas" ADD COLUMN "verificada" boolean DEFAULT true NOT NULL;

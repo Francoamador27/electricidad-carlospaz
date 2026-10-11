@@ -100,3 +100,22 @@ test("botón flotante de WhatsApp: el mensaje es opcional y queda guardado como 
   expect(capturas.consultas[0]).toMatchObject({ nombre: "Lucía", telefono: "351 555 9876", paginaOrigen: "/" });
   expect(decodeURIComponent(wa.url()).replace(/\+/g, " ")).toContain("Lucía");
 });
+
+test("sin token del antispam no llama a la API, pero abre WhatsApp con los datos", async ({ page, context }) => {
+  const capturas = await simularApi(page, { turnstile: false });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Contactar por WhatsApp" }).click();
+  await page.getByLabel("Tu nombre").fill("Pedro");
+  await page.getByLabel("Tu número de teléfono").fill("351 555 4321");
+
+  const popup = context.waitForEvent("page");
+  await page.getByRole("button", { name: "Enviar por WhatsApp" }).click();
+  const wa = await popup;
+  await wa.waitForURL(/wa\.me|whatsapp\.com/, { timeout: 15_000 }).catch(() => undefined);
+
+  const texto = decodeURIComponent(wa.url()).replace(/\+/g, " ");
+  expect(texto).toContain("Pedro");
+  expect(texto).toContain("351 555 4321");
+  expect(capturas.consultas).toHaveLength(0);
+  await expect.poll(() => capturas.eventos.length).toBeGreaterThan(0);
+});

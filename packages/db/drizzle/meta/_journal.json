@@ -36,6 +36,20 @@
       "when": 1791724927158,
       "tag": "0004_lyrical_kid_colt",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1791738338632,
+      "tag": "0005_calm_ironclad",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1791738590595,
+      "tag": "0006_past_invaders",
+      "breakpoints": true
     }
   ]
 }

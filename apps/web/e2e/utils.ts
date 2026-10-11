@@ -27,7 +27,7 @@ export const PAGINAS = [
 export type Capturas = { consultas: unknown[]; eventos: unknown[] };
 
 // Simula la API pública: guarda lo que el sitio envía para poder verificarlo.
-export async function simularApi(page: Page, opciones: { consultas?: number } = {}): Promise<Capturas> {
+export async function simularApi(page: Page, opciones: { consultas?: number; turnstile?: boolean } = {}): Promise<Capturas> {
   const capturas: Capturas = { consultas: [], eventos: [] };
   await page.route(`${API}/api/consultas`, async (route) => {
     if (route.request().method() === "OPTIONS") return route.fulfill({ status: 204, headers: cors() });
@@ -43,8 +43,21 @@ export async function simularApi(page: Page, opciones: { consultas?: number } = 
     capturas.eventos.push(JSON.parse(route.request().postData() ?? "{}"));
     await route.fulfill({ status: 204, headers: cors() });
   });
-  // Turnstile real no corre en los tests.
+  // Turnstile real no corre en los tests: uno simulado entrega un token al instante.
+  // Con turnstile: false, nunca llega el token (cliente apurado, sin señal, etc.).
   await page.route("https://challenges.cloudflare.com/**", (route) => route.fulfill({ status: 200, body: "" }));
+  if (opciones.turnstile !== false) {
+    await page.addInitScript(() => {
+      (window as unknown as { turnstile: unknown }).turnstile = {
+        render: (_el: HTMLElement, o: { callback: (t: string) => void }) => {
+          setTimeout(() => o.callback("token-de-prueba"), 0);
+          return "widget";
+        },
+        remove: () => undefined,
+        reset: () => undefined,
+      };
+    });
+  }
   return capturas;
 }
 
