@@ -4,12 +4,20 @@ import { CLAVES_CONFIG, configInput, postInput, proyectoInput, resenaInput, zona
 import { asc, desc, eq, getDb, schema, sql } from "@voltis/db";
 import type { Env } from "../env";
 import { requiereSesion } from "../lib/sesion";
+import { trabajos } from "./trabajos";
+import { finanzas } from "./finanzas";
+import { avisos } from "./avisos";
 import { blobConfigurado, guardarFoto } from "../lib/fotos";
 
 type App = { Bindings: Env; Variables: { usuario: string } };
 
 export const admin = new Hono<App>();
 admin.use("*", requiereSesion);
+
+// Agenda, finanzas, notificaciones y calendario (todo detrás de la sesión).
+admin.route("/trabajos", trabajos);
+admin.route("/finanzas", finanzas);
+admin.route("/", avisos);
 
 // ---------- CRUD genérico ----------
 
@@ -149,6 +157,12 @@ admin.get("/consultas", async (c) => {
     .orderBy(desc(schema.consultas.createdAt))
     .limit(limite);
   return c.json(filas);
+});
+
+admin.get("/consultas/:id{[0-9]+}", async (c) => {
+  const db = getDb(c.env.DATABASE_URL);
+  const [fila] = await db.select().from(schema.consultas).where(eq(schema.consultas.id, Number(c.req.param("id"))));
+  return fila ? c.json(fila) : c.json({ ok: false, error: "no_encontrado" }, 404);
 });
 
 admin.delete("/consultas/:id{[0-9]+}", async (c) => {

@@ -4,6 +4,7 @@ import { getDb, schema } from "@voltis/db";
 import type { Env } from "../env";
 import { verificarTurnstile } from "../lib/turnstile";
 import { enviarAviso } from "../lib/aviso";
+import { enviarPush } from "../lib/push";
 
 export const consultas = new Hono<{ Bindings: Env }>();
 
@@ -45,6 +46,14 @@ consultas.post("/", async (c) => {
     .returning({ id: schema.consultas.id });
 
   c.executionCtx.waitUntil(enviarAviso(c.env, data).catch((e) => console.error("[aviso]", e)));
+  // Notificación en el celular de los admins.
+  c.executionCtx.waitUntil(
+    enviarPush(c.env, {
+      titulo: `Nueva consulta: ${data.nombre}${data.localidad ? ` (${data.localidad})` : ""}`,
+      cuerpo: [data.servicio, data.mensaje].filter(Boolean).join(" — ").slice(0, 180) || data.telefono,
+      url: `/admin/consultas?consulta=${fila.id}`,
+    }).catch((e) => console.error("[push]", e)),
+  );
 
   return c.json({ ok: true, id: fila.id }, 201);
 });

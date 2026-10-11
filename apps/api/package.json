@@ -8,6 +8,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@block65/webcrypto-web-push": "^2.0.0",
     "@vercel/blob": "^2.8.1",
     "@voltis/db": "workspace:*",
     "@voltis/shared": "workspace:*",

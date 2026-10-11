@@ -83,3 +83,16 @@ test("salir borra la cookie de sesión", async ({ request }) => {
   expect(res.status()).toBe(200);
   expect(res.headers()["set-cookie"]).toContain("voltis_sesion=;");
 });
+
+test("agenda, finanzas y avisos: sin sesión no se accede", async ({ request }) => {
+  for (const ruta of ["/admin/api/trabajos?desde=2026-10-01&hasta=2026-10-31", "/admin/api/trabajos/1", "/admin/api/finanzas?desde=2026-10-01&hasta=2026-10-31", "/admin/api/finanzas/csv?desde=2026-10-01&hasta=2026-10-31", "/admin/api/push/dispositivos", "/admin/api/calendario"]) {
+    expect((await request.get(ruta)).status(), ruta).toBe(401);
+  }
+  expect((await request.post("/admin/api/trabajos", { data: {} })).status()).toBe(401);
+  expect((await request.post("/admin/api/push/suscribir", { data: {} })).status()).toBe(401);
+});
+
+test("calendario .ics: sin token o con token falso no muestra nada", async ({ request }) => {
+  expect((await request.get("/api/agenda.ics")).status()).toBe(404);
+  expect((await request.get("/api/agenda.ics?t=token-falso")).status()).toBe(404);
+});

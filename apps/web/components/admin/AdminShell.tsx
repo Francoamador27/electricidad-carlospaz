@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import AppInstalable from "@/components/admin/AppInstalable";
 import Login from "@/components/admin/Login";
 import { adminApi, ErrorApi, mensajeError } from "@/lib/admin-api";
+import { borrarCopiaSinConexion } from "@/lib/agenda";
 
 // ---------- Íconos (trazo fino, estilo SF Symbols) ----------
 
@@ -19,6 +20,8 @@ const svg = (d: React.ReactNode): Icono =>
     );
   };
 
+const IconoAgenda = svg(<><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" /><path d="M3.5 10h17M8 3v4M16 3v4" /></>);
+const IconoFinanzas = svg(<><path d="M4 19h16" /><path d="M7 16V10M12 16V6M17 16v-4" /></>);
 const IconoInicio = svg(<path d="M4 19V10l8-6 8 6v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" />);
 const IconoConsultas = svg(<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />);
 const IconoProyectos = svg(<><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="10" r="1.6" /><path d="m21 16-5-5-8 8" /></>);
@@ -33,14 +36,16 @@ type Seccion = { href: string; label: string; Icono: Icono };
 
 // Pestañas del celular (máximo 5, como iOS). El resto vive en "Más".
 const PESTANAS: Seccion[] = [
-  { href: "/admin", label: "Inicio", Icono: IconoInicio },
+  { href: "/admin/agenda", label: "Agenda", Icono: IconoAgenda },
   { href: "/admin/consultas", label: "Consultas", Icono: IconoConsultas },
+  { href: "/admin/finanzas", label: "Finanzas", Icono: IconoFinanzas },
   { href: "/admin/proyectos", label: "Proyectos", Icono: IconoProyectos },
-  { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
   { href: "/admin/mas", label: "Más", Icono: IconoMas },
 ];
 
 export const SECCIONES_MAS: Seccion[] = [
+  { href: "/admin", label: "Conversiones del sitio", Icono: IconoInicio },
+  { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
   { href: "/admin/zonas", label: "Zonas", Icono: IconoZonas },
   { href: "/admin/resenas", label: "Reseñas", Icono: IconoResenas },
   { href: "/admin/configuracion", label: "Configuración", Icono: IconoConfig },
@@ -48,11 +53,12 @@ export const SECCIONES_MAS: Seccion[] = [
 
 // Barra lateral de la computadora: todas las secciones.
 const LATERAL: Seccion[] = [
-  { href: "/admin", label: "Conversiones", Icono: IconoInicio },
+  { href: "/admin/agenda", label: "Agenda", Icono: IconoAgenda },
   { href: "/admin/consultas", label: "Consultas", Icono: IconoConsultas },
+  { href: "/admin/finanzas", label: "Finanzas", Icono: IconoFinanzas },
   { href: "/admin/proyectos", label: "Proyectos", Icono: IconoProyectos },
-  { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
-  ...SECCIONES_MAS,
+  { href: "/admin", label: "Conversiones", Icono: IconoInicio },
+  ...SECCIONES_MAS.filter((x) => x.href !== "/admin"),
 ];
 
 // ---------- Contexto: sesión y publicar, disponibles en cualquier pantalla ----------
@@ -84,6 +90,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
   async function salir() {
     await adminApi("/auth/salir", { method: "POST" }).catch(() => undefined);
+    // Privacidad: al salir no quedan datos de clientes guardados en el teléfono.
+    borrarCopiaSinConexion();
     setUsuario(null);
   }
 

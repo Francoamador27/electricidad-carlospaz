@@ -22,7 +22,7 @@ test("el manifest del panel es válido y sus íconos existen", async ({ request 
   const res = await request.get("/admin/manifest.webmanifest");
   expect(res.status()).toBe(200);
   const m = await res.json();
-  expect(m).toMatchObject({ short_name: "Voltis", start_url: "/admin", scope: "/admin", display: "standalone" });
+  expect(m).toMatchObject({ short_name: "Voltis", start_url: "/admin/agenda", scope: "/admin", display: "standalone" });
   const tamanos = m.icons.map((i: { sizes: string }) => i.sizes);
   expect(tamanos).toEqual(expect.arrayContaining(["192x192", "512x512"]));
   expect(m.icons.some((i: { purpose?: string }) => i.purpose === "maskable")).toBe(true);
@@ -87,10 +87,11 @@ test.describe("en el celular", () => {
     await page.goto("/admin");
     const pestanas = page.getByRole("navigation", { name: "Pestañas" });
     await expect(pestanas).toBeVisible();
-    for (const nombre of ["Inicio", "Consultas", "Proyectos", "Blog", "Más"]) {
+    for (const nombre of ["Agenda", "Consultas", "Finanzas", "Proyectos", "Más"]) {
       await expect(pestanas.getByRole("link", { name: nombre })).toBeVisible();
     }
-    await expect(pestanas.getByRole("link", { name: "Inicio" })).toHaveAttribute("aria-current", "page");
+    // En /admin (Conversiones) la pestaña activa es "Más", donde vive esa sección.
+    await expect(pestanas.getByRole("link", { name: "Más" })).toHaveAttribute("aria-current", "page");
 
     await pestanas.getByRole("link", { name: "Más" }).click();
     await expect(page.getByRole("heading", { name: "Más" })).toBeVisible();

@@ -6,6 +6,8 @@ import { eventos } from "./routes/eventos";
 import { admin } from "./routes/admin";
 import { auth } from "./routes/auth";
 import { servirFoto } from "./lib/fotos";
+import { calendarioPublico } from "./routes/avisos";
+import { tareasProgramadas } from "./lib/programadas";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -21,6 +23,8 @@ app.use("*", async (c, next) => {
 app.get("/api/health", (c) => c.json({ ok: true }));
 app.route("/api/consultas", consultas);
 app.route("/api/eventos", eventos);
+// Calendario suscribible del iPhone (dirección secreta con token).
+app.route("/api/agenda.ics", calendarioPublico);
 app.route("/admin/api/auth", auth);
 app.route("/admin/api", admin);
 
@@ -32,4 +36,10 @@ app.onError((err, c) => {
   return c.json({ ok: false, error: "interno" }, 500);
 });
 
-export default app;
+export default {
+  fetch: app.fetch,
+  // Cron Trigger (cada 15 minutos): recordatorios de trabajos y resumen de las 7:00.
+  scheduled(_controlador: ScheduledController, env: Env, ctx: ExecutionContext) {
+    ctx.waitUntil(tareasProgramadas(env));
+  },
+};

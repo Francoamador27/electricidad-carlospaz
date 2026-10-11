@@ -9,10 +9,10 @@
 // - Íconos y manifest del panel: caché primero.
 // - API (/admin/api/...), fotos (/img/...) y todo lo demás: directo a la red, nunca se guarda.
 
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE_PAGINAS = `voltis-panel-paginas-${VERSION}`;
 const CACHE_ESTATICOS = `voltis-panel-estaticos-${VERSION}`;
-const PAGINA_INICIO = "/admin";
+const PAGINA_INICIO = "/admin/agenda";
 
 const SIN_CONEXION = `<!doctype html><html lang="es-AR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -34,7 +34,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_PAGINAS)
-      .then((c) => c.add(PAGINA_INICIO))
+      .then((c) => c.addAll([PAGINA_INICIO, "/admin"]))
       .catch(() => undefined)
       .then(() => self.skipWaiting()),
   );
@@ -97,4 +97,42 @@ self.addEventListener("fetch", (event) => {
   } else if (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/admin/iconos/")) {
     event.respondWith(cachePrimero(request));
   }
+});
+
+// ---------- Notificaciones (Web Push) ----------
+// El Worker manda { titulo, cuerpo, url, etiqueta }. iOS exige mostrar siempre una notificación.
+
+self.addEventListener("push", (event) => {
+  let datos = { titulo: "Voltis", cuerpo: "", url: "/admin/agenda" };
+  try {
+    datos = { ...datos, ...(event.data ? event.data.json() : {}) };
+  } catch {
+    if (event.data) datos.cuerpo = event.data.text();
+  }
+  event.waitUntil(
+    self.registration.showNotification(datos.titulo, {
+      body: datos.cuerpo,
+      icon: "/admin/iconos/icono-192.png",
+      badge: "/admin/iconos/icono-192.png",
+      tag: datos.etiqueta,
+      renotify: Boolean(datos.etiqueta),
+      data: { url: datos.url },
+    }),
+  );
+});
+
+// Al tocar la notificación: abre (o enfoca) el panel en la pantalla correspondiente.
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const destino = new URL(event.notification.data?.url || "/admin/agenda", self.location.origin);
+  if (!destino.pathname.startsWith("/admin")) return;
+  event.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((ventanas) => {
+      const abierta = ventanas.find((v) => new URL(v.url).pathname.startsWith("/admin"));
+      if (abierta) {
+        return abierta.focus().then((v) => (v && "navigate" in v ? v.navigate(destino.href) : undefined));
+      }
+      return self.clients.openWindow(destino.href);
+    }),
+  );
 });

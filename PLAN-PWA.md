@@ -324,3 +324,29 @@ llegar"; registrar seña y saldo; ver Finanzas; recibir el resumen del día; sus
 - Aviso para instalar (botón en Android, pasos en iPhone) y pantalla "Más".
 - Cámara: "Sacar foto" (cámara trasera) y "Elegir de la galería".
 - Tests: `e2e/pwa.spec.ts` (manifest, íconos, service worker, sin conexión, cámara, pestañas).
+
+### Fase 2 (Agenda): hecha
+
+- Tablas `trabajos`, `trabajo_pagos`, `trabajo_gastos` (migración `0004`).
+- Vistas Mes, Semana, Día y Lista; trabajos de horas o de varios días ("todo el día").
+- Ficha con Llamar, WhatsApp, Cómo llegar (Google Maps) y Waze, mapa de OpenStreetMap, fotos,
+  seña + saldo, gastos/materiales, estado y "¿Quién va?".
+- Ubicación sin API: se pega el link de Maps (los cortos los resuelve la API) o "Usar mi ubicación".
+- Desde una consulta: "📅 Agendar" precarga cliente, zona y servicio.
+- Trabajo terminado → "Publicar como proyecto" (borrador, sin datos del cliente).
+- La agenda queda guardada en el dispositivo para verla sin conexión.
+
+### Fase 3 (Finanzas): hecha
+
+- Cobrado, por cobrar, ganancia (cobrado − gastos) y ticket promedio, con comparación contra el
+  período anterior.
+- Gráfico de 12 meses, ranking "¿Qué trabajo me genera más?", por localidad, medios de pago,
+  embudo consultas → trabajos, pendientes de cobro con recordatorio por WhatsApp y exportar CSV.
+
+### Fase 4 (Avisos): hecha
+
+- Notificaciones push (iPhone con la app instalada, iOS 16.4+, y Android): nueva consulta,
+  recordatorio antes de cada trabajo y resumen del día a las 7:00 (Cron Trigger cada 15 min).
+- Calendario del iPhone: suscripción `webcal://` a un `.ics` con link secreto (se puede regenerar).
+- Configuración → Notificaciones y Calendario del iPhone.
+- Tests: `e2e/agenda.spec.ts`, `e2e/agenda-logica.spec.ts` y rutas nuevas en `e2e/api.spec.ts`.

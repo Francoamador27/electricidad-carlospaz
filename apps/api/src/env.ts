@@ -18,4 +18,8 @@ export type Env = {
   // Solo en .dev.vars: desactiva la autenticación del panel en local.
   ADMIN_SIN_AUTH?: string;
   PAGES_DEPLOY_HOOK_URL?: string;
+  // Notificaciones Web Push (claves VAPID: scripts/generar-claves-vapid.mjs).
+  VAPID_PUBLIC_KEY?: string;
+  VAPID_PRIVATE_KEY?: string;
+  VAPID_SUBJECT?: string;
 };

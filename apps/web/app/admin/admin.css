@@ -228,3 +228,79 @@
     padding-bottom: calc(76px + env(safe-area-inset-bottom));
   }
 }
+
+/* Hoja inferior (detalle de un trabajo). <dialog> nativo: foco atrapado y Esc para cerrar. */
+@layer components {
+  .ios-hoja {
+    margin: auto auto 0;
+    width: 100%;
+    max-width: 680px;
+    max-height: 92dvh;
+    padding: 0;
+    border: 0;
+    border-radius: 14px 14px 0 0;
+    background: var(--ios-fondo);
+    color: var(--ios-texto);
+    overflow: hidden;
+  }
+  .ios-hoja[open] {
+    animation: ios-subir 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .ios-hoja::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .ios-hoja-contenido {
+    max-height: 92dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  @media (min-width: 768px) {
+    .ios-hoja {
+      margin: auto;
+      border-radius: 14px;
+      max-height: 86vh;
+    }
+    .ios-hoja-contenido {
+      max-height: 86vh;
+    }
+  }
+  @keyframes ios-subir {
+    from { transform: translateY(40px); opacity: 0.4; }
+    to { transform: none; opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ios-hoja[open] { animation: none; }
+  }
+
+  /* Calendario mensual */
+  .ios-dia {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-height: 48px;
+    padding-top: 6px;
+    border-radius: 10px;
+    font-size: 17px;
+  }
+  .ios-dia[aria-selected="true"] .ios-dia-numero {
+    background: var(--ios-texto);
+    color: var(--ios-fondo);
+  }
+  .ios-dia-hoy .ios-dia-numero {
+    color: var(--ios-acento);
+    font-weight: 700;
+  }
+  .ios-dia-hoy[aria-selected="true"] .ios-dia-numero {
+    background: var(--ios-acento);
+    color: var(--ios-acento-texto);
+  }
+  .ios-dia-numero {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+  }
+}

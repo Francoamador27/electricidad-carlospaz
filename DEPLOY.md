@@ -112,11 +112,22 @@ conviene: reemplaza los registros MX del dominio).
 | `PAGES_DEPLOY_HOOK_URL` | URL del deploy hook de Pages |
 | `BLOB_READ_WRITE_TOKEN` | token de Vercel Blob (paso 3b) |
 | `BLOB_ACCESS` | `private` (o `public` si el store es público) — opcional, por defecto `private` |
+| `VAPID_PUBLIC_KEY` | clave pública para las notificaciones (ver abajo) |
+| `VAPID_PRIVATE_KEY` | clave privada para las notificaciones (ver abajo) |
+| `VAPID_SUBJECT` | `mailto:francohugoamador25@gmail.com` |
 
 Cargá todos como tipo **Secret**: las variables de texto agregadas en el dashboard se borran en
 cada deploy.
 
 **Nunca** cargues `ADMIN_SIN_AUTH` en producción.
+
+**Notificaciones (VAPID):** generá las claves una sola vez con
+`cd apps/api && node scripts/generar-claves-vapid.mjs` y cargá las tres como Secret. Si las
+cambiás, cada dispositivo tiene que volver a activar las notificaciones. Sin estas claves el panel
+funciona igual, pero sin avisos.
+
+**Recordatorios:** el Cron Trigger (`*/15 * * * *`) viene en `wrangler.toml` y se crea solo con
+el deploy. Manda los avisos de cada trabajo y el resumen del día a las 7:00.
 
 ## 7. Pasar a producción
 

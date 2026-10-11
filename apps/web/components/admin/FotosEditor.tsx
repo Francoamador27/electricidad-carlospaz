@@ -10,7 +10,7 @@ import { claseInput } from "@/components/admin/ui";
 type Props = {
   fotos: FotoInput[];
   onChange: (fotos: FotoInput[]) => void;
-  carpeta: "proyectos" | "posts";
+  carpeta: "proyectos" | "posts" | "trabajos";
   altPorDefecto: string;
   multiples?: boolean;
   conTipo?: boolean;

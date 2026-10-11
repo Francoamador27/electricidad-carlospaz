@@ -1,6 +1,7 @@
 // Aviso por email de cada consulta, por SMTP (casilla de Hostinger). Sin SMTP configurado
 // (desarrollo) solo se loguea en la consola.
 import { enviarCorreo, smtpListo } from "./correo";
+import { linkWhatsappCliente } from "@voltis/shared/agenda";
 import type { Consulta } from "@voltis/shared";
 import type { Env } from "../env";
 
@@ -38,13 +39,8 @@ function origen(c: Consulta): string | undefined {
 const escapar = (s: string) =>
   s.replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]!);
 
-// Número argentino a wa.me: 351 1234567 -> 5493511234567.
 function linkWhatsapp(c: Consulta): string {
-  let n = c.telefono.replace(/\D/g, "");
-  if (n.startsWith("0")) n = n.slice(1);
-  if (!n.startsWith("54")) n = `549${n}`;
-  const texto = `Hola ${c.nombre.split(" ")[0]}, te escribimos de Voltis por tu consulta.`;
-  return `https://wa.me/${n}?text=${encodeURIComponent(texto)}`;
+  return linkWhatsappCliente(c.telefono, `Hola ${c.nombre.split(" ")[0]}, te escribimos de Voltis por tu consulta.`);
 }
 
 function cuerpoTexto(c: Consulta): string {

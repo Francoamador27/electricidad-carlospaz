@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { linkWhatsappCliente } from "@voltis/shared/agenda";
 import { Boton, Cargando, MensajeError, Titulo } from "@/components/admin/ui";
 import { adminApi, mensajeError } from "@/lib/admin-api";
 
@@ -27,13 +29,8 @@ function origen(a: Record<string, string> | null) {
   return [a.utm_source, a.utm_medium, a.utm_campaign].filter(Boolean).join(" / ") || "Directo / orgánico";
 }
 
-// Número argentino a formato wa.me: 351 1234567 -> 5493511234567.
 function linkResponder(c: Consulta) {
-  let n = c.telefono.replace(/\D/g, "");
-  if (n.startsWith("0")) n = n.slice(1);
-  if (!n.startsWith("54")) n = `549${n}`;
-  const texto = `Hola ${c.nombre.split(" ")[0]}, te escribimos de Voltis por tu consulta.`;
-  return `https://wa.me/${n}?text=${encodeURIComponent(texto)}`;
+  return linkWhatsappCliente(c.telefono, `Hola ${c.nombre.split(" ")[0]}, te escribimos de Voltis por tu consulta.`);
 }
 
 export default function ConsultasPage() {
@@ -105,13 +102,19 @@ export default function ConsultasPage() {
                 href={linkResponder(c)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 hover:bg-green-500 text-white font-semibold text-sm rounded px-4 py-2"
+                className="inline-flex items-center min-h-11 bg-green-700 text-white font-semibold text-[15px] rounded-xl px-4 active:opacity-70"
               >
                 Responder por WhatsApp
               </a>
+              <Link
+                href={`/admin/agenda/editar?consulta=${c.id}`}
+                className="inline-flex items-center min-h-11 bg-[var(--ios-acento)] text-[var(--ios-acento-texto)] font-semibold text-[15px] rounded-xl px-4 active:opacity-70"
+              >
+                📅 Agendar
+              </Link>
               <a
                 href={`tel:${c.telefono.replace(/[^\d+]/g, "")}`}
-                className="bg-white border border-slate-300 hover:bg-slate-50 font-semibold text-sm rounded px-4 py-2"
+                className="inline-flex items-center min-h-11 bg-[var(--ios-relleno)] text-[var(--ios-acento)] font-semibold text-[15px] rounded-xl px-4 active:opacity-70"
               >
                 Llamar
               </a>

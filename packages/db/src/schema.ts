@@ -1,6 +1,8 @@
 import {
+  bigint,
   boolean,
   date,
+  doublePrecision,
   integer,
   jsonb,
   pgEnum,
@@ -149,3 +151,96 @@ export const adminIntentos = pgTable(
   },
   (t) => [index("admin_intentos_ip_idx").on(t.ip, t.createdAt)],
 );
+
+// ---------- Agenda y finanzas (panel) ----------
+
+export const estadoTrabajo = pgEnum("estado_trabajo", ["agendado", "en_curso", "terminado", "cancelado"]);
+export const medioPago = pgEnum("medio_pago", ["efectivo", "transferencia", "mercadopago", "otro"]);
+
+// Trabajos agendados. Los montos van en centavos (enteros): sin errores de redondeo.
+// Un trabajo "todo el día" del 16 al 18 se guarda de 16 00:00 a 19 00:00 (fin exclusivo).
+export const trabajos = pgTable(
+  "trabajos",
+  {
+    id: serial("id").primaryKey(),
+    titulo: text("titulo").notNull(),
+    servicioId: integer("servicio_id").references(() => servicios.id),
+    clienteNombre: text("cliente_nombre").notNull(),
+    clienteTelefono: text("cliente_telefono"),
+    direccion: text("direccion"),
+    zonaId: integer("zona_id").references(() => zonas.id),
+    localidadOtra: text("localidad_otra"),
+    mapsUrl: text("maps_url"),
+    lat: doublePrecision("lat"),
+    lng: doublePrecision("lng"),
+    descripcion: text("descripcion"),
+    notas: text("notas"),
+    quienVa: text("quien_va"),
+    inicio: timestamp("inicio", { withTimezone: true }).notNull(),
+    fin: timestamp("fin", { withTimezone: true }).notNull(),
+    todoElDia: boolean("todo_el_dia").notNull().default(false),
+    precioCentavos: bigint("precio_centavos", { mode: "number" }),
+    estado: estadoTrabajo("estado").notNull().default("agendado"),
+    consultaId: integer("consulta_id").references(() => consultas.id, { onDelete: "set null" }),
+    proyectoId: integer("proyecto_id").references(() => proyectos.id, { onDelete: "set null" }),
+    fotos: jsonb("fotos").$type<Foto[]>().notNull().default([]),
+    recordatorioMin: integer("recordatorio_min").default(60),
+    recordatorioEnviadoAt: timestamp("recordatorio_enviado_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: actualizado(),
+  },
+  (t) => [
+    index("trabajos_rango_idx").on(t.inicio, t.fin),
+    check("trabajos_fin_despues_de_inicio", sql`${t.fin} >= ${t.inicio}`),
+  ],
+);
+
+export const trabajoPagos = pgTable(
+  "trabajo_pagos",
+  {
+    id: serial("id").primaryKey(),
+    trabajoId: integer("trabajo_id")
+      .notNull()
+      .references(() => trabajos.id, { onDelete: "cascade" }),
+    fecha: date("fecha").notNull(),
+    montoCentavos: bigint("monto_centavos", { mode: "number" }).notNull(),
+    medio: medioPago("medio").notNull(),
+    nota: text("nota"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("trabajo_pagos_fecha_idx").on(t.fecha),
+    index("trabajo_pagos_trabajo_idx").on(t.trabajoId),
+    check("trabajo_pagos_monto_positivo", sql`${t.montoCentavos} > 0`),
+  ],
+);
+
+export const trabajoGastos = pgTable(
+  "trabajo_gastos",
+  {
+    id: serial("id").primaryKey(),
+    trabajoId: integer("trabajo_id")
+      .notNull()
+      .references(() => trabajos.id, { onDelete: "cascade" }),
+    fecha: date("fecha").notNull(),
+    descripcion: text("descripcion").notNull(),
+    montoCentavos: bigint("monto_centavos", { mode: "number" }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("trabajo_gastos_fecha_idx").on(t.fecha),
+    index("trabajo_gastos_trabajo_idx").on(t.trabajoId),
+    check("trabajo_gastos_monto_positivo", sql`${t.montoCentavos} > 0`),
+  ],
+);
+
+// Dispositivos que activaron las notificaciones del panel (Web Push).
+export const suscripcionesPush = pgTable("suscripciones_push", {
+  id: serial("id").primaryKey(),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  dispositivo: text("dispositivo"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  ultimoEnvioAt: timestamp("ultimo_envio_at", { withTimezone: true }),
+});

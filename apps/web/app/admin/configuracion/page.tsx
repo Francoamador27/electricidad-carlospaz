@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { CLAVES_CONFIG, CONFIG_CAMPOS, type ConfigSitio } from "@voltis/shared";
 import { Boton, Campo, Cargando, MensajeError, Tarjeta, Titulo, claseInput, errorDe } from "@/components/admin/ui";
 import { adminApi, ErrorApi, mensajeError } from "@/lib/admin-api";
+import Notificaciones from "@/components/admin/Notificaciones";
+import CalendarioIphone from "@/components/admin/CalendarioIphone";
 
 const GUIAS: Record<string, string[]> = {
   gtm_id: [
@@ -65,6 +67,12 @@ export default function ConfiguracionPage() {
       <p className="text-sm text-slate-600 mb-6">
         Estos datos se aplican al sitio cuando tocás <strong>Publicar cambios</strong>.
       </p>
+      <div className="space-y-4 mb-8">
+        <Notificaciones />
+        <CalendarioIphone />
+      </div>
+
+      <h2 className="ios-encabezado-lista">Sitio web: Google, Meta y Bing</h2>
       <MensajeError texto={error} />
       {!valores && !error && <Cargando />}
 
