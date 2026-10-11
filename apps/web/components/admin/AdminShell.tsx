@@ -2,25 +2,73 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import AppInstalable from "@/components/admin/AppInstalable";
 import Login from "@/components/admin/Login";
 import { adminApi, ErrorApi, mensajeError } from "@/lib/admin-api";
 
-const SECCIONES = [
-  { href: "/admin", label: "Conversiones" },
-  { href: "/admin/consultas", label: "Consultas" },
-  { href: "/admin/proyectos", label: "Proyectos" },
-  { href: "/admin/posts", label: "Blog" },
-  { href: "/admin/zonas", label: "Zonas" },
-  { href: "/admin/resenas", label: "Reseñas" },
-  { href: "/admin/configuracion", label: "Configuración" },
+// ---------- Íconos (trazo fino, estilo SF Symbols) ----------
+
+type Icono = (p: { className?: string }) => React.ReactElement;
+const svg = (d: React.ReactNode): Icono =>
+  function IconoSvg({ className }) {
+    return (
+      <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {d}
+      </svg>
+    );
+  };
+
+const IconoInicio = svg(<path d="M4 19V10l8-6 8 6v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" />);
+const IconoConsultas = svg(<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />);
+const IconoProyectos = svg(<><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="10" r="1.6" /><path d="m21 16-5-5-8 8" /></>);
+const IconoBlog = svg(<><path d="M5 4h11l3 3v13H5z" /><path d="M9 10h6M9 14h6M9 18h3" /></>);
+const IconoMas = svg(<><circle cx="5" cy="12" r="1.3" /><circle cx="12" cy="12" r="1.3" /><circle cx="19" cy="12" r="1.3" /></>);
+const IconoZonas = svg(<><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></>);
+const IconoResenas = svg(<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />);
+const IconoConfig = svg(<><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /></>);
+export const IconoChevron = svg(<path d="m9 6 6 6-6 6" />);
+
+type Seccion = { href: string; label: string; Icono: Icono };
+
+// Pestañas del celular (máximo 5, como iOS). El resto vive en "Más".
+const PESTANAS: Seccion[] = [
+  { href: "/admin", label: "Inicio", Icono: IconoInicio },
+  { href: "/admin/consultas", label: "Consultas", Icono: IconoConsultas },
+  { href: "/admin/proyectos", label: "Proyectos", Icono: IconoProyectos },
+  { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
+  { href: "/admin/mas", label: "Más", Icono: IconoMas },
 ];
+
+export const SECCIONES_MAS: Seccion[] = [
+  { href: "/admin/zonas", label: "Zonas", Icono: IconoZonas },
+  { href: "/admin/resenas", label: "Reseñas", Icono: IconoResenas },
+  { href: "/admin/configuracion", label: "Configuración", Icono: IconoConfig },
+];
+
+// Barra lateral de la computadora: todas las secciones.
+const LATERAL: Seccion[] = [
+  { href: "/admin", label: "Conversiones", Icono: IconoInicio },
+  { href: "/admin/consultas", label: "Consultas", Icono: IconoConsultas },
+  { href: "/admin/proyectos", label: "Proyectos", Icono: IconoProyectos },
+  { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
+  ...SECCIONES_MAS,
+];
+
+// ---------- Contexto: sesión y publicar, disponibles en cualquier pantalla ----------
+
+type Panel = { usuario: string; salir: () => void; publicar: () => void; publicando: boolean };
+const PanelContexto = createContext<Panel | null>(null);
+export function usePanel(): Panel {
+  const p = useContext(PanelContexto);
+  if (!p) throw new Error("usePanel fuera del panel");
+  return p;
+}
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const ruta = usePathname().replace(/\/$/, "") || "/admin";
   const [publicando, setPublicando] = useState(false);
   const [aviso, setAviso] = useState<{ tipo: "ok" | "error"; texto: string } | null>(null);
-  const [menu, setMenu] = useState(false);
   // undefined = verificando, null = sin sesión.
   const [usuario, setUsuario] = useState<string | null | undefined>(undefined);
   const [errorConexion, setErrorConexion] = useState<string | null>(null);
@@ -29,8 +77,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     adminApi<{ usuario: string }>("/yo")
       .then((r) => setUsuario(r.usuario))
       .catch((e) => {
-        if (e instanceof ErrorApi && e.estado === 401) setUsuario(null);
-        else if (e instanceof ErrorApi && e.estado === 503) setUsuario(null);
+        if (e instanceof ErrorApi && (e.estado === 401 || e.estado === 503)) setUsuario(null);
         else setErrorConexion(mensajeError(e));
       });
   }, []);
@@ -59,78 +106,109 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     }
   }
 
+  let contenido: React.ReactNode;
   if (errorConexion) {
-    return <p className="p-8 text-red-700">{errorConexion}</p>;
-  }
-  if (usuario === undefined) {
-    return <p className="p-8 text-slate-500">Cargando...</p>;
-  }
-  if (usuario === null) {
-    return <Login alEntrar={setUsuario} />;
-  }
+    contenido = <p className="p-8 text-red-700">{errorConexion}</p>;
+  } else if (usuario === undefined) {
+    contenido = <p className="p-8 ios-secundario">Cargando...</p>;
+  } else if (usuario === null) {
+    contenido = <Login alEntrar={setUsuario} />;
+  } else {
+    const activa = (href: string) => (href === "/admin" ? ruta === "/admin" : ruta.startsWith(href));
+    const enMas = SECCIONES_MAS.some((s) => activa(s.href)) || ruta.startsWith("/admin/mas");
 
-  const activa = (href: string) => (href === "/admin" ? ruta === "/admin" : ruta.startsWith(href));
-
-  return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 md:flex">
-      <aside className="bg-slate-900 text-slate-200 md:w-56 md:min-h-screen md:flex-shrink-0">
-        <div className="flex items-center justify-between px-4 py-4">
-          <Link href="/admin" className="font-display font-bold text-white text-lg">
-            Voltis <span className="text-amber-400">panel</span>
-          </Link>
-          <button className="md:hidden text-sm border border-slate-600 rounded px-2 py-1" onClick={() => setMenu(!menu)}>
-            Menú
-          </button>
-        </div>
-        <nav className={`${menu ? "block" : "hidden"} md:block px-2 pb-4`}>
-          {SECCIONES.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              onClick={() => setMenu(false)}
-              className={`block rounded px-3 py-2 text-sm ${
-                activa(s.href) ? "bg-amber-500 text-slate-900 font-semibold" : "hover:bg-slate-800"
-              }`}
-            >
-              {s.label}
+    contenido = (
+      <PanelContexto.Provider value={{ usuario, salir, publicar, publicando }}>
+        <div className="md:flex min-h-dvh">
+          {/* Computadora: barra lateral */}
+          <aside className="hidden md:flex md:flex-col md:w-60 md:shrink-0 md:sticky md:top-0 md:h-dvh p-3 border-r border-[var(--ios-separador)] bg-[var(--ios-tarjeta)]">
+            <Link href="/admin" className="px-3 py-3 text-lg font-bold">
+              Voltis <span className="text-[var(--ios-acento)]">panel</span>
             </Link>
-          ))}
-          <div className="mt-6 px-1 space-y-2">
-            <button
-              onClick={publicar}
-              disabled={publicando}
-              className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold text-sm rounded px-3 py-2 disabled:opacity-60"
-            >
-              {publicando ? "Publicando..." : "Publicar cambios"}
-            </button>
-            <a href="/" target="_blank" className="block text-center text-xs text-slate-400 hover:text-white">
-              Ver sitio ↗
-            </a>
-            {usuario !== "local" && (
-              <button onClick={salir} className="block w-full text-center text-xs text-slate-400 hover:text-white">
-                Salir ({usuario})
+            <nav aria-label="Secciones" className="flex-1 space-y-0.5">
+              {LATERAL.map(({ href, label, Icono }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={activa(href) ? "page" : undefined}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 text-[15px] ${
+                    activa(href) ? "bg-[var(--ios-acento)] text-[var(--ios-acento-texto)] font-semibold" : "hover:bg-[var(--ios-relleno)]"
+                  }`}
+                >
+                  <Icono className="w-5 h-5" />
+                  {label}
+                </Link>
+              ))}
+            </nav>
+            <div className="space-y-1 pt-3">
+              <button type="button" onClick={publicar} disabled={publicando} className="ios-boton w-full disabled:opacity-60">
+                {publicando ? "Publicando..." : "Publicar cambios"}
               </button>
-            )}
-          </div>
-        </nav>
-      </aside>
+              <a href="/" target="_blank" className="block text-center text-sm ios-secundario py-1.5">
+                Ver sitio ↗
+              </a>
+              {usuario !== "local" && (
+                <button type="button" onClick={salir} className="block w-full text-center text-sm ios-secundario py-1.5">
+                  Salir ({usuario})
+                </button>
+              )}
+            </div>
+          </aside>
 
-      <main className="flex-1 min-w-0 p-4 md:p-8">
-        {aviso && (
-          <div
-            role="status"
-            className={`mb-6 rounded border px-4 py-3 text-sm ${
-              aviso.tipo === "ok" ? "bg-green-50 border-green-300 text-green-800" : "bg-red-50 border-red-300 text-red-800"
-            }`}
-          >
-            {aviso.texto}
-            <button className="ml-3 underline" onClick={() => setAviso(null)}>
-              cerrar
-            </button>
+          <div className="flex-1 min-w-0">
+            {/* Celular: barra superior translúcida */}
+            <header className="ios-barra-superior md:hidden">
+              <div className="flex items-center justify-between h-11 px-4">
+                <span className="font-semibold">
+                  Voltis <span className="text-[var(--ios-acento)]">panel</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={publicar}
+                  disabled={publicando}
+                  aria-label="Publicar cambios"
+                  className="ios-boton-texto -mr-3 disabled:opacity-60"
+                >
+                  {publicando ? "Publicando..." : "Publicar"}
+                </button>
+              </div>
+            </header>
+
+            <main className="ios-contenido px-4 pt-4 md:p-8 max-w-6xl">
+              <AppInstalable />
+              {aviso && (
+                <div
+                  role="status"
+                  className={`mb-6 rounded-xl border px-4 py-3 text-sm ${
+                    aviso.tipo === "ok" ? "bg-green-50 border-green-300 text-green-800" : "bg-red-50 border-red-300 text-red-800"
+                  }`}
+                >
+                  {aviso.texto}
+                  <button type="button" className="ml-3 underline" onClick={() => setAviso(null)}>
+                    cerrar
+                  </button>
+                </div>
+              )}
+              {children}
+            </main>
           </div>
-        )}
-        {children}
-      </main>
-    </div>
-  );
+
+          {/* Celular: pestañas inferiores */}
+          <nav aria-label="Pestañas" className="ios-tabbar md:hidden">
+            {PESTANAS.map(({ href, label, Icono }) => {
+              const actual = href === "/admin/mas" ? enMas : activa(href);
+              return (
+                <Link key={href} href={href} className="ios-tab" aria-current={actual ? "page" : undefined}>
+                  <Icono className="w-6 h-6" />
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      </PanelContexto.Provider>
+    );
+  }
+
+  return <div className="admin-ios">{contenido}</div>;
 }

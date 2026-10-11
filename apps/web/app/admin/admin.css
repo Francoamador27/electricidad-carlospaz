@@ -1,0 +1,230 @@
+/* Estética iOS del panel de Voltis. Solo aplica dentro de .admin-ios (el sitio público no la usa).
+   Colores de sistema de iOS + cobre de la marca como acento. Todos los textos validados a ≥ 4,5:1
+   en modo claro y oscuro. */
+
+.admin-ios {
+  --ios-fondo: #f2f2f7;
+  --ios-tarjeta: #ffffff;
+  --ios-relleno: #f2f2f7; /* campos dentro de una tarjeta */
+  --ios-texto: #1c1c1e;
+  --ios-texto-2: #6c6c70;
+  --ios-separador: #c6c6c8;
+  --ios-acento: #a9581a;
+  --ios-acento-texto: #ffffff;
+  --ios-verde: #1e7e34;
+  --ios-rojo: #c62828;
+  --ios-barra: rgba(249, 249, 249, 0.86);
+  --ios-sombra: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  color-scheme: light;
+  background: var(--ios-fondo);
+  color: var(--ios-texto);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
+}
+
+@media (prefers-color-scheme: dark) {
+  .admin-ios {
+    --ios-fondo: #000000;
+    --ios-tarjeta: #1c1c1e;
+    --ios-relleno: #2c2c2e;
+    --ios-texto: #ffffff;
+    --ios-texto-2: #98989f;
+    --ios-separador: #38383a;
+    --ios-acento: #f0a35e;
+    --ios-acento-texto: #1c1c1e;
+    --ios-verde: #30d158;
+    --ios-rojo: #ff6961;
+    --ios-barra: rgba(22, 22, 24, 0.86);
+    --ios-sombra: none;
+    color-scheme: dark;
+  }
+}
+
+.admin-ios h1,
+.admin-ios h2,
+.admin-ios h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Piezas iOS ----------
+   En la capa "components" de Tailwind: así las utilidades (md:hidden, p-4, etc.) pueden
+   ajustarlas. Las reglas de modo oscuro de más abajo quedan fuera de capas a propósito, para
+   ganarle a las utilidades que reemplazan. */
+@layer components {
+
+
+  .ios-titulo-grande {
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .ios-card {
+    background: var(--ios-tarjeta);
+    border-radius: 14px;
+    box-shadow: var(--ios-sombra);
+  }
+
+  .ios-secundario {
+    color: var(--ios-texto-2);
+  }
+
+  /* Lista agrupada (como Configuración): filas separadas por una línea fina. */
+  .ios-lista {
+    background: var(--ios-tarjeta);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ios-lista > * + * {
+    border-top: 0.5px solid var(--ios-separador);
+  }
+  .ios-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 16px;
+  }
+  .ios-encabezado-lista {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ios-texto-2);
+    padding: 0 16px 6px;
+  }
+
+  .ios-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: var(--ios-acento);
+    color: var(--ios-acento-texto);
+    border: 0;
+  }
+  .ios-boton:active {
+    opacity: 0.7;
+  }
+  .ios-boton-texto {
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    color: var(--ios-acento);
+    background: transparent;
+    border: 0;
+  }
+
+  /* Barra de pestañas inferior (celular). Respeta el área segura del iPhone. */
+  .ios-tabbar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--ios-barra);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-top: 0.5px solid var(--ios-separador);
+  }
+  .ios-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 7px 0 5px;
+    min-height: 50px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ios-texto-2);
+  }
+  .ios-tab[aria-current="page"] {
+    color: var(--ios-acento);
+  }
+
+  /* Barra superior translúcida (celular). */
+  .ios-barra-superior {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    padding-top: env(safe-area-inset-top);
+    background: var(--ios-barra);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid var(--ios-separador);
+  }
+}
+
+/* ---------- Modo oscuro para las clases de Tailwind que ya usan las pantallas del panel ---------- */
+/* (Así todas las pantallas existentes se adaptan sin reescribirlas una por una.) */
+
+.admin-ios .bg-white { background-color: var(--ios-tarjeta); }
+.admin-ios .bg-slate-50,
+.admin-ios .bg-slate-100 { background-color: var(--ios-fondo); }
+.admin-ios .border-slate-200,
+.admin-ios .border-slate-300 { border-color: var(--ios-separador); }
+.admin-ios .text-slate-900,
+.admin-ios .text-slate-800 { color: var(--ios-texto); }
+.admin-ios .text-slate-700,
+.admin-ios .text-slate-600,
+.admin-ios .text-slate-500,
+.admin-ios .text-slate-400 { color: var(--ios-texto-2); }
+.admin-ios .bg-amber-500 { background-color: var(--ios-acento); color: var(--ios-acento-texto); }
+.admin-ios .hover\:bg-amber-400:hover { background-color: var(--ios-acento); opacity: 0.85; }
+.admin-ios .text-amber-600,
+.admin-ios .text-amber-700 { color: var(--ios-acento); }
+.admin-ios .focus\:ring-amber-400:focus,
+.admin-ios .focus-within\:ring-amber-400:focus-within { --tw-ring-color: var(--ios-acento); }
+.admin-ios .bg-green-600 { background-color: var(--ios-verde); }
+.admin-ios .text-green-700,
+.admin-ios .text-green-800 { color: var(--ios-verde); }
+.admin-ios .text-red-600,
+.admin-ios .text-red-700,
+.admin-ios .text-red-800 { color: var(--ios-rojo); }
+.admin-ios input,
+.admin-ios select,
+.admin-ios textarea { color: var(--ios-texto); }
+.admin-ios input::placeholder,
+.admin-ios textarea::placeholder { color: var(--ios-texto-2); }
+
+@media (prefers-color-scheme: dark) {
+  .admin-ios .bg-green-50 { background-color: rgba(48, 209, 88, 0.14); }
+  .admin-ios .bg-red-50 { background-color: rgba(255, 105, 97, 0.14); }
+  .admin-ios .bg-amber-50 { background-color: rgba(240, 163, 94, 0.14); }
+  .admin-ios .border-green-300 { border-color: rgba(48, 209, 88, 0.4); }
+  .admin-ios .border-red-200,
+  .admin-ios .border-red-300 { border-color: rgba(255, 105, 97, 0.4); }
+  .admin-ios .border-amber-300 { border-color: rgba(240, 163, 94, 0.4); }
+  .admin-ios .text-amber-900 { color: var(--ios-acento); }
+  .admin-ios .bg-slate-200 { background-color: var(--ios-relleno); }
+  .admin-ios .bg-green-100 { background-color: rgba(48, 209, 88, 0.18); }
+  .admin-ios .hover\:bg-slate-50:hover,
+  .admin-ios .hover\:bg-slate-200:hover { background-color: var(--ios-relleno); }
+  .admin-ios .bg-slate-900 { background-color: var(--ios-tarjeta); }
+}
+
+/* El editor de texto usa los estilos del sitio: en oscuro, legible. */
+@media (prefers-color-scheme: dark) {
+  .admin-ios .contenido-rico,
+  .admin-ios .contenido-rico h2,
+  .admin-ios .contenido-rico h3,
+  .admin-ios .contenido-rico strong { color: var(--ios-texto); }
+  .admin-ios .contenido-rico blockquote { background: rgba(240, 163, 94, 0.12); border-color: rgba(240, 163, 94, 0.35); }
+  .admin-ios .contenido-rico blockquote.alerta { background: rgba(255, 105, 97, 0.12); border-color: rgba(255, 105, 97, 0.35); color: var(--ios-rojo); }
+}
+
+/* Celular: espacio para la barra de pestañas y el área segura. */
+@media (max-width: 767px) {
+  .admin-ios .ios-contenido {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}

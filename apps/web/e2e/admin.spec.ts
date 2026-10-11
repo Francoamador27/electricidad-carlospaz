@@ -102,7 +102,7 @@ test("proyectos: crear uno con foto lo procesa, lo sube y lo guarda", async ({ p
   await page.getByLabel("Localidad").selectOption({ label: "Cosquín" });
 
   const foto = path.resolve(__dirname, "../public/images/tablero-trifasico.jpg");
-  await page.locator('input[type="file"]').setInputFiles(foto);
+  await page.locator('input[type="file"]:not([capture])').setInputFiles(foto);
   await expect(page.getByLabel("Texto alternativo")).toHaveValue("Tableros eléctricos en Cosquín");
 
   const editor = page.getByRole("textbox", { name: "Descripción del trabajo" });

@@ -3,8 +3,10 @@
 import Link from "next/link";
 import type { ErrorApi } from "@/lib/admin-api";
 
+// Campos estilo iOS: relleno gris suave, esquinas redondeadas y 16 px de texto (con menos,
+// Safari del iPhone hace zoom al tocar el campo).
 export const claseInput =
-  "w-full border border-slate-300 rounded px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-400";
+  "w-full rounded-[10px] px-3 py-2.5 text-base md:text-sm bg-[var(--ios-relleno)] border border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--ios-acento)]";
 
 export function Campo({
   label,
@@ -19,7 +21,7 @@ export function Campo({
 }) {
   return (
     <label className="block">
-      <span className="block text-sm font-medium text-slate-700 mb-1">{label}</span>
+      <span className="block text-[13px] font-medium ios-secundario mb-1 px-1">{label}</span>
       {children}
       {ayuda && !error && <span className="block text-xs text-slate-500 mt-1">{ayuda}</span>}
       {error && <span className="block text-xs text-red-600 mt-1">{error}</span>}
@@ -37,14 +39,14 @@ export function Boton({
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variante?: "primario" | "secundario" | "peligro" }) {
   const estilos = {
-    primario: "bg-amber-500 hover:bg-amber-400 text-slate-900",
-    secundario: "bg-white border border-slate-300 hover:bg-slate-50 text-slate-800",
-    peligro: "bg-white border border-red-300 text-red-700 hover:bg-red-50",
+    primario: "bg-[var(--ios-acento)] text-[var(--ios-acento-texto)] active:opacity-70",
+    secundario: "bg-[var(--ios-relleno)] text-[var(--ios-acento)] active:opacity-70",
+    peligro: "bg-[var(--ios-relleno)] text-[var(--ios-rojo)] active:opacity-70",
   }[variante];
   return (
     <button
       {...props}
-      className={`font-semibold text-sm rounded px-4 py-2 disabled:opacity-60 ${estilos} ${props.className ?? ""}`}
+      className={`font-semibold text-[15px] rounded-xl px-4 min-h-11 disabled:opacity-50 ${estilos} ${props.className ?? ""}`}
     />
   );
 }
@@ -52,9 +54,9 @@ export function Boton({
 export function Titulo({ children, accion }: { children: React.ReactNode; accion?: { href: string; label: string } }) {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-      <h1 className="text-2xl font-bold">{children}</h1>
+      <h1 className="ios-titulo-grande">{children}</h1>
       {accion && (
-        <Link href={accion.href} className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm rounded px-4 py-2">
+        <Link href={accion.href} className="ios-boton text-[15px]">
           {accion.label}
         </Link>
       )}
@@ -64,9 +66,9 @@ export function Titulo({ children, accion }: { children: React.ReactNode; accion
 
 export function Estado({ estado }: { estado: string }) {
   return estado === "publicado" ? (
-    <span className="text-xs font-semibold rounded px-2 py-0.5 bg-green-100 text-green-800">Publicado</span>
+    <span className="text-xs font-semibold rounded-full px-2.5 py-0.5 bg-green-100 text-green-800">Publicado</span>
   ) : (
-    <span className="text-xs font-semibold rounded px-2 py-0.5 bg-slate-200 text-slate-700">Borrador</span>
+    <span className="text-xs font-semibold rounded-full px-2.5 py-0.5 bg-slate-200 text-slate-700">Borrador</span>
   );
 }
 
@@ -76,9 +78,9 @@ export function Cargando() {
 
 export function MensajeError({ texto }: { texto: string | null }) {
   if (!texto) return null;
-  return <p className="rounded border border-red-300 bg-red-50 text-red-800 text-sm px-4 py-3 mb-4">{texto}</p>;
+  return <p role="alert" className="rounded-xl border border-red-300 bg-red-50 text-red-800 text-sm px-4 py-3 mb-4">{texto}</p>;
 }
 
 export function Tarjeta({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <section className={`bg-white rounded-lg border border-slate-200 p-5 ${className}`}>{children}</section>;
+  return <section className={`ios-card p-4 md:p-5 ${className}`}>{children}</section>;
 }

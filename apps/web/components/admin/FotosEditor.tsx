@@ -18,6 +18,7 @@ type Props = {
 
 export default function FotosEditor({ fotos, onChange, carpeta, altPorDefecto, multiples = true, conTipo = true }: Props) {
   const input = useRef<HTMLInputElement>(null);
+  const camara = useRef<HTMLInputElement>(null);
   const [subiendo, setSubiendo] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,6 +54,7 @@ export default function FotosEditor({ fotos, onChange, carpeta, altPorDefecto, m
     } finally {
       setSubiendo(null);
       if (input.current) input.current.value = "";
+      if (camara.current) camara.current.value = "";
     }
   }
 
@@ -129,14 +131,37 @@ export default function FotosEditor({ fotos, onChange, carpeta, altPorDefecto, m
         className="hidden"
         onChange={(e) => subir(e.target.files)}
       />
-      <button
-        type="button"
-        disabled={!!subiendo}
-        onClick={() => input.current?.click()}
-        className="border-2 border-dashed border-slate-300 hover:border-amber-400 rounded-lg px-4 py-6 w-full text-sm text-slate-600 disabled:opacity-60"
-      >
-        {subiendo ?? (multiples ? "+ Agregar fotos" : fotos.length ? "Cambiar foto" : "+ Subir foto")}
-      </button>
+      {/* Cámara trasera directa (iPhone y Android). En la compu abre el selector de archivos. */}
+      <input
+        ref={camara}
+        type="file"
+        accept="image/*"
+        capture="environment"
+        className="hidden"
+        onChange={(e) => subir(e.target.files)}
+      />
+      {subiendo ? (
+        <p role="status" className="rounded-xl bg-[var(--ios-relleno)] px-4 py-6 text-center text-sm ios-secundario">
+          {subiendo}
+        </p>
+      ) : (
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => camara.current?.click()}
+            className="rounded-xl bg-[var(--ios-relleno)] text-[var(--ios-acento)] font-semibold min-h-14 px-3 text-[15px] active:opacity-70"
+          >
+            📷 Sacar foto
+          </button>
+          <button
+            type="button"
+            onClick={() => input.current?.click()}
+            className="rounded-xl bg-[var(--ios-relleno)] text-[var(--ios-acento)] font-semibold min-h-14 px-3 text-[15px] active:opacity-70"
+          >
+            {multiples ? "🖼 Elegir de la galería" : fotos.length ? "🖼 Cambiar foto" : "🖼 Elegir foto"}
+          </button>
+        </div>
+      )}
       {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
       <p className="text-xs text-slate-500 mt-2">
         Se convierten a WebP en varios tamaños y se borran los datos de ubicación (GPS) de la foto.
