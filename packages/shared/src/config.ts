@@ -7,6 +7,11 @@ export const CONFIG_CAMPOS = {
     ayuda: "Formato GTM-XXXXXXX. GA4, Google Ads y el Pixel de Meta se configuran dentro de GTM.",
     schema: z.string().regex(/^GTM-[A-Z0-9]{4,12}$/, "Formato: GTM-XXXXXXX"),
   },
+  google_ads_id: {
+    label: "ID de Google Ads (etiqueta de Google)",
+    ayuda: "Formato AW-XXXXXXXXXX. Carga gtag.js directamente, sin pasar por GTM.",
+    schema: z.string().regex(/^AW-[0-9]{6,15}$/, "Formato: AW-XXXXXXXXXX"),
+  },
   google_site_verification: {
     label: "Verificación de Google Search Console",
     ayuda: 'El valor de content="..." de la etiqueta HTML que te da Search Console.',

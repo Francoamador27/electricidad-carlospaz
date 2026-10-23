@@ -1,4 +1,4 @@
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { LOCALIDADES, NEGOCIO, SERVICIOS } from "@voltis/shared/negocio";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -79,10 +79,12 @@ const websiteSchema = {
 };
 
 export default async function SitioLayout({ children }: { children: React.ReactNode }) {
-  const { gtm_id } = await getConfig();
+  const { gtm_id, google_ads_id } = await getConfig();
   return (
     <>
       {gtm_id && <GoogleTagManager gtmId={gtm_id} />}
+      {/* Inserta gtag.js + gtag('config', id); sirve igual para IDs AW- de Google Ads */}
+      {google_ads_id && <GoogleAnalytics gaId={google_ads_id} />}
       <JsonLd data={organizationSchema} />
       <JsonLd data={websiteSchema} />
       <TrackingListener />

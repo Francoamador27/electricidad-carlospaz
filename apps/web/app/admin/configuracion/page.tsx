@@ -14,6 +14,11 @@ const GUIAS: Record<string, string[]> = {
     "Dentro de GTM agregá la etiqueta de Google Analytics 4 (y la de Google Ads o el Pixel de Meta cuando los uses).",
     "Los eventos del sitio ya llegan a GTM: click_whatsapp, click_telefono, generate_lead y ver_proyecto.",
   ],
+  google_ads_id: [
+    "En ads.google.com → Objetivos → Conversiones → Etiqueta de Google, copiá el ID que empieza con AW-.",
+    'Pegalo acá, guardá y tocá "Publicar cambios".',
+    "Si también usás GTM, no cargues dentro de GTM otra etiqueta de Google con el mismo ID.",
+  ],
   google_site_verification: [
     "En search.google.com/search-console agregá la propiedad con prefijo de URL.",
     'Elegí el método "Etiqueta HTML" y copiá solo el valor de content="...".',

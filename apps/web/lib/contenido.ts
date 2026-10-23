@@ -118,6 +118,9 @@ export function fotoPrincipal(p: Proyecto) {
   return p.fotos.find((f) => f.tipo === "despues") ?? p.fotos[0];
 }
 
+// Etiqueta de Google Ads de la cuenta; se usa si ni el panel ni el entorno definen otra.
+const GOOGLE_ADS_ID = "AW-18521160532";
+
 // Configuración del panel (GTM, verificaciones). Las variables de entorno sirven de respaldo.
 export const getConfig = cache(async (): Promise<ConfigSitio> => {
   const filas = await db.select().from(schema.config);
@@ -125,5 +128,6 @@ export const getConfig = cache(async (): Promise<ConfigSitio> => {
   return {
     ...valores,
     gtm_id: valores.gtm_id ?? (process.env.NEXT_PUBLIC_GTM_ID || undefined),
+    google_ads_id: valores.google_ads_id ?? (process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || GOOGLE_ADS_ID),
   };
 });
