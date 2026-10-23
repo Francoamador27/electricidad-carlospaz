@@ -180,7 +180,7 @@ test("el panel no carga GTM ni el header del sitio", async ({ page }) => {
   await simularAdmin(page);
   await page.goto("/admin");
   expect(await page.locator('script[src*="googletagmanager"]').count()).toBe(0);
-  await expect(page.getByRole("button", { name: "Contactar por WhatsApp" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Contactar por WhatsApp" })).toHaveCount(0);
 });
 
 test("editor de texto: negrita, color, tamaño y lista se guardan como HTML", async ({ page }) => {

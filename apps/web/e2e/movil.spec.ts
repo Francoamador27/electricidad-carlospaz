@@ -11,7 +11,7 @@ test("ninguna página tiene scroll horizontal en el celular", async ({ page }) =
 
 test("el botón flotante de WhatsApp está visible en el celular", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("button", { name: "Contactar por WhatsApp" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Contactar por WhatsApp" })).toBeVisible();
 });
 
 test("arriba del botón de WhatsApp hay uno para llamar directo", async ({ page }) => {
@@ -20,7 +20,7 @@ test("arriba del botón de WhatsApp hay uno para llamar directo", async ({ page 
   await expect(llamar).toBeVisible();
   await expect(llamar).toHaveAttribute("href", "tel:+5493513873029");
   const cajaLlamar = (await llamar.boundingBox())!;
-  const cajaWa = (await page.getByRole("button", { name: "Contactar por WhatsApp" }).boundingBox())!;
+  const cajaWa = (await page.getByRole("link", { name: "Contactar por WhatsApp" }).boundingBox())!;
   expect(cajaLlamar.y + cajaLlamar.height).toBeLessThan(cajaWa.y);
 });
 

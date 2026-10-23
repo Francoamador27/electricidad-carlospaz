@@ -83,33 +83,31 @@ test("el formulario de contacto guarda la consulta", async ({ page, context }) =
   expect(capturas.consultas[0]).toMatchObject({ nombre: "Lucía", paginaOrigen: "/contacto" });
 });
 
-test("botón flotante de WhatsApp: el mensaje es opcional y queda guardado como consulta", async ({ page, context }) => {
+test("botón flotante de WhatsApp: abre WhatsApp directo, sin formulario, y mide el clic", async ({ page, context }) => {
   const capturas = await simularApi(page);
+  await context.route(/wa\.me|whatsapp\.com/, (r) => r.fulfill({ status: 200, body: "ok" }));
   await page.goto("/");
-  await page.getByRole("button", { name: "Contactar por WhatsApp" }).click();
-  await page.getByLabel("Tu nombre").fill("Lucía");
-  await page.getByLabel("Tu número de teléfono").fill("351 555 9876");
-  await expect(page.getByLabel(/En qué te podemos ayudar/)).not.toHaveAttribute("required", "");
+  const boton = page.getByRole("link", { name: "Contactar por WhatsApp" });
+  await expect(boton).toHaveAttribute("href", /wa\.me\/5493513873029/);
 
   const popup = context.waitForEvent("page");
-  await page.getByRole("button", { name: "Enviar por WhatsApp" }).click();
-  const wa = await popup;
-  await wa.waitForURL(/wa\.me|whatsapp\.com/, { timeout: 15_000 }).catch(() => undefined);
-
-  await expect.poll(() => capturas.consultas.length).toBe(1);
-  expect(capturas.consultas[0]).toMatchObject({ nombre: "Lucía", telefono: "351 555 9876", paginaOrigen: "/" });
-  expect(decodeURIComponent(wa.url()).replace(/\+/g, " ")).toContain("Lucía");
+  await boton.click();
+  await popup;
+  await expect.poll(() => capturas.eventos.length).toBe(1);
+  expect(capturas.eventos[0]).toMatchObject({ tipo: "click_whatsapp", pagina: "/" });
 });
 
 test("sin token del antispam no llama a la API, pero abre WhatsApp con los datos", async ({ page, context }) => {
   const capturas = await simularApi(page, { turnstile: false });
-  await page.goto("/");
-  await page.getByRole("button", { name: "Contactar por WhatsApp" }).click();
-  await page.getByLabel("Tu nombre").fill("Pedro");
-  await page.getByLabel("Tu número de teléfono").fill("351 555 4321");
+  await page.goto("/presupuesto");
+  await page.locator('input[name="name"]').fill("Pedro");
+  await page.locator('input[name="phone"]').fill("351 555 4321");
+  await page.locator('input[name="location"]').fill("Tanti");
+  await page.locator('select[name="serviceType"]').selectOption({ index: 1 });
+  await page.locator('textarea[name="message"]').fill("Consulta de prueba");
 
   const popup = context.waitForEvent("page");
-  await page.getByRole("button", { name: "Enviar por WhatsApp" }).click();
+  await page.getByRole("button", { name: /Solicitar presupuesto/ }).click();
   const wa = await popup;
   await wa.waitForURL(/wa\.me|whatsapp\.com/, { timeout: 15_000 }).catch(() => undefined);
 
