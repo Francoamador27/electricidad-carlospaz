@@ -1,6 +1,6 @@
 import type { Consulta } from "@voltis/shared";
 import { linkWhatsapp } from "@voltis/shared/negocio";
-import { API_URL, contextoPagina, leerAtribucion, registrarClic, track } from "@/lib/tracking";
+import { API_URL, contextoPagina, leerAtribucion, registrarClic, reportarConversion, track } from "@/lib/tracking";
 
 type DatosConsulta = Omit<Consulta, "paginaOrigen" | "atribucion" | "turnstileToken" | "empresa">;
 
@@ -46,6 +46,7 @@ export async function enviarConsulta(
       servicio: datos.servicio,
       zona: datos.localidad,
     });
+    reportarConversion("contacto");
   } else {
     registrarClic("click_whatsapp");
   }

@@ -5,7 +5,21 @@ type Params = Record<string, string | undefined>;
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
+}
+
+// Conversiones de Google Ads (send_to de cada acción de conversión).
+const CONVERSIONES = {
+  contacto: "AW-18521160532/8W6iCNXAlKcdENT2yf9E", // WhatsApp y formulario
+  llamada: undefined as string | undefined, // Pendiente: send_to de la conversión de llamadas
+};
+
+// Sin gtag (bloqueador o etiqueta desactivada) no se envía nada.
+export function reportarConversion(tipo: keyof typeof CONVERSIONES): void {
+  const sendTo = CONVERSIONES[tipo];
+  if (!sendTo || typeof window.gtag !== "function") return;
+  window.gtag("event", "conversion", { send_to: sendTo, transport_type: "beacon" });
 }
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
@@ -69,6 +83,7 @@ export type TipoClic = "click_whatsapp" | "click_telefono";
 export function registrarClic(tipo: TipoClic): void {
   const ctx = contextoPagina();
   track(tipo, ctx);
+  reportarConversion(tipo === "click_telefono" ? "llamada" : "contacto");
   const cuerpo = JSON.stringify({ tipo, ...ctx, atribucion: leerAtribucion() });
   try {
     navigator.sendBeacon(`${API_URL}/api/eventos`, cuerpo);
