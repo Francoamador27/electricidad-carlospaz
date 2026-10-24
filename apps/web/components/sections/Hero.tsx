@@ -57,13 +57,13 @@ export default function Hero() {
 
           <h1 className="font-display text-5xl md:text-6xl lg:text-[84px] font-bold leading-[0.92] tracking-tight mb-6">
             <span className="volt-slide block" style={retraso(0.1)}>
-              Electricistas
+              Electricista domiciliario
             </span>
             <span className="volt-slide block text-copper" style={retraso(0.22)}>
-              en Carlos Paz
+              en Carlos Paz,
             </span>
             <span className="volt-slide block" style={retraso(0.34)}>
-              y Punilla.
+              Valle de Punilla.
             </span>
           </h1>
 
