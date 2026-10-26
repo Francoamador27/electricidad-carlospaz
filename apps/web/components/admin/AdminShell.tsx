@@ -29,6 +29,7 @@ const IconoBlog = svg(<><path d="M5 4h11l3 3v13H5z" /><path d="M9 10h6M9 14h6M9 
 const IconoMas = svg(<><circle cx="5" cy="12" r="1.3" /><circle cx="12" cy="12" r="1.3" /><circle cx="19" cy="12" r="1.3" /></>);
 const IconoZonas = svg(<><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></>);
 const IconoResenas = svg(<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />);
+const IconoQr = svg(<><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><path d="M14 14h2v2h-2zM18 14h2M14 18v2M18 18h2v2" /></>);
 const IconoConfig = svg(<><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /></>);
 export const IconoChevron = svg(<path d="m9 6 6 6-6 6" />);
 
@@ -47,6 +48,7 @@ export const SECCIONES_MAS: Seccion[] = [
   { href: "/admin", label: "Conversiones del sitio", Icono: IconoInicio },
   { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
   { href: "/admin/zonas", label: "Zonas", Icono: IconoZonas },
+  { href: "/admin/pedir-resena", label: "Pedir reseña", Icono: IconoQr },
   { href: "/admin/resenas", label: "Reseñas", Icono: IconoResenas },
   { href: "/admin/configuracion", label: "Configuración", Icono: IconoConfig },
 ];

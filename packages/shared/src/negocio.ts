@@ -22,6 +22,15 @@ export function linkWhatsapp(texto?: string): string {
 
 export const LINK_TELEFONO = `tel:${NEGOCIO.telefono}`;
 
+// Formulario para dejar una reseña en el Perfil de Empresa de Google.
+export const LINK_RESENA_GOOGLE = "https://g.page/r/CZpXAOJBokL8EBM/review";
+
+// Mensaje de WhatsApp para pedirle la reseña a un cliente.
+export function textoPedirResena(nombre?: string | null): string {
+  const saludo = nombre?.trim() ? `Hola ${nombre.trim().split(" ")[0]}!` : "Hola!";
+  return `${saludo} Gracias por confiar en ${NEGOCIO.nombre}. Si quedaste conforme con el trabajo, ¿nos dejarías tu opinión en Google? Nos ayuda muchísimo y lleva menos de un minuto: ${LINK_RESENA_GOOGLE}`;
+}
+
 // El contenido de cada servicio vive en apps/web/app/(sitio)/servicios/<slug>.
 // `resumen` se usa en llms.txt y en listados.
 export const SERVICIOS = [

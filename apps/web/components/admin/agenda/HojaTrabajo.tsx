@@ -22,6 +22,7 @@ import {
   type EstadoTrabajo,
   type MedioPago,
 } from "@voltis/shared/agenda";
+import { textoPedirResena } from "@voltis/shared/negocio";
 import { Hoja, FilaDato, Segmentado } from "@/components/admin/ios";
 import { claseInput } from "@/components/admin/ui";
 import { adminApi, mensajeError } from "@/lib/admin-api";
@@ -206,6 +207,17 @@ export default function HojaTrabajo({
               </BotonAccion>
             )}
           </div>
+
+          {t.estado === "terminado" && t.clienteTelefono && (
+            <a
+              href={linkWhatsappCliente(t.clienteTelefono, textoPedirResena(t.clienteNombre))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl bg-[var(--ios-tarjeta)] min-h-11 px-4 text-[15px] font-medium text-[var(--ios-acento)] active:opacity-70"
+            >
+              <span aria-hidden="true">⭐</span> Pedir reseña por WhatsApp
+            </a>
+          )}
 
           {/* Cliente y lugar */}
           <div className="ios-lista">
