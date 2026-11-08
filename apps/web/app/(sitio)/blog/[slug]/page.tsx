@@ -7,7 +7,7 @@ import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import Contenido from "@/components/ui/Contenido";
 import FotoImg from "@/components/ui/FotoImg";
 import { Breadcrumbs, JsonLd } from "@/components/seo/JsonLd";
-import { formatoFecha, getPost, getPosts, getServicios, paramsOVacio } from "@/lib/contenido";
+import { getPost, getPosts, getServicios, paramsOVacio } from "@/lib/contenido";
 import { srcFoto } from "@/lib/fotos";
 import { SITE_URL } from "@/lib/site";
 
@@ -30,7 +30,7 @@ export async function generateMetadata({
     descripcion: post.seoDescripcion ?? post.extracto,
     ruta: `/blog/${slug}`,
     imagen: post.portada ? { url: srcFoto(post.portada), alt: post.portada.alt } : undefined,
-    articulo: { publicado: post.publicadoAt, modificado: post.updatedAt },
+    articulo: { modificado: post.updatedAt },
     noIndexar: post.estado === "borrador",
   });
 }
@@ -56,7 +56,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           "@type": "BlogPosting",
           headline: post.titulo,
           description: post.extracto,
-          datePublished: post.publicadoAt?.toISOString(),
           dateModified: post.updatedAt.toISOString(),
           image: post.portada ? new URL(srcFoto(post.portada), SITE_URL).toString() : undefined,
           inLanguage: "es-AR",
@@ -85,12 +84,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </span>
           )}
           <h1 className="text-3xl md:text-4xl font-bold mt-4 mb-4 leading-tight">{post.titulo}</h1>
-          <time
-            className="text-slate-400 text-sm"
-            dateTime={post.publicadoAt?.toISOString()}
-          >
-            {formatoFecha(post.publicadoAt)}
-          </time>
         </div>
       </section>
 
@@ -114,7 +107,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 href={`/servicios/${servicio.slug}`}
                 className="text-amber-700 font-semibold hover:underline"
               >
-                Conocé nuestro servicio de {servicio.nombre.toLowerCase()} →
+                Mirá el servicio: {servicio.nombre.toLowerCase()} →
               </Link>
             </p>
           )}

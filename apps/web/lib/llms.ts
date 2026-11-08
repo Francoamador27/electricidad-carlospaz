@@ -9,15 +9,15 @@ const u = (path: string) => `${SITE_URL}${path}`;
 const publicados = <T extends { estado: string }>(filas: T[]) => filas.filter((f) => f.estado === "publicado");
 
 function encabezado(): string {
-  return `# ${NEGOCIO.nombre} — Electricistas en Villa Carlos Paz, Córdoba
+  return `# ${NEGOCIO.nombre} — Electricista en Villa Carlos Paz, Córdoba
 
-> ${NEGOCIO.nombre} es una empresa de electricistas con base en Villa Carlos Paz, Córdoba, Argentina, con más de 10 años de experiencia y más de 500 clientes atendidos. Hace instalaciones eléctricas domiciliarias, comerciales e industriales, tableros, reparaciones, mantenimiento, iluminación LED, domótica, cámaras de seguridad y emite el Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba) en Carlos Paz y todo el Valle de Punilla.
+> ${NEGOCIO.nombre} es el servicio de electricidad de Franco, electricista en Villa Carlos Paz, Córdoba, Argentina, para casas y locales comerciales. Hace arreglos y búsqueda de fallas, tomacorrientes, bocas de luz, ventiladores de techo, tableros, adecuación de locales e instalaciones completas en Carlos Paz y todo el Valle de Punilla. Gestionamos el certificado de instalación apta a través de un electricista matriculado.
 
 - Teléfono y WhatsApp: ${NEGOCIO.telefonoInternacional} (https://wa.me/${NEGOCIO.whatsapp})
 - Horario: ${NEGOCIO.horarioTexto}.
 - Zona de cobertura: ${LOCALIDADES.map((l) => l.nombre).join(", ")} y el resto del Valle de Punilla, Córdoba, Argentina.
 - Presupuesto sin cargo: ${u("/presupuesto")}
-- Todos los trabajos tienen garantía.`;
+- Todos los trabajos tienen garantía escrita.`;
 }
 
 export async function generarLlmsTxt(): Promise<string> {
@@ -28,7 +28,7 @@ export async function generarLlmsTxt(): Promise<string> {
     `## Servicios
 
 ${SERVICIOS.map((s) => `- [${s.nombre}](${u(`/servicios/${s.slug}`)}): ${s.resumen}`).join("\n")}
-- [Certificado de Instalación Eléctrica Apta](${u("/certificado-instalacion-electrica-apta")}): Qué es el certificado de la Ley 10.281 de Córdoba, cuándo lo pide la distribuidora y cómo lo emitimos.`,
+- [Certificado de Instalación Eléctrica Apta](${u("/certificado-instalacion-electrica-apta")}): Qué es el certificado de la Ley 10.281 de Córdoba, cuándo lo pide la distribuidora y cómo lo gestionamos.`,
   ];
 
   const zonasPub = publicados(zonas);
@@ -55,7 +55,7 @@ ${proyectosPub.map((p) => `- [${p.titulo}](${u(`/proyectos/${p.slug}`)})${p.serv
   secciones.push(`## Optional
 
 - [Contenido completo para IA](${u("/llms-full.txt")}): Todos los artículos, zonas y preguntas frecuentes en un solo archivo.
-- [Sobre nosotros](${u("/about")}): Quiénes somos y cómo trabajamos.
+- [Quién soy](${u("/about")}): Franco, electricista en Carlos Paz.
 - [Contacto](${u("/contacto")}): WhatsApp, teléfono y formulario.
 - [Política de privacidad](${u("/politica-de-privacidad")})`);
 
@@ -67,7 +67,7 @@ const FAQ_CERTIFICADO = [
   ["¿Qué es el Certificado de Instalación Eléctrica Apta?", "Es el documento que establece la Ley provincial 10.281 de Seguridad Eléctrica de Córdoba. Lo emite y firma un instalador electricista habilitado e indica que la instalación cumple con la normativa técnica del ERSeP."],
   ["¿Cuándo lo piden?", "Para pedir un suministro nuevo, para cambios de potencia y cuando un cambio de titularidad incluye pasar de monofásico a trifásico o al revés. Los locales de acceso público deben tener su instalación adecuada a la normativa."],
   ["¿Dónde se presenta?", "Ante la distribuidora de energía del domicilio: EPEC o la cooperativa eléctrica local."],
-  ["¿Voltis lo emite?", `Sí, en Carlos Paz y todo el Valle de Punilla. Consultas al ${NEGOCIO.telefonoInternacional}.`],
+  ["¿Voltis lo gestiona?", `Gestionamos el certificado de instalación apta a través de un electricista matriculado, en Carlos Paz y todo el Valle de Punilla. Consultas al ${NEGOCIO.telefonoInternacional}.`],
 ];
 
 export async function generarLlmsFull(): Promise<string> {

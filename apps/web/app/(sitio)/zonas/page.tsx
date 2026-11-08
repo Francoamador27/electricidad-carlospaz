@@ -9,7 +9,7 @@ import { LOCALIDADES } from "@voltis/shared/negocio";
 export const metadata: Metadata = metaPagina({
   titulo: "Zonas de cobertura — Electricista en Carlos Paz y Punilla",
   descripcion:
-    "Localidades donde trabajamos: Villa Carlos Paz, el valle del río San Antonio, Tanti, Malagueño y todo el valle de Punilla hasta La Cumbre.",
+    "Localidades donde trabajo: Villa Carlos Paz, el valle del río San Antonio, Tanti, Malagueño y todo el valle de Punilla hasta La Cumbre.",
   ruta: "/zonas",
 });
 
@@ -26,11 +26,11 @@ export default async function ZonasPage() {
             Zonas de cobertura
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Electricistas en Carlos Paz y todo Punilla
+            Electricista en Carlos Paz y todo Punilla
           </h1>
           <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-            Trabajamos desde Villa Carlos Paz en todo el valle de Punilla y alrededores. Elegí tu
-            localidad para ver los trabajos que hacemos ahí.
+            Trabajo desde Villa Carlos Paz en todo el valle de Punilla y alrededores. Elegí tu
+            localidad para ver los trabajos que hago ahí.
           </p>
         </div>
       </section>

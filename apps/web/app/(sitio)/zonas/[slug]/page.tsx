@@ -8,12 +8,11 @@ import Contenido from "@/components/ui/Contenido";
 import { Breadcrumbs } from "@/components/seo/JsonLd";
 import {
   getProyectosConRelaciones,
-  getServicios,
   getZona,
   getZonas,
   paramsOVacio,
 } from "@/lib/contenido";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
+import { LINK_TELEFONO, NEGOCIO, SERVICIOS, linkWhatsapp } from "@voltis/shared/negocio";
 
 export const dynamicParams = false;
 
@@ -32,7 +31,7 @@ export async function generateMetadata({
     titulo: zona.seoTitulo ?? `Electricista en ${zona.nombre}`,
     descripcion:
       zona.seoDescripcion ??
-      `Electricistas en ${zona.nombre}, Córdoba. Instalaciones, mantenimiento, reparaciones y tableros eléctricos. Presupuesto sin cargo.`,
+      `Electricista en ${zona.nombre}, Córdoba, para casas y comercios: arreglos, agregados, tableros e instalaciones. Presupuesto sin cargo.`,
     ruta: `/zonas/${zona.slug}`,
     noIndexar: zona.estado === "borrador",
   });
@@ -42,7 +41,7 @@ export default async function ZonaPage({ params }: { params: Promise<{ slug: str
   const zona = await getZona((await params).slug);
   if (!zona) notFound();
 
-  const [proyectos, servicios] = await Promise.all([getProyectosConRelaciones(), getServicios()]);
+  const proyectos = await getProyectosConRelaciones();
   const proyectosZona = proyectos.filter((p) => p.zonaId === zona.id);
 
   return (
@@ -95,8 +94,8 @@ export default async function ZonaPage({ params }: { params: Promise<{ slug: str
             Servicios en {zona.nombre}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {servicios.map((s) => (
-              <li key={s.id}>
+            {SERVICIOS.filter((s) => s.principal).map((s) => (
+              <li key={s.slug}>
                 <Link
                   href={`/servicios/${s.slug}`}
                   className="block border border-slate-200 rounded-lg px-4 py-3 text-slate-800 hover:border-amber-400 transition-colors"

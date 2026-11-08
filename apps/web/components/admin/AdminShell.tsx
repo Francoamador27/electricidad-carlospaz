@@ -45,6 +45,7 @@ const PESTANAS: Seccion[] = [
 ];
 
 export const SECCIONES_MAS: Seccion[] = [
+  { href: "/admin/fotos-portada", label: "Fotos de la portada", Icono: IconoProyectos },
   { href: "/admin", label: "Conversiones del sitio", Icono: IconoInicio },
   { href: "/admin/posts", label: "Blog", Icono: IconoBlog },
   { href: "/admin/zonas", label: "Zonas", Icono: IconoZonas },

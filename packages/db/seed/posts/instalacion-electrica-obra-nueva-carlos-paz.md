@@ -57,4 +57,4 @@ La cantidad de circuitos depende del tamaño y uso de la vivienda. Como mínimo,
 
 > ### Instalación eléctrica para obras en Carlos Paz y Punilla
 >
-> En Voltis nos ocupamos de la instalación eléctrica completa de tu obra nueva en Carlos Paz, Cosquín, La Falda, Valle Hermoso y toda la región de Punilla. Desde el proyecto hasta el certificado técnico final. Contactanos para coordinar una visita.
+> En Voltis nos ocupamos de la instalación eléctrica completa de tu obra nueva en Carlos Paz, Cosquín, La Falda, Valle Hermoso y toda la región de Punilla. Gestionamos el certificado de instalación apta a través de un electricista matriculado. Escribime para coordinar.

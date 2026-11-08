@@ -42,15 +42,14 @@ test("el menú lleva a servicios, zonas, proyectos y contacto", async ({ page })
   }
 });
 
-test("el footer tiene iluminación, domótica, cámaras y certificado", async ({ page }) => {
+test("el footer tiene los servicios secundarios y el certificado", async ({ page }) => {
   await page.goto("/");
   const footer = page.locator("footer");
-  await expect(footer.getByRole("link", { name: "Iluminación", exact: true })).toHaveAttribute(
+  await expect(footer.getByRole("link", { name: "Iluminación y domótica" })).toHaveAttribute(
     "href",
     "/servicios/iluminacion-automatizacion",
   );
-  await expect(footer.getByRole("link", { name: "Domótica" })).toBeVisible();
-  await expect(footer.getByRole("link", { name: "Instalación de cámaras de seguridad" })).toHaveAttribute(
+  await expect(footer.getByRole("link", { name: "Cámaras de seguridad" })).toHaveAttribute(
     "href",
     "/servicios/camaras-de-seguridad",
   );
@@ -71,8 +70,9 @@ test("los proyectos de referencia se ven y enlazan a su servicio", async ({ page
   await expect(page.getByRole("link", { name: /^Servicio:/ })).toBeVisible();
 });
 
-test("la home muestra 500 clientes y no muestra reseñas inventadas", async ({ page }) => {
+test("la home muestra beneficios reales y no reseñas inventadas", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByText("+500")).toBeVisible();
+  await expect(page.getByText("+500")).toHaveCount(0);
+  await expect(page.getByText("Trabajo con garantía escrita").first()).toBeVisible();
   await expect(page.getByText("Marcela R.")).toHaveCount(0);
 });

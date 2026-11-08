@@ -8,7 +8,7 @@ import { enviarConsulta } from "@/lib/consultas";
 
 const serviceOptions = [
   "Instalaciones domiciliarias",
-  "Instalaciones para empresas",
+  "Locales comerciales",
   "Mantenimiento eléctrico",
   "Reparaciones eléctricas",
   "Tableros eléctricos",
@@ -219,7 +219,6 @@ export default function PresupuestoForm() {
                     >
                       <option value="residential">Vivienda / Casa</option>
                       <option value="commercial">Local / Comercio</option>
-                      <option value="industrial">Industria / Empresa</option>
                     </select>
                   </div>
                 </div>

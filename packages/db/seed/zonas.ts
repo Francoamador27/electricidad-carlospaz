@@ -250,8 +250,8 @@ Una cocina comercial necesita circuitos dedicados para hornos, freidoras, helade
     slug: "la-falda",
     seoTitulo: "Electricista en La Falda",
     seoDescripcion:
-      "Electricista en La Falda: instalaciones en viviendas, hoteles y comercios, actualización de tableros y reparaciones.",
-    texto: `La Falda es una ciudad turística con tradición hotelera, muchos comercios y viviendas de distintas épocas. Parte de su encanto son las construcciones antiguas, que muchas veces conservan instalaciones eléctricas que ya no son seguras.
+      "Electricista en La Falda: instalaciones en casas y comercios, actualización de tableros y reparaciones.",
+    texto: `La Falda es una ciudad turística con muchos comercios y viviendas de distintas épocas. Parte de su encanto son las construcciones antiguas, que muchas veces conservan instalaciones eléctricas que ya no son seguras.
 
 ## Actualizar sin perder la casa
 
@@ -260,7 +260,7 @@ En casas y edificios antiguos se puede renovar la instalación respetando la con
 ## Trabajos frecuentes en La Falda
 
 - Renovación de instalaciones en casas antiguas
-- Tableros para hoteles, hosterías y comercios
+- Tableros para casas y comercios
 - Puesta a tierra y diferenciales
 - Reparaciones y mantenimiento`,
   },

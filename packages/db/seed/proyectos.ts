@@ -38,7 +38,7 @@ Es uno de los trabajos que más seguridad le suma a una casa. Más información 
   {
     slug: "tablero-trifasico-para-comercio",
     titulo: "Tablero trifásico para comercio",
-    servicio: "instalaciones-empresariales",
+    servicio: "locales-comerciales",
     foto: "/images/tablero-trifasico.jpg",
     alt: "Tablero eléctrico trifásico para local comercial",
     destacado: true,
@@ -53,7 +53,7 @@ Tablero trifásico para un local con equipos de alta potencia: cámaras de frío
 - Circuitos independientes para iluminación, tomacorrientes y equipos
 - Identificación de cada circuito para facilitar el mantenimiento
 
-Si tu comercio necesita el [Certificado de Instalación Eléctrica Apta](/certificado-instalacion-electrica-apta), lo emitimos al terminar. Ver [instalaciones para empresas](/servicios/instalaciones-empresariales).`,
+Si tu comercio necesita el [Certificado de Instalación Eléctrica Apta](/certificado-instalacion-electrica-apta), lo gestionamos a través de un electricista matriculado. Ver [locales comerciales](/servicios/locales-comerciales).`,
   },
   {
     slug: "instalacion-electrica-obra-nueva",

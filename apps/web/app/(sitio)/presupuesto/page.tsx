@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/seo/JsonLd";
 export const metadata: Metadata = metaPagina({
   titulo: "Pedir presupuesto eléctrico en Carlos Paz",
   descripcion:
-    "Solicitá tu presupuesto sin cargo para instalaciones, tableros, reparaciones o mantenimiento eléctrico en Carlos Paz y Punilla.",
+    "Solicitá tu presupuesto sin cargo para arreglos, agregados, tableros o instalaciones en casas y comercios de Carlos Paz y Punilla.",
   ruta: "/presupuesto",
 });
 

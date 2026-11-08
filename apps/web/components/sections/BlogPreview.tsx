@@ -1,6 +1,6 @@
 import Link from "next/link";
 import FotoImg from "@/components/ui/FotoImg";
-import { formatoFecha, getPosts } from "@/lib/contenido";
+import { getPosts } from "@/lib/contenido";
 
 
 const categoryColors: Record<string, string> = {
@@ -25,8 +25,8 @@ export default async function BlogPreview() {
             Consejos de electricidad para Carlos Paz
           </h2>
           <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
-            Información útil sobre seguridad eléctrica, mantenimiento e instalaciones para hogares
-            y empresas de la región de Punilla.
+            Información útil sobre seguridad eléctrica, mantenimiento e instalaciones para casas
+            y comercios de la región de Punilla.
           </p>
         </div>
 
@@ -52,7 +52,6 @@ export default async function BlogPreview() {
                   >
                     {post.categoria}
                   </span>
-                  <time className="text-xs text-slate-500">{formatoFecha(post.publicadoAt)}</time>
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2 leading-snug">
                   <Link

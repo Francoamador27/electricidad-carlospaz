@@ -4,7 +4,10 @@
 // El script "prebuild" borra esa caché para que cada publicación lea datos frescos.
 import { cache } from "react";
 import { and, asc, desc, eq, getDb, inArray, schema } from "@voltis/db";
-import type { ConfigSitio } from "@voltis/shared";
+import { CLAVE_FOTO_FRANCO, type ConfigSitio } from "@voltis/shared";
+import type { Foto } from "@voltis/db/schema";
+import { indiceFotoPrincipal } from "@/lib/fotos";
+import { SERVICIOS, SLUGS_ANTERIORES } from "@voltis/shared/negocio";
 
 const db = getDb(process.env.DATABASE_URL!);
 
@@ -20,9 +23,14 @@ export type Zona = typeof schema.zonas.$inferSelect;
 export type Resena = typeof schema.resenas.$inferSelect;
 export type Servicio = typeof schema.servicios.$inferSelect;
 
-export const getServicios = cache(() =>
-  db.select().from(schema.servicios).orderBy(asc(schema.servicios.orden)),
-);
+// La base puede tener slugs y nombres viejos: el nombre y la URL actuales salen del código.
+export const getServicios = cache(async () => {
+  const filas = await db.select().from(schema.servicios).orderBy(asc(schema.servicios.orden));
+  return filas.map((s) => {
+    const slug = SLUGS_ANTERIORES[s.slug] ?? s.slug;
+    return { ...s, slug, nombre: SERVICIOS.find((c) => c.slug === slug)?.nombre ?? s.nombre };
+  });
+});
 
 export const getPosts = cache(() =>
   db
@@ -115,8 +123,13 @@ export const getProyectosConRelaciones = cache(async () => {
 export type ProyectoConRelaciones = Awaited<ReturnType<typeof getProyectosConRelaciones>>[number];
 
 export function fotoPrincipal(p: Proyecto) {
-  return p.fotos.find((f) => f.tipo === "despues") ?? p.fotos[0];
+  return p.fotos[indiceFotoPrincipal(p.fotos)];
 }
+
+export const getFotoFranco = cache(async (): Promise<Foto | null> => {
+  const [fila] = await db.select().from(schema.config).where(eq(schema.config.clave, CLAVE_FOTO_FRANCO));
+  return fila ? (JSON.parse(fila.valor) as Foto) : null;
+});
 
 // Etiqueta de Google Ads de la cuenta; se usa si ni el panel ni el entorno definen otra.
 const GOOGLE_ADS_ID = "AW-18521160532";

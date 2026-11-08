@@ -16,7 +16,7 @@ export default async function Testimonials() {
             Clientes
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
-            Más de 500 clientes satisfechos<br className="hidden sm:block" />en Punilla.
+            Lo que dicen<br className="hidden sm:block" />quienes me contrataron.
           </h2>
         </AnimateIn>
 
@@ -53,14 +53,14 @@ export default async function Testimonials() {
 
         <AnimateIn delay={0.1} className="mt-10">
           <p className="text-warm-gray text-sm">
-            ¿Trabajaste con nosotros?{" "}
+            ¿Trabajaste conmigo?{" "}
             <a
               href={linkWhatsapp("Hola, quiero dejar mi opinión sobre el servicio")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-copper-dark font-semibold hover:underline"
             >
-              Dejanos tu reseña por WhatsApp →
+              Dejame tu reseña por WhatsApp →
             </a>
           </p>
         </AnimateIn>

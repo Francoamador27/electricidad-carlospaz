@@ -29,6 +29,9 @@ export const CONFIG_CAMPOS = {
   },
 } as const;
 
+// Foto de Franco (JSON con el formato de una foto). Tiene su propia pantalla en el panel.
+export const CLAVE_FOTO_FRANCO = "foto_franco";
+
 export type ClaveConfig = keyof typeof CONFIG_CAMPOS;
 export const CLAVES_CONFIG = Object.keys(CONFIG_CAMPOS) as ClaveConfig[];
 

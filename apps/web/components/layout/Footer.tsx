@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
+import { LINK_TELEFONO, NEGOCIO, SERVICIOS, linkWhatsapp } from "@voltis/shared/negocio";
+import BotonResena from "@/components/ui/BotonResena";
 
 export default function Footer() {
   return (
@@ -21,84 +22,24 @@ export default function Footer() {
             <span className="font-display text-parchment font-bold text-lg">Voltis</span>
           </Link>
           <p className="text-sm leading-relaxed">
-            Electricistas en Carlos Paz y la región de Punilla, Córdoba. Instalaciones,
-            mantenimiento y reparaciones eléctricas con garantía.
+            Soy Franco, electricista en Carlos Paz y Punilla para casas y comercios. Trabajo con garantía escrita.
           </p>
+          <BotonResena className="mt-4" />
         </div>
 
         {/* Services */}
         <div>
           <h3 className="font-display text-parchment font-semibold mb-3">Servicios</h3>
           <ul className="space-y-2 text-sm">
+            {SERVICIOS.map((s) => (
+              <li key={s.slug}>
+                <Link href={`/servicios/${s.slug}`} className="hover:text-copper transition-colors">
+                  {s.corto}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link
-                href="/servicios/instalaciones-domiciliarias"
-                className="hover:text-copper transition-colors"
-              >
-                Instalaciones domiciliarias
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/instalaciones-empresariales"
-                className="hover:text-copper transition-colors"
-              >
-                Instalaciones para empresas
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/mantenimiento-electricidad"
-                className="hover:text-copper transition-colors"
-              >
-                Mantenimiento eléctrico
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/reparaciones-electricas"
-                className="hover:text-copper transition-colors"
-              >
-                Reparaciones eléctricas
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/tableros-electricos"
-                className="hover:text-copper transition-colors"
-              >
-                Tableros eléctricos
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/iluminacion-automatizacion"
-                className="hover:text-copper transition-colors"
-              >
-                Iluminación
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/iluminacion-automatizacion"
-                className="hover:text-copper transition-colors"
-              >
-                Domótica
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/servicios/camaras-de-seguridad"
-                className="hover:text-copper transition-colors"
-              >
-                Instalación de cámaras de seguridad
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/certificado-instalacion-electrica-apta"
-                className="hover:text-copper transition-colors"
-              >
+              <Link href="/certificado-instalacion-electrica-apta" className="hover:text-copper transition-colors">
                 Certificado de instalación apta
               </Link>
             </li>
@@ -107,16 +48,21 @@ export default function Footer() {
 
         {/* Links */}
         <div>
-          <h3 className="font-display text-parchment font-semibold mb-3">Empresa</h3>
+          <h3 className="font-display text-parchment font-semibold mb-3">Voltis</h3>
           <ul className="space-y-2 text-sm">
             <li>
               <Link href="/about" className="hover:text-copper transition-colors">
-                Sobre nosotros
+                Quién soy
+              </Link>
+            </li>
+            <li>
+              <Link href="/comercios" className="hover:text-copper transition-colors">
+                Comercios
               </Link>
             </li>
             <li>
               <Link href="/proyectos" className="hover:text-copper transition-colors">
-                Proyectos realizados
+                Trabajos de referencia
               </Link>
             </li>
             <li>
@@ -188,7 +134,7 @@ export default function Footer() {
       <div className="border-t border-dark-border py-4">
         <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-muted">
           <p>© {new Date().getFullYear()} Voltis — Todos los derechos reservados.</p>
-          <p>Electricistas en Carlos Paz, Punilla y Córdoba, Argentina</p>
+          <p>Electricista en Carlos Paz, Punilla y Córdoba, Argentina</p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ import { getProyectosConRelaciones } from "@/lib/contenido";
 export const metadata: Metadata = metaPagina({
   titulo: "Proyectos eléctricos realizados en Carlos Paz y Punilla",
   descripcion:
-    "Proyectos de instalaciones eléctricas realizados en Carlos Paz y Punilla, Córdoba. Trabajos en viviendas, locales comerciales, oficinas e industrias.",
+    "Ejemplos de trabajos eléctricos para casas y locales comerciales en Carlos Paz y Punilla, Córdoba: tableros, instalaciones y arreglos.",
   ruta: "/proyectos",
 });
 
@@ -22,14 +22,13 @@ export default async function ProjectsPage() {
       <section className="bg-slate-900 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-wide">
-            Proyectos realizados
+            Trabajos de referencia
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
             Trabajos eléctricos en Carlos Paz y Punilla
           </h1>
           <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-            Algunos de los proyectos eléctricos que realizamos en Carlos Paz, Punilla y la región
-            de Córdoba. Instalaciones domiciliarias, comerciales, industriales y más.
+            Ejemplos del tipo de trabajo que hago en casas y locales comerciales de Carlos Paz y Punilla.
           </p>
         </div>
       </section>
@@ -49,7 +48,7 @@ export default async function ProjectsPage() {
           ) : (
             <div className="max-w-2xl mx-auto text-center py-8">
               <p className="text-slate-700 text-lg mb-6">
-                Estamos sumando fotos de nuestros últimos trabajos. Mientras tanto, contanos qué
+                Estoy sumando fotos de mis últimos trabajos. Mientras tanto, contanos qué
                 necesitás y te pasamos un presupuesto sin cargo.
               </p>
               <Link

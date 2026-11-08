@@ -13,7 +13,7 @@ const URL_PAGINA = "/certificado-instalacion-electrica-apta";
 export const metadata: Metadata = metaPagina({
   titulo: "Certificado de Instalación Eléctrica Apta (Ley 10.281)",
   descripcion:
-    "Emitimos el Certificado de Instalación Eléctrica Apta de la Ley 10.281 de Córdoba para pedir la luz, cambiar la potencia o el tipo de medidor. Carlos Paz y Punilla.",
+    "Gestionamos el certificado de instalación apta a través de un electricista matriculado, para pedir la luz o cambiar la potencia en Carlos Paz y Punilla.",
   ruta: URL_PAGINA,
 });
 
@@ -39,7 +39,7 @@ const CUANDO = [
 const PASOS = [
   "Revisamos la instalación: tablero, protecciones, puesta a tierra, cableado y materiales.",
   "Si algo no cumple, te pasamos el presupuesto para adecuarlo.",
-  "Con la instalación en regla, emitimos y firmamos el certificado.",
+  "Con la instalación en regla, gestionamos el certificado a través de un electricista matriculado.",
   "Lo presentás ante la distribuidora de tu zona (EPEC o la cooperativa local) para tu trámite.",
 ];
 
@@ -65,7 +65,7 @@ const faq = [
     a: "No se puede certificar. Te indicamos qué hay que corregir —por ejemplo, agregar el disyuntor diferencial, la puesta a tierra o separar circuitos— y te pasamos el presupuesto para adecuarla.",
   },
   {
-    q: "¿Emiten el certificado en toda la región?",
+    q: "¿Lo gestionan en toda la región?",
     a: "Sí, en Carlos Paz y todo el Valle de Punilla: Cabalango, San Antonio de Arredondo, Icho Cruz, Tanti, Bialet Massé, Cosquín, Valle Hermoso, La Falda, La Cumbre y alrededores.",
   },
 ];
@@ -107,8 +107,7 @@ export default function CertificadoPage() {
               Certificado de Instalación Eléctrica Apta en Carlos Paz
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed">
-              Revisamos tu instalación, la adecuamos si hace falta y emitimos el certificado que te
-              pide la distribuidora para pedir la luz, cambiar la potencia o el tipo de medidor.
+              Gestionamos el certificado de instalación apta a través de un electricista matriculado. Revisamos tu instalación y la adecuamos si hace falta.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -145,7 +144,7 @@ export default function CertificadoPage() {
           </div>
           <p className="text-slate-500 text-sm text-center mt-6">
             Cada distribuidora define los requisitos de sus trámites. Si no sabés si lo necesitás,
-            consultanos y te ayudamos a averiguarlo.
+            consultame y te ayudo a averiguarlo.
           </p>
         </div>
       </section>

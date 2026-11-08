@@ -4,7 +4,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import ContactBanner from "@/components/sections/ContactBanner";
 import FotoImg from "@/components/ui/FotoImg";
-import { formatoFecha, getPosts } from "@/lib/contenido";
+import { getPosts } from "@/lib/contenido";
 
 export const metadata: Metadata = metaPagina({
   titulo: "Blog de electricidad — Consejos y tips en Carlos Paz",
@@ -57,7 +57,6 @@ export default async function BlogPage() {
                     <span className="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
                       {post.categoria}
                     </span>
-                    <time className="text-xs text-slate-500">{formatoFecha(post.publicadoAt)}</time>
                   </div>
                   <h2 className="font-bold text-slate-900 text-lg mb-2 leading-snug">
                     <Link href={`/blog/${post.slug}`} className="hover:text-amber-700 transition-colors">
@@ -81,7 +80,7 @@ export default async function BlogPage() {
               ¿Tenés una pregunta sobre electricidad en Carlos Paz?
             </p>
             <p className="text-slate-600 text-sm mb-4">
-              Contactanos y te asesoramos sin cargo sobre tu instalación eléctrica.
+              Escribime y lo vemos, sin cargo.
             </p>
             <Button href="/contacto" variant="secondary">
               Consultar gratis

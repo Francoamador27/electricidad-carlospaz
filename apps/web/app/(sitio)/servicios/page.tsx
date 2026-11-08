@@ -1,127 +1,64 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { SERVICIOS } from "@voltis/shared/negocio";
 import { metaPagina } from "@/lib/seo";
-import Button from "@/components/ui/Button";
+import { CONTENIDO_SERVICIOS } from "@/lib/servicios";
 import ContactBanner from "@/components/sections/ContactBanner";
 
 export const metadata: Metadata = metaPagina({
-  titulo: "Servicios eléctricos en Carlos Paz y Punilla",
+  titulo: "Servicios de electricista en Carlos Paz para casas y comercios",
   descripcion:
-    "Servicios eléctricos profesionales en Carlos Paz y Punilla, Córdoba: instalaciones domiciliarias, comerciales, mantenimiento, reparaciones y tableros eléctricos.",
+    "Arreglos y fallas, tomacorrientes, bocas de luz, ventiladores de techo, tableros, locales comerciales e instalaciones completas en Carlos Paz y Punilla.",
   ruta: "/servicios",
 });
 
-const services = [
-  {
-    icon: "🏠",
-    title: "Instalaciones domiciliarias",
-    description:
-      "Instalaciones eléctricas completas para viviendas en Carlos Paz y Punilla. Tendido de cables, bocas de luz, tomas corrientes, llaves de paso e interruptores. Trabajamos en obra nueva y remodelaciones.",
-    href: "/servicios/instalaciones-domiciliarias",
-    keywords: ["instalaciones domiciliarias Carlos Paz", "electricidad domiciliaria Punilla"],
-  },
-  {
-    icon: "🏢",
-    title: "Instalaciones para empresas",
-    description:
-      "Instalaciones eléctricas para comercios, oficinas, locales y plantas industriales en Carlos Paz. Diseño, ejecución y certificación de instalaciones eléctricas comerciales e industriales.",
-    href: "/servicios/instalaciones-empresariales",
-    keywords: ["instalaciones eléctricas empresas Carlos Paz", "electricidad industrial Punilla"],
-  },
-  {
-    icon: "🔧",
-    title: "Mantenimiento eléctrico",
-    description:
-      "Revisiones preventivas y diagnóstico de instalaciones eléctricas en Carlos Paz. Detectamos fallas antes de que ocurran y mantenemos tu instalación en óptimas condiciones.",
-    href: "/servicios/mantenimiento-electricidad",
-    keywords: ["mantenimiento eléctrico Carlos Paz", "revisión eléctrica Punilla"],
-  },
-  {
-    icon: "⚡",
-    title: "Reparaciones eléctricas",
-    description:
-      "Reparación de cortocircuitos, enchufes quemados, interruptores defectuosos y fallas eléctricas en Carlos Paz. Diagnóstico y solución por electricistas.",
-    href: "/servicios/reparaciones-electricas",
-    keywords: ["reparaciones eléctricas Carlos Paz", "electricista Punilla"],
-  },
-  {
-    icon: "🔌",
-    title: "Tableros eléctricos",
-    description:
-      "Instalación, actualización y mantenimiento de tableros eléctricos en Carlos Paz. Modernizamos tableros obsoletos e instalamos protecciones adecuadas para tu instalación.",
-    href: "/servicios/tableros-electricos",
-    keywords: ["tableros eléctricos Carlos Paz", "instalación tablero Punilla"],
-  },
-  {
-    icon: "💡",
-    title: "Iluminación y automatización",
-    description:
-      "Diseño e instalación de sistemas de iluminación LED eficiente y automatización eléctrica en Carlos Paz. Ahorrá energía y modernizá tu hogar o empresa.",
-    href: "/servicios/iluminacion-automatizacion",
-    keywords: ["iluminación LED Carlos Paz", "domótica Punilla"],
-  },
-  {
-    icon: "📹",
-    title: "Cámaras de seguridad",
-    description:
-      "Instalación de cámaras de seguridad para casas y comercios en Carlos Paz y Punilla, con cableado prolijo, alimentación segura y acceso desde el celular.",
-    href: "/servicios/camaras-de-seguridad",
-    keywords: ["cámaras de seguridad Carlos Paz", "instalación de cámaras Punilla"],
-  },
-  {
-    icon: "📄",
-    title: "Certificado de instalación eléctrica apta",
-    description:
-      "Emitimos el Certificado de Instalación Eléctrica Apta (Ley 10.281 de Córdoba) para pedir la luz, cambiar la potencia o el tipo de medidor.",
-    href: "/certificado-instalacion-electrica-apta",
-    keywords: ["certificado instalación eléctrica apta Carlos Paz", "Ley 10.281"],
-  },
-];
+const principales = SERVICIOS.filter((s) => s.principal);
+const secundarios = SERVICIOS.filter((s) => !s.principal);
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-slate-900 text-white py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wide">
-            Servicios eléctricos
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            Servicios eléctricos en Carlos Paz y Punilla
+      <section className="bg-ink text-white py-14 md:py-20">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+            Servicios para casas y comercios en Carlos Paz
           </h1>
-          <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-            Electricistas que ofrecemos soluciones eléctricas integrales en Carlos Paz,
-            Punilla y toda la región de Córdoba. Desde instalaciones domiciliarias hasta proyectos
-            industriales.
+          <p className="text-muted text-lg max-w-3xl">
+            Decime qué necesitás y te respondo en el día por WhatsApp.
           </p>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service) => (
-              <div
-                key={service.href + service.title}
-                className="border border-slate-200 rounded-xl p-8 hover:border-amber-400 hover:shadow-md transition-all"
+      <section className="py-14 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            {principales.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/servicios/${s.slug}`}
+                className="border border-warm-border rounded p-6 hover:border-copper transition-colors"
               >
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <h2 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h2>
-                <p className="text-slate-600 leading-relaxed mb-4">{service.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {service.keywords.map((kw) => (
-                    <span key={kw} className="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded-full">
-                      {kw}
-                    </span>
-                  ))}
-                </div>
-                <Button href={service.href} variant="outline">
-                  Ver servicio →
-                </Button>
-              </div>
+                <h2 className="font-display text-xl font-bold text-ink mb-2">{s.nombre}</h2>
+                <p className="text-warm-gray text-sm leading-relaxed">{CONTENIDO_SERVICIOS[s.slug].intro}</p>
+              </Link>
             ))}
           </div>
+
+          <h2 className="font-display text-lg font-semibold text-ink mt-12 mb-3">Otros servicios</h2>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {secundarios.map((s) => (
+              <li key={s.slug}>
+                <Link href={`/servicios/${s.slug}`} className="text-copper-dark hover:underline">
+                  {s.corto}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/certificado-instalacion-electrica-apta" className="text-copper-dark hover:underline">
+                Certificado de instalación apta
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
 

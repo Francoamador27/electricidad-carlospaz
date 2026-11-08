@@ -13,7 +13,7 @@ export default function CTAPresupuesto() {
           una falla por tu cuenta: un error puede causar un incendio o una descarga eléctrica.
         </p>
         <p className="text-slate-400 text-sm mb-8">
-          Atendemos {NEGOCIO.horarioTexto} en Carlos Paz y todo el Valle de Punilla.
+          Atiendo {NEGOCIO.horarioTexto} en Carlos Paz y todo el Valle de Punilla.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
@@ -33,7 +33,7 @@ export default function CTAPresupuesto() {
         </div>
         <p className="mt-6">
           <Link href="/presupuesto" className="text-amber-400 font-semibold hover:underline">
-            O pedí tu presupuesto sin cargo →
+            O pedime presupuesto sin cargo →
           </Link>
         </p>
       </div>

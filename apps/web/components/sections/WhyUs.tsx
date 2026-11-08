@@ -3,29 +3,28 @@ import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 
 const reasons = [
   {
-    title: "Electricistas",
-    description:
-      "Todo nuestro equipo cuenta con matrícula habilitante. Trabajamos de forma legal y segura en Carlos Paz y Punilla.",
+    title: "Te atiendo yo",
+    description: "Hablás directamente con quien hace el trabajo, sin intermediarios.",
   },
   {
     title: "Respuesta rápida",
     description:
-      "Respondemos tu consulta en el día por WhatsApp y coordinamos la visita en Carlos Paz y todo Punilla.",
+      "Te respondo en el día por WhatsApp y coordinamos en Carlos Paz y todo Punilla.",
   },
   {
     title: "Trabajo con garantía",
     description:
-      "Todos nuestros trabajos eléctricos incluyen garantía por escrito. Tu seguridad y satisfacción son nuestra prioridad.",
+      "Cada trabajo tiene garantía por escrito.",
   },
   {
     title: "Precios claros",
     description:
-      "Presupuesto sin cargo, sin sorpresas ni costos ocultos. Sabés cuánto vas a pagar antes de que empecemos.",
+      "Presupuesto sin cargo por WhatsApp. Sabés cuánto vas a pagar antes de que empiece.",
   },
   {
-    title: "Seguridad eléctrica",
+    title: "Trabajo prolijo",
     description:
-      "Respetamos las normas de seguridad eléctrica vigentes en Argentina. Instalaciones que protegen a tu familia.",
+      "Dejo todo ordenado y funcionando, y te explico qué hice.",
   },
   {
     title: "Cobertura local",
@@ -40,10 +39,10 @@ export default function WhyUs() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-12">
           <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
-            Por qué elegirnos
+            Por qué conmigo
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
-            Electricistas de confianza<br className="hidden sm:block" />en Carlos Paz.
+            Un electricista cerca,<br className="hidden sm:block" />en Carlos Paz.
           </h2>
         </AnimateIn>
 

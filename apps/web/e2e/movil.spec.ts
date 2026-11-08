@@ -9,19 +9,23 @@ test("ninguna página tiene scroll horizontal en el celular", async ({ page }) =
   }
 });
 
-test("el botón flotante de WhatsApp está visible en el celular", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.getByRole("link", { name: "Contactar por WhatsApp" })).toBeVisible();
+test("la barra fija tiene WhatsApp y Llamar, con el mensaje de la página", async ({ page }) => {
+  await page.goto("/comercios");
+  const whatsapp = page.getByRole("link", { name: "Contactar por WhatsApp" });
+  await expect(whatsapp).toBeVisible();
+  await expect(whatsapp).toHaveAttribute("href", /tengo%20un%20local/);
+  await expect(page.getByRole("link", { name: "Llamar al (351) 387-3029" })).toHaveAttribute(
+    "href",
+    "tel:+5493513873029",
+  );
 });
 
-test("arriba del botón de WhatsApp hay uno para llamar directo", async ({ page }) => {
-  await page.goto("/");
-  const llamar = page.getByRole("link", { name: "Llamar al (351) 387-3029" });
-  await expect(llamar).toBeVisible();
-  await expect(llamar).toHaveAttribute("href", "tel:+5493513873029");
-  const cajaLlamar = (await llamar.boundingBox())!;
-  const cajaWa = (await page.getByRole("link", { name: "Contactar por WhatsApp" }).boundingBox())!;
-  expect(cajaLlamar.y + cajaLlamar.height).toBeLessThan(cajaWa.y);
+test("en las landings el WhatsApp se ve sin hacer scroll", async ({ page }) => {
+  for (const ruta of ["/comercios", "/servicios/instalacion-ventilador-de-techo"]) {
+    await page.goto(ruta);
+    const caja = (await page.locator("main").getByRole("link", { name: "WhatsApp" }).first().boundingBox())!;
+    expect(caja.y + caja.height, ruta).toBeLessThan(page.viewportSize()!.height - 64);
+  }
 });
 
 test("el inicio arranca con WhatsApp y Llamar", async ({ page }) => {

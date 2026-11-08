@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { z } from "zod";
-import { CLAVES_CONFIG, configInput, postInput, proyectoInput, resenaInput, zonaInput, ANCHOS_FOTO } from "@voltis/shared";
+import { CLAVE_FOTO_FRANCO, CLAVES_CONFIG, configInput, fotoSchema, postInput, proyectoInput, resenaInput, zonaInput, ANCHOS_FOTO } from "@voltis/shared";
 import { asc, desc, eq, getDb, schema, sql } from "@voltis/db";
 import type { Env } from "../env";
 import { requiereSesion } from "../lib/sesion";
@@ -144,6 +144,30 @@ admin.put("/config", async (c) => {
   }
   const filas = await db.select().from(schema.config);
   return c.json(Object.fromEntries(filas.map((f) => [f.clave, f.valor])));
+});
+
+// Foto de Franco en la portada y en Quién soy.
+admin.get("/foto-franco", async (c) => {
+  const db = getDb(c.env.DATABASE_URL);
+  const [fila] = await db.select().from(schema.config).where(eq(schema.config.clave, CLAVE_FOTO_FRANCO));
+  return c.json({ foto: fila ? JSON.parse(fila.valor) : null });
+});
+
+admin.put("/foto-franco", async (c) => {
+  const cuerpo = (await c.req.json().catch(() => null)) as { foto?: unknown } | null;
+  const parsed = fotoSchema.nullable().safeParse(cuerpo?.foto);
+  if (!parsed.success) return c.json({ ok: false, error: "datos_invalidos", detalles: parsed.error.issues }, 400);
+  const db = getDb(c.env.DATABASE_URL);
+  if (!parsed.data) {
+    await db.delete(schema.config).where(eq(schema.config.clave, CLAVE_FOTO_FRANCO));
+  } else {
+    const valor = JSON.stringify(parsed.data);
+    await db
+      .insert(schema.config)
+      .values({ clave: CLAVE_FOTO_FRANCO, valor })
+      .onConflictDoUpdate({ target: schema.config.clave, set: { valor, updatedAt: new Date() } });
+  }
+  return c.json({ foto: parsed.data });
 });
 
 // ---------- Consultas (leads) ----------

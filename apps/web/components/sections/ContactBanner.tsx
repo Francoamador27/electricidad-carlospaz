@@ -10,8 +10,7 @@ export default function ContactBanner() {
           ¿Necesitás un electricista en Carlos Paz?
         </h2>
         <p className="text-slate-800 text-lg max-w-2xl mx-auto mb-8">
-          Contactanos y te respondemos a la brevedad para cualquier servicio eléctrico en
-          Carlos Paz y Punilla.
+          Escribime y te respondo en el día, en Carlos Paz y Punilla.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button href="/presupuesto" variant="secondary" className="text-base px-8 py-4">

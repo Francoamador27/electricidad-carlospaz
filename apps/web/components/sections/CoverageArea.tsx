@@ -14,11 +14,10 @@ export default async function CoverageArea() {
             Zona de cobertura
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">
-            Atendemos todo el Valle de Punilla
+            Trabajo en todo el Valle de Punilla
           </h2>
           <p className="text-slate-300 mt-3 max-w-2xl mx-auto">
-            Nuestros electricistas se desplazan a toda la región de Punilla,
-            Córdoba. Si estás en la zona, llegamos a tu domicilio o empresa.
+            Voy a casas y locales comerciales de toda la región de Punilla, Córdoba.
           </p>
         </div>
 
@@ -40,7 +39,7 @@ export default async function CoverageArea() {
           {/* Zones list */}
           <div>
             <h3 className="text-xl font-bold text-amber-400 mb-6">
-              Localidades donde trabajamos
+              Localidades donde trabajo
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {LOCALIDADES.map((z, i) => (
@@ -65,8 +64,7 @@ export default async function CoverageArea() {
             <div className="mt-8 p-5 bg-slate-800 rounded-xl border border-slate-700">
               <p className="text-slate-300 text-sm leading-relaxed">
                 ¿No ves tu localidad en la lista?{" "}
-                <strong className="text-white">Consultanos igual.</strong> Atendemos consultas en
-                toda la región de Córdoba y coordinamos la visita según la zona.
+                <strong className="text-white">Consultame igual</strong> y vemos si puedo llegar.
               </p>
               <a
                 href={LINK_TELEFONO}

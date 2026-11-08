@@ -9,17 +9,39 @@ declare global {
   }
 }
 
-// Conversiones de Google Ads (send_to de cada acción de conversión).
+// Conversión que ya funciona en la cuenta: se usa hasta cargar las variables de entorno.
+const CONVERSION_ACTUAL = "AW-18521160532/8W6iCNXAlKcdENT2yf9E";
+
+// Conversiones de Google Ads (send_to de cada acción: AW-XXXXXXXXX/etiqueta).
 const CONVERSIONES = {
-  contacto: "AW-18521160532/8W6iCNXAlKcdENT2yf9E", // WhatsApp y formulario
-  llamada: undefined as string | undefined, // Pendiente: send_to de la conversión de llamadas
+  whatsapp: process.env.NEXT_PUBLIC_GOOGLE_ADS_SEND_TO_WHATSAPP || CONVERSION_ACTUAL,
+  llamada: process.env.NEXT_PUBLIC_GOOGLE_ADS_SEND_TO_LLAMADA || undefined,
+  formulario: process.env.NEXT_PUBLIC_GOOGLE_ADS_SEND_TO_FORMULARIO || CONVERSION_ACTUAL,
 };
+
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || undefined;
 
 // Sin gtag (bloqueador o etiqueta desactivada) no se envía nada.
 export function reportarConversion(tipo: keyof typeof CONVERSIONES): void {
   const sendTo = CONVERSIONES[tipo];
   if (!sendTo || typeof window.gtag !== "function") return;
-  window.gtag("event", "conversion", { send_to: sendTo, transport_type: "beacon" });
+  window.gtag("event", "conversion", {
+    send_to: sendTo,
+    pagina_origen: window.location.pathname,
+    transport_type: "beacon",
+  });
+}
+
+// Evento de GA4 con nombre propio (click_whatsapp / click_telefono) y la página de origen.
+function eventoGa4(evento: string, ctx: ReturnType<typeof contextoPagina>): void {
+  if (!GA4_ID || typeof window.gtag !== "function") return;
+  window.gtag("event", evento, {
+    send_to: GA4_ID,
+    pagina_origen: ctx.pagina,
+    servicio: ctx.servicio,
+    zona: ctx.zona,
+    transport_type: "beacon",
+  });
 }
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
@@ -83,7 +105,8 @@ export type TipoClic = "click_whatsapp" | "click_telefono";
 export function registrarClic(tipo: TipoClic): void {
   const ctx = contextoPagina();
   track(tipo, ctx);
-  reportarConversion(tipo === "click_telefono" ? "llamada" : "contacto");
+  eventoGa4(tipo, ctx);
+  reportarConversion(tipo === "click_telefono" ? "llamada" : "whatsapp");
   const cuerpo = JSON.stringify({ tipo, ...ctx, atribucion: leerAtribucion() });
   try {
     navigator.sendBeacon(`${API_URL}/api/eventos`, cuerpo);

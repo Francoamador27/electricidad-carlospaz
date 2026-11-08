@@ -13,9 +13,9 @@ import CTAPresupuesto from "@/components/sections/CTAPresupuesto";
 import ContactBanner from "@/components/sections/ContactBanner";
 
 export const metadata: Metadata = metaPagina({
-  titulo: "Electricista en Carlos Paz y Punilla",
+  titulo: "Electricista en Carlos Paz para casas y comercios",
   descripcion:
-    "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones domiciliarias, mantenimiento eléctrico, reparaciones, tableros y cámaras de seguridad. Presupuesto sin cargo.",
+    "Electricista en Carlos Paz para casas y comercios: arreglos, tomacorrientes, bocas de luz, ventiladores de techo, tableros e instalaciones. Respondo en el día.",
   ruta: "/",
   tituloAbsoluto: true,
 });
@@ -23,16 +23,16 @@ export const metadata: Metadata = metaPagina({
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero — CTA principal + stats */}
+      {/* 1. Hero — CTA principal + beneficios */}
       <Hero />
 
-      {/* 2. Servicios — Los 6 servicios con links */}
+      {/* 2. Servicios — Los 5 principales */}
       <ServicesGrid />
 
-      {/* 3. Cómo trabajamos — 3 pasos */}
+      {/* 3. Cómo trabajo — 3 pasos */}
       <Process />
 
-      {/* 4. Por qué elegirnos */}
+      {/* 4. Por qué conmigo */}
       <WhyUs />
 
       {/* 5. Proyectos destacados con imágenes */}

@@ -3,16 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef } from "react";
-import { LINK_TELEFONO, NEGOCIO, linkWhatsapp } from "@voltis/shared/negocio";
+import { LINK_TELEFONO, NEGOCIO, SERVICIOS, linkWhatsapp } from "@voltis/shared/negocio";
 
 const services = [
-  { label: "Instalaciones domiciliarias", href: "/servicios/instalaciones-domiciliarias" },
-  { label: "Instalaciones para empresas", href: "/servicios/instalaciones-empresariales" },
-  { label: "Mantenimiento eléctrico", href: "/servicios/mantenimiento-electricidad" },
-  { label: "Reparaciones eléctricas", href: "/servicios/reparaciones-electricas" },
-  { label: "Tableros eléctricos", href: "/servicios/tableros-electricos" },
-  { label: "Iluminación y domótica", href: "/servicios/iluminacion-automatizacion" },
-  { label: "Cámaras de seguridad", href: "/servicios/camaras-de-seguridad" },
+  ...SERVICIOS.filter((s) => s.principal).map((s) => ({ label: s.corto, href: `/servicios/${s.slug}` })),
   { label: "Certificado de instalación apta", href: "/certificado-instalacion-electrica-apta" },
 ];
 
@@ -60,7 +54,7 @@ export default function Header() {
             alt="Voltis Instalaciones Eléctricas"
             width={100}
             height={100}
-            className="rounded-xl object-cover bg-white"
+            className="w-14 h-14 md:w-[100px] md:h-[100px] rounded-xl object-cover bg-white"
             priority
           />
         </Link>
@@ -109,7 +103,7 @@ export default function Header() {
             Zonas
           </Link>
           <Link href="/about" className="font-display text-ink hover:text-copper transition-colors">
-            Sobre nosotros
+            Quién soy
           </Link>
           <Link href="/blog" className="font-display text-ink hover:text-copper transition-colors">
             Blog
@@ -184,7 +178,7 @@ export default function Header() {
             className="font-display block py-3 text-ink font-medium border-b border-warm-border"
             onClick={() => setMenuOpen(false)}
           >
-            Sobre nosotros
+            Quién soy
           </Link>
           <Link
             href="/blog"

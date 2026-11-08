@@ -8,7 +8,7 @@ import { enviarConsulta } from "@/lib/consultas";
 
 const serviceOptions = [
   "Instalaciones domiciliarias",
-  "Instalaciones para empresas",
+  "Locales comerciales",
   "Mantenimiento eléctrico",
   "Reparaciones eléctricas",
   "Tableros eléctricos",

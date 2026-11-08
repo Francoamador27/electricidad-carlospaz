@@ -15,12 +15,6 @@ const BuildingIcon = () => (
   </svg>
 );
 
-const WrenchIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
-  </svg>
-);
-
 const BoltIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
@@ -43,46 +37,34 @@ const BulbIcon = () => (
 
 const services = [
   {
-    Icon: HomeIcon,
-    title: "Instalaciones domiciliarias",
-    description:
-      "Instalaciones eléctricas completas para viviendas en Carlos Paz y Punilla. Tendido de cables, tomas, interruptores y más.",
-    href: "/servicios/instalaciones-domiciliarias",
-  },
-  {
-    Icon: BuildingIcon,
-    title: "Instalaciones para empresas",
-    description:
-      "Instalaciones eléctricas para comercios, oficinas y plantas industriales en Carlos Paz. Eficiencia y seguridad garantizadas.",
-    href: "/servicios/instalaciones-empresariales",
-  },
-  {
-    Icon: WrenchIcon,
-    title: "Mantenimiento eléctrico",
-    description:
-      "Revisiones preventivas y diagnóstico de instalaciones eléctricas en Carlos Paz. Evitá fallas antes de que ocurran.",
-    href: "/servicios/mantenimiento-electricidad",
-  },
-  {
     Icon: BoltIcon,
-    title: "Reparaciones eléctricas",
-    description:
-      "Reparación de cortocircuitos, enchufes, interruptores y fallas eléctricas en Carlos Paz. Servicio rápido y seguro.",
+    title: "Arreglos y fallas eléctricas",
+    description: "Saltan las térmicas, enchufes que no andan, cortes en una parte de la casa o del local.",
     href: "/servicios/reparaciones-electricas",
+  },
+  {
+    Icon: BulbIcon,
+    title: "Tomacorrientes, bocas de luz y ventiladores",
+    description: "Agrego lo que te falta sobre la instalación que ya tenés, incluidos ventiladores de techo.",
+    href: "/servicios/agregados-electricos",
   },
   {
     Icon: PanelIcon,
     title: "Tableros eléctricos",
-    description:
-      "Instalación, actualización y mantenimiento de tableros eléctricos modernos en Carlos Paz. Protección para tu hogar o empresa.",
+    description: "Actualización del tablero, disyuntor diferencial y térmicas.",
     href: "/servicios/tableros-electricos",
   },
   {
-    Icon: BulbIcon,
-    title: "Iluminación y automatización",
-    description:
-      "Diseño e instalación de sistemas de iluminación LED y automatización eléctrica en Carlos Paz y Punilla.",
-    href: "/servicios",
+    Icon: BuildingIcon,
+    title: "Locales comerciales",
+    description: "Adecuación eléctrica, iluminación, tablero y certificado para la habilitación municipal.",
+    href: "/servicios/locales-comerciales",
+  },
+  {
+    Icon: HomeIcon,
+    title: "Instalación completa",
+    description: "Toda la instalación para obra nueva o reforma, de las cañerías al tablero.",
+    href: "/servicios/instalaciones-domiciliarias",
   },
 ];
 
@@ -96,11 +78,11 @@ export default function ServicesGrid() {
               Servicios
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-ink leading-tight">
-              Todo lo que necesitás<br className="hidden sm:block" />en electricidad.
+              Qué puedo hacer<br className="hidden sm:block" />por vos.
             </h2>
           </div>
           <p className="text-warm-gray text-sm leading-relaxed md:max-w-xs">
-            Instalaciones domiciliarias, comerciales e industriales con garantía, en Carlos Paz y toda la región de Punilla.
+            Para casas y locales comerciales, con garantía escrita, en Carlos Paz y todo Punilla.
           </p>
         </AnimateIn>
 

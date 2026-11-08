@@ -46,7 +46,7 @@ export async function enviarConsulta(
       servicio: datos.servicio,
       zona: datos.localidad,
     });
-    reportarConversion("contacto");
+    reportarConversion("formulario");
   } else {
     registrarClic("click_whatsapp");
   }

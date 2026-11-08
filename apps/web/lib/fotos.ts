@@ -12,6 +12,11 @@ export function srcFoto(foto: Foto, ancho?: number): string {
   return `${IMG_BASE}/${foto.key}-${w}.${foto.formato === "jpeg" ? "jpg" : "webp"}`;
 }
 
+// La foto que representa a un proyecto: la de "después" o, si no hay, la primera.
+export function indiceFotoPrincipal(fotos: { tipo: string }[]): number {
+  return Math.max(fotos.findIndex((f) => f.tipo === "despues"), 0);
+}
+
 // Versiones WebP de /public/images (scripts/optimizar-imagenes.mjs): /images/opt/<nombre>-<ancho>.webp
 function srcPublica(key: string, ancho: number): string {
   const nombre = key.slice("/images/".length).replace(/\.[^.]+$/, "");

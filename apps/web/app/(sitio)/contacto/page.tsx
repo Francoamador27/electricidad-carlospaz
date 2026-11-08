@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/seo/JsonLd";
 export const metadata: Metadata = metaPagina({
   titulo: "Contacto — Electricista en Carlos Paz",
   descripcion:
-    "Contactá a Voltis, electricistas en Carlos Paz y Punilla. WhatsApp, teléfono o formulario: te respondemos a la brevedad.",
+    "Contactá a Voltis, electricista en Carlos Paz y Punilla para casas y comercios. WhatsApp, teléfono o formulario: respondo en el día.",
   ruta: "/contacto",
 });
 

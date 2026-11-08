@@ -5,21 +5,21 @@ import { LINK_TELEFONO, NEGOCIO } from "@voltis/shared/negocio";
 const steps = [
   {
     number: "01",
-    title: "Contactanos",
+    title: "Escribime",
     description:
-      "Llamanos, escribinos por WhatsApp o completá el formulario. Te respondemos a la brevedad para entender qué necesitás y coordinar una visita sin cargo.",
+      "Mandame un WhatsApp o llamame. Te respondo en el día y te paso el presupuesto sin cargo.",
   },
   {
     number: "02",
-    title: "Visita y diagnóstico",
+    title: "Coordinamos",
     description:
-      "Un electricista va a tu domicilio o empresa en Carlos Paz y Punilla, evalúa el trabajo y te entrega un presupuesto detallado antes de comenzar.",
+      "Arreglamos día y horario. Antes de empezar sabés qué voy a hacer y cuánto sale.",
   },
   {
     number: "03",
-    title: "Ejecutamos el trabajo",
+    title: "Hago el trabajo",
     description:
-      "Realizamos la instalación, reparación o mantenimiento con materiales de primera calidad. Al terminar, entregamos garantía y certificado técnico si corresponde.",
+      "Lo dejo prolijo y funcionando, y te entrego la garantía por escrito.",
   },
 ];
 
@@ -29,10 +29,10 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <AnimateIn className="mb-14">
           <span className="font-display text-copper-dark text-xs font-semibold tracking-[0.2em] uppercase block mb-2">
-            Cómo trabajamos
+            Cómo trabajo
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
-            Simple, rápido y seguro.
+            Simple y sin vueltas.
           </h2>
         </AnimateIn>
 

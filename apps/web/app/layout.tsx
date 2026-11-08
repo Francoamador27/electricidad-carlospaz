@@ -25,28 +25,26 @@ const metadataBase: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: "Electricista en Carlos Paz y Punilla | Voltis",
+    default: "Electricista en Carlos Paz para casas y comercios | Voltis",
     template: "%s | Voltis",
   },
 
   description:
-    "Electricistas en Carlos Paz y la región de Punilla, Córdoba. Instalaciones domiciliarias, comerciales e industriales, mantenimiento y reparaciones eléctricas con garantía.",
+    "Electricista en Carlos Paz para casas y comercios: arreglos, tomacorrientes, bocas de luz, ventiladores de techo, tableros e instalaciones. Respondo en el día.",
 
   keywords: [
     "electricista en Carlos Paz",
     "electricista Carlos Paz",
-    "instalaciones domiciliarias Carlos Paz",
+    "electricista para casas Carlos Paz",
+    "electricista para comercios Carlos Paz",
+    "electricista locales comerciales Carlos Paz",
     "instalaciones eléctricas en Carlos Paz",
     "electricidad en Carlos Paz",
-    "empresa de electricidad Carlos Paz",
     "electricista en Punilla",
-    "instalaciones domiciliarias en Punilla",
-    "electricidad industrial Carlos Paz",
-    "mantenimiento eléctrico Carlos Paz",
-    "reparaciones eléctricas Carlos Paz",
+    "arreglos eléctricos Carlos Paz",
+    "instalación ventilador de techo Carlos Paz",
+    "tomacorrientes y bocas de luz Carlos Paz",
     "tableros eléctricos Carlos Paz",
-    "servicio eléctrico domiciliario",
-    "instalador eléctrico Córdoba",
     "electricista Valle Hermoso",
     "electricista Cosquín",
     "electricista La Falda",
@@ -78,17 +76,17 @@ const metadataBase: Metadata = {
     locale: "es_AR",
     url: BASE_URL,
     siteName: "Voltis",
-    title: "Electricista en Carlos Paz y Punilla | Voltis",
+    title: "Electricista en Carlos Paz para casas y comercios | Voltis",
     description:
-      "Electricistas en Carlos Paz y Punilla, Córdoba. Instalaciones, mantenimiento y reparaciones eléctricas con garantía.",
+      "Arreglos, agregados, tableros e instalaciones para casas y comercios en Carlos Paz y Punilla. Trabajo con garantía escrita.",
     images: [IMAGEN_OG],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Electricista en Carlos Paz y Punilla | Voltis",
+    title: "Electricista en Carlos Paz para casas y comercios | Voltis",
     description:
-      "Electricistas en Carlos Paz y Punilla. Instalaciones, mantenimiento, reparaciones y cámaras de seguridad.",
+      "Arreglos, agregados, tableros e instalaciones para casas y comercios en Carlos Paz y Punilla.",
     images: [IMAGEN_OG.url],
   },
 
@@ -138,8 +136,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Geo tags — SEO local */}
         <meta name="geo.region" content="AR-X" />
         <meta name="geo.placename" content="Villa Carlos Paz, Córdoba, Argentina" />
-        <meta name="geo.position" content="-31.4237;-64.4977" />
-        <meta name="ICBM" content="-31.4237, -64.4977" />
 
         {/* Theme color (barra del navegador en mobile) */}
         <meta name="theme-color" content="#f59e0b" />

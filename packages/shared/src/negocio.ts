@@ -31,45 +31,104 @@ export function textoPedirResena(nombre?: string | null): string {
   return `${saludo} Gracias por confiar en ${NEGOCIO.nombre}. Si quedaste conforme con el trabajo, ¿nos dejarías tu opinión en Google? Nos ayuda muchísimo y lleva menos de un minuto: ${LINK_RESENA_GOOGLE}`;
 }
 
-// El contenido de cada servicio vive en apps/web/app/(sitio)/servicios/<slug>.
-// `resumen` se usa en llms.txt y en listados.
+export const MENSAJE_WHATSAPP = "Hola, necesito un electricista";
+export const MENSAJE_COMERCIOS = "Hola, tengo un local y necesito un electricista";
+
+// El contenido de cada landing vive en apps/web/lib/servicios.ts.
+// El orden es el de los listados; `principal: false` son los servicios secundarios.
+// `resumen` se usa en llms.txt; `whatsapp` es el mensaje precargado de la página.
 export const SERVICIOS = [
   {
-    slug: "instalaciones-domiciliarias",
-    nombre: "Instalaciones domiciliarias",
-    resumen: "Instalaciones eléctricas completas para viviendas y obra nueva: cañerías, cableado, tomas, tablero con disyuntor diferencial y puesta a tierra.",
+    slug: "reparaciones-electricas",
+    nombre: "Arreglos y fallas eléctricas",
+    corto: "Arreglos y fallas",
+    principal: true,
+    resumen: "Saltan las térmicas, enchufes que no andan, cortes parciales y cortocircuitos en casas y comercios.",
+    whatsapp: "Hola, tengo una falla eléctrica y necesito un electricista",
   },
   {
-    slug: "instalaciones-empresariales",
-    nombre: "Instalaciones para empresas",
-    resumen: "Instalaciones para locales, oficinas, gastronomía, hoteles e industrias: tableros trifásicos y circuitos de alta potencia.",
+    slug: "agregados-electricos",
+    nombre: "Agregados: tomacorrientes, bocas de luz y ventiladores de techo",
+    corto: "Agregados",
+    principal: true,
+    resumen: "Tomacorrientes y bocas de luz nuevos e instalación de ventiladores de techo.",
+    whatsapp: "Hola, quiero agregar tomacorrientes o bocas de luz",
   },
   {
     slug: "tableros-electricos",
     nombre: "Tableros eléctricos",
-    resumen: "Instalación y actualización de tableros: reemplazo de fusibles por termomagnéticas y disyuntor diferencial de 30 mA.",
+    corto: "Tableros eléctricos",
+    principal: true,
+    resumen: "Actualización de tableros, disyuntor diferencial y térmicas.",
+    whatsapp: "Hola, necesito revisar o actualizar mi tablero eléctrico",
   },
   {
-    slug: "reparaciones-electricas",
-    nombre: "Reparaciones eléctricas",
-    resumen: "Diagnóstico y reparación de cortocircuitos, enchufes quemados, diferenciales que saltan y fallas eléctricas.",
+    slug: "locales-comerciales",
+    nombre: "Locales comerciales",
+    corto: "Locales comerciales",
+    principal: true,
+    resumen: "Adecuación eléctrica, iluminación, tablero y certificado para la habilitación municipal.",
+    whatsapp: MENSAJE_COMERCIOS,
+  },
+  {
+    slug: "instalaciones-domiciliarias",
+    nombre: "Instalación completa (obra nueva o reforma)",
+    corto: "Instalación completa",
+    principal: true,
+    resumen: "Instalación eléctrica completa para obra nueva o reforma: cañerías, cableado, tablero y puesta a tierra.",
+    whatsapp: "Hola, necesito una instalación eléctrica completa para una obra o reforma",
+  },
+  {
+    slug: "instalacion-ventilador-de-techo",
+    nombre: "Instalación de ventilador de techo",
+    corto: "Ventiladores de techo",
+    principal: false,
+    resumen: "Fijación, conexión y puesta en marcha de ventiladores de techo.",
+    whatsapp: "Hola, quiero instalar un ventilador de techo",
   },
   {
     slug: "mantenimiento-electricidad",
     nombre: "Mantenimiento eléctrico",
-    resumen: "Revisiones preventivas de la instalación con informe del estado, para casas, comercios y complejos turísticos.",
+    corto: "Mantenimiento",
+    principal: false,
+    resumen: "Revisión de la instalación de casas y comercios.",
+    whatsapp: "Hola, quiero revisar mi instalación eléctrica",
   },
   {
     slug: "iluminacion-automatizacion",
     nombre: "Iluminación y automatización",
-    resumen: "Iluminación LED interior y exterior, sensores de movimiento y domótica para manejar luces y equipos desde el celular.",
+    corto: "Iluminación y domótica",
+    principal: false,
+    resumen: "Iluminación LED interior y exterior, sensores de movimiento y automatización.",
+    whatsapp: "Hola, necesito instalar iluminación",
   },
   {
     slug: "camaras-de-seguridad",
     nombre: "Instalación de cámaras de seguridad",
-    resumen: "Cámaras de seguridad para casas y comercios con cableado protegido, alimentación segura y acceso desde el celular.",
+    corto: "Cámaras de seguridad",
+    principal: false,
+    resumen: "Cámaras para casas y comercios con cableado protegido y acceso desde el celular.",
+    whatsapp: "Hola, quiero instalar cámaras de seguridad",
   },
 ] as const;
+
+// Trabajos de la home: los destacados o, si no hay, los más recientes.
+export function proyectosDePortada<T extends { destacado: boolean }>(proyectos: T[]): T[] {
+  const destacados = proyectos.filter((p) => p.destacado);
+  return (destacados.length ? destacados : proyectos).slice(0, 3);
+}
+
+// Slugs viejos que pueden seguir en la base: se resuelven al servicio actual.
+export const SLUGS_ANTERIORES: Record<string, string> = {
+  "instalaciones-empresariales": "locales-comerciales",
+};
+
+// Mensaje precargado según la página (barra fija y botón flotante).
+export function mensajeWhatsappDeRuta(ruta: string): string {
+  if (ruta.startsWith("/comercios")) return MENSAJE_COMERCIOS;
+  const servicio = SERVICIOS.find((s) => ruta === `/servicios/${s.slug}`);
+  return servicio?.whatsapp ?? MENSAJE_WHATSAPP;
+}
 
 // Lista inicial para el seed. Después se administran desde el panel.
 export const LOCALIDADES = [

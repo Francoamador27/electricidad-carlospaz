@@ -238,15 +238,16 @@ UTM, `gclid`, `gbraid` y `wbraid` se guardan en `sessionStorage` (con try/catch)
 ## 10. Decisiones de contenido (2026-10-08)
 
 - Horario: L–V 8 a 19 h, sábados 8 a 13 h. Sin urgencias 24/7.
-- Se mantiene "más de 500 clientes".
 - Se suma Cabalango (15 localidades) y el servicio de cámaras de seguridad.
-- Voltis emite el Certificado de Instalación Eléctrica Apta.
+- El certificado se gestiona a través de un electricista matriculado (Voltis no lo emite).
 - Avisos de consultas a francohugoamador25@gmail.com (variable AVISO_DESTINO, fuera del repo).
 - Sin Instagram ni Facebook por ahora.
 - GTM y códigos de verificación se cargan desde /admin/configuracion.
 - `llms.txt` y `llms-full.txt` se generan desde la base; robots permite rastreadores de IA.
 - Las 15 zonas quedan publicadas (Franco, 2026-10-08). Se pueden editar desde el panel.
-- Se evita repetir "matriculado": el sitio dice "electricista". Única mención de la matrícula: "Por qué elegirnos".
+- "Matriculado" solo aparece en la frase de la gestión del certificado.
+- Sin años de experiencia ni cantidad de clientes (2026-11-08). Público: casas y locales comerciales.
+- Servicios en `apps/web/lib/servicios.ts` con plantilla `/servicios/[slug]`.
 - Fotos del panel: Vercel Blob (R2 pide tarjeta). Se sirven por /img/* del Worker con caché de Cloudflare; cambiar de proveedor = cambiar apps/api/src/lib/fotos.ts.
 - Avisos de consultas por SMTP de Hostinger (smtp.hostinger.com:465) en lugar de Email Routing, para no tocar los MX de proyectoswebsite.com.
 - Login del panel: usuario + contraseña (secretos del Worker) + Turnstile, bloqueo por intentos y sesión firmada de 30 días. Sin Cloudflare Access (pide tarjeta).

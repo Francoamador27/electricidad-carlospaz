@@ -47,14 +47,16 @@ test.describe("SEO de cada página", () => {
     const tipos = (await page.locator('script[type="application/ld+json"]').allTextContents()).map(
       (b) => JSON.parse(b)["@type"],
     );
-    expect(tipos).toEqual(expect.arrayContaining(["Service", "FAQPage", "ElectricalContractor"]));
+    expect(tipos).toEqual(expect.arrayContaining(["Service", "FAQPage", "Electrician"]));
   });
 
   test("el negocio publica horario hasta las 19 h y las 15 localidades", async ({ page }) => {
     await page.goto("/");
     const org = (await page.locator('script[type="application/ld+json"]').allTextContents())
       .map((b) => JSON.parse(b))
-      .find((d) => d["@type"] === "ElectricalContractor");
+      .find((d) => d["@type"] === "Electrician");
+    expect(org.address).toBeUndefined();
+    expect(org.geo).toBeUndefined();
     expect(org.telephone).toBe("+5493513873029");
     expect(org.openingHoursSpecification[0].closes).toBe("19:00");
     const ciudades = org.areaServed.filter((a: { "@type": string }) => a["@type"] === "City");
@@ -74,11 +76,13 @@ test.describe("contenido", () => {
     }
   });
 
-  test("no se repite la palabra matriculado", async ({ page }) => {
+  test("solo se menciona al matriculado en la gestión del certificado", async ({ page }) => {
     for (const ruta of PAGINAS) {
       await page.goto(ruta);
       const texto = (await page.locator("body").innerText()).toLowerCase();
-      expect(texto, ruta).not.toContain("matriculad");
+      const sinGestion = texto.replaceAll("a través de un electricista matriculado", "");
+      expect(sinGestion, ruta).not.toContain("matriculad");
+      expect(texto, ruta).not.toMatch(/\+ ?10 años|\+ ?500|más de 10 años|más de 500/);
     }
   });
 

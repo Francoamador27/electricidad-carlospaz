@@ -38,8 +38,8 @@ Cambiar una lámpara por otra del mismo tipo (por ejemplo, LED en lugar de incan
 - Instalación de tiras LED con fuentes de alimentación (drivers) 220 V
 - Automatización de iluminación con sensores de movimiento, dimmers o domótica
 - Iluminación exterior con cableado nuevo
-- Proyectos de iluminación de locales comerciales o industriales
+- Proyectos de iluminación de locales comerciales
 
 > ### Migrá a LED en Carlos Paz y Punilla con Voltis
 >
-> Diseñamos e instalamos proyectos de iluminación LED para hogares, comercios y empresas en Carlos Paz, Valle Hermoso, Cosquín, La Falda y toda la región de Punilla. Presupuesto gratuito y sin compromiso.
+> Diseñamos e instalamos proyectos de iluminación LED para casas y comercios en Carlos Paz, Valle Hermoso, Cosquín, La Falda y toda la región de Punilla. Presupuesto gratuito y sin compromiso.

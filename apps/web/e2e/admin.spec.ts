@@ -84,6 +84,30 @@ async function simularAdmin(page: Page) {
   return llamadas;
 }
 
+test("fotos de la portada: cambiar una foto la guarda sin tocar los otros datos", async ({ page }) => {
+  const llamadas = await simularAdmin(page);
+  const fotoVieja = { key: "/images/a.jpg", anchos: [], ancho: 800, alto: 600, alt: "Foto vieja", tipo: "despues" };
+  const proyecto = { id: 7, titulo: "Tablero nuevo", slug: "tablero", estado: "publicado", destacado: true, fechaTrabajo: null, fotos: [fotoVieja] };
+  const respuesta = (body: unknown) => ({ status: 200, headers: cors(), contentType: "application/json", body: JSON.stringify(body) });
+  await page.route(`${API}/admin/api/foto-franco`, (r) => r.fulfill(respuesta({ foto: null })));
+  await page.route(`${API}/admin/api/posts`, (r) => r.fulfill(respuesta([])));
+  await page.route(`${API}/admin/api/proyectos`, (r) => r.fulfill(respuesta([proyecto])));
+  let enviado: { titulo: string; fotos: { key: string; tipo: string }[] } | undefined;
+  await page.route(`${API}/admin/api/proyectos/7`, (r) => {
+    enviado = r.request().postDataJSON();
+    return r.fulfill(respuesta(proyecto));
+  });
+
+  await page.goto("/admin/fotos-portada");
+  await expect(page.getByRole("heading", { name: "Tablero nuevo" })).toBeVisible();
+  // Inputs de archivo: [0] y [1] son los de tu foto; [2] es la galería del primer trabajo.
+  await page.locator('input[type="file"]').nth(2).setInputFiles(path.join(__dirname, "../public/logo-voltis-200.webp"));
+
+  await expect.poll(() => enviado?.fotos[0].key).toBe("proyectos/2026/abc");
+  expect(enviado).toMatchObject({ titulo: "Tablero nuevo", fotos: [{ tipo: "despues" }] });
+  expect(llamadas.some((l) => l.ruta === "/uploads")).toBe(true);
+});
+
 test("conversiones: muestra totales, gráfico y rankings", async ({ page }) => {
   await simularAdmin(page);
   await page.goto("/admin");

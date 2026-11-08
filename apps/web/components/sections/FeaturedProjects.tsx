@@ -1,11 +1,10 @@
 import Link from "next/link";
 import ProyectoCard from "@/components/sections/ProyectoCard";
 import { getProyectosConRelaciones } from "@/lib/contenido";
+import { proyectosDePortada } from "@voltis/shared/negocio";
 
 export default async function FeaturedProjects() {
-  const todos = await getProyectosConRelaciones();
-  const destacados = todos.filter((p) => p.destacado);
-  const proyectos = (destacados.length ? destacados : todos).slice(0, 3);
+  const proyectos = proyectosDePortada(await getProyectosConRelaciones());
   if (!proyectos.length) return null;
 
   return (
@@ -13,14 +12,13 @@ export default async function FeaturedProjects() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <span className="text-amber-700 font-semibold text-sm uppercase tracking-wide">
-            Trabajos realizados
+            Trabajos de referencia
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
-            Proyectos eléctricos en Carlos Paz y Punilla
+            Ejemplos de lo que puedo hacer
           </h2>
           <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
-            Conocé algunos de los trabajos que realizamos en la región. Instalaciones domiciliarias,
-            comerciales e industriales con garantía en toda la zona de Punilla.
+            Ejemplos del tipo de trabajo que hago en casas y locales comerciales de Punilla.
           </p>
         </div>
 
