@@ -113,6 +113,16 @@ export default function ConsultasPage() {
     }
   }
 
+  async function borrarClic(c: Clic) {
+    if (!confirm("¿Borrar este registro? No se puede deshacer.")) return;
+    try {
+      await adminApi(`/eventos/${c.id}`, { method: "DELETE" });
+      setClics((l) => l.filter((x) => x.id !== c.id));
+    } catch (e) {
+      setError(mensajeError(e));
+    }
+  }
+
   return (
     <div className="max-w-6xl">
       <Titulo>Consultas</Titulo>
@@ -150,7 +160,7 @@ export default function ConsultasPage() {
                 onBorrar={borrar}
               />
             ) : (
-              <TarjetaClic key={i.clave} c={i.clic!} />
+              <TarjetaClic key={i.clave} c={i.clic!} onBorrar={borrarClic} />
             ),
           )}
       </div>
@@ -158,14 +168,20 @@ export default function ConsultasPage() {
   );
 }
 
-function TarjetaClic({ c }: { c: Clic }) {
+function TarjetaClic({
+  c,
+  onBorrar,
+}: {
+  c: Clic;
+  onBorrar: (c: Clic) => void;
+}) {
   const whatsapp = c.tipo === "click_whatsapp";
   return (
-    <article className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex items-start gap-3">
+    <article className="bg-white border border-slate-200 rounded-lg px-4 py-3 flex flex-wrap sm:flex-nowrap items-start gap-3">
       <span aria-hidden="true" className="text-xl leading-none mt-0.5">
         {whatsapp ? "💬" : "📞"}
       </span>
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 basis-[calc(100%-3rem)] sm:basis-0">
         <p className="font-semibold">
           {whatsapp ? "Tocó WhatsApp" : "Tocó Llamar"}
         </p>
@@ -175,10 +191,13 @@ function TarjetaClic({ c }: { c: Clic }) {
             .join(" · ") || "Sin página"}
         </p>
       </div>
-      <div className="text-right text-xs text-slate-500 shrink-0">
+      <div className="flex-1 sm:flex-none text-left sm:text-right text-xs text-slate-500 shrink-0">
         <p>{fechaHora(c.createdAt)}</p>
         <p>{origen(c.atribucion)}</p>
       </div>
+      <Boton variante="peligro" onClick={() => onBorrar(c)} className="shrink-0">
+        Borrar
+      </Boton>
     </article>
   );
 }

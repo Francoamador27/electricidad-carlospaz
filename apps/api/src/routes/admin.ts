@@ -195,6 +195,12 @@ admin.get("/eventos", async (c) => {
   return c.json(filas);
 });
 
+admin.delete("/eventos/:id{[0-9]+}", async (c) => {
+  const db = getDb(c.env.DATABASE_URL);
+  await db.delete(schema.eventos).where(eq(schema.eventos.id, Number(c.req.param("id"))));
+  return c.body(null, 204);
+});
+
 admin.get("/consultas/:id{[0-9]+}", async (c) => {
   const db = getDb(c.env.DATABASE_URL);
   const [fila] = await db.select().from(schema.consultas).where(eq(schema.consultas.id, Number(c.req.param("id"))));
