@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { metaPagina } from "@/lib/seo";
 import Hero from "@/components/sections/Hero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
-import Process from "@/components/sections/Process";
 import WhyUs from "@/components/sections/WhyUs";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
 import Testimonials from "@/components/sections/Testimonials";
@@ -29,31 +28,28 @@ export default function HomePage() {
       {/* 2. Servicios — Los 5 principales */}
       <ServicesGrid />
 
-      {/* 3. Cómo trabajo — 3 pasos */}
-      <Process />
-
-      {/* 4. Por qué conmigo */}
+      {/* 3. Por qué conmigo */}
       <WhyUs />
 
-      {/* 5. Proyectos destacados con imágenes */}
+      {/* 4. Proyectos destacados con imágenes */}
       <FeaturedProjects />
 
-      {/* 6. Testimonios de clientes */}
+      {/* 5. Testimonios de clientes */}
       <Testimonials />
 
-      {/* 7. Zona de cobertura + mapa */}
+      {/* 6. Zona de cobertura + mapa */}
       <CoverageArea />
 
-      {/* 8. Blog — últimos artículos */}
+      {/* 7. Blog — últimos artículos */}
       <BlogPreview />
 
-      {/* 9. Texto SEO rico */}
+      {/* 8. Texto SEO rico */}
       <SeoText />
 
-      {/* 10. Banner presupuesto */}
+      {/* 9. Banner presupuesto */}
       <CTAPresupuesto />
 
-      {/* 11. CTA contacto */}
+      {/* 10. CTA contacto */}
       <ContactBanner />
     </>
   );
